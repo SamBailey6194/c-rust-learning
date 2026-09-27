@@ -90,6 +90,9 @@ to build. The others may stay open while earlier milestones run.
   `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
 - Which of Sam's own devices run Syntek OS images, and from when; until then `os-18` deploys to what
   each device runs (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`).
+- Demo videos of the installer and each profile image, guest text consoles included, recorded through
+  the capture library's QEMU/KVM backend (the scripted recorder's stage 4,
+  `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`); no P6 topic of its own.
 
 ---
 

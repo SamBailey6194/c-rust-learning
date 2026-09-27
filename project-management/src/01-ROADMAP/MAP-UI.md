@@ -3,7 +3,7 @@
 **Charted**: 27/09/2026 | **Charted by**: Sam Bailey | **Workflow**: `01-roadmap-map`
 **Phase**: U1–U3 — `project-management/src/01-ROADMAP/ROADMAP.md`
 **Status**: Charting
-**Frontier open**: 4 | **Blocking open**: 0
+**Frontier open**: 5 | **Blocking open**: 0
 
 > A `Charting` draft: destination and open decisions from Sam's planning conversation of 27/09/2026
 > and its ADRs; nodes resolve in later sessions, one at a time. **The map is an index, not a vault.**
@@ -51,6 +51,7 @@ ADR's acceptance (retired by the four research notes of N-005). Nothing here edi
 | N-001 | Custom tools in Rust, ratatui TUI first, GUI later | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-TOOLS-RUST-TUI-FIRST-27-09-2026.md` |
 | N-002 | gtk4-rs for GUI lessons here; Slint for products in their own repositories | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md` |
 | N-004 | Each substantial tool build (file manager, package-manager front-end, installer, system tools) gets its own repository when its build starts; this repository keeps lessons and small exercises (Sam, after the critique) | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` → the repository boundary |
+| N-009 | The scripted recorder's Wayland stages target headless Hyprland (`ui-12`), then GNOME and KDE through the portal and PipeWire (`ui-13`), each in a guest, Later and outside U2's exit gate | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` |
 
 ---
 
@@ -72,10 +73,12 @@ Filled at CUT; candidates in `ROADMAP.md` → U1, U2, U3.
 | N-005 | What the law asks of remote help and of publishing it | research | `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md`, `research/REMOTE-HELP-TOOL-AND-SECTION-3A.md`, `research/REMOTE-HELP-SESSION-RECORDS-AND-UK-GDPR.md` and `research/DUAL-USE-TOOLS-ON-GITHUB.md` (all planned); `GAPS.md` → "Remote-help law and dual-use publishing not yet researched" | no |
 | N-006 | The tool's consent-first envelope | explain-first | N-005; drafted as `ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` (Proposed), Accepted once N-005 resolves and Sam signs off | no |
 | N-007 | The mTLS stack under the licence gate | research | N-006; `sec-05-applied-cryptography` lessons 08–13; `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`; `research/RUST-MTLS-STACK-LICENCES.md` (planned) | no |
+| N-008 | Headless Hyprland in a guest: how it gets a DRM device and seat, which capture protocol and virtual-input protocols it offers, and which release to pin | research | the recorder's stage 2 `Done`; `research/HYPRLAND-HEADLESS-CAPTURE-AND-INPUT.md` (planned, written when `ui-12` opens) | no |
 
 **Blocking a milestone?** N-003 does not block: U1 needs no toolkit choice, and the file manager (the
 first U2 build) has no OS-track or GUI dependency. N-005 to N-007 do not block either: `ui-11` is
-Later and holds no exit gate, so they gate its lessons (01, 03, 06 and 09), not a milestone.
+Later and holds no exit gate, so they gate its lessons (01, 03, 06 and 09), not a milestone. N-008
+does not block: `ui-12` is Later and outside U2's exit gate, so it gates `ui-12`'s lessons 01–04 only.
 
 ---
 
@@ -90,6 +93,8 @@ Later and holds no exit gate, so they gate its lessons (01, 03, 06 and 09), not 
 - Devices that do not run Linux, for the remote-help tool: `ui-11` is Linux terminal sessions only
   (`ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`).
 - Whether the beginner profile ships the remote-help tool.
+- Re-running the recorder's Wayland tapes on the Syntek OS expert image once P6 builds it
+  (`os-15-desktop-editions` lesson 05), in place of a stock guest.
 
 ---
 
@@ -111,6 +116,7 @@ Later and holds no exit gate, so they gate its lessons (01, 03, 06 and 09), not 
 | 27/09/2026 | N-001, N-002 | two ADRs in `project-management/src/08-DECISIONS/` | [x] |
 | 27/09/2026 | N-004 | the repository boundary → `ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` | [x] |
 | 27/09/2026 | — | N-005, N-006, N-007 charted; ui-11 added (Later) | [x] |
+| 28/09/2026 | N-009 | the recorder's Wayland stages → `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`; N-008 charted; ui-12 and ui-13 added (Later) | [x] |
 
 ---
 

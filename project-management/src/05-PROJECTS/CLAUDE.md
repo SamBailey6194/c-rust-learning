@@ -53,4 +53,7 @@ breakdown, acceptance, test strategy and stretch goals, never a solution.
 - Specs are named `PROJ-MS###-<NAME>.md`: the number of the **first** milestone the project spans,
   then the project name in `SCREAMING-KEBAB-CASE` (for example `PROJ-MS020-UNIX-SHELL.md`). Later
   milestones of the same project cite this file rather than taking a spec of their own.
+  A project staged across phases (the scripted recorder, for example) takes one spec per stage, each
+  with the shared stem and a stage suffix (`PROJ-MS###-SCRIPTED-RECORDER-C.md`, then `-RUST-PORT`);
+  a later stage cites the earlier stage's spec as its reference behaviour.
 - Acceptance scenario IDs are `A1`, `A2`, ...; dates DD/MM/YYYY.

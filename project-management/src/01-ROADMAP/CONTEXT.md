@@ -59,9 +59,9 @@ a map.
 
 | Map | Track or phase | Status | Frontier open | Slices | Charted |
 | --- | --- | --- | --- | --- | --- |
-| `MAP-KERNEL.md` | Kernel (P4–P5) | Charting | 3 | 0 | 27/09/2026 |
+| `MAP-KERNEL.md` | Kernel (P4–P5) | Charting | 4 | 0 | 27/09/2026 |
 | `MAP-SYNTEK-OS.md` | OS (P6) | Charting | 6 | 0 | 27/09/2026 |
-| `MAP-UI.md` | UI (U1–U3) | Charting | 4 | 0 | 27/09/2026 |
+| `MAP-UI.md` | UI (U1–U3) | Charting | 5 | 0 | 27/09/2026 |
 | `MAP-LLM.md` | LLM (L1–L6) | Charting | 5 | 0 | 27/09/2026 |
 | `MAP-SECURITY.md` | Security (S1–S3) | Charting | 4 | 0 | 27/09/2026 |
 
