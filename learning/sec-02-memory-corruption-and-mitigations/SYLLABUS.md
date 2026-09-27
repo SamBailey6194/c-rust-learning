@@ -1,6 +1,6 @@
 # Syllabus — sec-02-memory-corruption-and-mitigations
 
-**Track**: sec · **Phase**: S1 · **Path**: Later · **Detail**: full · **Prerequisites**: P2 (the bug classes need C, pointers and dynamic memory); sec-01
+**Track**: sec · **Phase**: S1 · **Path**: Core · **Detail**: full · **Prerequisites**: P2 (the bug classes need C, pointers and dynamic memory); sec-01
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 This topic turns the memory-safety discipline of the C track into security understanding: the bug

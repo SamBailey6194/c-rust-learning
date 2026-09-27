@@ -139,8 +139,8 @@ its **topic folders** (`learning/<id>-<topic>/`), Core first and then Later; eve
 
 | Path | Phases and topics | Leads to |
 | --- | --- | --- |
-| **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-04` and `sec-05` | the first server/homelab edition and the first own model with a skills layer |
-| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`) | breadth once the first edition and model ship |
+| **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` | the first server/homelab edition and the first own model with a skills layer |
+| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4) --> | breadth once the first edition and model ship |
 
 ---
 
@@ -911,7 +911,7 @@ mitigations, the Linux security model and applied cryptography — turned on Sam
   and LLM tracks reuse); applied cryptography (hashes, MACs, signatures, key management, "don't roll
   your own")
 
-**Topic folders:** `sec-01`, `sec-04`, `sec-05`; Later `sec-02`, `sec-03`.
+**Topic folders:** `sec-01`, `sec-02`, `sec-04`, `sec-05`; Later `sec-03`.
 
 **Candidate milestones:**
 
