@@ -129,6 +129,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md` | Proposed: what may enter a product repository — components, contributions, code from here, data and weights |
 | `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md` | Proposed: the outbound licences a product may pick, two of them gated commercial entries |
 | `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md` | Proposed: a generated SPDX SBOM per release and a hand-kept ledger, kept in each product repository |
+| `ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` | Proposed: a remote-help tool that is consent-first by construction — user-initiated, visible, time-limited and logged |
 
 **Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
 every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.

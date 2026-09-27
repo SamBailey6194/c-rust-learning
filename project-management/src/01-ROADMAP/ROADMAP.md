@@ -141,7 +141,7 @@ other path names both ranges in its header and on both lists, as `sec-05` does.
 | Path | Phases and topics | Leads to |
 | --- | --- | --- |
 | **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` lessons 01–07 | the first server/homelab edition and the first own model with a skills layer |
-| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`), the local-model integration (`os-17`) and Sam's own network (`os-18`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Q9); os-18 added (Q8) --> | breadth once the first edition and model ship |
+| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`), the local-model integration (`os-17`) and Sam's own network (`os-18`); the installer, system-tools and remote-help TUIs (`ui-06`, `ui-07`, `ui-11`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Q9); os-18 added (Q8); ui-11 added (Q10) --> | breadth once the first edition and model ship |
 
 ---
 
@@ -597,8 +597,12 @@ natural first project for friends and family.
 - An installer TUI as a state machine, with destructive-action safeguards (VM images only)
 - System tools: privilege separation (unprivileged UI, privileged helper), D-Bus with zbus and
   polkit, network, users, updates and storage screens
+- Later, a consent-first remote-help tool for Sam's family: a Linux terminal session the helped person
+  starts, sees, controls and ends, on mutual TLS from the private CA, proved in the lab first
+  <!-- CHANGED 27/09/2026: bullet added — networking and licensing round: ui-11 added as Later (Q10),
+       under ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md (Proposed) -->
 
-**Topic folders:** `ui-04`, `ui-05`; Later `ui-06`, `ui-07`.
+**Topic folders:** `ui-04`, `ui-05`; Later `ui-06`, `ui-07`, `ui-11`.
 
 **Candidate milestones:**
 
@@ -607,10 +611,16 @@ natural first project for friends and family.
 | File-manager TUI | async listing, safe previews, trash and undo — the first U2 build |
 | Package-manager TUI | consuming the P6 library; transactions with confirmation |
 | Installer and system tools | guided flows, privilege separation, the system screens |
+| Remote-help tool (Later) | consent-first by construction: the session state machine, mTLS, a PTY session, the abuse-case suite |
 
 **Exit gate:** the file-manager TUI lists a directory asynchronously, previews an untrusted file
 safely and supports trash and undo, with tests passing under `cargo test`; each later U2 tool builds
-against its OS-track prerequisite.
+against its OS-track prerequisite, except `ui-11`, which waits on `os-18` and does not hold U2's exit
+gate.
+<!-- CHANGED 27/09/2026: previously read "the file-manager TUI lists a directory asynchronously, previews
+     an untrusted file safely and supports trash and undo, with tests passing under `cargo test`; each
+     later U2 tool builds against its OS-track prerequisite." — networking and licensing round: ui-11
+     added as Later (Q10), outside the exit gate -->
 
 **Primary resources:**
 

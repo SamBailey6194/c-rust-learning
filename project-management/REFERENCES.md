@@ -115,6 +115,11 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 - **CycloneDX** — https://cyclonedx.org/specification/overview/ — the other SBOM format (ECMA-424), the component-register ADR's runner-up
 - **NTIA, The Minimum Elements for an SBOM (12/07/2021)** — https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom — the baseline field list the register's research note re-reads
 - **Choose a License** — https://choosealicense.com/licenses/ — plain-language summaries of the entries on the approved outbound list
+- **Computer Misuse Act 1990, section 3A** — https://www.legislation.gov.uk/ukpga/1990/18/section/3A — making, supplying or obtaining articles for use in an offence; the statute text behind the remote-help ADR
+- **CPS legal guidance, Computer Misuse Act** — https://www.cps.gov.uk/legal-guidance/computer-misuse-act — the factors prosecutors weigh for a dual-use article, cited by the remote-help ADR
+- **UK GDPR, Article 2** — https://www.legislation.gov.uk/eur/2016/679/article/2 — the purely personal or household activity exclusion, paragraph 2(a), which the remote-help session-records note tests
+- **GitHub Acceptable Use Policies: Active Malware or Exploits** — https://docs.github.com/en/site-policy/acceptable-use-policies/github-active-malware-or-exploits — what GitHub allows of dual-use content, before the remote-help repository is published
+- **MITRE ATT&CK T1219, Remote Access Tools** — https://attack.mitre.org/techniques/T1219/ — the abuse of remote-access software the remote-help ADR's constraints refuse
 
 ---
 

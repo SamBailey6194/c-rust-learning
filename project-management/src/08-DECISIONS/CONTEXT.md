@@ -42,6 +42,7 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md      ← Proposed: what may enter a product — components, contributions, code, data
 ├── ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md ← Proposed: the licences a product may pick, two of them gated
 ├── ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md ← Proposed: an SPDX SBOM per release and a hand-kept ledger, per product
+├── ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md      ← Proposed: user-initiated, visible, time-limited, logged remote help
 └── ADR-MS###-<DECISION>-DD-MM-YYYY.md                         ← pattern for every later decision
 ```
 
@@ -115,6 +116,7 @@ question it answers. Records waiting on a research note stay `Proposed`.
 | Product licences — inbound rules (Proposed) | each product repository's `deny.toml`, `CONTRIBUTING` and licence ADR · routed from `.claude/skills/teach/FAMILIES.md` |
 | Approved outbound list (Proposed) | each product repository's licence ADR · `learning/tooling-05-licensing-and-collaboration/SYLLABUS.md` → lesson 05 |
 | Product component register (Proposed) | each product repository's release process · `learning/tooling-05-licensing-and-collaboration/SYLLABUS.md` → lesson 08 |
+| Remote-help tool, consent first (Proposed) | `project-management/docs/SAFETY-GUIDE.md` → Remote help |
 
 ## When an ADR is written
 

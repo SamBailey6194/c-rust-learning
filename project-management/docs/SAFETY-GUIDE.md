@@ -4,13 +4,14 @@ type: guide
 
 # Safety Guide — c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 Hazards run through this curriculum at every level. C's undefined behaviour and memory bugs corrupt a
 program quietly. Rust's `unsafe` hands the same bugs back to you behind a keyword. Kernel code can take
-the whole machine down with it. OS images and network labs, an LLM that loads files and runs generated
-code, and the security track's offensive work each carry hazards of their own. This guide says what a
+the whole machine down with it. OS images and network labs, remote help on someone else's device, an
+LLM that loads files and runs generated code, and the security track's offensive work each carry
+hazards of their own. This guide says what a
 milestone has to **plan** for each of them, at the PM stage, so the right gates and the threat model are
 set before any code exists. The rules themselves are owned by `.claude/CLAUDE.md` Section 5, and each
 section here routes there.
@@ -171,6 +172,30 @@ This section owns the checklist a graduating milestone runs, in order; the ADR a
 
 ---
 
+## Remote help — consent first, by construction
+
+Software that lets Sam see and type into a family member's terminal is the same kind of software an
+intruder uses to keep control of a machine, so a remote-help milestone plans for being mistaken for
+one, or becoming one. Its threat model's mitigations are the ten constraints of
+`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`
+(Proposed): the helped person starts every session, grants view and control separately, sees an
+indicator the helper cannot hide, keeps the log and can end it with one key, and nothing persists,
+hides or gains a privilege. What such a milestone plans for:
+
+- **Lab first.** Every build, and the abuse-case suite, is proved between two VM guests on `os-09`'s
+  isolated lab network before any real session.
+- **A real session only under the graduation path.** It reaches only a family device named in the
+  milestone, under the family-device clause of the graduation-path ADR (Section "Graduating a
+  lab-proven config to Sam's own devices" above), with a written consent record from whoever controls
+  the device, made before the session starts.
+- **Records stay with the helped person.** Filled consent records and session logs stay on the helped
+  device, and on Sam's machine only if the helped person agrees; they enter no git repository, and
+  only a blank template may live in the private infrastructure repository.
+- **Sam runs it.** Claude never runs `sudo`, never opens a session to a real device and never holds a
+  credential for one (`.claude/CLAUDE.md` Section 5).
+
+---
+
 ## LLM — untrusted weights, licensed data, sandboxed code
 
 An LLM milestone plans for three hazards, all owned by `.claude/CLAUDE.md` Section 5 and argued in
@@ -225,5 +250,7 @@ the last line, not the first: read `git diff --staged` before every commit
 - `.claude/CLAUDE.md` — the kernel QEMU-only rule and the public-repository rules
 - `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` —
   why network labs stay isolated and how a lab-proven config graduates
+- `project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` —
+  the constraints a remote-help tool is built inside (Proposed)
 - `project-management/docs/VERIFICATION-GUIDE.md` — how the flagged gates are proved afterwards
 - `project-management/workflows/06-kernel-spec/` — where a kernel milestone's safety plan is written
