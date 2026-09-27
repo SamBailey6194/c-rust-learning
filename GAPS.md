@@ -30,6 +30,24 @@ Append a new entry at the top, newest first:
 
 ---
 
+## 27/09/2026 — Remote-help law and dual-use publishing not yet researched
+
+**Type:** Open question
+**Summary:** The remote-help tool
+(`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`,
+Proposed) records the text of the Computer Misuse Act 1990 sections 17 and 3A, the CPS guidance on
+dual-use articles, UK GDPR Article 2(2)(a) and GitHub's Acceptable Use Policies, but not how any of
+them applies to a family helping session or to publishing the tool (27/09/2026). Whose consent
+authorises which access, whether a session log is household processing, and whether making or
+publishing the tool carries section 3A exposure are all unresearched. This entry records an open
+question; it is not legal advice.
+**Blocked by / Action:** Blocks writing `learning/ui-11-consent-first-remote-help/` lessons 01, 06
+and 09 in full, accepting the remote-help ADR, and publishing the remote-help repository. Run
+`/research` for `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md`,
+`research/REMOTE-HELP-TOOL-AND-SECTION-3A.md`, `research/REMOTE-HELP-SESSION-RECORDS-AND-UK-GDPR.md`
+and `research/DUAL-USE-TOOLS-ON-GITHUB.md` (all planned); revise the ADR's constraints against them,
+and close this entry when Sam accepts it.
+
 ## 27/09/2026 — Monitoring and remote-help tools not installed
 
 **Type:** Toolchain gap
@@ -91,7 +109,8 @@ in an ADR, and close this entry then.
 package signing among them. Whether the UK dual-use export controls, through their cryptography
 category and its notes on software and on publicly available code, ask anything of a public release
 has not been researched (27/09/2026). This entry records an open question; it is not legal advice.
-**Blocked by / Action:** Blocks any product's first public binary release. Run `/research` for
+**Blocked by / Action:** Blocks any product's first public binary release, including the remote-help
+tool's (`learning/ui-11-consent-first-remote-help/` lesson 09). Run `/research` for
 `research/CRYPTOGRAPHY-EXPORT-RULES.md` (planned) before that release, record what it finds in the
 product's release process or an ADR, and close this entry then.
 
