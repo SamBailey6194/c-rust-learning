@@ -7,10 +7,12 @@ How a Syntek OS machine learns that updates exist and decides to trust them. Thi
 and mirrors, signing a repository (minisign and signify against OpenPGP), The Update Framework's threat model —
 freeze, rollback and mix-and-match attacks that a signature alone does not stop — key management and recovery from
 a compromised key, and the build farm's publishing step. It **owns the secure update flow**: os-11's unattended
-security updates and ui-07's update screen apply it rather than re-teaching it. Lessons 02 and 04 build a small
-verification exercise in this repository; the rest is **the Syntek OS package-manager repository** and **the Syntek OS
-build-system repository** (each created when its build starts). The signing scheme itself is decided by ADR, fed by
-the PACKAGE-SIGNING-SCHEME research note (planned — `research/PACKAGE-SIGNING-SCHEME.md`).
+security updates and ui-07's update screen apply it rather than re-teaching it. What Syntek OS machines fetch from is
+**the Syntek OS package archive**: the signed packages and index that pacman, XBPS and TUF each call a repository. Its
+code lives in the git repositories named next. Lessons 02 and 04 build a small verification exercise in this
+repository; the rest is **the Syntek OS package-manager repository** and **the Syntek OS build-system repository**
+(each created when its build starts). The signing scheme itself is decided by ADR, fed by the PACKAGE-SIGNING-SCHEME
+research note (planned — `research/PACKAGE-SIGNING-SCHEME.md`).
 
 | # | Lesson | Size | Build | Lenses |
 | --- | --- | --- | --- | --- |
@@ -104,7 +106,7 @@ the PACKAGE-SIGNING-SCHEME research note (planned — `research/PACKAGE-SIGNING-
   - Syntek OS need not adopt TUF wholesale; the threat model is the checklist any design is measured against.
 - **Recall targets:** each attack in one sentence and the mechanism that stops it; what each of the four roles signs;
   why root stays offline.
-- **Build:** none in code — a threat model for the Syntek OS package repository using sec-01's method, listing which TUF
+- **Build:** none in code — a threat model for the Syntek OS package archive using sec-01's method, listing which TUF
   attacks the lesson 02 design stops and which it does not.
 - **Security lens:** this lesson is the threat model for every later update lesson.
 - **Sources:** TUF specification 1.0.36 (05/08/2026), Sections 1.5.2 "Goals to protect against specific attacks",

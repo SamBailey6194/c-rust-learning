@@ -84,7 +84,7 @@ Prevention fails sometimes; this topic is what happens then. It teaches Sam to l
 
 ## 05 — Vulnerability disclosure
 
-- **Objective:** Sam can write a vulnerability-disclosure policy and a `security.txt` for a web origin he runs (the future Syntek OS website or package-repository host), knows that this GitHub repository uses `SECURITY.md` instead, and can request a CVE.
+- **Objective:** Sam can write a vulnerability-disclosure policy and a `security.txt` for a web origin he runs (the future Syntek OS website or package-archive host), knows that this GitHub repository uses `SECURITY.md` instead, and can request a CVE.
 - **Builds on:** sec-01's responsible/coordinated disclosure and law; the repo's existing `SECURITY.md`.
 - **Key ideas:**
   - `security.txt` (RFC 9116) advertises how to report: `Contact` and `Expires` are required; `Policy`, `Encryption`, `Preferred-Languages` and others are optional. It is served over HTTPS at `/.well-known/security.txt` on a web origin, as `text/plain`, and covers only that domain — a file committed to a Git repository is not served there, which is why a GitHub repository uses `SECURITY.md` and private vulnerability reporting.
@@ -92,7 +92,7 @@ Prevention fails sometimes; this topic is what happens then. It teaches Sam to l
   - CVE IDs are requested through a CNA; the CVE program coordinates identifiers.
   - The public-repo rule: no working exploit for an unpatched third-party vulnerability is published — coordinated disclosure comes first.
 - **Recall targets:** the required `security.txt` fields; where a `security.txt` must be served and what it covers; why coordinated disclosure precedes public exploit detail.
-- **Build:** draft a `security.txt` and disclosure policy for the Syntek OS package-repository host (served from its web root when that host exists), as a note in this topic folder; this repository keeps `SECURITY.md` and GitHub private vulnerability reporting.
+- **Build:** draft a `security.txt` and disclosure policy for the Syntek OS package-archive host (served from its web root when that host exists), as a note in this topic folder; this repository keeps `SECURITY.md` and GitHub private vulnerability reporting.
 - **Security lens:** the non-negotiable — the public repository never holds working exploits for unpatched third-party vulnerabilities.
 - **Sources:** (checked 27/09/2026; re-verify when S3 opens) RFC 9116, `security.txt` (<https://www.rfc-editor.org/rfc/rfc9116>); `SECURITY.md` (this repository's reporting route: GitHub private vulnerability reporting); the CVE program (<https://www.cve.org/>) and its partner (CNA) list (<https://www.cve.org/PartnerInformation/ListofPartners>).
 - **Done when:** the `security.txt` carries the required fields and the policy states a coordinated-disclosure timeline and the no-exploit rule.

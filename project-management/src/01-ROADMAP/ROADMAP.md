@@ -985,7 +985,7 @@ malware detection into Syntek OS, and run a disclosure process — all defensive
 
 - Hardening and secure boot (CIS-style baselines, lynis audits of each profile image, UEFI Secure
   Boot, measured boot/TPM basics — VM images only); testing Syntek OS (pentest the profiles in the
-  lab, fuzz the package manager and installer, supply-chain attacks on the repository as test cases)
+  lab, fuzz the package manager and installer, supply-chain attacks on the Syntek OS package archive as test cases)
 - Red-teaming the LLM (prompt injection through skills, docs and repositories; jailbreak and
   data-extraction testing against Sam's own model; an adversarial test suite run in CI-like fashion)
 - Detection, response and disclosure (logging and auditd, intrusion detection, incident response per

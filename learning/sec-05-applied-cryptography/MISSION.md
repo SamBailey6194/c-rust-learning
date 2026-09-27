@@ -28,4 +28,4 @@ edition (os-11).
 
 - Signing a real repository and key-compromise recovery in practice — os-08.
 - The Linux security model that protects a key at rest — `sec-04`.
-- Supply-chain attacks on the repository as test cases — a later S3 topic.
+- Supply-chain attacks on the Syntek OS package archive as test cases — `sec-14-testing-syntek-os`.
