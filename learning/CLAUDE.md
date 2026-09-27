@@ -43,9 +43,10 @@ journal, with every runnable example kept under `code/src/`.
   licence rules live in `research/CLAUDE.md`.
 - **Notes stay in Sam's words.** Check a note against its source and flag errors; do not rewrite
   it into Claude's prose, because writing it is part of the learning.
-- **Kernels, OS images and labs run in QEMU, VMs and isolated virtual networks only.** The
-  non-negotiables in `.claude/CLAUDE.md` Section 5 hold here too: offensive techniques only in the
-  authorised lab, no malware, no untrusted pickle, and Claude never runs `sudo`.
+- **Kernels, OS images and labs run in QEMU, VMs and isolated virtual networks only.** A lab-proven
+  network config reaches a real device only by the graduation path (`.claude/CLAUDE.md` Section 5).
+  The non-negotiables in `.claude/CLAUDE.md` Section 5 hold here too: offensive techniques only in
+  the authorised lab, no malware, no untrusted pickle, and Claude never runs `sudo`.
 - **A pre-seeded mission is a draft.** Confirm or rewrite its Why with Sam at the topic's first
   lesson; never present a drafted line as his words.
 - **Revise a syllabus by appending.** New lessons go at the end; a taught lesson keeps its number.
