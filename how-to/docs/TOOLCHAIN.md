@@ -4,7 +4,7 @@ type: guide
 
 # Toolchain — c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 > **Owner.** This guide owns the recorded toolchain versions. Every other file cites it instead of
@@ -60,6 +60,7 @@ Present on the host before their tracks open; `check.sh` does not report them ye
 | shellcheck | Runs in CI (0.9.0 on `ubuntu-24.04`); optional locally |
 | markdownlint-cli2 | Not installed globally; `npx --yes markdownlint-cli2` fetches it on demand |
 | lefthook, lcov, gcovr | Not in use: no git hooks manager and no coverage gate yet |
+| reuse, an SBOM generator and validator | Arrive with `tooling-05` lessons 03 and 08; the generator and validator are chosen by the SBOM research note (`GAPS.md` → No SBOM generator or REUSE linter installed) |
 
 ---
 
