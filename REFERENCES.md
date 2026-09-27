@@ -93,7 +93,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | --- | --- |
 | [`project-management/src/01-ROADMAP/ROADMAP.md`](project-management/src/01-ROADMAP/ROADMAP.md) | **Owner** of the phases of every track (P1–P6, U1–U3, L1–L6, S1–S3), their exit gates, the critical path, and the efficiency and security lenses |
 | [`project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md`](project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md) | The current milestone |
-| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning and networking-and-licensing decisions below |
+| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning, networking-and-licensing and scripted-recorder decisions below |
 | [`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md`](project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md) | What separates the seven Syntek OS profiles, on one set of axes |
 
 **Maps** (`project-management/src/01-ROADMAP/`, Charting drafts): `MAP-KERNEL.md` (P4–P5) ·
@@ -130,6 +130,13 @@ the standards, the official books and manuals), then Context7, then web search �
 | `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md` | Proposed: the outbound licences a product may pick, two of them gated commercial entries |
 | `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md` | Proposed: a generated SPDX SBOM per release and a hand-kept ledger, kept in each product repository |
 | `ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` | Proposed: a remote-help tool that is consent-first by construction — user-initiated, visible, time-limited and logged |
+
+**Scripted recorder round of 27/09/2026** (`project-management/src/08-DECISIONS/`, one decision each):
+
+| ADR | Subject |
+| --- | --- |
+| `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` | Proposed: the scripted demo recorder as a staged learning project — X11, then Wayland, then QEMU/KVM, then kernel interfaces in a guest |
+| `ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md` | Proposed: one standalone capture library under GPL-2.0-or-later, shared by the recorder and a second tool |
 
 **Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
 every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.
@@ -314,6 +321,19 @@ recorded once, in `project-management/REFERENCES.md`.
   invocation (<https://www.qemu.org/docs/master/system/invocation.html>) and its gdb stub
   (<https://www.qemu.org/docs/master/system/gdb.html>).
 - **BusyBox** — <https://busybox.net/> — the minimal userland for the first initramfs.
+- **Input and uinput** — the input subsystem (<https://docs.kernel.org/input/input.html>), event codes
+  (<https://docs.kernel.org/input/event-codes.html>) and uinput
+  (<https://docs.kernel.org/input/uinput.html>) — the scripted recorder's guest keyboard (`kernel-09`).
+- **DRM userland interfaces** — <https://docs.kernel.org/gpu/drm-uapi.html> — reading a scanout back
+  in a guest, learning-only (`kernel-10`); checked 27/09/2026.
+- **The KVM API** — <https://docs.kernel.org/virt/kvm/api.html> — why a guest's display stays
+  emulated in QEMU under KVM (`KVM_EXIT_IO`, `KVM_EXIT_MMIO`).
+- **QMP** — `man 7 qemu-qmp-ref` (installed, QEMU 8.2.2) — `screendump`, `send-key` and
+  `input-send-event` for the recorder's QEMU/KVM stage (`kernel-11`).
+- **RFC 6143, the Remote Framebuffer Protocol** — <https://www.rfc-editor.org/rfc/rfc6143> — VNC over a
+  Unix socket (`kernel-11`).
+- **libvirt domain API** — <https://libvirt.org/html/libvirt-libvirt-domain.html> —
+  `virDomainScreenshot` and `virDomainSendKey`, as a wrapper over QEMU (`kernel-11`).
 
 ## External — Syntek OS
 
@@ -363,6 +383,21 @@ recorded once, in `project-management/REFERENCES.md`.
   (<https://wayland-book.com/>).
 - **Slint** — <https://slint.dev/> — the toolkit of the Syntek OS GUI products; studied here only,
   and built in the Syntek OS GUI-tools repository.
+- **X.Org XTEST library** — <https://www.x.org/releases/current/doc/libXtst/xtestlib.html> — fake key
+  events for the scripted recorder on Xvfb (`c-05`).
+- **WebVTT** — <https://www.w3.org/TR/webvtt1/> — the recorder's timeline and chapter cues.
+- **vhs** — <https://github.com/charmbracelet/vhs> — the tape language the recorder's parser follows
+  (MIT).
+- **Hyprland** — the wiki (<https://wiki.hypr.land/>) and the Hyprland
+  (<https://github.com/hyprwm/Hyprland>) and Aquamarine (<https://github.com/hyprwm/aquamarine>)
+  repositories — headless Wayland for the recorder (`ui-12`).
+- **Wayland protocol pages** — <https://wayland.app/protocols/> — ext-image-copy-capture, wlr-screencopy
+  and the virtual keyboard and pointer protocols.
+- **xdg-desktop-portal** — ScreenCast
+  (<https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html>) and
+  RemoteDesktop
+  (<https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.RemoteDesktop.html>) —
+  and **PipeWire** (<https://docs.pipewire.org/page_portal.html>) — capture on GNOME and KDE (`ui-13`).
 
 ## External — LLM
 

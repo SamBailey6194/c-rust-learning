@@ -30,6 +30,24 @@ Append a new entry at the top, newest first:
 
 ---
 
+## 28/09/2026 — Scripted recorder build dependencies not installed
+
+**Type:** Toolchain gap
+**Summary:** The scripted recorder
+(`project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`,
+Proposed) needs pieces the host lacks. The XTest development headers are missing: `dpkg-query` finds
+no `libxtst-dev`, though the runtime library `libxtst6` 2:1.2.3 is installed (28/09/2026). vhs and
+ttyd are not installed, and the route for terminal-only videos before the recorder exists is not
+chosen. No guest image is fetched for Hyprland, GNOME or KDE; these run only as QEMU guests, never as
+Sam's desktop session, and their images stay outside git. CI's runner does not yet install xvfb,
+ffmpeg or `libxtst-dev`.
+**Blocked by / Action:** Blocks the Build of `learning/c-05-scripted-screen-recorder/` lesson 04
+(XTest keys) and every Build of `learning/ui-12-headless-wayland-capture-and-input/` and
+`learning/ui-13-portal-screencast-and-pipewire/`. Sam installs `libxtst-dev` when lesson 04 opens and
+records it in `how-to/docs/TOOLCHAIN.md`; the vhs route is decided before the first terminal-only
+video; each guest image is fetched at its stage's first milestone; CI gains the packages with stage
+1's first milestone. Close this entry when all four are done.
+
 ## 27/09/2026 — Remote-help law and dual-use publishing not yet researched
 
 **Type:** Open question
