@@ -30,6 +30,19 @@ Append a new entry at the top, newest first:
 
 ---
 
+## 27/09/2026 — Monitoring and remote-help tools not installed
+
+**Type:** Toolchain gap
+**Summary:** Neither Prometheus, node_exporter nor tmux is on the host: `dpkg-query` finds no
+`prometheus`, `prometheus-node-exporter` or `tmux` package. Ubuntu 24.04's candidates are 2.45.3, 1.7.0
+and 3.4; upstream publishes Prometheus v3.15.0 and node_exporter v1.12.1 (27/09/2026;
+`how-to/docs/TOOLCHAIN.md` → P6 prerequisites). Which install route to take, Ubuntu's packages or an
+upstream release, is not chosen.
+**Blocked by / Action:** Blocks the Builds of `learning/os-18-own-network-operations/` lesson 07
+(Prometheus over the tunnel) and lesson 10 (the shared tmux session). Choose the install route when
+lesson 07 opens; Sam installs the tools and records their versions in `how-to/docs/TOOLCHAIN.md`; close
+this entry then.
+
 ## 27/09/2026 — No SBOM generator or REUSE linter installed
 
 **Type:** Toolchain gap

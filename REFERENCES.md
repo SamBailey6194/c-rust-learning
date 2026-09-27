@@ -334,9 +334,11 @@ recorded once, in `project-management/REFERENCES.md`.
 - **Init and boot** — systemd (<https://systemd.io/>, manual pages at
   <https://www.freedesktop.org/software/systemd/man/latest/>, including systemd-boot), runit
   (<https://smarden.org/runit/>) and s6 (<https://skarnet.org/software/s6/>).
-- **Networking and storage** — nftables (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>),
-  WireGuard (<https://www.wireguard.com/>), Samba (<https://www.samba.org/samba/docs/>) and OpenZFS
-  (<https://openzfs.github.io/openzfs-docs/>; see `GAPS.md` for its licence).
+- **Networking, monitoring and storage** — nftables
+  (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>), WireGuard (<https://www.wireguard.com/>),
+  dnsmasq (<https://thekelleys.org.uk/dnsmasq/doc.html>), Prometheus
+  (<https://prometheus.io/docs/introduction/overview/>), Samba (<https://www.samba.org/samba/docs/>) and
+  OpenZFS (<https://openzfs.github.io/openzfs-docs/>; see `GAPS.md` for its licence).
 - **QEMU disk images** — <https://www.qemu.org/docs/master/system/images.html> — the images every
   OS lesson runs on.
 - **Build systems as study references** — the Buildroot manual

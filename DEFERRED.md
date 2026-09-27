@@ -1,6 +1,6 @@
 # DEFERRED.md — Topics Parked for a Later Phase
 
-**Last Updated**: 27/09/2026 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB)
 
 Topics that came up during a milestone and were **deliberately parked** for a named later
@@ -40,3 +40,4 @@ One row per parked topic, oldest first:
 | The init system Syntek OS ships (systemd, runit, s6, OpenRC or its own) | MS001 (planning conversation) | DEFERRED (P6) | 27/09/2026 | The learning build follows the LFS 13.1 systemd book and a minimal init in C is a lesson (`learning/os-06-init-and-services/`); the shipped init is chosen later by an ADR fed by the `INIT-SYSTEM-CHOICE.md` research note (planned) |
 | Domain adapters beyond coding: legal, HR, finance and business | MS001 (planning conversation) | DEFERRED (L6) | 27/09/2026 | The coding adapter comes first; the others only with retrieval from authoritative UK sources and as assistants to professionals (`learning/llm-20-post-training-and-adapters/`) |
 | Analysis of live malware samples | MS001 (planning conversation) | DEFERRED (S3) | 27/09/2026 | The security track is defensive and tests detection with the EICAR file and synthetic files only; revisit only with a dedicated air-gapped analysis environment and a decision ADR |
+| Flood and load testing of the router's resilience limits | `learning/os-18-own-network-operations/` (planning) | DEFERRED (S3) | 27/09/2026 | Configuration defences and drills this round (Sam); a load test is offensive work under the lab-rules ADR, taken up with `sec-14-testing-syntek-os` if at all |
