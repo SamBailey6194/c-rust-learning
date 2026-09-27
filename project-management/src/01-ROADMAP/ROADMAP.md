@@ -141,7 +141,7 @@ other path names both ranges in its header and on both lists, as `sec-05` does.
 | Path | Phases and topics | Leads to |
 | --- | --- | --- |
 | **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` lessons 01–07 | the first server/homelab edition and the first own model with a skills layer |
-| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Q9) --> | breadth once the first edition and model ship |
+| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`), the local-model integration (`os-17`) and Sam's own network (`os-18`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Q9); os-18 added (Q8) --> | breadth once the first edition and model ship |
 
 ---
 
@@ -505,9 +505,14 @@ package set; ship the server and homelab edition first — recommended, still to
   extraction, crash-safe updates, a Rust library plus a thin CLI; repositories, signing and updates
 - Networking fundamentals and an isolated QEMU lab; profiles and the installer as a transaction; the
   server, homelab, NAS, router and desktop editions; the release and security process; a local-model
-  integration capstone
+  integration capstone; and, Later, running Sam's own network from the lab-proven pieces under the
+  graduation path
+  <!-- CHANGED 27/09/2026: previously read "Networking fundamentals and an isolated QEMU lab; profiles
+       and the installer as a transaction; the server, homelab, NAS, router and desktop editions; the
+       release and security process; a local-model integration capstone" — networking and licensing
+       round: os-18 added as Later (Q8, Q11, Q12) -->
 
-**Topic folders:** `os-01`, `os-02`, `os-03`, `os-04`, `os-05`, `os-06`, `os-07`, `os-08`, `os-09`, `os-10`, `os-11`, `os-12`, `os-16`; Later `os-13`, `os-14`, `os-15`, `os-17`.
+**Topic folders:** `os-01`, `os-02`, `os-03`, `os-04`, `os-05`, `os-06`, `os-07`, `os-08`, `os-09`, `os-10`, `os-11`, `os-12`, `os-16`; Later `os-13`, `os-14`, `os-15`, `os-17`, `os-18`.
 
 **Candidate milestones:**
 

@@ -3,7 +3,7 @@
 **Charted**: 27/09/2026 | **Charted by**: Sam Bailey | **Workflow**: `01-roadmap-map`
 **Phase**: P6 — `project-management/src/01-ROADMAP/ROADMAP.md`
 **Status**: Charting
-**Frontier open**: 4 | **Blocking open**: 1
+**Frontier open**: 6 | **Blocking open**: 1
 
 > A `Charting` draft: destination and open decisions from Sam's planning conversation of 27/09/2026
 > and its ADRs; nodes resolve in later sessions, one at a time. **The map is an index, not a vault.**
@@ -70,6 +70,8 @@ Filled at CUT, after the blocking nodes resolve; candidates in `ROADMAP.md` → 
 | N-005 | The package format and signing scheme (minisign/signify vs OpenPGP; TUF's threat model) | research | `research/PACKAGE-SIGNING-SCHEME.md` (planned) | no |
 | N-006 | The eleven-axis profile definitions, cited not assumed | research | `research/SYNTEK-OS-PROFILE-DEFINITIONS.md` (planned) | no |
 | N-007 | A VM with spare disk for the LFS build | spike | `GAPS.md` → "A VM with spare disk for the LFS build" | yes |
+| N-009 | The router's DNS and DHCP design (dnsmasq combined, or Kea with Unbound), which the homelab consumes | explain-first | `learning/os-14-router-edition/` lesson 03's ADR draft | no |
+| N-010 | Whether the router profile ships WireGuard enabled by default | explain-first | `os-14` lessons 05 and 07; `PROFILE-ROUTER.md` → Open questions | no |
 
 **Blocking a milestone?** N-007 blocks the first LFS milestone: without a build VM there is nowhere
 to build. The others may stay open while earlier milestones run.
@@ -86,6 +88,8 @@ to build. The others may stay open while earlier milestones run.
   starts, under names Sam chooses then and the inbound rules
   (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`;
   `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
+- Which of Sam's own devices run Syntek OS images, and from when; until then `os-18` deploys to what
+  each device runs (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`).
 
 ---
 
@@ -106,6 +110,7 @@ to build. The others may stay open while earlier milestones run.
 | --- | --- | --- | --- |
 | 27/09/2026 | N-001, N-002, N-003 | three ADRs in `project-management/src/08-DECISIONS/` | [x] |
 | 27/09/2026 | N-008 | settled by Sam's answer in the networking round, not while charting → ADR | [x] |
+| 27/09/2026 | — | N-009, N-010 charted; os-18 added (Later) | [x] |
 
 ---
 
