@@ -45,6 +45,7 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md      ← Proposed: user-initiated, visible, time-limited, logged remote help
 │   ── Scripted recorder, 27/09/2026 ──
 ├── ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md ← Proposed: X11 → Wayland → QEMU/KVM, then kernel interfaces in a guest
+├── ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md          ← Proposed: one capture library for two tools, GPL-2.0-or-later
 └── ADR-MS###-<DECISION>-DD-MM-YYYY.md                         ← pattern for every later decision
 ```
 
@@ -128,6 +129,7 @@ drives them for the same reason as the rounds above. Each record states in words
 | ADR | Rule enforced in |
 | --- | --- |
 | Scripted recorder, staged (Proposed) | `project-management/src/01-ROADMAP/ROADMAP.md` → P2 to P5, U2 · `.claude/skills/teach/FAMILIES.md` |
+| Capture library, standalone (Proposed) | the capture-library repository's licence and `deny.toml` · `.claude/skills/teach/FAMILIES.md` |
 
 ## When an ADR is written
 
