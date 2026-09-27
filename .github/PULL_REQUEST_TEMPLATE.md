@@ -33,6 +33,7 @@ CI runs every gate below on this pull request; tick what you ran locally before 
 - [ ] `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings` and `cargo test` pass inside `code/src/rust/`
 - [ ] Kernel work ran in QEMU only — nothing was installed or `insmod`-ed on the host
 - [ ] OS images, installers and network labs ran in VMs / isolated virtual networks only
+- [ ] Nothing from Sam's real network (keys, peers, addresses, topology) is committed; examples use documentation ranges
 - [ ] No build output or kernel source tree is committed
 - [ ] No model weights, checkpoints, datasets or disk images are committed; no untrusted pickle was loaded
 
