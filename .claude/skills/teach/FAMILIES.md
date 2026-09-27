@@ -19,10 +19,9 @@ inference code) gets its own repository when its build starts; a Build sketch th
 <thing> repository (created when this build starts)". Names and licences of those repositories are
 Sam's to choose; until he does, lessons use these placeholders and no others: the downstream kernel
 repository; the Syntek OS build-system, package-manager, installer, system-tools, file-manager,
-GUI-tools and web-dashboard repositories; the model-training repository; and the inference
-repository. (Two more, the sandbox-launcher repository of `sec-04` and the model-release repository
-of `llm-21`, await Sam's confirmation.) **Until a topic's phase opens**, in any family, its lessons
-are reading, recall and a note only, and its Builds wait for a milestone in that phase
+GUI-tools and web-dashboard repositories; the sandbox-launcher repository; and the model-training,
+inference and model-release repositories. **Until a topic's phase opens**, in any family, its
+lessons are reading, recall and a note only, and its Builds wait for a milestone in that phase
 (`.claude/skills/teach/SKILL.md` step 1 lists Sam's routes).
 
 ---
@@ -179,10 +178,11 @@ repository's citation key; the [2026 edition](https://genai.owasp.org/resource/o
   this repository's `.claude/skills/` is the working prototype of the skill format.
 - **Where it lands.** Python under `code/src/python/` (planned — added at L1), CUDA under
   `code/src/cuda/` (planned — added at L2), Rust as lesson crates; the data pipeline and training
-  code in the model-training repository, and the inference server and skill loader in the inference
-  repository, each created when its build starts. `llm-01`'s three skills and gap log are the
-  inference repository's first contents (its lesson 05 starts it). Prices are never tabled: a lesson
-  teaches the estimate and says to check prices on the day.
+  code in the model-training repository, the inference server and skill loader in the inference
+  repository, and the released weights, model card and evaluations in the model-release repository
+  (`llm-21` lesson 07), each created when its build starts. `llm-01`'s three skills and gap log are
+  the inference repository's first contents (its lesson 05 starts it). Prices are never tabled: a
+  lesson teaches the estimate and says to check prices on the day.
 
 ## sec — security, defensive and authorised offensive (S1–S3)
 
@@ -213,6 +213,12 @@ of each training platform used ([OverTheWire](https://overthewire.org/wargames/)
 - **Licences.** The OWASP GenAI project's site states CC BY-SA 4.0 for its content, a share-alike
   licence, so it is re-authored and never quoted; other OWASP pages are treated the same until
   their own licence is checked (`.claude/skills/research/SKILL.md` → the licence ladder).
+- **Where it lands.** Notes, rules and lab records stay in the topic folder; small exercises and VM
+  harnesses go under `code/src/` (a deliberately vulnerable build is a never-shipped target); a
+  build that hardens or tests a product lands in that product's repository. `sec-04`'s sandbox
+  launcher starts as a lesson crate here and moves to the sandbox-launcher repository (created at
+  the first lesson that runs it from a product repository, `os-05` lesson 03 or `llm-13` lesson 03),
+  which the product repositories that run untrusted or generated code depend on.
 
 ---
 
