@@ -147,5 +147,5 @@ environment debugging. `STEPS.md` files point into these tables by section name.
 
 | Reference | Description |
 | --- | --- |
-| [reboot-purge](https://github.com/SamBailey6194/reboot-purge) | Sibling repository for post-boot host maintenance — not yet published (`GAPS.md`) |
+| [reboot-purge](https://github.com/SamBailey6194/reboot-purge) | Sibling repository for post-boot host maintenance |
 | [Diataxis](https://diataxis.fr/) | Why a reference and a how-to guide are written differently |

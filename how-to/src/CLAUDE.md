@@ -14,7 +14,7 @@ pointer stub — written in full on the six-part spine and exempt from the 300-l
 
 - **Routing:** a new or restructured runbook follows `how-to/workflows/06-write-a-guide/` under
   `how-to/docs/GUIDE-CRAFT.md`. Host maintenance belongs to the reboot-purge repository
-  (`https://github.com/SamBailey6194/reboot-purge`, not yet published — `GAPS.md`); changes to it
+  (`https://github.com/SamBailey6194/reboot-purge`); changes to it
   happen there, not here.
 - **Concrete steps:** edit the runbook → keep the spine (Purpose → Prerequisites → Steps → Failure modes →
   Rollback → Verification) → run every changed step on this machine and paste real output → update this

@@ -37,4 +37,3 @@ how-to/src/
 - `how-to/docs/GUIDE-CRAFT.md` — the six-part spine every runbook here follows
 - `how-to/workflows/06-write-a-guide/` — the procedure for adding a runbook here
 - `https://github.com/SamBailey6194/reboot-purge` — the sibling repository `HOST-MAINTENANCE.md` points to
-  (not yet published; `GAPS.md` tracks it)

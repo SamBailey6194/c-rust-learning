@@ -38,8 +38,9 @@ how-to/workflows/04-toolchain-updates/
 - **`rustup update` leaves the pin alone.** It updates channel toolchains such as `stable`; a toolchain
   named by exact version (1.92.0) stays exactly that until `rust-toolchain.toml` changes.
 - **Host upgrades belong to reboot-purge.** The sibling repository
-  (`https://github.com/SamBailey6194/reboot-purge`, not yet published; `how-to/src/HOST-MAINTENANCE.md`
-  points to it) is meant to own host maintenance; until it is published, Step 4 runs the upgrade by hand.
+  (`https://github.com/SamBailey6194/reboot-purge`; `how-to/src/HOST-MAINTENANCE.md` points to it) owns
+  host maintenance. Its interactive upgrade script is still on its roadmap, so Step 4 runs the upgrade
+  by hand for now.
 - **Every update ends with the gates.** A newer clippy brings new lints and a newer gcc new warnings; the
   gates in `how-to/workflows/03-quality-gates/` are what show it.
 

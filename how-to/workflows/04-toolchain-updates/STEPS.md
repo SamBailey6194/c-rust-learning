@@ -95,8 +95,9 @@ cargo-deny's version is the same on this machine and in CI._
 
 ### Step 4 — Upgrade the host packages through reboot-purge
 
-Host maintenance belongs to the reboot-purge repository (`how-to/src/HOST-MAINTENANCE.md`), which is not
-published yet (`GAPS.md`). Until it is, the learner runs the upgrade by hand, reading the list before
+Host maintenance belongs to the reboot-purge repository (`how-to/src/HOST-MAINTENANCE.md`). Its health
+report (`./scripts/reboot-purge.sh health`) shows how many upgrades are pending. Its interactive upgrade
+script is still on its roadmap, so for now the learner runs the upgrade by hand, reading the list before
 agreeing to it:
 
 ```bash

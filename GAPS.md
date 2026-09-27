@@ -30,7 +30,12 @@ Append a new entry at the top, newest first:
 
 ---
 
-## 27/09/2026 — Sibling repository reboot-purge not yet published
+## 27/09/2026 — Sibling repository reboot-purge not yet published — ✅ CLOSED 27/09/2026
+
+**Resolution:** reboot-purge was published at <https://github.com/SamBailey6194/reboot-purge> on
+27/09/2026. The "(not yet published)" markers are gone and `how-to/src/HOST-MAINTENANCE.md` carries
+its feature signpost again. The host upgrade in Step 4 still runs by hand, because reboot-purge's
+interactive upgrade script is on its roadmap and not yet built.
 
 **Type:** Toolchain gap
 **Summary:** The how-to layer routes host maintenance (health checks, cleanup, routine

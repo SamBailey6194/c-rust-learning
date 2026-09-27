@@ -8,11 +8,18 @@ that maintenance. This file points there and stays a pointer: it never grows int
 
 ## Where host maintenance lives
 
-`https://github.com/SamBailey6194/reboot-purge` (not yet published) — interactive, menu-driven Bash
-scripts for an apt-based Ubuntu host, run after booting, each task showing what will change and waiting
-for approval. The repository is not public yet (`GAPS.md` → _Sibling repository reboot-purge not yet
-published_), so nothing here describes its features; its README will, once it is published. Until then,
-`how-to/workflows/04-toolchain-updates/` Step 4 gives the host upgrade to run by hand.
+`https://github.com/SamBailey6194/reboot-purge` — interactive, menu-driven Bash for an apt-based Ubuntu
+host, run after booting. Every task shows what will change and waits for approval. It offers:
+
+- **a health report** covering pending reboots, kernel and NVIDIA mismatches, broken or held packages,
+  autoremovable packages, pending upgrades, failed units and disk use;
+- **autoremove, old-kernel removal, an apt cache clean and a broken-package repair**, each previewed
+  with apt's simulation first. Kernel removal never touches the running kernel or the last bootable
+  image.
+
+Its README is the authority on what it does; this list is only a signpost. An interactive
+`apt update` → `apt list --upgradable` → `apt upgrade` script is on its roadmap but not built yet, so
+`how-to/workflows/04-toolchain-updates/` Step 4 still gives the host upgrade to run by hand.
 
 ## What stays here
 
