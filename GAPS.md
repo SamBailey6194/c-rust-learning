@@ -159,8 +159,8 @@ day rather than recorded here.
 **Summary:** No hardware is selected yet for the NAS, router, homelab, server ("business server" is
 the `server` profile) or laptop and PC profiles. Every lesson runs in VMs or QEMU first.
 **Blocked by / Action:** Choose each profile's hardware by ADR when its topic opens. Real-hardware
-tests run only on dedicated, wiped test hardware named in the milestone — never the host, never the
-home network (`.claude/CLAUDE.md` Section 5).
+tests, and anything that later enters service on Sam's own network, follow `.claude/CLAUDE.md`
+Section 5.
 
 ## 27/09/2026 — A VM with spare disk for the LFS build
 
