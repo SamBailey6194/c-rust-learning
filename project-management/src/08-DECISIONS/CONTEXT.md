@@ -5,7 +5,8 @@
 Architecture Decision Records (ADRs): one immutable record per decision that shapes how the C, Rust,
 kernel, Syntek OS, UI, LLM or security work is done — the language standard, the coding style, the
 build tool, the test harness, the toolchain, the roadmap's tracks, the kernel base, how Syntek OS is
-built, the licence gate and the lab rules, and later the init system and each profile's hardware.
+built, the licence gate, the lab rules and the networking and licensing round, and later the init
+system and each profile's hardware.
 Each record argues a trade-off in the open (the context, honest options, the choice and what it
 costs) so that a later reader, including a later version of the learner, can see why the repository
 works the way it does and what it would take to change it. An ADR argues; the guide that owns the
@@ -34,7 +35,9 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-LLM-BASE-MODEL-PLUS-ADAPTERS-27-09-2026.md        ← Proposed: one base, LoRA adapters per domain
 ├── ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md             ← GPL-2.0-only here; Apache-2.0-only crates by exception
 ├── ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md                    ← gtk4-rs for lessons; Slint for the Syntek OS GUI tools
-├── ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md        ← authorised, isolated-lab-only offence; no malware
+├── ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md        ← authorised, isolated-lab-only offence; no malware; extended by the graduation path (below)
+│   ── Networking and licensing round, 27/09/2026 ──
+├── ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md  ← labs isolated; a lab-proven config graduates to named devices
 └── ADR-MS###-<DECISION>-DD-MM-YYYY.md                         ← pattern for every later decision
 ```
 
@@ -94,6 +97,16 @@ the conversation only recommended is listed under Follow-on as "to confirm". One
 | Crate licences | `code/src/rust/deny.toml` |
 | GUI toolkit | `code/src/rust/deny.toml` · `project-management/src/01-ROADMAP/ROADMAP.md` → U3 |
 | Security track and lab rules | `.claude/CLAUDE.md` Section 5 · `project-management/docs/SAFETY-GUIDE.md` |
+
+## The networking and licensing round
+
+Written on 27/09/2026 from Sam's answers in the networking and licensing round that followed the
+planning conversation; MS001 drives them for the same reason. Each record states in words the
+question it answers. Records waiting on a research note stay `Proposed`.
+
+| ADR | Rule enforced in |
+| --- | --- |
+| Network lab first, graduation path | `.claude/CLAUDE.md` Section 5 · `project-management/docs/SAFETY-GUIDE.md` → Graduating a lab-proven config |
 
 ## When an ADR is written
 

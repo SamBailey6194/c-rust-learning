@@ -27,7 +27,9 @@ The five seed ADRs (C17, Linux kernel coding style, GNU make, `check.h`, Rust ed
 toolchain) were accepted with the scaffold on 27/09/2026, and twelve more were written the same day from
 Sam's planning conversation (the roadmap tracks, the downstream kernel, Syntek OS and its profiles and
 tools, the LLM, the crate licences, the GUI toolkit and the security track —
-`project-management/src/08-DECISIONS/CONTEXT.md` → The planning-conversation set). Decisions still ahead
+`project-management/src/08-DECISIONS/CONTEXT.md` → The planning-conversation set); the networking and
+licensing round the same day added more (`project-management/src/08-DECISIONS/CONTEXT.md` → The
+networking and licensing round). Decisions still ahead
 include each profile's kernel line (longterm or stable), Rust-for-Linux feasibility (blocked until
 clang/LLVM is installed), bootloader, Syntek OS's own init system, the package format and signing
 scheme, and each profile's hardware.

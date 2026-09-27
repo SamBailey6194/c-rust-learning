@@ -93,7 +93,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | --- | --- |
 | [`project-management/src/01-ROADMAP/ROADMAP.md`](project-management/src/01-ROADMAP/ROADMAP.md) | **Owner** of the phases of every track (P1–P6, U1–U3, L1–L6, S1–S3), their exit gates, the critical path, and the efficiency and security lenses |
 | [`project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md`](project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md) | The current milestone |
-| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning decisions below |
+| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning and networking-and-licensing decisions below |
 | [`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md`](project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md) | What separates the seven Syntek OS profiles, on one set of axes |
 
 **Maps** (`project-management/src/01-ROADMAP/`, Charting drafts): `MAP-KERNEL.md` (P4–P5) ·
@@ -119,6 +119,12 @@ the standards, the official books and manuals), then Context7, then web search �
 | `ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md` | Apache-2.0-only crates by documented per-crate exception |
 | `ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md` | gtk4-rs for the GUI lessons |
 | `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` | The security track and its authorised, isolated-lab rules |
+
+**Networking and licensing round of 27/09/2026** (`project-management/src/08-DECISIONS/`, one decision each):
+
+| ADR | Subject |
+| --- | --- |
+| `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` | Network labs stay isolated; a lab-proven config graduates to named devices Sam owns |
 
 **Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
 every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.

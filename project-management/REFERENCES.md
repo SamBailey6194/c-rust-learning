@@ -138,3 +138,7 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 - **Linux kernel: Rust quick start** — https://docs.kernel.org/rust/quick-start.html — `make LLVM=1 rustavailable`, the check before any Rust-for-Linux milestone
 - **Linux kernel: minimal requirements** — https://docs.kernel.org/process/changes.html — the build dependencies a kernel milestone lists as blockers
 - **QEMU invocation** — https://www.qemu.org/docs/master/system/invocation.html — `-kernel`, `-initrd`, `-append`, `-nographic`, `-snapshot`, `-s -S`
+- **Computer Misuse Act 1990, section 17** — https://www.legislation.gov.uk/ukpga/1990/18/section/17 — subsections (5) and (8), when access or an act is unauthorised; the reading behind the graduation-path ADR
+- **RFC 5737, IPv4 documentation ranges** — https://www.rfc-editor.org/rfc/rfc5737 — the only IPv4 addresses a network example here may use
+- **RFC 3849, IPv6 documentation prefix** — https://www.rfc-editor.org/rfc/rfc3849 — the only IPv6 prefix a network example here may use
+- **RFC 2606, reserved DNS names** — https://www.rfc-editor.org/rfc/rfc2606 — `example`, `test` and `invalid` names for examples
