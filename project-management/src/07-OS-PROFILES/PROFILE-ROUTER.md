@@ -1,6 +1,6 @@
 # PROFILE-ROUTER — Router Profile
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 | Field | Value |
@@ -101,7 +101,7 @@ repository (created in `kernel-05-downstream-tree` lesson 02); its plan and reco
 
 | Question | Blocks | Where it goes |
 | --- | --- | --- |
-| Which DHCP and DNS server, and whether WireGuard ships by default | Network exposure; the handbook | `os-14-router-edition`; ADR if hard to reverse |
+| Which DHCP and DNS server (the one design the homelab also consumes — `PROFILE-HOMELAB.md` → H5), and whether WireGuard ships by default | Network exposure; the handbook; the homelab's name service | `os-14-router-edition` lesson 03's ADR draft; `MAP-SYNTEK-OS.md` → N-009, N-010 |
 | How IPv6 (RA, DHCPv6-PD) is configured and tested in the lab | Network exposure | `os-14-router-edition`; research note |
 | What hardware the router profile targets | Hardware target | `GAPS.md` Open question; ADR when the topic opens |
 

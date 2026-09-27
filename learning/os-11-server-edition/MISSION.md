@@ -37,3 +37,5 @@ updates, and backups that are proven by a restore.
 - Penetration-testing the server image — `sec-14` (testing Syntek OS).
 - Intrusion detection and incident response — `sec-16-detection-response-and-disclosure`.
 - Containers, VMs and monitoring — `os-12-homelab-edition`.
+- Consent-first SSH help sessions for family members who ask, and backup drills for Sam's real
+  router — `os-18-own-network-operations`.

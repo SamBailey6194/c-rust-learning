@@ -1,6 +1,6 @@
 # PROFILE-MATRIX — The Seven Syntek OS Profiles Compared
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 **Status:** Draft — every cell is a hypothesis to research and then test at P5 and P6, not a decision.
@@ -51,7 +51,7 @@ server family's defining choices had nowhere to live in the desktop-only axis se
 | **Kernel config + update cadence** | Tuned config; longterm line; unattended security updates | Storage-focused config (see Storage stack); longterm line pinned to the storage layer's supported range | Config for KVM and containers; longterm line; user-started updates | Minimal hardened config; longterm line; deliberate updates |
 | **Documentation & guidance level** | Reference manual and runbooks | Reference plus storage and backup how-tos | Reference plus container and VM how-tos | Reference plus a security and firewall handbook |
 | **Rescue / recovery tooling** | Previous kernel kept; a documented emergency shell; a restore drill | Previous kernel kept; array and snapshot recovery documented | Previous kernel kept; container and VM state recovery documented | Previous kernel kept; a documented reset to a known-good config |
-| **Network exposure & firewall default** | SSH only; host firewall on, deny by default | File-sharing ports on the LAN only; firewall deny by default | Services on the LAN; firewall deny by default | The routing/NAT/firewall subject itself; deny by default on the untrusted side |
+| **Network exposure & firewall default** | SSH only; host firewall on, deny by default | File-sharing ports on the LAN only; firewall deny by default | Services on the LAN; administration and metrics on the management network only; DNS and DHCP consumed from the router, not served; firewall deny by default | The routing/NAT/firewall subject itself; deny by default on the untrusted side |
 | **Storage stack** | Root plus a data volume; ext4 or Btrfs | One lesson per layer — mdadm RAID, LVM, Btrfs subvolumes and snapshots; ZFS as reading (CDDL, pins the kernel line) | LVM or Btrfs for VM and container images | Small, simple root; no data pooling |
 | **Hardware target** | A business server — VMs and QEMU disk images only until hardware is chosen by ADR | VMs and QEMU disk images only until hardware is chosen by ADR | VMs and QEMU disk images only until hardware is chosen by ADR | VMs and isolated virtual networks only until hardware is chosen by ADR |
 

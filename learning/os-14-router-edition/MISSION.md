@@ -33,3 +33,5 @@ it and the lab tests pass.
 - Penetration-testing the router image — `sec-14` (testing Syntek OS).
 - Intrusion detection on the lab network — `sec-16-detection-response-and-disclosure`.
 - Wi-Fi access-point support — decided with the hardware ADR, not assumed.
+- Running the lab-proven router beside the ISP router on Sam's own network, under the graduation
+  path — `os-18-own-network-operations`.

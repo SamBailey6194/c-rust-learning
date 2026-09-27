@@ -30,3 +30,5 @@ resources properly: every service gets a budget, and the budget is measured, not
 - Container orchestration across several hosts — out of scope for the first edition.
 - Running the local model as a homelab service — `os-17-local-model-integration`.
 - Intrusion detection on the lab network — `sec-16-detection-response-and-disclosure`.
+- Collecting metrics from several machines with a Prometheus server over WireGuard —
+  `os-18-own-network-operations` lesson 07.
