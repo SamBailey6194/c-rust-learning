@@ -5,8 +5,8 @@
 Architecture Decision Records (ADRs): one immutable record per decision that shapes how the C, Rust,
 kernel, Syntek OS, UI, LLM or security work is done — the language standard, the coding style, the
 build tool, the test harness, the toolchain, the roadmap's tracks, the kernel base, how Syntek OS is
-built, the licence gate, the lab rules and the networking and licensing round, and later the init
-system and each profile's hardware.
+built, the licence gate, the lab rules, the networking and licensing round and the scripted recorder,
+and later the init system and each profile's hardware.
 Each record argues a trade-off in the open (the context, honest options, the choice and what it
 costs) so that a later reader, including a later version of the learner, can see why the repository
 works the way it does and what it would take to change it. An ADR argues; the guide that owns the
@@ -43,6 +43,8 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md ← Proposed: the licences a product may pick, two of them gated
 ├── ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md ← Proposed: an SPDX SBOM per release and a hand-kept ledger, per product
 ├── ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md      ← Proposed: user-initiated, visible, time-limited, logged remote help
+│   ── Scripted recorder, 27/09/2026 ──
+├── ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md ← Proposed: X11 → Wayland → QEMU/KVM, then kernel interfaces in a guest
 └── ADR-MS###-<DECISION>-DD-MM-YYYY.md                         ← pattern for every later decision
 ```
 
@@ -117,6 +119,15 @@ question it answers. Records waiting on a research note stay `Proposed`.
 | Approved outbound list (Proposed) | each product repository's licence ADR · `learning/tooling-05-licensing-and-collaboration/SYLLABUS.md` → lesson 05 |
 | Product component register (Proposed) | each product repository's release process · `learning/tooling-05-licensing-and-collaboration/SYLLABUS.md` → lesson 08 |
 | Remote-help tool, consent first (Proposed) | `project-management/docs/SAFETY-GUIDE.md` → Remote help |
+
+## The scripted-recorder round
+
+Written on 27/09/2026 from Sam's answers on the scripted demo recorder and its shared capture layer; MS001
+drives them for the same reason as the rounds above. Each record states in words the question it answers.
+
+| ADR | Rule enforced in |
+| --- | --- |
+| Scripted recorder, staged (Proposed) | `project-management/src/01-ROADMAP/ROADMAP.md` → P2 to P5, U2 · `.claude/skills/teach/FAMILIES.md` |
 
 ## When an ADR is written
 

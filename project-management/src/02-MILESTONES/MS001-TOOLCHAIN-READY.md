@@ -77,6 +77,8 @@ milestone too, because it was the only one open when they were written; they sha
 MS001's gates (`project-management/src/08-DECISIONS/CONTEXT.md` → The planning-conversation set).
 The networking and licensing round of the same day added further MS001 records on the same terms
 (`project-management/src/08-DECISIONS/CONTEXT.md` → The networking and licensing round).
+The scripted-recorder round of the same day added further MS001 records on the same terms
+(`project-management/src/08-DECISIONS/CONTEXT.md` → The scripted-recorder round).
 
 ---
 

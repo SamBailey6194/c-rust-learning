@@ -29,7 +29,8 @@ Sam's planning conversation (the roadmap tracks, the downstream kernel, Syntek O
 tools, the LLM, the crate licences, the GUI toolkit and the security track —
 `project-management/src/08-DECISIONS/CONTEXT.md` → The planning-conversation set); the networking and
 licensing round the same day added more (`project-management/src/08-DECISIONS/CONTEXT.md` → The
-networking and licensing round). Decisions still ahead
+networking and licensing round); the scripted-recorder round added two more
+(`project-management/src/08-DECISIONS/CONTEXT.md` → The scripted-recorder round). Decisions still ahead
 include each profile's kernel line (longterm or stable), Rust-for-Linux feasibility (blocked until
 clang/LLVM is installed), bootloader, Syntek OS's own init system, the package format and signing
 scheme, each profile's hardware, the private CA's ACME issuer, and each product repository's outbound
