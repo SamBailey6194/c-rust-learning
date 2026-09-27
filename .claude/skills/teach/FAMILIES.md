@@ -20,8 +20,12 @@ inference code) gets its own repository when its build starts; a Build sketch th
 Sam's to choose; until he does, lessons use these placeholders and no others: the downstream kernel
 repository; the Syntek OS build-system, package-manager, installer, system-tools, file-manager,
 GUI-tools and web-dashboard repositories; the sandbox-launcher repository; and the model-training,
-inference and model-release repositories. **Until a topic's phase opens**, in any family, its
-lessons are reading, recall and a note only, and its Builds wait for a milestone in that phase
+inference and model-release repositories. One more is private and holds no build: the private
+infrastructure repository, created at the first graduation, where Sam's real network configuration
+lives (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`);
+it is never published and carries no licence, and lessons name it but never link it, cite a path in
+it or quote from it. **Until a topic's phase opens**, in any family, its lessons are reading, recall
+and a note only, and its Builds wait for a milestone in that phase
 (`.claude/skills/teach/SKILL.md` step 1 lists Sam's routes).
 
 ---
@@ -108,7 +112,10 @@ the [TUF specification](https://theupdateframework.github.io/specification/lates
 
 - **VMs and QEMU disk images only; isolated virtual networks for labs.** Real hardware only when a
   milestone names dedicated, wiped test hardware (`.claude/CLAUDE.md` Section 5). No hardware is
-  chosen yet for any profile; each is chosen by ADR when its topic opens (`GAPS.md`).
+  chosen yet for any profile; each is chosen by ADR when its topic opens (`GAPS.md`). A lab-proven
+  config reaches a real device only by the graduation path
+  (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`;
+  checklist in `project-management/docs/SAFETY-GUIDE.md`): Sam applies it, never Claude.
 - **The learning build follows the LFS 13.1 systemd book.** A minimal init in C is a lesson; the
   init Syntek OS ships is chosen later by ADR, fed by the `INIT-SYSTEM-CHOICE` research note
   (`DEFERRED.md`).

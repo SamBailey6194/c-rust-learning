@@ -197,7 +197,10 @@ These apply in every task, in every layer:
   host.** The host is the machine Sam learns on; a faulty module can oops it and lose the work.
 - **OS images, installers and partitioning run in VMs or on QEMU disk images; network and router
   labs run on isolated virtual networks.** Real-hardware tests run only on dedicated, wiped test
-  hardware named in the milestone — never the host, never the home network.
+  hardware named in the milestone — never the host, never the home network. A lab-proven network
+  config reaches a real device only by the graduation path, applied by Sam; its real addresses,
+  peers and topology stay in a private repository, never here, and private keys stay on their
+  devices (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`).
 - **Never commit kernel source trees, build output, disk images, model weights, checkpoints,
   datasets or LFS source tarballs** — `.gitignore` carries the patterns; fetch and build them
   outside git.
