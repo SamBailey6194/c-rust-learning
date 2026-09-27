@@ -88,7 +88,7 @@ The topic's planned lessons. Each lesson is an **H2** (`## NN — …`), because
 ```markdown
 # Syllabus — {track}-{NN}-{topic}
 
-**Track**: {kernel | os | ui | llm | sec | tooling} · **Phase**: {P4 … L6 | S1 … S3} · **Path**: {Core | Later} · **Detail**: {full | outline} · **Prerequisites**: {topic folders + lesson numbers, and/or phases}
+**Track**: {c | rust | kernel | os | ui | llm | sec | tooling} · **Phase**: {P1 … P6 | U1 … U3 | L1 … L6 | S1 … S3} · **Path**: {Core | Later} · **Detail**: {full | outline} · **Prerequisites**: {topic folders + lesson numbers, and/or phases}
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 {One paragraph: what this topic builds towards in the mission and where it sits in the track.}

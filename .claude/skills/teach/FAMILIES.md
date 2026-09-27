@@ -21,10 +21,11 @@ choose, and each published one takes its licence when its build starts, under
 `project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`; until
 he does, lessons use these placeholders and no others: the downstream kernel repository; the
 Syntek OS build-system, package-manager, installer, system-tools, file-manager, GUI-tools and
-web-dashboard repositories; the sandbox-launcher repository; the remote-help repository; and the
-model-training, inference and model-release repositories. One more is private and holds no build: the private
-infrastructure repository, created at the first graduation, where Sam's real network configuration
-lives (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`);
+web-dashboard repositories; the sandbox-launcher repository; the remote-help repository; the
+scripted-recorder and capture-library repositories; and the model-training, inference and
+model-release repositories. One more is private and holds no build: the private infrastructure
+repository, created at the first graduation, where Sam's real network configuration lives
+(`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`);
 it is never published and carries no licence, and lessons name it but never link it, cite a path in
 it or quote from it. **Until a topic's phase opens**, in any family, its lessons are reading, recall
 and a note only, and its Builds wait for a milestone in that phase
@@ -49,6 +50,16 @@ House guides: `code/docs/C-CODING-PRINCIPLES.md`, `code/docs/BUILD.md`, `code/do
 - Man pages: `man 3 <function>` (C library), `man 2 <syscall>`, `man 7 <overview>` such as
   `man 7 signal`. POSIX `3p` pages are not installed on the host (checked 27/09/2026).
 - [cppreference's C pages](https://en.cppreference.com/w/c) as a readable index into the standard.
+- The scripted recorder (`c-05`): `man 1 Xvfb`, `man 1 Xserver`, `man 3 XShm`, `man 1 ffmpeg-formats`,
+  `man 1 ffmpeg-filters`, `man 1 setxkbmap`, `man 7 xkeyboard-config` (installed); the
+  [XTEST library](https://www.x.org/releases/current/doc/libXtst/xtestlib.html),
+  [WebVTT](https://www.w3.org/TR/webvtt1/) and the [vhs README](https://github.com/charmbracelet/vhs).
+  Its rules come from
+  `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`:
+  Sam's own content only; a clean fixture (throwaway home, an environment built from scratch, a
+  private display and cookie) and a pinned keyboard layout; captions and the timeline from the tape,
+  never from observed input. Stage 1 lands in `code/src/c/msNNN-scripted-recorder/`; from stage 2 the
+  code is in the scripted-recorder and capture-library repositories.
 
 ## rust — ownership to `unsafe`, FFI and async (P3)
 
@@ -97,6 +108,15 @@ stepping stone, re-authored rather than quoted.
   downstream kernel tree itself in the downstream kernel repository, created in
   `kernel-05-downstream-tree` lesson 02.
 - **Rust-for-Linux** is blocked until clang/LLVM, libclang and bindgen are installed (`GAPS.md`).
+- **The scripted recorder's guest stages** (`kernel-09` to `kernel-11`,
+  `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`): the
+  [input](https://docs.kernel.org/input/input.html), [event codes](https://docs.kernel.org/input/event-codes.html),
+  [uinput](https://docs.kernel.org/input/uinput.html) and [DRM uAPI](https://docs.kernel.org/gpu/drm-uapi.html)
+  pages; `man 7 qemu-qmp-ref` (installed); [RFC 6143](https://www.rfc-editor.org/rfc/rfc6143) (RFB);
+  the [libvirt domain API](https://libvirt.org/html/libvirt-libvirt-domain.html). uinput and DRM run
+  in the QEMU guest only, never against the host's `/dev/uinput` or `/dev/dri`; DRM capture is
+  learning-only, never a capture-library backend; QMP and VNC sockets are Unix sockets in a private
+  directory, never TCP.
 
 ## os — Syntek OS, built from scratch (P6)
 
@@ -140,7 +160,14 @@ the architecture studied; the [gtk4-rs book](https://gtk-rs.org/gtk4-rs/stable/l
 [API docs](https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/); [zbus](https://docs.rs/zbus/latest/zbus/)
 and [polkit](https://www.freedesktop.org/software/polkit/docs/latest/); the
 [Wayland documentation](https://wayland.freedesktop.org/docs/html/) and [The Wayland Book](https://wayland-book.com/);
-[Slint](https://slint.dev/) for its model only; `man 7 pty` and `man 3 openpty` (installed) and the
+[Slint](https://slint.dev/) for its model only; for the scripted recorder's Wayland stages, the
+[Hyprland wiki](https://wiki.hypr.land/), the [Hyprland](https://github.com/hyprwm/Hyprland) and
+[Aquamarine](https://github.com/hyprwm/aquamarine) repositories, the [wayland.app](https://wayland.app/)
+protocol pages, xdg-desktop-portal's
+[ScreenCast](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html)
+and [RemoteDesktop](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.RemoteDesktop.html)
+documentation and the [PipeWire docs](https://docs.pipewire.org/page_portal.html);
+`man 7 pty` and `man 3 openpty` (installed) and the
 [rustls docs](https://docs.rs/rustls/latest/rustls/) for remote help, with the law taken through
 `research/` notes, never from memory.
 
@@ -153,10 +180,14 @@ and [polkit](https://www.freedesktop.org/software/polkit/docs/latest/); the
   (`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`;
   `project-management/docs/SAFETY-GUIDE.md` → Remote help): lab first; a real session only under
   the graduation path.
+- **The recorder's Wayland stages** (`ui-12`, `ui-13`) run in a VM guest, never in Sam's desktop
+  session; consent dialogs and permission prompts belong to a set-up run, never a video
+  (`project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`).
 - **Where it lands.** Lesson crates under `code/src/rust/crates/msNNN_<snake>/`; a substantial tool
   (and any tool taking outside contributions) moves to its own repository when its build starts —
   the Syntek OS file-manager, package-manager, installer, system-tools, GUI-tools or web-dashboard
-  repository, or the remote-help repository.
+  repository, the remote-help repository, or, for the recorder's backends, the capture-library or
+  scripted-recorder repository.
 
 ## llm — the language model (L1–L6)
 

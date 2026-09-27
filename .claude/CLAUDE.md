@@ -4,7 +4,7 @@
 
 # Project: c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 The one manual for this repository. The three imports above load the root map, the reference
@@ -225,8 +225,9 @@ These apply in every task, in every layer:
   resource budget and measures it, and every milestone names its threat model — the lenses are
   owned by `project-management/src/01-ROADMAP/ROADMAP.md`.
 - **Public-repo hygiene.** No secrets, no absolute home paths, no email addresses, no session
-  IDs, no personal data. Never paste copyrighted text: take the fact, re-author the wording, cite
-  the URL. Refer to another repository by its GitHub URL, never a local path.
+  IDs, no personal data — including in every published video, screenshot or recording. Never
+  paste copyrighted text: take the fact, re-author the wording, cite the URL. Refer to another
+  repository by its GitHub URL, never a local path.
 - **GPL-2.0-compatible dependencies, or a documented exception.** The repository is
   GPL-2.0-only, matching the kernel; the crate licence allow-list lives in
   `code/src/rust/deny.toml` and is checked by `code/src/scripts/rust/audit.sh`. An Apache-2.0-only
