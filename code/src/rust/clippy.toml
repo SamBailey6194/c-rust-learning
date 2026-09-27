@@ -1,0 +1,11 @@
+# code/src/rust/clippy.toml — configuration for individual clippy lints.
+#
+# Which lints are on, and at what level, lives in Cargo.toml's [workspace.lints.clippy].
+# This file only tunes how particular lints behave.
+
+# unwrap() and expect() are warned in normal code (Cargo.toml), but inside #[test]
+# functions and #[cfg(test)] modules a panic is exactly how a test reports failure, so
+# they are allowed there. Without these two lines every `.unwrap()` in a test would fail
+# `cargo clippy --all-targets -- -D warnings`.
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true

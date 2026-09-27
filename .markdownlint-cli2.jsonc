@@ -1,0 +1,75 @@
+// Markdown lint configuration for c-rust-learning, read by markdownlint-cli2
+// (https://github.com/DavidAnson/markdownlint-cli2) — locally with
+// `npx --yes markdownlint-cli2` from the repository root, and in CI by
+// `.github/workflows/markdown-lint.yml`.
+//
+// WHY THE RULES ARE HERE AND NOT IN EACH FILE: almost everything in this repository is
+// Markdown that Claude reads as instructions. One config keeps every file on one style,
+// and every disabled rule below says why, so re-enabling one is a decision, not a guess.
+{
+  // Everything Markdown, minus build output. Cargo's target/ and each exercise's build/
+  // can hold generated Markdown (rustdoc, test reports); linting it would fail the gate
+  // on text nobody wrote. LICENSE is the verbatim GPL-2.0 text and is never reformatted.
+  "globs": ["**/*.md", "!**/target/**", "!**/build/**", "!LICENSE"],
+
+  // The same exclusions as always-applied ignores: these are honoured even when files
+  // are passed on the command line. Files named on the command line are ADDED to the globs
+  // above, so `npx markdownlint-cli2 <file>` still lints the whole repository; to lint only
+  // the named files, add `--no-globs`.
+  "ignores": ["**/target/**", "**/build/**", "LICENSE"],
+
+  "config": {
+    "default": true,
+
+    // Hard tabs: allowed inside code blocks and spans only — the C samples follow the Linux
+    // kernel coding style (ADR-MS001-C-CODING-STYLE-LINUX-KERNEL), which indents with real
+    // tabs, and a Makefile recipe line needs one. Prose and lists stay tab-free.
+    "MD010": { "code_blocks": false },
+
+    // Table column style: disabled — pipe alignment is cosmetic (GitHub renders compact and
+    // aligned tables identically), and enforcing it turns every one-cell edit into a
+    // reformat of the whole table, which buries the real change in the diff.
+    "MD060": false,
+
+    // Line length: disabled — tables, full gcc/valgrind command lines and URLs routinely
+    // run past any fixed limit. The ~120-character guide is house style, not a gate.
+    "MD013": false,
+
+    // Duplicate headings: disabled — a document that repeats a structure per item (each
+    // option in an ADR, each lesson in a PROGRESS.md) repeats its sub-headings by design.
+    "MD024": false,
+
+    // Blank line inside a blockquote: disabled — two consecutive blockquotes (a quoted
+    // mission followed by a quoted note) are intentional in several files.
+    "MD028": false,
+
+    // Inline HTML: disabled — the occasional <details> hint in an exercise spec or <br>
+    // in a table cell is intentional.
+    "MD033": false,
+
+    // Bare URLs: disabled — research notes and register entries cite sources inline, and
+    // GitHub autolinks a bare URL anyway; forcing angle brackets adds noise, not meaning.
+    "MD034": false,
+
+    // Emphasis used as a heading: disabled — bold lead-in paragraphs such as
+    // "**Read that first, every session.**" and the grilling format's "**Q1 — title**"
+    // lines stand alone by design (.claude/CLAUDE.md Section 8).
+    "MD036": false,
+
+    // First line must be a top-level heading: disabled — every folder CLAUDE.md opens with
+    // its `@./CONTEXT.md` import line, and the manual opens with three imports.
+    "MD041": false,
+
+    // Single H1: treat a YAML front-matter `title:` as blank, so the document's own `#`
+    // heading stays the sole H1 even if a guide's frontmatter ever carries a title.
+    "MD025": { "front_matter_title": "" },
+
+    // Ordered list prefix: sequential (1. 2. 3.) — a code fence between steps interrupts
+    // the list, and "ordered" keeps the numbers readable in the raw file as well.
+    "MD029": { "style": "ordered" },
+
+    // Fenced code language: kept on — every fence is tagged (```bash, ```c, ```text) so
+    // GitHub highlights it and a reader knows which language or shell it is.
+    "MD040": true
+  }
+}

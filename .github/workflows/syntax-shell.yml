@@ -1,0 +1,45 @@
+# Syntax — Shell: every shell script parses, and passes ShellCheck.
+#
+# WHY THIS GATE EXISTS
+# The scripts in code/src/scripts/ ARE the gates: CI and every local check run through
+# them. A quoting bug or an unset variable in one of them does not fail loudly — it makes
+# a gate report the wrong answer, which is worse than no gate, because it is believed.
+# The Claude Code hooks in .claude/hooks/ run automatically in every session, so they
+# are held to the same bar.
+#
+# Two checks: `bash -n` (the file parses at all) and ShellCheck (quoting, word
+# splitting, unset variables and similar). ShellCheck comes preinstalled on the
+# ubuntu-24.04 runner; `-x` lets it follow each script's `source` of _lib/common.sh.
+#
+# NO PATH FILTER, DELIBERATELY: the same reasoning as syntax-c.yml.
+name: Syntax — Shell
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  shell:
+    name: bash -n and ShellCheck
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Show ShellCheck
+        run: shellcheck --version
+
+      - name: Parse every script (bash -n)
+        run: find code/src/scripts .claude/hooks -name '*.sh' -print0 | xargs -0 -r -n 1 bash -n
+
+      - name: ShellCheck every script
+        run: find code/src/scripts .claude/hooks -name '*.sh' -print0 | xargs -0 -r shellcheck -x

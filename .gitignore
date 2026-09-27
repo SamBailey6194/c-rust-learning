@@ -1,0 +1,96 @@
+# What git never tracks in c-rust-learning.
+#
+# WHY: this repository is public. Build output, core dumps, disk images and local
+# configuration would publish noise at best and memory contents or secrets at worst.
+# Every group below says why it is here. Cargo.lock is deliberately NOT ignored — see
+# the Rust group.
+
+# ── C build output ────────────────────────────────────────────────────────────
+# Every exercise builds into its own build/ directory (code/docs/BUILD.md); the loose
+# patterns catch a hand-run `gcc` outside make. *.d are the -MMD -MP dependency files.
+*.o
+*.a
+*.so
+*.d
+a.out
+build/
+# A directory whose name ends in .d (a P6 rootfs overlay's etc/profile.d/, say) is
+# source, not a dependency file — re-include directories only.
+!*.d/
+
+# ── Core dumps ────────────────────────────────────────────────────────────────
+# A core dump or valgrind's vgcore.<pid> is a copy of a crashed process's memory:
+# large, machine-specific, and never something to publish. A directory called core/
+# is source, so it is re-included.
+core
+core.[0-9]*
+!core/
+vgcore.*
+# valgrind's profiling tools (callgrind, cachegrind, massif) write their output to the
+# current folder, and each file records absolute source paths from this machine.
+callgrind.out.*
+cachegrind.out.*
+massif.out.*
+
+# ── Coverage output ───────────────────────────────────────────────────────────
+# gcov data from a `--coverage` build; regenerated on every run.
+*.gcda
+*.gcno
+*.gcov
+
+# ── Rust ──────────────────────────────────────────────────────────────────────
+# Cargo's build directory. Cargo.lock is committed, not ignored: the workspace builds
+# binaries, and a committed lockfile makes `cargo test` resolve the same dependency
+# set on every machine and in CI.
+target/
+
+# ── Kernel module build output (P4 onwards) ───────────────────────────────────
+# kbuild writes these beside an out-of-tree module's source; all are rebuilt from it.
+# Kernel source trees themselves are never committed (.claude/CLAUDE.md Section 5).
+*.ko
+*.mod
+*.mod.c
+.*.cmd
+Module.symvers
+modules.order
+
+# ── Disk images and initramfs (P4 onwards) ────────────────────────────────────
+# QEMU disk images, ISOs and initramfs archives are large build products, rebuilt
+# from committed configs and scripts; the kernel safety rule keeps them out of git.
+*.qcow2
+*.img
+*.iso
+initramfs*.cpio*
+
+# ── Editors and operating systems ─────────────────────────────────────────────
+# Per-person editor state and swap files; the shared settings are .editorconfig.
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ── Environment files ─────────────────────────────────────────────────────────
+# Nothing in this repository needs a secret, so no environment file belongs in it.
+# Ignored anyway: a public repository is the worst place to learn that lesson.
+.env*
+
+# ── Claude Code runtime ───────────────────────────────────────────────────────
+# settings.local.json holds per-machine permission approvals; worktrees/ holds
+# nested git checkouts; the lock file is runtime state. The shared, committed
+# configuration is .claude/settings.json.
+.claude/settings.local.json
+.claude/worktrees/
+.claude/scheduled_tasks.lock
+# CLAUDE.local.md holds one person's private instructions for this project, and Claude
+# Code's memory documentation says to keep it out of version control. Ignored anywhere,
+# since Claude Code loads one from any directory it works in.
+CLAUDE.local.md
+
+# code-review-graph's local database, if that tool is ever run here.
+.code-review-graph/
+
+# The manual is .claude/CLAUDE.md. Tools that generate a root CLAUDE.md (for example
+# `code-review-graph install`) would otherwise add a second, drifting manual.
+/CLAUDE.md

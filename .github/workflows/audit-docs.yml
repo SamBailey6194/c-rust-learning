@@ -1,0 +1,59 @@
+# Audit — Docs: the two mechanical documentation rules — length and pairing.
+#
+# WHY THIS GATE EXISTS
+# Instructional Markdown (every CONTEXT.md, CLAUDE.md, guide and workflow file) stops
+# being read once it grows past about three hundred lines; it gets skimmed, which is the
+# same as not being there. And a directory without its CONTEXT.md + CLAUDE.md pair is a
+# directory Claude enters blind. Both rules are easy to break by accident and impossible
+# to see in a diff, so both are checked on every change:
+#   docs-length.sh   instructional Markdown <= 300 cloc code lines
+#                    (rule: code/docs/DOCUMENTATION-LENGTH.md)
+#   docs-pairing.sh  every directory paired, every pair in the house shape
+#                    (rule: code/docs/DOCUMENTATION-PAIRING.md)
+#
+# Each detector proves itself first with --self-test on a scratch tree whose right answer
+# is known: a gate nobody has watched fail is a gate nobody should believe.
+#
+# cloc is the unit the length rule is written in, and the runner does not ship it, so it
+# is installed here; without it the script exits 2 (could not run), never a false pass.
+#
+# NO PATH FILTER, DELIBERATELY: the same reasoning as syntax-c.yml.
+name: Audit — Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    name: Docs length and pairing
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install cloc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends cloc
+
+      - name: Self-test the length detector
+        run: bash code/src/scripts/audits/docs-length.sh --self-test
+
+      - name: Instructional length (300 cloc code lines)
+        run: bash code/src/scripts/audits/docs-length.sh
+
+      - name: Self-test the pairing detector
+        run: bash code/src/scripts/audits/docs-pairing.sh --self-test
+
+      - name: CONTEXT.md / CLAUDE.md pairing and shape
+        run: bash code/src/scripts/audits/docs-pairing.sh

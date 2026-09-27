@@ -1,0 +1,7 @@
+# code/src/rust/rustfmt.toml — deliberately almost empty: rustfmt's defaults ARE the style.
+#
+# `cargo fmt` already reads the edition from Cargo.toml. Running `rustfmt` directly on one
+# file (as an editor or a learner might) does not: bare rustfmt assumes edition 2015, and
+# parses and lays out code differently from `cargo fmt`. Stating the edition here makes the
+# two agree. rustfmt infers `style_edition` from `edition`, so the 2024 style follows too.
+edition = "2024"

@@ -1,0 +1,96 @@
+# Syntax — Rust: format, lint, test and audit the Cargo workspace in code/src/rust/.
+#
+# WHY THIS GATE EXISTS
+# The borrow checker catches a great deal, but not style drift, not the lints a learner
+# has not met yet, and not a dependency with a known vulnerability or a licence this
+# GPL-2.0-only repository cannot accept. This workflow holds every change to the same bar
+# as a local run of code/src/scripts/rust/: rustfmt, clippy with -D warnings, the full
+# test suite (unit, integration and doc tests), and cargo-deny over the dependency graph.
+#
+# The toolchain is NOT restated here. rustup reads code/src/rust/rust-toolchain.toml, so
+# the channel and components come from the pin; restating them would let CI and the
+# laptop drift apart. `rustup toolchain install` with no arguments (rustup 1.28 or later)
+# installs exactly what that file names.
+#
+# NO PATH FILTER, DELIBERATELY: the same reasoning as syntax-c.yml — every workflow stays
+# eligible to become a required status check without an edit.
+name: Syntax — Rust
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    name: Rust format, clippy and tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install the pinned toolchain
+        working-directory: code/src/rust
+        run: |
+          rustup toolchain install
+          rustup show active-toolchain
+          cargo --version
+
+      - name: Cache cargo registry and build output
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            code/src/rust/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('code/src/rust/Cargo.lock', 'code/src/rust/rust-toolchain.toml') }}
+          restore-keys: cargo-${{ runner.os }}-
+
+      - name: Build
+        run: bash code/src/scripts/rust/build.sh
+
+      - name: Lint (rustfmt + clippy at -D warnings)
+        run: bash code/src/scripts/rust/lint.sh
+
+      - name: Test
+        run: bash code/src/scripts/rust/test.sh
+
+  supply-chain:
+    name: Rust supply chain (cargo-deny)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    # The cargo-deny version the owner's machine runs; the versions in use are recorded in
+    # how-to/docs/TOOLCHAIN.md. Pinned because an unpinned supply-chain gate is a
+    # different tool on every run, answering a different question each time.
+    env:
+      CARGO_DENY_VERSION: 0.19.0
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install the pinned toolchain
+        working-directory: code/src/rust
+        run: rustup toolchain install
+
+      # cargo-deny is compiled from source by `cargo install`, which takes minutes; the
+      # binary is cached per version so later runs skip the build.
+      - name: Cache cargo-deny
+        id: cargo-deny-cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cargo/bin/cargo-deny
+          key: cargo-deny-${{ runner.os }}-${{ env.CARGO_DENY_VERSION }}
+
+      - name: Install cargo-deny
+        if: steps.cargo-deny-cache.outputs.cache-hit != 'true'
+        run: cargo install --locked --version "$CARGO_DENY_VERSION" cargo-deny
+
+      - name: Audit the dependency graph
+        run: bash code/src/scripts/rust/audit.sh

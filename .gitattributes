@@ -1,0 +1,67 @@
+# Line-ending and binary-safety rules for c-rust-learning.
+#
+# WHY THIS FILE EXISTS. Every quality gate runs through a bash script under
+# code/src/scripts/ and every hook under .claude/hooks/ is bash. A checkout that
+# rewrites line endings to CRLF (core.autocrlf=true on a Windows clone) breaks them
+# with errors that name neither the file nor the cause. Measured 27/09/2026 on
+# bash 5.2 with a CRLF copy of a two-line script:
+#
+#     /usr/bin/env: 'bash\r': No such file or directory
+#     set: pipefail: invalid option name
+#
+# Kernel patches carry the same risk later: scripts/checkpatch.pl rejects DOS line
+# endings, so a P5 patch series normalised to CRLF would fail the kernel's own check.
+#
+# Normalising here removes the whole class on every clone, without asking anyone to
+# configure git correctly first.
+
+# ── Text ──────────────────────────────────────────────────────────────────────
+# Normalise every text file to LF in the repository AND in the working tree. Nothing
+# here wants CRLF: there is no .bat, .cmd or .ps1 in the tree, and every tool that
+# reads these files (bash, gcc, make, cargo, the kernel build) is POSIX.
+* text=auto eol=lf
+
+# Stated again for the files where a CRLF is a failure rather than a cosmetic
+# difference — a shebang, a make recipe, a toolchain pin, a patch. Redundant against
+# the rule above by design: these are the lines someone must consciously delete to
+# break the build.
+*.sh        text eol=lf
+*.c         text eol=lf
+*.h         text eol=lf
+*.S         text eol=lf
+*.ld        text eol=lf
+*.mk        text eol=lf
+Makefile    text eol=lf
+Kbuild      text eol=lf
+Kconfig     text eol=lf
+*.rs        text eol=lf
+*.toml      text eol=lf
+*.patch     text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.json      text eol=lf
+*.jsonc     text eol=lf
+*.exempt    text eol=lf
+
+# ── Binary ────────────────────────────────────────────────────────────────────
+# Never normalised, never diffed as text. Build output and images are gitignored
+# (.gitignore) and never committed; these rules exist so that a stray one, or a
+# diagram committed under project-management/, cannot be corrupted by the
+# `text=auto` guess.
+*.o      binary
+*.a      binary
+*.so     binary
+*.ko     binary
+*.elf    binary
+*.bin    binary
+*.img    binary
+*.iso    binary
+*.qcow2  binary
+*.cpio   binary
+*.gz     binary
+*.xz     binary
+*.zst    binary
+*.pdf    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary

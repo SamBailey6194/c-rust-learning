@@ -1,0 +1,75 @@
+# code/src/rust/deny.toml — the supply-chain policy for the Cargo workspace (cargo-deny).
+#
+# Run with `cargo deny check` from this folder, or code/src/scripts/rust/audit.sh.
+# crates.io has no review process. `cargo add` only edits the manifest and lock file; the next
+# cargo build, check, test or clippy (or an editor's rust-analyzer) runs the new crate's build
+# script on this machine and links its code into ours. So run `cargo deny check` straight
+# after `cargo add`, before building anything: this file decides which dependencies are
+# acceptable. At baseline the workspace has no third-party dependencies
+# at all, so every check passes trivially — the policy is written now so the first
+# `cargo add` meets it rather than precedes it.
+#
+# Four checks: advisories (known vulnerabilities, unmaintained or yanked crates), licenses
+# (what third-party code may be licensed under), bans (duplicate versions, wildcards) and
+# sources (where crates may come from).
+
+[advisories]
+# The RustSec advisory database is fetched on each run (network needed; the audit script
+# reports a failed fetch as "could not run", never as a pass).
+# A yanked version was withdrawn by its own author; depending on one is an error.
+yanked = "deny"
+# Flag "unmaintained" advisories only for crates this workspace depends on directly — the
+# ones we chose and can replace. An unmaintained crate reached only transitively is not
+# reported at all (only a vulnerability advisory against it, always checked, would surface
+# it); read a new dependency's graph with `cargo tree`, or run once with "all", to see those.
+# Making "all" the policy would be an ADR.
+unmaintained = "workspace"
+# Empty, and kept empty unless an advisory is accepted with a written reason and a link. An
+# ignore entry that no longer matches anything is not harmless: it silently suppresses the
+# advisory if that crate ever returns by another path. Delete an entry when its crate
+# leaves the graph.
+ignore = []
+
+[licenses]
+# This repository is GPL-2.0-only (like the Linux kernel), so every dependency linked into
+# a binary built here has to be GPL-2.0-compatible. The permissive licences below are.
+#
+# Apache-2.0 on its own is NOT on the list: the Free Software Foundation considers it
+# incompatible with GPL version 2 (its patent-termination and indemnity terms are extra
+# restrictions GPL-2.0 forbids) — https://www.gnu.org/licenses/license-list.html#apache2 Most of the Rust ecosystem is dual-licensed
+# "MIT OR Apache-2.0"; cargo-deny accepts an OR expression when either side is allowed, so
+# those crates pass on their MIT side. An Apache-2.0-only crate needs a deliberate,
+# per-crate [[licenses.exceptions]] entry with a written justification, never a
+# line in `allow`.
+allow = [
+  "MIT",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "Zlib",
+  "Unicode-3.0",
+]
+# How closely a licence file's text must match the canonical SPDX text when a crate has no
+# machine-readable licence field. High, so a lookalike licence is not waved through.
+confidence-threshold = 0.9
+# The allow list is a policy statement, not an inventory: do not warn about entries no
+# current dependency happens to use (with zero dependencies, that is every entry).
+unused-allowed-license = "allow"
+# Our own crates are `publish = false` and GPL-2.0-only — the repository's own licence,
+# which is not (and need not be) on the third-party allow list above. Skip them.
+private = { ignore = true }
+
+[bans]
+# Two versions of one crate in the graph usually means a transitive dependency lagged
+# behind. A warning, because it is often outside our control — but read it, never ignore it.
+multiple-versions = "warn"
+# `version = "*"` accepts any future release, including a malicious or breaking one.
+wildcards = "deny"
+deny = []
+
+[sources]
+# Crates come from crates.io and nowhere else. Any other registry or any git dependency is
+# refused until it is added here deliberately.
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]

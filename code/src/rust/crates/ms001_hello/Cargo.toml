@@ -1,0 +1,21 @@
+# code/src/rust/crates/ms001_hello/Cargo.toml — the Rust twin of code/src/c/ms001-hello/.
+#
+# The directory name and the package name are the same snake_case word. A Cargo package
+# name cannot start with a digit, so exercises are prefixed `msNNN_` like their C folders.
+[package]
+name = "ms001_hello"
+description = "Hello, world in Rust: a library function, a binary that calls it, and tests"
+# Everything below is inherited from [workspace.package] in ../../Cargo.toml.
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+repository.workspace = true
+
+# The package holds two crates, a library (src/lib.rs) and a binary (src/main.rs); Cargo finds
+# both by their conventional paths, so neither needs a [lib] or [[bin]] table.
+
+# One lint policy, written once in the workspace manifest.
+[lints]
+workspace = true

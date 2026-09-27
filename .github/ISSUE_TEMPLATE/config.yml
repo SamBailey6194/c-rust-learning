@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/SamBailey6194/c-rust-learning/security/advisories/new
+    about: Report privately — never in a public issue. See SECURITY.md.
+  - name: Where is this repository going?
+    url: https://github.com/SamBailey6194/c-rust-learning/blob/main/project-management/src/01-ROADMAP/ROADMAP.md
+    about: The roadmap — phases P1 to P6, from C foundations to the three distro tiers.

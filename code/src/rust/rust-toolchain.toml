@@ -1,0 +1,22 @@
+# code/src/rust/rust-toolchain.toml — the pinned compiler for this workspace.
+#
+# rustup reads this file automatically, so any `cargo` or `rustc` run inside code/src/rust/
+# uses exactly this toolchain: the laptop and CI compile with the same compiler and the same
+# clippy, and a lint that appears in one appears in the other. Outside this folder, your
+# default toolchain applies as usual.
+#
+# If rustup reports the toolchain as missing, `rustup toolchain install` (run from this
+# folder, with no arguments) installs it with the components listed below.
+#
+# The channel is the compiler everyone builds with; `rust-version` in Cargo.toml is the
+# floor dependency resolution respects. They answer different questions and move
+# separately. Bumping this pin is a deliberate change with its own commit:
+# how-to/workflows/04-toolchain-updates/ is the procedure, how-to/docs/TOOLCHAIN.md records
+# the versions in use.
+
+[toolchain]
+channel = "1.92.0"
+# minimal = rustc, cargo and the standard library only; the two components below are the
+# only extras this workspace needs. (rust-src arrives at P4, for Rust-for-Linux.)
+profile = "minimal"
+components = ["rustfmt", "clippy"]

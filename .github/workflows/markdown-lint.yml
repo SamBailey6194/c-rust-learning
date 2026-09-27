@@ -1,0 +1,43 @@
+# Markdown — Lint: every Markdown file passes markdownlint-cli2.
+#
+# WHY THIS GATE EXISTS
+# Almost everything in this repository is Markdown, and most of it is read by Claude as
+# instructions. A broken fence or a skipped heading level is not only untidy: it changes
+# how the text is parsed. One configuration, .markdownlint-cli2.jsonc at the repository
+# root, holds the rules and the reason each disabled rule is off; markdownlint-cli2 finds
+# that file by itself, so nothing about the rules is restated here.
+#
+# The action bundles markdownlint-cli2, so the repository needs no package.json and no
+# lockfile. Locally the same check is `npx --yes markdownlint-cli2` from the root. The
+# action is third-party, so it is pinned to the full commit SHA of its v24 release: a
+# major tag moves with every release, and a SHA is the only immutable reference.
+#
+# NO PATH FILTER, DELIBERATELY: the same reasoning as syntax-c.yml, and the job takes
+# seconds.
+name: Markdown — Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  markdownlint:
+    name: markdownlint-cli2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Lint every Markdown file
+        uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24
+        with:
+          globs: "**/*.md"

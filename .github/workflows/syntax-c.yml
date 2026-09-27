@@ -1,0 +1,82 @@
+# Syntax — C: build, test, sanitise, memcheck and analyse every C exercise.
+#
+# WHY THIS GATE EXISTS
+# C compiles programs that are wrong. The compiler accepts an out-of-bounds write, a
+# use-after-free or signed overflow without a word, and the program may even appear to
+# work. So "it builds" proves little here; this job runs the whole ladder the exercises
+# are held to (code/docs/BUILD.md owns the flags, code/docs/MEMORY-SAFETY.md the why):
+#   build    -std=c17 and the full warning set, with -Werror
+#   test     every test_* binary (check.h)
+#   san      the tests again under AddressSanitizer + UndefinedBehaviorSanitizer
+#   memcheck the plain tests under valgrind, leaks of every kind counted as errors
+#   lint     gcc -fanalyzer over every source
+# Each step calls the script a learner runs locally (code/src/scripts/c/), so CI and the
+# laptop cannot disagree about what "passing" means.
+#
+# NO PATH FILTER, DELIBERATELY. None of these workflows is a required status check yet,
+# so filters would be allowed — but a path-filtered workflow never reports on a pull
+# request that misses its paths, and a required check that never reports blocks the merge
+# forever. Running everything on every change keeps each workflow eligible to become a
+# required check without an edit, and the whole job takes about a minute.
+#
+# ubuntu-24.04 ships gcc 13, the same compiler as the owner's machine
+# (how-to/docs/TOOLCHAIN.md). valgrind is not preinstalled on the runner, so it is
+# installed here.
+name: Syntax — C
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# A newer push to the same pull request cancels the run it supersedes; runs on main are
+# never cancelled, so every commit on main keeps a complete result.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  c:
+    name: C build, tests, sanitisers, valgrind and analyser
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install valgrind
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends valgrind
+
+      - name: Show the toolchain
+        run: |
+          gcc --version | head -n 1
+          make --version | head -n 1
+          valgrind --version
+
+      - name: Build (warnings are errors)
+        run: bash code/src/scripts/c/build.sh
+
+      - name: Test
+        run: bash code/src/scripts/c/test.sh
+
+      # The AddressSanitizer runtime in older toolchains crashes at start-up
+      # ("AddressSanitizer:DEADLYSIGNAL", repeated) on kernels that randomise mmap with
+      # 32 bits of entropy. The runner image already lowers it to 28
+      # (github.com/actions/runner-images/issues/9491); setting it here as well keeps the
+      # sanitiser step independent of that image detail.
+      - name: Keep AddressSanitizer compatible with the runner kernel
+        run: sudo sysctl -w vm.mmap_rnd_bits=28
+
+      - name: Sanitisers (AddressSanitizer + UBSan)
+        run: bash code/src/scripts/c/san.sh
+
+      - name: valgrind memcheck
+        run: bash code/src/scripts/c/memcheck.sh
+
+      - name: Static analysis (gcc -fanalyzer)
+        run: bash code/src/scripts/c/lint.sh

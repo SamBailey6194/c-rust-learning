@@ -1,0 +1,66 @@
+# code/src/rust/Cargo.toml — the one Cargo workspace for every Rust exercise.
+#
+# Every crate under crates/ is a member (the glob below), so a new exercise crate joins the
+# workspace with no edit here. One workspace means one Cargo.lock, one target/ folder, one
+# toolchain pin (rust-toolchain.toml), one lint policy (below) and one supply-chain policy
+# (deny.toml) — never several copies drifting apart.
+#
+# Commands, from the repository root (the scripts in code/src/scripts/rust/ wrap them):
+#
+#   (cd code/src/rust && cargo test)
+#   (cd code/src/rust && cargo fmt --check && cargo clippy --all-targets -- -D warnings)
+#
+# Run cargo from inside this folder: rustup reads rust-toolchain.toml from the CURRENT
+# directory, so `cargo test --manifest-path code/src/rust/Cargo.toml` from the root builds
+# with the default toolchain, not the pin.
+#
+# Why each setting exists: code/docs/RUST-CODING-PRINCIPLES.md and
+# project-management/src/08-DECISIONS/ADR-MS001-RUST-EDITION-2024-TOOLCHAIN-PIN-27-09-2026.md
+
+[workspace]
+members = ["crates/*"]
+# Resolver 3 (the edition 2024 default) is MSRV-aware: when a dependency is added, cargo
+# prefers versions whose own rust-version is no newer than ours (below). Stated explicitly
+# because a virtual workspace like this one has no root package to infer it from.
+resolver = "3"
+
+# Inherited by each crate with `edition.workspace = true` and friends, so the facts are
+# written once.
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+# The oldest compiler these crates promise to build with. Under resolver 3 this is also a
+# RESOLUTION INPUT, not only a promise: cargo picks dependency versions compatible with it,
+# so leaving it behind the pinned channel quietly holds the whole graph back. It moves
+# together with the channel in rust-toolchain.toml unless a note here says otherwise.
+rust-version = "1.92"
+# The repository's licence, matching the Linux kernel. deny.toml decides which licences
+# third-party crates may carry; this is the licence of the code written here.
+license = "GPL-2.0-only"
+# Exercises are for learning, never for crates.io. `publish = false` makes an accidental
+# `cargo publish` fail instead of succeeding.
+publish = false
+repository = "https://github.com/SamBailey6194/c-rust-learning"
+# No `authors`: the field is deprecated for new crates and would put contact details into a
+# public repository for no benefit. The git history already records who wrote what.
+
+# The lint policy, written once. Each crate opts in with `[lints] workspace = true`.
+[workspace.lints.rust]
+# Denied, not forbidden. `unsafe` is part of the syllabus (FFI in P3), so a crate that
+# genuinely needs it can write an explicit `#[allow(unsafe_code)]` on the smallest item
+# possible, with a `// SAFETY:` comment naming the invariant it relies on. `forbid` would
+# make that impossible; `deny` makes it deliberate and reviewable.
+unsafe_code = "deny"
+
+[workspace.lints.clippy]
+# Every default clippy lint (correctness, suspicious, style, complexity, perf) is an error.
+# priority = -1 applies the group first, so the single-lint lines below can refine it.
+all = { level = "deny", priority = -1 }
+# The pedantic group is opinionated and noisier; as warnings it teaches without blocking
+# a local build. CI runs clippy with `-D warnings`, so it still has to be clean to merge.
+pedantic = { level = "warn", priority = -1 }
+# unwrap() and expect() panic on the unhappy path. Warned rather than denied so the first
+# exercises stay approachable; clippy.toml allows both inside tests, where a panic IS the
+# failure report. Restriction lints like these are not in `all`, so they are named here.
+unwrap_used = "warn"
+expect_used = "warn"

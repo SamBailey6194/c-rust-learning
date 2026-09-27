@@ -1,0 +1,54 @@
+# EditorConfig — baseline editor settings for c-rust-learning (https://editorconfig.org/).
+#
+# WHY: the formatter or compiler is the last line of defence, not the first. C here follows
+# the Linux kernel coding style from day one (hard tabs, 8 columns wide — see
+# project-management/src/08-DECISIONS/ADR-MS001-C-CODING-STYLE-LINUX-KERNEL-27-09-2026.md),
+# make recipes must begin with a tab, and rustfmt indents with 4 spaces. Setting those here
+# means an editor writes them correctly before a gate has to complain.
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# C, headers and assembly: Linux kernel coding style — tabs, and a tab is 8 columns.
+[*.{c,h,S}]
+indent_style = tab
+indent_size = 8
+tab_width = 8
+
+# make: a recipe line must start with a tab or make stops with "missing separator".
+# Kbuild and Kconfig follow the same kernel convention (they arrive at P4).
+[{Makefile,*.mk,Kbuild,Kconfig}]
+indent_style = tab
+indent_size = 8
+tab_width = 8
+
+# Rust: rustfmt's default indentation.
+[*.rs]
+indent_style = space
+indent_size = 4
+
+# Data and config.
+[*.{toml,yml,yaml,json,jsonc}]
+indent_style = space
+indent_size = 2
+
+# Markdown: prose and lists indent with 2 spaces, but the kernel-style C samples inside fenced
+# code blocks indent with tabs (.markdownlint-cli2.jsonc allows tabs in code blocks only).
+# EditorConfig cannot tell a fence from prose, so indent_style is left unset here rather than
+# forcing spaces into those samples; tab_width 8 keeps them lined up as in a .c file.
+[*.md]
+indent_style = unset
+indent_size = 2
+tab_width = 8
+
+# Shell scripts under code/src/scripts/ and .claude/hooks/.
+[*.sh]
+indent_style = space
+indent_size = 2

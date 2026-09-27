@@ -1,0 +1,49 @@
+name: Topic suggestion
+description: Suggest a topic, exercise, resource or correction for the learning path — C, Rust, the kernel or the distro tiers
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a personal learning repository, worked through in the order set by the
+        [roadmap](https://github.com/SamBailey6194/c-rust-learning/blob/main/project-management/src/01-ROADMAP/ROADMAP.md).
+        Suggestions are welcome; they are weighed against that order, so a good idea may
+        be parked for a later phase rather than picked up straight away.
+
+  - type: dropdown
+    id: track
+    attributes:
+      label: Which track?
+      options:
+        - C
+        - Rust
+        - FFI (C and Rust together)
+        - Kernel
+        - Distro tiers (beginner / intermediate / experienced)
+        - Tooling, CI or docs
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is missing or unclear
+      description: >
+        In concrete terms. "The pointer exercises never cover pointer-to-pointer" is a gap;
+        "it would be nice to have more exercises" is not — yet.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you suggest
+      description: The topic, exercise or resource, and where in the path it would fit. Link primary sources where you can.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Including leaving it as it is, and why that is worse.

@@ -1,0 +1,77 @@
+name: Bug report
+description: Something in this repository is broken — an exercise does not build, a script or workflow misbehaves, or the notes are wrong
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. **If this is a security vulnerability, stop** — use
+        [private reporting](https://github.com/SamBailey6194/c-rust-learning/security/advisories/new)
+        instead, per [SECURITY.md](https://github.com/SamBailey6194/c-rust-learning/blob/main/SECURITY.md).
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is it?
+      options:
+        - C exercise (code/src/c)
+        - Rust exercise (code/src/rust)
+        - Kernel or distro work
+        - Scripts or CI (code/src/scripts, .github/workflows)
+        - Notes or docs are wrong
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you saw, including the exact error output.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The exact commands, starting from a fresh clone.
+      value: |
+        1. `git clone https://github.com/SamBailey6194/c-rust-learning.git && cd c-rust-learning`
+        2. Ran: …
+        3. Got: …
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: The commit you were on — the output of `git rev-parse --short HEAD`.
+      placeholder: 1a2b3c4
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: >
+        OS, and the versions of the tools involved. `bash code/src/scripts/toolchain/check.sh`
+        prints the whole table.
+      value: |
+        - OS:
+        - gcc:
+        - rustc/cargo:
+        - qemu:
+      render: markdown
+    validations:
+      required: true
