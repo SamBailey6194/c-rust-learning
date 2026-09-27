@@ -126,6 +126,9 @@ the standards, the official books and manuals), then Context7, then web search �
 | --- | --- |
 | `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` | Network labs stay isolated; a lab-proven config graduates to named devices Sam owns |
 | `ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md` | Proposed: a private CA — an offline root and constrained intermediate by hand, an ACME issuer for short-lived leaves |
+| `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md` | Proposed: what may enter a product repository — components, contributions, code from here, data and weights |
+| `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md` | Proposed: the outbound licences a product may pick, two of them gated commercial entries |
+| `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md` | Proposed: a generated SPDX SBOM per release and a hand-kept ledger, kept in each product repository |
 
 **Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
 every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.
@@ -438,6 +441,11 @@ recorded once, in `project-management/REFERENCES.md`.
   — the channel `SECURITY.md` points to.
 - **SPDX License List** — <https://spdx.org/licenses/> — the licence identifiers used in
   `Cargo.toml` and `deny.toml`.
+- **SPDX specifications** — <https://spdx.dev/use/specifications/> — the SBOM format (2.3 and 3.0.x,
+  ISO/IEC 5962:2021) a product's component register is written in
+  (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`).
+- **CycloneDX** — <https://cyclonedx.org/specification/overview/> — the other SBOM format
+  (ECMA-424), compared with SPDX in `tooling-05` lesson 08.
 - **FSF — Various licenses and comments about them** —
   <https://www.gnu.org/licenses/license-list.html#apache2> — the FSF's statement that Apache-2.0 is
   not compatible with GPL version 2, which is why `code/src/rust/deny.toml` leaves it off the allow

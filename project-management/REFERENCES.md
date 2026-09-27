@@ -1,6 +1,6 @@
 # References — project-management/ layer
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 Internal and external references for planning the curriculum, proving mastery, and moving work through
@@ -111,6 +111,10 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 - **Documenting Architecture Decisions (Michael Nygard)** — https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions — the original ADR form (Context, Decision, Status, Consequences) that `project-management/src/08-DECISIONS/` extends with Options considered
 - **RFC 5280, X.509 certificate and CRL profile** — https://www.rfc-editor.org/rfc/rfc5280 — basic and name constraints, CRLs and path validation, behind the private-CA ADR
 - **RFC 8555, ACME** — https://www.rfc-editor.org/rfc/rfc8555 — automated certificate issuance, the protocol the private CA's leaf issuer speaks
+- **SPDX specifications** — https://spdx.dev/use/specifications/ — the SBOM format (2.3 and 3.0.x, ISO/IEC 5962:2021) behind the component-register ADR
+- **CycloneDX** — https://cyclonedx.org/specification/overview/ — the other SBOM format (ECMA-424), the component-register ADR's runner-up
+- **NTIA, The Minimum Elements for an SBOM (12/07/2021)** — https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom — the baseline field list the register's research note re-reads
+- **Choose a License** — https://choosealicense.com/licenses/ — plain-language summaries of the entries on the approved outbound list
 
 ---
 

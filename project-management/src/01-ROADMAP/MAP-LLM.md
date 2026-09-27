@@ -87,9 +87,10 @@ without holding the phase closed.
 - The domain adapters beyond coding (legal, HR, finance, business) — parked in `DEFERRED.md` (L6),
   only with retrieval from authoritative UK sources and as assistants to professionals.
 - Where the work lands: this repository keeps the lessons, notes and small exercises; the
-  model-training, inference and model-release repositories are created when each build starts, with names and
-  licences Sam chooses (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`
-  → the repository boundary).
+  model-training, inference and model-release repositories are created when each build starts, with names
+  Sam chooses, under the inbound rules and approved list
+  (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` → the
+  repository boundary; `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
 
 ---
 

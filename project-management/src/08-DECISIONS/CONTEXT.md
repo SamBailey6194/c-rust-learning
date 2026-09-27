@@ -1,6 +1,6 @@
 # project-management/src/08-DECISIONS/ — Decision Records
 
-**Last Updated**: 27/09/2026
+**Last Updated**: 28/09/2026
 
 Architecture Decision Records (ADRs): one immutable record per decision that shapes how the C, Rust,
 kernel, Syntek OS, UI, LLM or security work is done — the language standard, the coding style, the
@@ -24,7 +24,7 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-C-TEST-HARNESS-CHECK-H-27-09-2026.md             ← hand-rolled, header-only check.h
 ├── ADR-MS001-RUST-EDITION-2024-TOOLCHAIN-PIN-27-09-2026.md    ← edition 2024, toolchain pinned to 1.92.0
 │   ── Planning conversation, 27/09/2026 ──
-├── ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md    ← kernel, OS, UI, LLM and security tracks; interleaved; repo boundary
+├── ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md    ← kernel, OS, UI, LLM and security tracks; interleaved; repo boundary; rule 3 extended by the inbound rules (round)
 ├── ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md      ← track kernel.org, carry a small series, per-profile configs
 ├── ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md  ← LFS → BLFS → own build system; no base distribution
 ├── ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md      ← seven profiles on one base, eleven axes
@@ -33,12 +33,15 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-LLM-SKILLS-NOT-AGENTS-27-09-2026.md               ← Markdown skills with progressive disclosure
 ├── ADR-MS001-LLM-EFFICIENCY-AND-SECURITY-FIRST-27-09-2026.md   ← a budget and a threat model on every LLM milestone
 ├── ADR-MS001-LLM-BASE-MODEL-PLUS-ADAPTERS-27-09-2026.md        ← Proposed: one base, LoRA adapters per domain
-├── ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md             ← GPL-2.0-only here; Apache-2.0-only crates by exception
+├── ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md             ← GPL-2.0-only here; Apache-2.0-only crates by exception; product clause extended by the inbound rules (round)
 ├── ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md                    ← gtk4-rs for lessons; Slint for the Syntek OS GUI tools
 ├── ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md        ← authorised, isolated-lab-only offence; no malware; extended by the graduation path (below)
 │   ── Networking and licensing round, 27/09/2026 ──
 ├── ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md  ← labs isolated; a lab-proven config graduates to named devices
 ├── ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md    ← Proposed: offline root, constrained intermediate by hand; ACME issuer for leaves
+├── ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md      ← Proposed: what may enter a product — components, contributions, code, data
+├── ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md ← Proposed: the licences a product may pick, two of them gated
+├── ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md ← Proposed: an SPDX SBOM per release and a hand-kept ledger, per product
 └── ADR-MS###-<DECISION>-DD-MM-YYYY.md                         ← pattern for every later decision
 ```
 
@@ -95,7 +98,7 @@ the conversation only recommended is listed under Follow-on as "to confirm". One
 | Skills, not agents | `project-management/src/01-ROADMAP/ROADMAP.md` → L1 and L5 |
 | Efficiency and security first | `project-management/docs/planning/MILESTONES.md` · `.claude/CLAUDE.md` Section 5 |
 | Base model plus adapters (Proposed) | `project-management/src/01-ROADMAP/ROADMAP.md` → L6, once Accepted |
-| Crate licences | `code/src/rust/deny.toml` |
+| Crate licences | `code/src/rust/deny.toml` · per-repository clause extended by the inbound rules |
 | GUI toolkit | `code/src/rust/deny.toml` · `project-management/src/01-ROADMAP/ROADMAP.md` → U3 |
 | Security track and lab rules | `.claude/CLAUDE.md` Section 5 · `project-management/docs/SAFETY-GUIDE.md` |
 
@@ -109,6 +112,9 @@ question it answers. Records waiting on a research note stay `Proposed`.
 | --- | --- |
 | Network lab first, graduation path | `.claude/CLAUDE.md` Section 5 · `project-management/docs/SAFETY-GUIDE.md` → Graduating a lab-proven config |
 | Private CA (Proposed) | `learning/sec-05-applied-cryptography/SYLLABUS.md` · `learning/ui-10-web-admin-dashboard/SYLLABUS.md` |
+| Product licences — inbound rules (Proposed) | each product repository's `deny.toml`, `CONTRIBUTING` and licence ADR · routed from `.claude/skills/teach/FAMILIES.md` |
+| Approved outbound list (Proposed) | each product repository's licence ADR · `learning/tooling-05-licensing-and-collaboration/SYLLABUS.md` → lesson 05 |
+| Product component register (Proposed) | each product repository's release process · `learning/tooling-05-licensing-and-collaboration/SYLLABUS.md` → lesson 08 |
 
 ## When an ADR is written
 

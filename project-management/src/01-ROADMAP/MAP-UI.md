@@ -76,8 +76,10 @@ first U2 build) has no OS-track or GUI dependency.
 
 - Which desktop each desktop profile ships (decided in `os-15-desktop-editions`), which sets what the
   GUI tools are themed for.
-- How friends and family contribute (the contribution guide, CI and licence) — settled when the first
-  tool crate moves to its own repository (`tooling-05-licensing-and-collaboration` teaches it).
+- How friends and family contribute (the contribution guide, CI and licence) — the rules are fixed by
+  `project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`; the
+  rest is settled per repository when the first tool crate moves (`tooling-05-licensing-and-collaboration`
+  teaches it).
 
 ---
 

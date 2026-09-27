@@ -83,8 +83,9 @@ to build. The others may stay open while earlier milestones run.
 - Whether the NAS and router profiles ship the web dashboard (decided in `ui-10-web-admin-dashboard`).
 - Which repositories the built artefacts live in: the build system, package manager and installer
   move to the Syntek OS build-system, package-manager and installer repositories when each build
-  starts, under names and licences Sam chooses then
-  (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`).
+  starts, under names Sam chooses then and the inbound rules
+  (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`;
+  `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
 
 ---
 

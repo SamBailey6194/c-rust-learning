@@ -1,6 +1,6 @@
 # Workflow: Decisions (ADRs)
 
-**Last Updated**: 27/09/2026
+**Last Updated**: 28/09/2026
 
 An unrecorded decision gets argued again every time it is met, usually months later and with less
 context. An Architecture Decision Record fixes the reasoning at the moment it was made, and because it is
@@ -32,7 +32,8 @@ licensing round the same day added more (`project-management/src/08-DECISIONS/CO
 networking and licensing round). Decisions still ahead
 include each profile's kernel line (longterm or stable), Rust-for-Linux feasibility (blocked until
 clang/LLVM is installed), bootloader, Syntek OS's own init system, the package format and signing
-scheme, each profile's hardware, and the private CA's ACME issuer.
+scheme, each profile's hardware, the private CA's ACME issuer, and each product repository's outbound
+licence, picked from the approved list when its build starts.
 
 ## Key concepts
 

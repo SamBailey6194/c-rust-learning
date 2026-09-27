@@ -1,6 +1,6 @@
 # ROADMAP — c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 <!-- CHANGED 27/09/2026: previously read "A public learning space: learn C thoroughly from the base
@@ -58,12 +58,12 @@ follow it; UI, LLM and Security interleave. The old six-phase table (P1 to P6) w
 | P5 | Downstream kernel <!-- CHANGED 27/09/2026: was "Custom kernel" — ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md --> | Kernel | P4 | base plus first-edition (server and homelab) fragments build and boot in QEMU | Not started |
 | P6 | Syntek OS <!-- CHANGED 27/09/2026: was "Distro tiers" — ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md --> | OS | P2 + `tooling-03` (+ P3 for the build system onward; `kernel-04` before `os-10`) | each profile image boots in QEMU and meets its PROFILE spec | Not started |
 | U1 | TUI foundations | UI | P2 (P3 for ratatui) | a raw-mode terminal program in C, then the same in ratatui with tests | Not started |
-| U2 | Syntek OS tools | UI | U1 + `tooling-05` (each later topic also names its `os-*` prerequisite) | the file manager, package-manager TUI, installer and system tools build and pass their tests | Not started |
+| U2 | Syntek OS tools | UI | U1 + `tooling-05` lessons 01–07 (each later topic also names its `os-*` prerequisite) <!-- CHANGED 27/09/2026: previously read "U1 + `tooling-05` (each later topic also names its `os-*` prerequisite)" — tooling-05 gained lesson 08 (SBOMs), needed at a product's first release, not here --> | the file manager, package-manager TUI, installer and system tools build and pass their tests | Not started |
 | U3 | GUI tools and web admin | UI | U2 | an accessible gtk4-rs app here, the beginner-profile Slint tool in the Syntek OS GUI-tools repository, and the NAS/router web dashboard | Not started |
 | L1 | ML foundations and a local-model baseline | LLM | P1 | an open coding model runs through ollama with three skills and a gap log; a tiny GPT trains on the 2080 Ti within a measured VRAM budget | Not started |
 | L2 | Hardware, memory and GPU programming | LLM | L1 (`llm-06` needs only P2) | the memory hierarchy and VRAM budget measured on this machine | Not started |
 | L3 | An LLM in C (llm.c) | LLM | L2 (its C parts) | llm.c's GPT-2 read, and its CPU `test_gpt2` run clean under ASan with UBSan and under valgrind memcheck | Not started |
-| L4 | Training a small code model (~100M, local GPU) | LLM | L1 + L2's GPU topic + `tooling-05`, `sec-01`, `sec-04` | a ~100M FIM code model trained within the VRAM budget, evaluated in the sandbox | Not started |
+| L4 | Training a small code model (~100M, local GPU) | LLM | L1 + L2's GPU topic + `tooling-05` lessons 01–07, `sec-01`, `sec-04` <!-- CHANGED 27/09/2026: previously read "L1 + L2's GPU topic + `tooling-05`, `sec-01`, `sec-04`" — tooling-05 gained lesson 08 (SBOMs), needed at a product's first release, not here --> | a ~100M FIM code model trained within the VRAM budget, evaluated in the sandbox | Not started |
 | L5 | Efficient, secure inference in Rust and the skills layer | LLM | L4 + P3 (with async) + `sec-01`, `sec-04` | a Rust inference path with a skill loader, its threat model and budget measured | Not started |
 | L6 | Efficient architectures, scale, adapters | LLM | L5 | efficient-architecture and adapter experiments within budget | Not started |
 | S1 | Security foundations | Security | P2 (sec-01 after P1) | a deliberately vulnerable C exercise shown corrupting memory with mitigations off, each mitigation toggled, then fixed; a threat model and the sandbox launcher | Not started |
