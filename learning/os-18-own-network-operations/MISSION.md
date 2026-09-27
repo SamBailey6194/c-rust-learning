@@ -41,7 +41,7 @@ join at a time, without re-teaching the protocols underneath.
 
 ## Parked for later
 
-- Building a consent-first remote-help tool in Rust — a later ui topic.
+- Building a consent-first remote-help tool in Rust — `ui-11-consent-first-remote-help`.
 - Packet capture, flow logs or intrusion detection on Sam's real LAN — not planned;
   `sec-16-detection-response-and-disclosure`'s intrusion detection stays in the lab.
 - Flood and load testing of the router's resilience limits — `DEFERRED.md` (S3).
