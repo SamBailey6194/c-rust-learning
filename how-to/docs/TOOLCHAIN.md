@@ -239,8 +239,8 @@ runs `sudo`.
 ## Security track prerequisites
 
 S1–S3 (`project-management/src/01-ROADMAP/ROADMAP.md`). Attack tooling runs in VMs on an isolated
-lab network, never on the host (`.claude/CLAUDE.md` Section 5); only tools for Sam's own code
-(fuzzing, reading his own binaries) belong here.
+lab network, never on the host (`.claude/CLAUDE.md` Section 5); only tools for Sam's own code and
+systems (fuzzing, reading his own binaries, his private CA) belong here.
 
 | Package or tool | Needed for | State on 27/09/2026 |
 | --- | --- | --- |
@@ -250,6 +250,9 @@ lab network, never on the host (`.claude/CLAUDE.md` Section 5); only tools for S
 | clang with libFuzzer, `afl++` | fuzzing Sam's own C | **not installed** (candidates 18, 4.09c) |
 | Ghidra | reverse engineering Sam's own binaries | **not installed**; not packaged in Ubuntu 24.04 |
 | pwntools | exploit practice on lab targets — inside the attacker VM | **not installed** (`python3-pwntools` candidate 4.12.0) |
+| `openssl` | the private CA made by hand (`sec-05-applied-cryptography` lessons 08–12); run as a program, never linked | installed (3.0.13) |
+| `libnss3-tools`, `p11-kit`, `ca-certificates` | per-user and system trust stores (`certutil`, `trust`, `update-ca-certificates`) for `sec-05` lesson 12 | installed (3.98, 0.25.3, 20260601~24.04.1) |
+| an ACME issuer | renewing short-lived leaves from the private CA (`sec-05` lesson 13) | **not chosen** — a research note, then an ADR (`GAPS.md` → "No ACME issuer chosen for the private CA") |
 
 The attacker VM image is tracked in `GAPS.md`.
 
