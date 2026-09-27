@@ -90,6 +90,17 @@ Clash check (`project-management/workflows/08-decisions/` Step 3), 27/09/2026:
 - **Graduation path** (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`) — consistent. The
   private infrastructure repository is never published and carries no licence, so these rules do not
   reach it.
+- **Approved outbound list** (`ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`,
+  `Proposed` in the same round) — consistent. Each entry on it is an outbound entry in the sense of
+  rule 1, and its gated entries' CLA condition is rule 2's CLA route.
+- **Component register** (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`, `Proposed` in
+  the same round) — consistent. The ledger row rule 4 requires is the ledger that record defines.
+- **Private CA** (`ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md`, `Proposed` in the same
+  round) — unaffected. A CA is run, not shipped, and its real configuration lives in the private
+  infrastructure repository.
+- **Capture library** (`ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md`, the scripted-recorder
+  round) — consistent. Its components are checked against its GPL-2.0-or-later entry under rule 1,
+  which is why GPL-3.0 and Apache-2.0-only crates stay out of it.
 
 ## Options considered
 

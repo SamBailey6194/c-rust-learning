@@ -100,6 +100,21 @@ touches:
   remote-help repository picks from the approved list when its build starts.
 - `.claude/CLAUDE.md` Section 5: Claude never runs `sudo`, never opens a session to a real device and
   never holds a credential for one.
+- `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md` (Proposed): consistent. The
+  remote-help repository is a product repository, so each of its releases ships an SBOM and ledger like
+  any other.
+- `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` and
+  `ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md` (Proposed): unaffected. Desktop capture is a
+  non-goal here, so this tool does not consume the capture library; the recorder never drives another
+  person's desktop. Graphical sharing, parked in `DEFERRED.md` (U3), would rest on the portal topic
+  `ui-13` teaches, and taking it up needs a superseding ADR.
+- **Open for Sam's sign-off — graduation rule 3 against constraint 9.** Graduation rule 3 lets
+  remote-help sessions, never configuration, reach a family device, while constraint 9 puts a leaf from
+  Sam's private CA and a pinned intermediate on the helped side. This record reads them as part of the
+  tool's own per-user install, which the helped person installs and can remove, not as device
+  configuration: nothing enters a system trust store, and constraint 6 leaves no service, timer or
+  autostart entry behind. Sam's sign-off accepts or rejects that reading. The graduation record is
+  Accepted, so if he rejects it, constraint 9 is revised before this record is Accepted.
 
 ## Options considered
 

@@ -71,6 +71,18 @@ Clash check (`project-management/workflows/08-decisions/STEPS.md` Step 3):
   work.
 - **`ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md`** — unaffected: `openssl` is run, not linked,
   and any crate a CA lesson adds goes through `cargo deny check` like every other.
+- **`ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`** (Proposed) — consistent. Its constraint
+  9 takes both ends' session identities from this CA and pins the intermediate in the tool's own trust
+  file, not a system trust store. Whether a helped person's leaf may sit on a family device is argued
+  in that record's clash check against the graduation path.
+- **The product-licence records** (`ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`,
+  `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md` and
+  `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`, all Proposed) — unaffected. A CA is
+  run, not shipped: lesson CAs stay in lessons, and the real CA's configuration lives in the private
+  infrastructure repository, which takes no entry and keeps no register.
+- **The scripted-recorder records**
+  (`ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`,
+  `ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md`) — unaffected; neither uses a certificate.
 
 ## Options considered
 

@@ -51,6 +51,21 @@ Facts checked on 27/09/2026:
   daemon are reached as separate processes over a protocol (X11, QMP, RFB, D-Bus), and ffmpeg is fed
   through a pipe; none is linked into the library.
 
+Clash check (`project-management/workflows/08-decisions/STEPS.md` Step 3):
+
+- **The product-licence records** (`ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md` and
+  `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`, Proposed) — consistent. The
+  library's pick is the list's GPL-2.0-or-later entry, and inbound rule 1 is why GPL-3.0 and
+  Apache-2.0-only crates stay out (Consequences).
+- **`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`** (Proposed) — consistent. The
+  library's first release ships an SBOM under it (Follow-on).
+- **`ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md`** — unaffected. This repository's `deny.toml` and
+  its exceptions stay as they are; the library keeps its own allow list.
+- **`ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`** — the companion record,
+  consistent: DRM/KMS capture is learning-only there, so it is never a backend here.
+- **`ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`** (Proposed) — unaffected. Desktop capture
+  is a non-goal of that tool, so it is not a consumer of this library.
+
 ## Options considered
 
 ### Option A — Capture inside the recorder's repository

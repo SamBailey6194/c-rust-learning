@@ -76,6 +76,15 @@ Clash check (`project-management/workflows/08-decisions/` Step 3), 27/09/2026:
   (planned) confirms which one it takes.
 - **Capture library** (`ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md`, the scripted-recorder
   round) — its GPL-2.0-or-later pick is on this list.
+- **Component register** (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`, `Proposed` in
+  the same round) — consistent. A release's SBOM is the evidence that a product still meets its entry's
+  conditions.
+- **Graduation path** (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`) and **private CA**
+  (`ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md`) — unaffected. The private infrastructure
+  repository takes no entry, and a CA is run, not shipped.
+- **Scripted recorder** (`ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`, the
+  scripted-recorder round) — consistent. The recorder links the GPL-2.0-or-later capture library, so
+  under that entry's conditions it cannot take the proprietary entry.
 
 ## Options considered
 

@@ -70,6 +70,13 @@ Clash check (`project-management/workflows/08-decisions/` Step 3), 27/09/2026:
   proprietary entry.
 - **Graduation path** (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`) — unaffected. The
   private infrastructure repository ships nothing, so it keeps no register.
+- **Remote-help tool** (`ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`, `Proposed` in the
+  same round) — consistent. It is a product repository, so each of its releases carries a register, its
+  crypto provider included.
+- **Private CA** (`ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md`, `Proposed` in the same
+  round) — unaffected. A CA is run, not shipped, so it keeps no register.
+- **Capture library** (`ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md`, the scripted-recorder
+  round) — consistent. Its Follow-on ships an SBOM with its first release under this record.
 
 ## Options considered
 

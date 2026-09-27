@@ -71,6 +71,32 @@ Facts checked on 27/09/2026:
 - **A timeline has a standard shape.** WebVTT defines chapter cues (Sources, item 10), and vhs's tape
   commands are documented well enough to re-implement (Sources, item 11).
 
+Clash check (`project-management/workflows/08-decisions/STEPS.md` Step 3):
+
+- **The Section 5 kernel bullet** (custom kernels and modules in QEMU only) and
+  **`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`** — consistent. The Wayland and
+  kernel-interface stages run in QEMU guests; nothing here graduates to a real device, and kernels,
+  modules and images never graduate under that record.
+- **`ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md`** — unaffected. The recorder drives only
+  displays and guests it started itself, with Sam's own content, so it is not offensive tooling; uinput
+  and DRM code run only in the guest.
+- **`ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`**, rule 3 (the repository boundary) —
+  consistent. Stage 1's C lands here as an exercise; the recorder and the capture library move to
+  repositories of their own at stage 2.
+- **`ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md`** — the companion record, consistent. It has
+  no DRM/KMS backend because capture through DRM/KMS is learning-only here.
+- **`ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`** (Proposed) — unaffected. The recorder
+  never drives another person's desktop, and graphical desktop sharing for remote help stays parked
+  (`DEFERRED.md`, U3) until a superseding ADR takes it up, when it would rest on the portal topic
+  `ui-13` teaches.
+- **The product-licence records** (`ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`,
+  `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`,
+  `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`, all Proposed) — consistent. The
+  scripted-recorder repository picks its entry when its build starts; it links the GPL-2.0-or-later
+  capture library, so it cannot take the proprietary entry.
+- **`.claude/CLAUDE.md` Section 5**, public-repo hygiene — consistent. Its clause on published videos,
+  screenshots and recordings is the rule every render meets.
+
 ## Options considered
 
 The three options Sam was offered on 27/09/2026.
