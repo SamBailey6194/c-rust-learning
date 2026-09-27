@@ -28,8 +28,8 @@ defensive, tested with EICAR and synthetic files.
 | Already known | _Not yet asked — the first charting session with Sam fills this._ (Sam's PHP, JS and HTMX are a standing input for the web-application-security lessons.) |
 | Expected to be hard | _Not yet asked — the first charting session with Sam fills this._ |
 | Skills to load | from `.claude/skills/`: teach, research, handoff, wait-what |
-| Standing preferences | authorised, isolated-lab-only offence; attack tooling in VMs; no working exploits for unpatched third-party bugs; defensive-only malware work; EICAR and synthetic files only |
-| Umbrella ADRs | `project-management/src/08-DECISIONS/ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` |
+| Standing preferences | authorised, isolated-lab-only offence; attack tooling in VMs; no working exploits for unpatched third-party bugs; defensive-only malware work; EICAR and synthetic files only; no offensive tooling on Sam's real network, even for a graduated config |
+| Umbrella ADRs | `project-management/src/08-DECISIONS/ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` · `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` |
 | Primary resources | the S1–S3 lists in `ROADMAP.md`; OWASP, NIST SP 800-115 and 800-61, MITRE ATT&CK, kernel hardening docs, man pages |
 | Register entries triaged | 0 closes, 2 blocks, 0 unrelated — from `GAPS.md` |
 
@@ -92,6 +92,7 @@ the network is shown to have no route to the home LAN.
 | Working exploits for unpatched third-party bugs in the public repository | coordinated disclosure first — same ADR |
 | Writing or storing live malware | defensive only; EICAR and synthetic files — same ADR; live-sample analysis parked in `DEFERRED.md` |
 | Attack tooling on the host | it runs in VMs only — same ADR |
+| Scans, floods, fuzzing, capture or intrusion detection on Sam's real LAN | graduation carries lab-proven configuration only and is verified on the device; metrics only (Sam, 27/09/2026) — `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` |
 
 ---
 
@@ -100,6 +101,7 @@ the network is shown to have no route to the home LAN.
 | Date | Node settled | Outcome | Frontier redrawn |
 | --- | --- | --- | --- |
 | 27/09/2026 | N-001 | lab rules → `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` | [x] |
+| 27/09/2026 | — | no node settled; Sam's networking-round answer adds the real-LAN out-of-scope row → `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` | [x] |
 
 ---
 
