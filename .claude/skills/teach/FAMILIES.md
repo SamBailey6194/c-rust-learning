@@ -1,6 +1,6 @@
 # Teach — What to Teach, by Family
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 A sub-document of `.claude/skills/teach/SKILL.md`: for each of the eight families a lesson can
@@ -16,11 +16,13 @@ Locale: en_GB · Europe/London · dates DD/MM/YYYY.
 `code/src/CLAUDE.md` → Output & naming numbers. Anything substantial (the downstream kernel tree,
 the Syntek OS build system, package manager, installer and tools, the LLM data, training and
 inference code) gets its own repository when its build starts; a Build sketch then names "the
-<thing> repository (created when this build starts)". Names and licences of those repositories are
-Sam's to choose; until he does, lessons use these placeholders and no others: the downstream kernel
-repository; the Syntek OS build-system, package-manager, installer, system-tools, file-manager,
-GUI-tools and web-dashboard repositories; the sandbox-launcher repository; and the model-training,
-inference and model-release repositories. One more is private and holds no build: the private
+<thing> repository (created when this build starts)". Names of those repositories are Sam's to
+choose, and each published one takes its licence when its build starts, under
+`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`; until
+he does, lessons use these placeholders and no others: the downstream kernel repository; the
+Syntek OS build-system, package-manager, installer, system-tools, file-manager, GUI-tools and
+web-dashboard repositories; the sandbox-launcher repository; and the model-training, inference and
+model-release repositories. One more is private and holds no build: the private
 infrastructure repository, created at the first graduation, where Sam's real network configuration
 lives (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`);
 it is never published and carries no licence, and lessons name it but never link it, cite a path in
@@ -71,8 +73,12 @@ follows. Primary sources:
   Sam runs any interactive rebase himself.
 - Licensing and collaboration: the [SPDX licence list](https://spdx.org/licenses/),
   [REUSE](https://reuse.software/), the [Developer Certificate of Origin](https://developercertificate.org/),
-  and the FSF's licence list (`REFERENCES.md` → External — Process). Licences are per repository:
-  this one is GPL-2.0-only, and a product repository chooses its own.
+  the [SPDX specifications](https://spdx.dev/use/specifications/),
+  [CycloneDX](https://cyclonedx.org/specification/overview/) and the FSF's licence list
+  (`REFERENCES.md` → External — Process). Licences are per repository: this one is GPL-2.0-only,
+  and a product repository chooses its own from the approved list
+  (`ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`) and keeps its own component
+  register (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`).
 
 ## kernel — build, boot, modules, Kconfig and the downstream tree (P4–P5)
 
