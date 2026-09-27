@@ -23,9 +23,19 @@ edition (os-11).
 - Sam can explain Diffie-Hellman and the difference between TLS trust and package-signature trust.
 - Sam can write a key-management plan (generation, storage, rotation, compromise recovery).
 - Sam can choose an audited crypto library and justify not rolling his own.
+- Sam can make a lab root and a constrained intermediate by hand with `openssl`, and predict what
+  `openssl verify` says about a chain before running it.
+- Sam can issue a short-lived leaf, trust the lab root per application, and argue when a short
+  lifetime replaces revocation.
+- Sam can walk an ACME order step by step, and the chosen issuer renews a lab leaf unattended.
 
 ## Parked for later
 
 - Signing a real repository and key-compromise recovery in practice — os-08.
 - The Linux security model that protects a key at rest — `sec-04`.
 - Supply-chain attacks on the Syntek OS package archive as test cases — `sec-14-testing-syntek-os`.
+- Sam's real private CA — `os-18-own-network-operations` lesson 06, under
+  `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`.
+- Which ACME issuer runs the private CA — a `/research` note, then an ADR (`GAPS.md` → "No ACME
+  issuer chosen for the private CA").
+- Client certificates (mutual TLS) — `ui-11-consent-first-remote-help` lesson 03.
