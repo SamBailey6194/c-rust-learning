@@ -49,6 +49,11 @@ Present on the host before their tracks open; `check.sh` does not report them ye
 | ruff | 0.14.11 | Python linting and formatting (L1) |
 | ollama | 0.34.0 | Runs an open coding model locally — the LLM track's first baseline |
 | NVIDIA driver | 580.178.04 | The RTX 2080 Ti (11264 MiB, compute capability 7.5); `nvidia-smi` reports CUDA Version 13.0. GPU counters are admin-only (`GAPS.md`) |
+| Xvfb | 2:21.1.12-1ubuntu1.8 (`xvfb`) | The scripted recorder's private X display (`c-05-scripted-screen-recorder`, P2) |
+| ffmpeg | 6.1.1 | Encodes the recorder's frames, fed to it through a pipe (`c-05`) |
+| setxkbmap | `x11-xkb-utils` 7.7+8build2 | Pins the recorder's keyboard layout inside Xvfb |
+| libx11-dev, libxext-dev | 1.8.7, 1.3.4 | Xlib and the MIT-SHM extension headers for `c-05` (the XTest headers are missing — below) |
+| bwrap | 0.9.0 (`bubblewrap`) | Namespaced sandboxes; `sec-04`'s launcher and the recorder's later fixed-name fixture |
 
 ### Not installed, and why
 
@@ -61,6 +66,9 @@ Present on the host before their tracks open; `check.sh` does not report them ye
 | markdownlint-cli2 | Not installed globally; `npx --yes markdownlint-cli2` fetches it on demand |
 | lefthook, lcov, gcovr | Not in use: no git hooks manager and no coverage gate yet |
 | reuse, an SBOM generator and validator | Arrive with `tooling-05` lessons 03 and 08; the generator and validator are chosen by the SBOM research note (`GAPS.md` → No SBOM generator or REUSE linter installed) |
+| libxtst-dev | The XTest headers for `c-05` lesson 04; `libxtst6` (the runtime library) is installed (`GAPS.md` → Scripted recorder build dependencies not installed) |
+| vhs, ttyd | The route for terminal-only videos before the recorder exists is decided before first use; nothing is installed on the host until then |
+| Hyprland, GNOME and KDE Wayland sessions | Guest only, for `ui-12` and `ui-13`: images are fetched outside git and never run as Sam's desktop session |
 
 ---
 
@@ -249,7 +257,7 @@ systems (fuzzing, reading his own binaries, his private CA) belong here.
 
 | Package or tool | Needed for | State on 27/09/2026 |
 | --- | --- | --- |
-| `libvirt-daemon-system`, `libvirt-clients` | the isolated lab network and its VMs | installed (10.0.0) |
+| `libvirt-daemon-system`, `libvirt-clients` | the isolated lab network and its VMs; `kernel-11`'s libvirt lesson | installed (10.0.0) |
 | `nmap`, `tcpdump` | scanning and packet capture — run from the attacker VM, not the host | installed (7.94SVN, 4.99.4) |
 | `wireshark` | reading captures | **not installed** (candidate 4.2.2) |
 | clang with libFuzzer, `afl++` | fuzzing Sam's own C | **not installed** (candidates 18, 4.09c) |
