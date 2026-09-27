@@ -195,12 +195,12 @@ sudo apt install clang lld libclang-dev bindgen-0.71
 
 ---
 
-## P6 prerequisites — not yet installed
+## P6 prerequisites
 
 P6 (Syntek OS, `project-management/src/01-ROADMAP/ROADMAP.md`) builds Linux From Scratch **inside a
 VM**, never on the host's disks, so the LFS 13.1-systemd book's host requirements (its Section 2.2)
 apply to the VM's own system, not to this machine — `bison` and `texinfo`, absent here, are
-installed in the VM. On the host, P6 needs the VM tooling and two tools of its own.
+installed in the VM. On the host, P6 needs the VM tooling and the tools of its own listed below.
 
 | Package or tool | Needed for | State on 27/09/2026 |
 | --- | --- | --- |
@@ -209,6 +209,10 @@ installed in the VM. On the host, P6 needs the VM tooling and two tools of its o
 | `util-linux`, `e2fsprogs` | `sfdisk`, `losetup`, `mkfs.ext4` on disk images | installed (2.39.3, 1.47.0) |
 | `diffoscope` | comparing two builds for reproducibility | **not installed** (candidate 259) |
 | `minisign` | signing a package repository | **not installed** (candidate 0.11) |
+| `wireguard-tools` | `wg` and `wg-quick` for the router and `os-18`'s tunnels, in the namespace lab | installed (1.0.20210914) |
+| `dnsmasq-base` | `os-09` lesson 07's lab-only DHCP and DNS server, and `os-18`'s lab LAN | installed (2.91) |
+| `prometheus`, `prometheus-node-exporter` | `os-18` lesson 07's monitoring of Sam's own machines | **not installed** (candidates 2.45.3 and 1.7.0; upstream v3.15.0 and v1.12.1 — the route is chosen when the lesson opens; `GAPS.md`) |
+| `tmux` | `os-18` lesson 10's shared, consent-first help session | **not installed** (candidate 3.4; `GAPS.md`) |
 
 The build VM itself, with disk room for LFS, is tracked in `GAPS.md`.
 
