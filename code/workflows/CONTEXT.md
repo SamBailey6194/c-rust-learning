@@ -68,9 +68,13 @@ restructuring follows as separate work.
 | Workflow | Purpose | Added at |
 | --- | --- | --- |
 | `09-kernel-module/` (planned — added at P4) | An out-of-tree kernel module in C: build it against the configured tree, then load and unload it inside QEMU only | P4 |
+| `10-python-exercise/` (planned — added at L1) | One Python exercise under `code/src/python/`: a uv project, tests first with pytest, ruff clean | L1 |
+| `11-profile-and-optimise/` (planned — added at L2) | State a resource budget, measure honestly (warm-up, repeats, variance), change one thing, measure again | L2 |
+| `12-cuda-kernel/` (planned — added at L2) | One CUDA kernel under `code/src/cuda/`: checked for correctness against a CPU or library reference, then timed | L2 |
+| `13-tui-app/` (planned — added at U1) | A terminal UI crate: terminal restored on exit and panic, state separate from rendering, tested against the rendered buffer | U1 |
 
-Later kernel and distro workflows (patch series, tier images) are chosen when P5 and P6 are planned in
-`project-management/src/01-ROADMAP/ROADMAP.md`, and take the next free numbers then.
+Later kernel and Syntek OS workflows (patch series, profile images) are chosen when P5 and P6 are planned
+in `project-management/src/01-ROADMAP/ROADMAP.md`, and take the next free numbers then.
 
 ## Numbers are identifiers, not a sequence — append, never renumber
 

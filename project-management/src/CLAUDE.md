@@ -52,7 +52,7 @@ filed in numbered `NN-.../` folders across four tiers: plan (01–03), specify (
 - **Keep status words to the one vocabulary.** It is owned by
   `project-management/docs/planning/MILESTONES.md`; do not invent a new state in an artefact. The
   record-local lifecycles a folder's own `CLAUDE.md` defines (ADR status, fix state, verdict, spec,
-  kernel and tier status) are separate from it (`MILESTONES.md` → _Statuses_).
+  kernel and profile status) are separate from it (`MILESTONES.md` → _Statuses_).
 - **Keep instructional files short.** `CONTEXT.md` and `CLAUDE.md` files here stay within the
   limit in `code/docs/DOCUMENTATION-LENGTH.md`; the artefacts and templates themselves are exempt.
 

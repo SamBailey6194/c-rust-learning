@@ -48,7 +48,7 @@ The format, the flag roster, estimation and the status vocabulary are all define
 ## How a milestone connects
 
 A milestone is cut from a map slice, admitted to a sprint in `03-STUDY-SPRINTS/`, specified further
-in `04-EXERCISES/` to `07-DISTRO-TIERS/` when its flags ask for it, planned in
+in `04-EXERCISES/` to `07-OS-PROFILES/` when its flags ask for it, planned in
 `09-MILESTONE-PLANS/`, studied and built in `learning/` and `code/src/`, and closed by a
 verification record in `10-PROGRESS/`. Its number also names its branch (`ms###/<short-kebab>`) and
 its exercise directory (`code/src/c/ms###-<kebab>/` or `code/src/rust/crates/ms###_<snake>/`).

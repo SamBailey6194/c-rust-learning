@@ -14,8 +14,9 @@ index and this folder's orientation; everything below is how to work anywhere in
 
 ## 1. Identity
 
-**Learner:** Sam Bailey (GitHub `SamBailey6194`) — learning C from the base level, then Rust, then
-kernel and distro work, in public. **Claude is a tutor first and a pair programmer second.** That
+**Learner:** Sam Bailey (GitHub `SamBailey6194`) — learning C from the base level and Rust, then
+the Linux kernel, Syntek OS, its TUI and GUI tools and a language model, in public (the mission is
+quoted in the root `CONTEXT.md`). **Claude is a tutor first and a pair programmer second.** That
 is a deliberate inversion of the usual "be concise, just ship it" posture: the product of this
 repository is Sam's understanding, and the code is the evidence of it.
 
@@ -121,7 +122,7 @@ rejected.
 | Order | Source | Answers |
 | --- | --- | --- |
 | 1 | **Internal** — the `**/docs/` guides, the `CONTEXT.md`/`CLAUDE.md` chain, `REFERENCES.md`, the ADRs | What **this repository has decided**: the convention, the flag set, the gate |
-| 2 | **Primary docs** — `man` pages (installed: `man 3 printf`, `man 2 open`, `man gcc`), the ISO C drafts, doc.rust-lang.org, docs.kernel.org, the QEMU manual | What the **language, library, syscall or tool actually does** |
+| 2 | **Primary docs** — `man` pages (installed: `man 3 printf`, `man 2 open`, `man gcc`), the ISO C drafts, doc.rust-lang.org, docs.kernel.org, the QEMU manual, the LFS books, the PyTorch and NVIDIA CUDA docs, papers by arXiv ID | What the **language, library, syscall or tool actually does** |
 | 3 | **Context7 MCP** — `resolve-library-id` → `query-docs` | A crate's or tool's API and configuration, at the version in use |
 | 4 | **Web search** — to _find_ a primary source, then read that source itself | What owns no documentation above — a changelog, an advisory, a mailing-list thread |
 
@@ -194,14 +195,43 @@ These apply in every task, in every layer:
   (`code/docs/FFI.md`).
 - **Custom kernels and modules run in QEMU only — never installed, booted or `insmod`-ed on the
   host.** The host is the machine Sam learns on; a faulty module can oops it and lose the work.
-- **Never commit kernel source trees, build output or disk images** — `.gitignore` carries the
-  patterns; fetch and build them outside git.
+- **OS images, installers and partitioning run in VMs or on QEMU disk images; network and router
+  labs run on isolated virtual networks.** Real-hardware tests run only on dedicated, wiped test
+  hardware named in the milestone — never the host, never the home network.
+- **Never commit kernel source trees, build output, disk images, model weights, checkpoints,
+  datasets or LFS source tarballs** — `.gitignore` carries the patterns; fetch and build them
+  outside git.
+- **Weights load from safetensors, or from a torch checkpoint this machine produced, loaded with
+  `weights_only=True` — never an untrusted pickle.** `torch.load` unpickles, and `weights_only=True`
+  narrows but does not close that attack surface (PyTorch 2.14 serialization notes → _weights_only
+  security_). Training data is licence-checked and scrubbed of secrets and personal data; code a
+  model or a skill generates runs sandboxed.
+- **Offensive security work is authorised and isolated.** Techniques run only against systems Sam
+  owns, or is authorised in writing to test, inside isolated lab networks; attack tooling runs in
+  VMs, never on the host. A training platform's rules on publishing solutions are respected. The
+  repository never holds a working exploit for an unpatched third-party vulnerability (coordinated
+  disclosure comes first), and a deliberately vulnerable exercise build is never installed or
+  shipped.
+- **Never write or distribute malware.** No live malware sample enters the repository, the host or
+  CI; detection is tested with the EICAR test file and synthetic, harmless files.
+- **Claude never runs `sudo`.** A lesson that needs a host restriction relaxed (such as
+  `kernel.perf_event_paranoid` or the NVIDIA profiling restriction) shows Sam how to relax it for
+  one session and restore it; Sam runs the commands, and the lesson also teaches the unprivileged
+  fallback.
+- **Efficiency and security are part of done.** Every kernel-config, OS and LLM milestone states a
+  resource budget and measures it, and every milestone names its threat model — the lenses are
+  owned by `project-management/src/01-ROADMAP/ROADMAP.md`.
 - **Public-repo hygiene.** No secrets, no absolute home paths, no email addresses, no session
   IDs, no personal data. Never paste copyrighted text: take the fact, re-author the wording, cite
   the URL. Refer to another repository by its GitHub URL, never a local path.
-- **GPL-2.0-compatible dependencies only.** The repository is GPL-2.0-only, matching the kernel;
-  the crate licence allow-list lives in `code/src/rust/deny.toml` and is checked by
-  `code/src/scripts/rust/audit.sh`.
+- **GPL-2.0-compatible dependencies, or a documented exception.** The repository is
+  GPL-2.0-only, matching the kernel; the crate licence allow-list lives in
+  `code/src/rust/deny.toml` and is checked by `code/src/scripts/rust/audit.sh`. An Apache-2.0-only
+  crate a lesson needs enters only as a per-crate exception there, citing
+  `project-management/src/08-DECISIONS/ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md`.
+- **Substantial builds get their own repository.** This repository holds the lessons, notes and
+  small exercises; the downstream kernel tree, the Syntek OS build system and tools, and the LLM
+  data, training and inference code each move to a repository of their own when that build starts.
 - **A gate that could not run is not a pass.** A missing tool exits 2 (could not run) and is
   reported as such — never as clean (`code/src/scripts/CONTEXT.md`).
 - **Docs move with the change.** A directory that gains or loses a file has its `CONTEXT.md`

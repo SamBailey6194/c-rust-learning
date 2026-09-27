@@ -35,13 +35,13 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 
 | Path | Tier | Contents |
 | --- | --- | --- |
-| `project-management/src/01-ROADMAP/` | plan | `ROADMAP.md` (owns phases P1–P6 and the "You are here" marker); track maps; `MAP-000-TEMPLATE.md` |
+| `project-management/src/01-ROADMAP/` | plan | `ROADMAP.md` (owns the eighteen phases in six tracks and the "You are here" marker); the five track maps; `MAP-000-TEMPLATE.md` |
 | `project-management/src/02-MILESTONES/` | plan | One file per milestone; `MS000-TEMPLATE.md`; `MS001-TOOLCHAIN-READY.md` seeded |
 | `project-management/src/03-STUDY-SPRINTS/` | plan | One record per two-week study sprint; `SPRINT-00-TEMPLATE.md` |
 | `project-management/src/04-EXERCISES/` | specify | Exercise-set specs per milestone, no solutions; `EX-MS000-TEMPLATE.md` |
 | `project-management/src/05-PROJECTS/` | specify | Capstone project specs; `PROJ-MS000-TEMPLATE.md` |
 | `project-management/src/06-KERNEL/` | specify | Kernel plans before a build and implementation records after; `KERNEL-PLAN-MS000-TEMPLATE.md`, `KERNEL-IMPL-MS000-TEMPLATE.md` |
-| `project-management/src/07-DISTRO-TIERS/` | specify | `TIER-MATRIX.md`, `TIER-BEGINNER.md`, `TIER-INTERMEDIATE.md`, `TIER-EXPERIENCED.md`; `TIER-000-TEMPLATE.md` |
+| `project-management/src/07-OS-PROFILES/` | specify | `PROFILE-MATRIX.md`, the seven `PROFILE-<NAME>.md` files (beginner, intermediate, expert, server, nas, homelab, router); `PROFILE-000-TEMPLATE.md` |
 | `project-management/src/08-DECISIONS/` | decide & plan | Immutable ADRs; `ADR-MS000-TEMPLATE.md` and the five seed ADRs from MS001 |
 | `project-management/src/09-MILESTONE-PLANS/` | decide & plan | The plan each milestone is studied from, prefixed by build order; `00-PLAN-MS000-TEMPLATE.md` |
 | `project-management/src/10-PROGRESS/` | record | Verification records, the mastery evidence; `MS000-VERIFICATION-TEMPLATE.md` |
@@ -61,7 +61,7 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 | `project-management/workflows/04-exercise-design/CONTEXT.md` | Specify a milestone's exercise set, tests before solutions |
 | `project-management/workflows/05-project-spec/CONTEXT.md` | Specify a capstone project and slice it across milestones |
 | `project-management/workflows/06-kernel-spec/CONTEXT.md` | Plan a kernel build or module for QEMU, then record what was built |
-| `project-management/workflows/07-distro-tier-spec/CONTEXT.md` | Specify a distro tier as axis values and QEMU-testable hypotheses |
+| `project-management/workflows/07-os-profile-spec/CONTEXT.md` | Specify a Syntek OS profile as axis values and QEMU-testable hypotheses |
 | `project-management/workflows/08-decisions/CONTEXT.md` | Record hard-to-reverse choices as ADRs; check the set still holds |
 | `project-management/workflows/09-milestone-plans/CONTEXT.md` | Write the plan the milestone is studied from |
 | `project-management/workflows/10-study-and-build/CONTEXT.md` | Learn with `/teach`, then build the exercises test-first |

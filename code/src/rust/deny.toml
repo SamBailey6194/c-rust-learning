@@ -40,7 +40,15 @@ ignore = []
 # "MIT OR Apache-2.0"; cargo-deny accepts an OR expression when either side is allowed, so
 # those crates pass on their MIT side. An Apache-2.0-only crate needs a deliberate,
 # per-crate [[licenses.exceptions]] entry with a written justification, never a
-# line in `allow`.
+# line in `allow`. Each such exception cites
+# project-management/src/08-DECISIONS/ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md (or, for the
+# GUI toolkit's build dependency, ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md): this repository is for
+# learning and distributes no binaries. None is needed until a crate that uses one arrives.
+#
+# BSL-1.0 (the Boost Software License) is lax and permissive, and the FSF lists it as compatible
+# with the GNU GPL — https://www.gnu.org/licenses/license-list.html#boost (read through the
+# Internet Archive's copy on 27/09/2026; gnu.org did not answer). ratatui 0.30 reaches `ryu`
+# ("Apache-2.0 OR BSL-1.0") through compact_str, and that OR expression passes on its BSL-1.0 side.
 allow = [
   "MIT",
   "BSD-2-Clause",
@@ -48,6 +56,7 @@ allow = [
   "ISC",
   "Zlib",
   "Unicode-3.0",
+  "BSL-1.0",
 ]
 # How closely a licence file's text must match the canonical SPDX text when a crate has no
 # machine-readable licence field. High, so a lookalike licence is not waved through.

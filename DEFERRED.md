@@ -34,4 +34,9 @@ One row per parked topic, oldest first:
 
 ## Parked topics
 
-_No entries yet._
+| Topic | Parked during | Target | Date | Why parked |
+| --- | --- | --- | --- | --- |
+| UEFI Secure Boot for Syntek OS images: shim, signing kernels and bootloaders, key enrolment | MS001 (planning conversation) | DEFERRED (P6) | 27/09/2026 | Kept out of `learning/os-02-storage-and-boot-fundamentals/` so that topic stays on one concept at a time; `learning/sec-13-hardening-and-secure-boot/` teaches it on VM images, and the profile images take it up when P6 plans them |
+| The init system Syntek OS ships (systemd, runit, s6, OpenRC or its own) | MS001 (planning conversation) | DEFERRED (P6) | 27/09/2026 | The learning build follows the LFS 13.1 systemd book and a minimal init in C is a lesson (`learning/os-06-init-and-services/`); the shipped init is chosen later by an ADR fed by the `INIT-SYSTEM-CHOICE.md` research note (planned) |
+| Domain adapters beyond coding: legal, HR, finance and business | MS001 (planning conversation) | DEFERRED (L6) | 27/09/2026 | The coding adapter comes first; the others only with retrieval from authoritative UK sources and as assistants to professionals (`learning/llm-20-post-training-and-adapters/`) |
+| Analysis of live malware samples | MS001 (planning conversation) | DEFERRED (S3) | 27/09/2026 | The security track is defensive and tests detection with the EICAR file and synthetic files only; revisit only with a dedicated air-gapped analysis environment and a decision ADR |

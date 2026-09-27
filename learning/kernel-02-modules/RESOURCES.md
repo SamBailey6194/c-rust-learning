@@ -1,0 +1,10 @@
+# Resources — kernel-02-modules
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 Building an external module with Kbuild | <https://docs.kernel.org/kbuild/modules.html> (How to Build External Modules; Creating a Kbuild File; docs build 7.3.0-rc4); LKMPG 4.7 (<https://sysprog21.github.io/lkmpg/>, edition 07/09/2026); `man 8 modinfo` | `how-to/docs/CLI-TOOLING.md` — Kernel and QEMU — P4 preview | `code/src/kernel/msNNN-hello-module/` (planned — added at P4) |
+| 02 A module's life: init, exit, `printk` | <https://docs.kernel.org/kernel-hacking/hacking.html> (module_init(); module_exit()); <https://docs.kernel.org/core-api/printk-basics.html>; <https://docs.kernel.org/process/license-rules.html> (MODULE_LICENSE) | `code/docs/DEBUGGING.md` — 6. The kernel under QEMU and gdb | `code/src/kernel/msNNN-hello-module/` (planned — added at P4) |
+| 03 The kernel's C dialect | <https://docs.kernel.org/process/coding-style.html> (7. Centralized exiting of functions); <https://docs.kernel.org/kernel-hacking/hacking.html> (Some Basic Rules) | `code/docs/C-CODING-PRINCIPLES.md` — 1. Style and 3. Error handling | `code/src/kernel/msNNN-hello-module/` (planned — added at P4) |
+| 04 Module parameters and sysfs | LKMPG 4.5 and 8 (<https://sysprog21.github.io/lkmpg/>); include/linux/moduleparam.h at v7.2 | — | `code/src/kernel/msNNN-hello-module/` (planned — added at P4) |
+| 05 Taint and reading an oops | <https://docs.kernel.org/admin-guide/tainted-kernels.html> (Table for decoding tainted state); <https://docs.kernel.org/admin-guide/bug-hunting.html> | `code/docs/DEBUGGING.md` — 6. The kernel under QEMU and gdb | `code/src/kernel/msNNN-oops-module/` (planned — added at P4) |
+| 06 A misc character device | <https://docs.kernel.org/kernel-hacking/hacking.html> (copy_to_user() / copy_from_user()); include/linux/miscdevice.h at v7.2; `man 2 read`; `man 2 write` | `code/docs/C-CODING-PRINCIPLES.md` — 3. Error handling | `code/src/kernel/msNNN-misc-device/` (planned — added at P4) |

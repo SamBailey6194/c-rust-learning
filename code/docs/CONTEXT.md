@@ -51,8 +51,14 @@ code/docs/
 | `DOCUMENTATION-PAIRING.md` | What goes in `CONTEXT.md` and what in `CLAUDE.md` | Before writing or reshaping any pair | every phase |
 | `DOCUMENTATION-LENGTH.md` | The 300-line limit and the split | When an instructional file nears 270 lines | every phase |
 
-The guides for kernel C, modules and Kconfig join this catalogue when P4 starts; the phases themselves
-are set in `project-management/src/01-ROADMAP/ROADMAP.md`.
+More guides join this catalogue as their phases start; the phases themselves are set in
+`project-management/src/01-ROADMAP/ROADMAP.md`.
+
+| Planned guide | Owns | Added at |
+| --- | --- | --- |
+| the kernel C, modules and Kconfig guides | kernel C style, module layout, Kconfig fragments | P4 |
+| `PYTHON-CODING-PRINCIPLES.md` (planned) | Python style, typing, ruff and pytest policy for `code/src/python/` | L1 |
+| `CUDA-CODING-PRINCIPLES.md` (planned) | CUDA C style, error checking, and correctness before speed for `code/src/cuda/` | L2 |
 
 ## Do not use for
 

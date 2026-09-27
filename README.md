@@ -1,15 +1,18 @@
 # c-rust-learning
 
-**Learning C from the ground up, then Rust, then building a custom Linux kernel and three tiers of
-Linux distribution — in public, one tested milestone at a time.**
+**Learning C from the ground up and Rust, then maintaining a downstream Linux kernel, building
+Syntek OS from scratch with its own TUI and GUI tools, and training an efficient, secure language
+model — in public, one tested milestone at a time.**
 
 ---
 
 ## What this is
 
-> A public learning space: learn C thoroughly from the base level, then deepen Rust knowledge and
-> skills, and then build a custom Linux kernel for a custom set of Linux distributions at three
-> tiers — beginner, intermediate and experienced.
+> A public learning space: learn C thoroughly from the base level and deepen Rust; learn Linux kernel development and
+> maintain a downstream kernel; build Syntek OS — an independent Linux distribution, built from scratch, with profiles
+> for beginner, intermediate and expert desktops and laptops, servers, NAS, homelab and routers, and its own TUI and GUI
+> tools; and, in parallel, build and train a language model in C, Rust and Python that uses CPU, RAM, GPU, VRAM and
+> cache efficiently and securely, and works through Markdown skills, workflows and documentation.
 
 This repository is the whole of that journey: the curriculum and its decisions, the notes and
 practice from each study session, and the code that proves each skill — tested, run under the
@@ -20,20 +23,29 @@ written down rather than hidden.
 The C is written in the Linux kernel coding style from the first exercise, because the kernel is
 where it is heading. The repository is licensed GPL-2.0-only for the same reason.
 
+This repository holds the lessons, the notes and the small exercises. The substantial builds —
+the downstream kernel tree, the Syntek OS build system, package manager, installer and tools, and
+the language model's data, training and inference code — each move to a repository of their own
+when that build starts, under a name and licence chosen then.
+
 ## Roadmap
 
-Six phases, each with an exit gate that has to be met before the next one opens. The full table,
-with the gates spelled out, is
+Eighteen phases in six tracks; each phase opens when the gates it depends on pass, so the tracks
+run side by side — interleaved one milestone at a time, never two at once. The full table, with
+every gate and dependency spelled out, is
 [`project-management/src/01-ROADMAP/ROADMAP.md`](project-management/src/01-ROADMAP/ROADMAP.md).
 
-| Phase | Name | Covers |
+| Track | Phases | Covers |
 | --- | --- | --- |
-| P1 | C foundations | Types, operators, control flow, functions, arrays, strings, pointers, structs and unions, the memory model, the preprocessor, multi-file programs, make |
-| P2 | C systems | Dynamic memory and a custom allocator, data structures, file I/O, POSIX syscalls, processes and signals, threads, sockets — projects: an allocator, a Unix shell, a small libc subset |
-| P3 | Rust | Ownership and borrowing, traits and generics, error handling, collections and iterators, concurrency, `unsafe`, FFI with C — then porting a P2 project to Rust |
-| P4 | Kernel internals | Building and booting a kernel in QEMU, Kconfig, out-of-tree modules in C, kernel data structures, syscalls, debugging with QEMU and gdb; Rust-for-Linux |
-| P5 | Custom kernel | Per-tier Kconfig fragments, a patch series, a minimal init and initramfs |
-| P6 | Distro tiers | Beginner, intermediate and experienced: root filesystem, package management, installer, documentation |
+| Foundation | P1 C foundations · P2 C systems · P3 Rust | The C language and its memory model, systems programming with POSIX, then Rust from ownership to `unsafe`, FFI with C and async |
+| Kernel | P4 Kernel internals · P5 Downstream kernel | Building and booting kernels in QEMU, modules, Kconfig; then a downstream of upstream Linux — a small patch series rebased per release, per-profile configs, kernel CI and CVE triage |
+| Syntek OS | P6 Syntek OS | An independent distribution built from scratch — Linux From Scratch, then an own build system, init, package manager with signed repositories, installer — with profiles for beginner, intermediate and expert desktops and laptops, servers, NAS, homelab and routers |
+| UI | U1 TUI foundations · U2 Syntek OS tools · U3 GUI tools and web admin | Terminal programs and ratatui, then the file manager, package-manager, installer and system-tool TUIs, then GUI tools and a web admin dashboard |
+| LLM | L1–L6 | A local-model baseline with hand-written skills, ML foundations, CPU and GPU performance, llm.c, training a small code model, efficient and secure Rust inference with a skills layer, then efficient architectures, scale and adapters |
+| Security | S1–S3 | Threat modelling, memory corruption, fuzzing, the Linux security model and cryptography; an authorised, isolated pentest lab; then hardening and testing my own systems, malware defence included |
+
+Every kernel-config, OS and LLM milestone states a resource budget — CPU time, RAM, cache, GPU
+time, VRAM — and measures it; every milestone names its threat model.
 
 **Where it stands now:** P1, milestone MS001 (Toolchain ready) — open.
 
@@ -41,8 +53,8 @@ with the gates spelled out, is
 
 | Layer | What lives there |
 | --- | --- |
-| [`project-management/`](project-management/CONTEXT.md) | The curriculum: roadmap, milestones, exercise and project specs, kernel and distro-tier specs, decisions (ADRs), verification records |
-| [`learning/`](learning/CONTEXT.md) | One folder per topic studied: the goal, the sources, and a retrieval-practice log with spaced review dates |
+| [`project-management/`](project-management/CONTEXT.md) | The curriculum: roadmap and maps, milestones, exercise and project specs, kernel specs and Syntek OS profiles, decisions (ADRs), verification records |
+| [`learning/`](learning/CONTEXT.md) | One folder per topic: the planned lessons, the goal, the sources, and a retrieval-practice log with spaced review dates |
 | [`code/`](code/CONTEXT.md) | Working, tested code — C exercises built with make, a Rust Cargo workspace, the gate scripts — plus the coding standards and step-by-step coding workflows |
 | [`how-to/`](how-to/CONTEXT.md) | The toolchain, machine setup, the daily study routine and the quality gates |
 | [`research/`](research/CONTEXT.md) | Notes that answer one question each from primary sources, feeding the decisions |
@@ -65,10 +77,14 @@ Developed on Ubuntu 24.04 and checked in CI on GitHub's `ubuntu-24.04` runners.
 | valgrind | Memcheck on every C exercise's tests |
 | rustup, cargo, rustfmt, clippy | The Rust workspace — the toolchain version is pinned by `code/src/rust/rust-toolchain.toml` |
 | cargo-deny | Checking crate licences stay GPL-2.0-compatible |
-| qemu-system-x86_64 | Booting custom kernels and distro images, from P4 — never the host |
+| qemu-system-x86_64 | Booting kernels and Syntek OS images, from P4 — never the host |
+| python3, uv, ruff | The LLM track's Python, from L1 — PyTorch is installed per project through uv |
+| ollama | Running an open coding model locally, the LLM track's first baseline |
+| NVIDIA driver | The RTX 2080 Ti the LLM track trains and measures on (the CUDA toolkit arrives at L2) |
 
 Exact versions, what is still missing (the kernel build dependencies, clang/LLVM for
-Rust-for-Linux) and why each tool is here: [`how-to/docs/TOOLCHAIN.md`](how-to/docs/TOOLCHAIN.md)
+Rust-for-Linux, the CUDA toolkit and the LLM, OS and security track tools) and why each tool is
+here: [`how-to/docs/TOOLCHAIN.md`](how-to/docs/TOOLCHAIN.md)
 and [`GAPS.md`](GAPS.md). Setting up a fresh machine:
 [`how-to/workflows/01-toolchain-setup/`](how-to/workflows/01-toolchain-setup/CONTEXT.md).
 
@@ -128,7 +144,10 @@ public issue: [`SECURITY.md`](SECURITY.md).
 
 **GPL-2.0-only** — see [`LICENSE`](LICENSE). It matches the Linux kernel, which this repository
 builds towards, so that kernel patches and modules written here can carry the kernel's own
-licence. Rust dependencies are held to GPL-2.0-compatible licences by `code/src/rust/deny.toml`.
+licence. Rust dependencies are held to GPL-2.0-compatible licences by `code/src/rust/deny.toml`;
+an Apache-2.0-only crate a lesson needs is admitted only as a documented per-crate exception, since
+this repository is for learning and distributes no binaries. Licences are chosen per repository:
+the product repositories choose their own.
 
 ---
 

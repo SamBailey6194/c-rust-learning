@@ -17,7 +17,7 @@ how-to/workflows/02-daily-study-session/
 
 ## When to use this
 
-- At the start of every study session, whatever the track (C, Rust, and later kernel or distro work).
+- At the start of every study session, whatever the track (C, Rust, and later kernel, Syntek OS, UI, LLM or security work).
 - When returning after a break of any length: the handoff and the latest PROGRESS entry are the memory.
 
 It wraps the study itself rather than replacing it. The unit of study follows

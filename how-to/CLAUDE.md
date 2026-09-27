@@ -35,8 +35,9 @@ toolchain current, diagnose the environment, and write the guides that document 
   command is the lesson; CI and Claude's own verification run the wrapping script.
 - **Leave `sudo` to the learner.** Explain privileged commands and wait; Claude never runs them.
 - **Treat exit 2 as could-not-run.** A missing tool is never reported as a pass, in any workflow here.
-- **Keep kernels in QEMU.** The kernel safety rule in `.claude/CLAUDE.md` governs every P4 command in this
-  layer: nothing is installed or `insmod`-ed on the host, and no kernel tree or image is committed.
+- **Keep kernels in QEMU, OS images in VMs and labs on isolated networks.** The non-negotiables in
+  `.claude/CLAUDE.md` govern every P4, P6 and security-track command in this layer: nothing is installed
+  or `insmod`-ed on the host, and no kernel tree, image, model weight or dataset is committed.
 - **One home per rule.** Versions live in `how-to/docs/TOOLCHAIN.md` and the gate list in
   `how-to/workflows/03-quality-gates/`; cite them rather than copying them.
 - **Keep `how-to/src/HOST-MAINTENANCE.md` a pointer.** Host maintenance belongs to reboot-purge.
@@ -46,5 +47,6 @@ toolchain current, diagnose the environment, and write the guides that document 
 
 - **Hand-written:** every file in this layer; nothing is generated.
 - Documentation files `SCREAMING-SNAKE-CASE.md`; guide sub-folders `kebab-case/`; workflow folders
-  `NN-kebab-name/`, numbered as identifiers (next free number: `09`, with `07` and `08` reserved for P4).
+  `NN-kebab-name/`, numbered as identifiers (next free number: `13`; `07`–`12` are reserved for the
+  planned workflows in `how-to/workflows/CONTEXT.md`).
 - Commit scope `how-to`, per `project-management/docs/git/COMMITS.md`.

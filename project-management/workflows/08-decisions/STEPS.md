@@ -32,7 +32,7 @@ through these steps:
 ### Step 1 — Explain the decision first, then list the ADR set
 
 Explain-first (`project-management/workflows/CONTEXT.md` → _Explain-first_): ask the learner to state
-each open decision as one question ("Which kernel base do the tiers build
+each open decision as one question ("Which kernel line does each profile build
 on?") and to say what happens if nothing is decided. Then list the records the milestone already has,
 plus any it might supersede:
 
@@ -47,7 +47,7 @@ _Done when every open decision is written as a question and every existing ADR f
 
 ### Step 2 — Check each record still holds
 
-A decision taken at `04-exercise-design` was taken before `06-kernel-spec` or `07-distro-tier-spec` ran.
+A decision taken at `04-exercise-design` was taken before `06-kernel-spec` or `07-os-profile-spec` ran.
 Re-read each ADR's Context against what later work decided or discovered: is the problem still real, are
 its constraints still true? A falsified premise (a tool that is now installed, a standard that is now
 supported) means the record is superseded at Step 7, never edited.

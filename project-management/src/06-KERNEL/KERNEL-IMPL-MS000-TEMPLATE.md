@@ -13,7 +13,7 @@ passed._
 | **Kernel built** | {x.y.z} — from {tarball, signature verified / git tag `v{x.y.z}`} |
 | **Host compiler** | {`gcc --version` first line} |
 | **QEMU** | {`qemu-system-x86_64 --version` first line} |
-| **Fragment** | `code/src/kernel/{fragment-name}.config` (planned — the folder is added at P4) |
+| **Fragment** | `code/src/kernel/{fragment-name}.config` (planned — the folder is added at P4); from `kernel-05-downstream-tree` lesson 02, the downstream kernel repository's URL, path and commit |
 | **Status** | {Draft / Verified} |
 | **Date** | {DD/MM/YYYY} |
 

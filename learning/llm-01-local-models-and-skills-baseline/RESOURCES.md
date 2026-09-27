@@ -1,0 +1,10 @@
+# Resources — llm-01-local-models-and-skills-baseline
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 What fits: parameters, bits per weight and a ~9 GiB budget | llama.cpp `tools/quantize/README.md` → "Quantization" and "Memory/Disk Requirements", <https://github.com/ggml-org/llama.cpp> (MIT, read at commit a97cce8, 27/09/2026); ollama "Context length", <https://docs.ollama.com/context-length> (read 27/09/2026, ollama 0.34.0); `man nvidia-smi` | `how-to/docs/TOOLCHAIN.md` | — |
+| 02 Models and registries as untrusted inputs | OWASP LLM03:2025 Supply Chain, <https://genai.owasp.org/llmrisk/llm032025-supply-chain/>; OWASP LLM05:2025, <https://genai.owasp.org/llmrisk/llm052025-improper-output-handling/>; ollama FAQ, <https://docs.ollama.com/faq>; `man 8 ss` | `project-management/docs/SAFETY-GUIDE.md` | `project-management/src/10-PROGRESS/` (provenance record) |
+| 03 Measuring a local model honestly | ollama API "Usage", <https://docs.ollama.com/api/usage>; ollama FAQ, <https://docs.ollama.com/faq> (read 27/09/2026); `ollama run --help`; `man nvidia-smi`; `man 1 ps` | `project-management/docs/VERIFICATION-GUIDE.md` | `project-management/src/10-PROGRESS/` (baseline table) |
+| 04 Context length costs memory: the KV cache, measured | ollama "Context length", <https://docs.ollama.com/context-length>; GGUF spec → "Standardized key-value pairs → LLM", <https://github.com/ggml-org/ggml/blob/master/docs/gguf.md> (read at commit 353b63b); Kwon et al., arXiv:2309.06180, Section 3 | — | `project-management/src/10-PROGRESS/` (context sweep) |
+| 05 Writing skills with progressive disclosure | Agent Skills specification → "Progressive disclosure", <https://agentskills.io/specification> (read 27/09/2026) | `.claude/skills/CLAUDE.md` | the inference repository (created when this build starts) |
+| 06 Running skills and logging the gaps | OWASP LLM01:2025 Prompt Injection, <https://genai.owasp.org/llmrisk/llm01-prompt-injection/>; ollama API "Usage", <https://docs.ollama.com/api/usage> | — | the inference repository (created when this build starts) |

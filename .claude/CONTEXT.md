@@ -24,7 +24,7 @@ repository, not in anyone's personal configuration.
 │   └── pre-compact-handoff.sh                ← PreCompact — blocks auto-compaction
 ├── skills/                  ← the skill roster (index: skills/CONTEXT.md)
 │   ├── CONTEXT.md · CLAUDE.md                ← roster + authoring rules
-│   ├── teach/SKILL.md                        ← /teach — lessons, retrieval practice, spaced review
+│   ├── teach/SKILL.md · FAMILIES.md          ← /teach — lessons, retrieval practice, spaced review; per-family sources
 │   ├── handoff/SKILL.md                      ← /handoff — the auto-compaction replacement
 │   ├── research/SKILL.md                     ← /research — one question, primary sources
 │   └── wait-what/SKILL.md                    ← /wait-what — re-pitch a reply that did not land

@@ -3,25 +3,27 @@ name: research
 description: >-
   Answer one question against primary sources (the WG14 C standard drafts, the GCC and GNU
   manuals, man pages, docs.kernel.org and the kernel source, the Rust Reference and Rustonomicon,
-  each distro build system's own manual) and capture a per-claim-cited note in research/ that
-  feeds a decision: an ADR, a distro TIER spec, a kernel spec or a learning topic. Invoke by typing
-  /research, or when a choice (C standard, warning flags, kernel config baseline, init system,
-  bootloader, distro build system) needs synthesis across sources beyond one library's or tool's
-  own docs (those go to Context7).
+  the LFS books and each Syntek OS building block's own manual, PyTorch and NVIDIA CUDA docs,
+  papers by arXiv ID) and capture a per-claim-cited note in research/ that feeds a decision: an
+  ADR, an OS PROFILE spec, a kernel spec or a learning topic. Invoke by typing /research, or when a
+  choice (C standard, warning flags, kernel config baseline, init system, bootloader, package
+  signing, a crate or toolkit licence, a GPU toolchain) needs synthesis across sources beyond one
+  library's or tool's own docs (those go to Context7).
 ---
 
 # Skill: Research (c-rust-learning)
 
 Research answers a question the repo cannot answer itself, such as which C standard to pin,
-which warning flags earn their place, or which kernel config to start the tiers from, by reading
-**primary sources** and leaving a per-claim-cited **note** that a decision builds on. The note is
-the deliverable; the ADR, TIER spec or lesson that consumes it links back.
+which warning flags earn their place, or which kernel config the profile fragments start from, by
+reading **primary sources** and leaving a per-claim-cited **note** that a decision builds on. The
+note is the deliverable; the ADR, OS profile spec or lesson that consumes it links back.
 
 **Boundary with Context7.** For one library's or tool's own API (a `std` function, a crate, a
 cargo or clippy flag), Context7 (`resolve-library-id` → `query-docs`) answers directly, once the
 repo's own `code/docs/` and `how-to/docs/` have come up short. Reach for research when the question
 needs **synthesis across primary sources** that no single page answers: comparing C11, C17 and
-C23; weighing Buildroot against Yocto; establishing what the kernel's Rust support covers today.
+C23; weighing init systems for Syntek OS's profiles; establishing what the kernel's Rust support
+covers today.
 
 Locale: en_GB · Europe/London · dates DD/MM/YYYY.
 
@@ -52,8 +54,8 @@ Locale: en_GB · Europe/London · dates DD/MM/YYYY.
    _Done when the note exists, its Verdict opens with a bold one-line answer, every claim carries
    a citation, and `## What is not settled` lists what was not checked._
 5. **Wire the note to its decision.** The consumer links back to the note by path: an ADR through
-   `project-management/workflows/08-decisions/`, a TIER spec through
-   `project-management/workflows/07-distro-tier-spec/`, a kernel spec through
+   `project-management/workflows/08-decisions/`, an OS profile spec through
+   `project-management/workflows/07-os-profile-spec/`, a kernel spec through
    `project-management/workflows/06-kernel-spec/`, or a lesson through a row in the topic's
    `RESOURCES.md`. A primary source the repo will keep citing joins the external-source index in
    `REFERENCES.md`.
@@ -72,8 +74,18 @@ Locale: en_GB · Europe/London · dates DD/MM/YYYY.
   threads for "what landed, and when".
 - **Rust.** The Rust Reference, The Rustonomicon, the `std` docs, and the kernel's own Rust
   documentation under docs.kernel.org.
-- **Distro building blocks.** Each project's own manual: the Buildroot manual, the Yocto Project
-  documentation, the Linux From Scratch book, and the bootloader's and init system's own docs.
+- **Syntek OS building blocks.** The LFS and BLFS books; the pacman, apk and xbps manuals;
+  reproducible-builds.org; the TUF specification; the init systems' and bootloaders' own docs.
+  Buildroot and the Yocto Project are study references only: Syntek OS is built from scratch
+  (`project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md`).
+- **LLM.** Papers by arXiv ID (cite the abstract page and version); the PyTorch and NVIDIA CUDA
+  documentation at a pinned version; model and dataset cards, with their licence terms.
+- **UI.** The ratatui, crossterm, gtk4-rs and zbus documentation; the Wayland protocol docs.
+- **Security.** The OWASP projects, NIST special publications, MITRE CWE and ATT&CK, and the
+  kernel's own security documentation.
+
+The licence ladder below applies to all of these: arXiv papers and NVIDIA's documentation are
+re-authored and cited, never quoted.
 
 Secondary sources are scouts: they lead you to the primary, and the citation you keep is always
 the primary.
@@ -110,7 +122,7 @@ Notes are committed to a **public** GPL-2.0-only repo, so a quotation in a note 
 ```markdown
 # {The question as a title} — {the short answer}
 
-**Written**: {DD/MM/YYYY} · **Question from**: {the lesson, milestone or GAPS.md entry that raised it} · **Feeds**: {ADR, TIER spec or learning topic, by path | unassigned}
+**Written**: {DD/MM/YYYY} · **Question from**: {the lesson, milestone or GAPS.md entry that raised it} · **Feeds**: {ADR, OS profile spec, kernel spec or learning topic, by path | unassigned}
 
 ## Question
 
@@ -153,7 +165,8 @@ belongs in `.claude/MEMORY.md`, not a note.
 Route to the one that matches the consumer and follow its `STEPS.md` against its `CHECKLIST.md`:
 
 - `project-management/workflows/08-decisions/`: ADR groundwork; `research/` pairs with it.
-- `project-management/workflows/07-distro-tier-spec/`: a TIER spec's choices; `research/` pairs with it.
+- `project-management/workflows/07-os-profile-spec/`: an OS profile spec's choices; `research/` pairs
+  with it.
 - `project-management/workflows/06-kernel-spec/`: a kernel plan's config, patch or boot choices.
 
 ## Cross-references
@@ -161,8 +174,8 @@ Route to the one that matches the consumer and follow its `STEPS.md` against its
 - `research/CONTEXT.md` · `research/CLAUDE.md`: the folder, the suggested first questions, and the
   citation and licence guardrails.
 - `project-management/src/08-DECISIONS/ADR-MS000-TEMPLATE.md`: the ADR a note usually feeds.
-- `project-management/src/07-DISTRO-TIERS/TIER-000-TEMPLATE.md` · `TIER-MATRIX.md`: the tier specs
-  a distro note feeds.
+- `project-management/src/07-OS-PROFILES/PROFILE-000-TEMPLATE.md` · `PROFILE-MATRIX.md`: the
+  Syntek OS profile specs an OS note feeds.
 - `project-management/src/06-KERNEL/`: the kernel specs a kernel note feeds.
 - `.claude/skills/teach/SKILL.md`: a lesson's `RESOURCES.md` may cite a note.
 - `REFERENCES.md`: the repo's index of external primary sources.

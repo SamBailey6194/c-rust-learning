@@ -244,8 +244,9 @@ make -C ../kbuild M="$PWD" modules
 qemu-system-x86_64 -kernel ../kbuild/arch/x86/boot/bzImage -initrd initramfs.cpio.gz \
     -append "console=ttyS0 nokaslr" -nographic -m 512M -enable-kvm
 
-# Add -s -S to freeze at start with a gdb stub on tcp::1234, then attach from another terminal
-gdb ../kbuild/vmlinux -ex 'target remote :1234'
+# Add -gdb tcp:127.0.0.1:1234 -S to freeze at start with a gdb stub on loopback only (never bare
+# -s: it means -gdb tcp::1234, which listens on every interface), then attach from another terminal
+gdb ../kbuild/vmlinux -ex 'target remote 127.0.0.1:1234'
 ```
 
 ---

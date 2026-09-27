@@ -12,8 +12,12 @@
 
 - [ ] Lesson/exercise (C)
 - [ ] Lesson/exercise (Rust)
-- [ ] Kernel / distro work
-- [ ] Notes or research
+- [ ] Kernel
+- [ ] Syntek OS
+- [ ] TUI / GUI tools
+- [ ] LLM
+- [ ] Security
+- [ ] Notes, syllabus or research
 - [ ] Tooling / CI
 - [ ] Fix
 
@@ -28,7 +32,9 @@ CI runs every gate below on this pull request; tick what you ran locally before 
 - [ ] `make -C code/src/c san` and `make -C code/src/c memcheck` are clean wherever the change allocates memory
 - [ ] `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings` and `cargo test` pass inside `code/src/rust/`
 - [ ] Kernel work ran in QEMU only — nothing was installed or `insmod`-ed on the host
-- [ ] No build output, kernel source tree or disk image is committed
+- [ ] OS images, installers and network labs ran in VMs / isolated virtual networks only
+- [ ] No build output or kernel source tree is committed
+- [ ] No model weights, checkpoints, datasets or disk images are committed; no untrusted pickle was loaded
 
 ## Documentation gate
 

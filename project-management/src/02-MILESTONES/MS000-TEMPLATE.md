@@ -1,7 +1,7 @@
 # MS000 — [Milestone Title]
 
-**Track:** [C | Rust | Kernel | Distro]
-**Phase:** [P1 to P6] — `project-management/src/01-ROADMAP/ROADMAP.md`
+**Track:** [C | Rust | Kernel | OS | UI | LLM | Security]
+**Phase:** [P1–P6 | U1–U3 | L1–L6 | S1–S3] — `project-management/src/01-ROADMAP/ROADMAP.md`
 **Status:** Open
 
 <!-- Status words and their transitions are owned by
@@ -25,12 +25,13 @@ _Template — copy to `MS###-<SCREAMING-KEBAB-TITLE>.md` with the next free numb
 | Exercises | [EXAMPLE] C: 5 exercises, recall → extend |
 | Project | [EXAMPLE] N/A — no capstone in this milestone |
 | Kernel | [EXAMPLE] N/A — P1 runs no kernel work |
-| Distro | [EXAMPLE] N/A — P1 runs no distro work |
+| OS | [EXAMPLE] N/A — Syntek OS work starts at P6 |
 | Tests | [EXAMPLE] `make -C code/src/c/ms###-<kebab> test` |
 | Memory | [EXAMPLE] `make -C code/src/c/ms###-<kebab> san` + `make -C code/src/c/ms###-<kebab> memcheck` |
 | Debugger | [EXAMPLE] gdb: watch the buffer pointer change across `realloc` |
 | Lint | [EXAMPLE] `make -C code/src/c/ms###-<kebab> lint` |
 | QEMU | [EXAMPLE] N/A — no kernel boots before P4 |
+| Budget | [EXAMPLE] N/A — no resource target (not allowed N/A for a kernel-config, OS or LLM milestone) |
 | Notes | [EXAMPLE] `learning/c-02-pointers-and-memory/` |
 | Research | [EXAMPLE] N/A — the primary resources in `ROADMAP.md` cover it |
 
@@ -68,6 +69,19 @@ As a learner, I want to [skill or concept], so that [what it unlocks next].
      where the set is genuinely empty; a blank section is an unanswered question. -->
 
 - `project-management/src/08-DECISIONS/ADR-MS###-<DECISION>-DD-MM-YYYY.md` — [what it settles]
+
+---
+
+## Threat model
+
+<!-- One to three lines: assets, threats and mitigations, or the non-negotiable this milestone runs
+     under (.claude/CLAUDE.md Section 5). The Security lens's milestone-level home
+     (project-management/src/01-ROADMAP/ROADMAP.md -> Cross-cutting lenses). Never blank: a milestone
+     with nothing of its own to say names the rule that already covers it. -->
+
+[PLACEHOLDER — e.g. "Assets: the learner's host. Threat: a faulty module oopsing it. Mitigation:
+QEMU only, never insmod on the host (.claude/CLAUDE.md)." — or, for an LLM milestone, the OWASP LLM
+risks it touches and how they are contained.]
 
 ---
 
@@ -140,15 +154,15 @@ Scenario: The kernel boots in QEMU
   Then the serial console shows [the line that proves the boot, e.g. a busybox shell prompt]
 ```
 
-### Distro mastery criteria
+### OS mastery criteria
 
-<!-- Remove this section when the Distro flag is N/A. -->
+<!-- Remove this section when the OS flag is N/A. -->
 
 ```gherkin
-Scenario: The tier image meets its spec item
-  Given the [tier] image built for this milestone
-  When I boot it in QEMU and [the action from the TIER spec]
-  Then [the acceptance item from project-management/src/07-DISTRO-TIERS/TIER-<NAME>.md]
+Scenario: The profile image meets its spec item
+  Given the [profile] image built for this milestone
+  When I boot it in QEMU and [the action from the PROFILE spec]
+  Then [the acceptance item from project-management/src/07-OS-PROFILES/PROFILE-<NAME>.md]
 ```
 
 ### Debugging mastery criteria

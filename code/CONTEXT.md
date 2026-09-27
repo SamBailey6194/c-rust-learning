@@ -8,9 +8,10 @@ that govern it. The three sub-layers are deliberately not interchangeable: `docs
 `workflows/` sequences the work that applies it, and `src/` is the only place source lives — the C
 exercises, the Rust workspace and the scripts that wrap every toolchain command. Keeping the C track, the
 Rust track and, later, the kernel under one `docs/` tree is what stops them drifting into separate
-doctrines, and it is why an FFI crate and a first C exercise cite the same memory-safety guide. This is
-where practice graduates into code that builds, passes its tests and runs clean under the memory tools,
-at the pace the roadmap sets (`project-management/src/01-ROADMAP/ROADMAP.md`).
+doctrines, and it is why an FFI crate and a first C exercise cite the same memory-safety guide; Python
+and CUDA join the same tree at L1 and L2. This is where practice graduates into code that builds, passes
+its tests and runs clean under the memory tools, at the pace the roadmap sets
+(`project-management/src/01-ROADMAP/ROADMAP.md`).
 
 ## Directory Tree
 
@@ -36,7 +37,9 @@ code/
 │   ├── rust/                        ← Rust track: one Cargo workspace (crates/ms###_snake/)
 │   ├── scripts/                     ← every gate as a script, in the 0/1/2 exit contract
 │   ├── kernel/                      ← KERNEL-ONLY — planned, added at P4
-│   └── distro/                      ← planned, added at P6
+│   ├── os/                          ← SYNTEK-OS-ONLY — planned, added at P6
+│   ├── python/                      ← planned, added at L1
+│   └── cuda/                        ← planned, added at L2
 └── workflows/                       ← step-by-step coding workflows, by family below
     ├── CONTEXT.md · CLAUDE.md       ← the workflow catalogue · how to run one
     │   ── Build (01–04) ──

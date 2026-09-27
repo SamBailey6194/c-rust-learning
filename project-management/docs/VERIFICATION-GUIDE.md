@@ -47,6 +47,7 @@ wraps the same command and is what CI and the full gate run use. Targets and fla
 | Lint (Rust) | `cargo fmt --check` and `cargo clippy --all-targets -- -D warnings` in `code/src/rust/` | `bash code/src/scripts/rust/lint.sh` | both exit `0` with no diff and no warning |
 | Debugger | a gdb session: `break`, `run`, `bt`, `print`, `watch` on the milestone's code | none: it is a walkthrough | a transcript excerpt showing the thing the milestone predicted |
 | QEMU | `qemu-system-x86_64` with the command line from the milestone's `06-KERNEL` plan | none yet (planned at P4) | the serial console reaches the expected line (a busybox shell prompt, a module's `pr_info` message) |
+| Budget | the measurement the milestone's `Budget` flag names (e.g. `torch.cuda.max_memory_allocated()`, `ls -l <image>`, `/usr/bin/time -v`, `valgrind --tool=cachegrind`) | none — recorded in section 2.7 of the record | the measured value is at or under budget; `perf`/GPU counters may be locked down, so the unprivileged fallback is used and named (`how-to/docs/TOOLCHAIN.md`) |
 | Notes | the `learning/` note exists and answers the recall question | — | the explain-back answer, recorded |
 | Research | the `research/` note exists, one question, a citation per claim | — | the note path, cited from the spec or ADR it fed |
 

@@ -56,8 +56,8 @@ example `HANDOFF-MS001-TOOLCHAIN-GATES-27-09-2026.md`. A teaching detour from `w
    without re-deriving it.
    _Done when the next action is one imperative sentence._
 5. **Name what the next session loads.** In order: the skill to invoke (`/teach <topic>`,
-   `/research`), the learning topic's `MISSION.md` and `PROGRESS.md`, the research note, the code
-   path, and the workflow `STEPS.md` the work is part of.
+   `/research`), the learning topic's `MISSION.md` and `PROGRESS.md` (and its `SYLLABUS.md`, where
+   it has one), the research note, the code path, and the workflow `STEPS.md` the work is part of.
    _Done when the handoff lists, in reading order, what the next session opens and which skill it
    invokes first._
 6. **Reference artefacts by path, never paste them.** Point at milestones

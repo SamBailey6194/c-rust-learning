@@ -90,14 +90,18 @@ brings its own replacement allocator. The usual options, one of which the spec p
 
 _Done when every scenario names a command and a result, and every C part names its memory gates._
 
-### Step 6 — Stretch goals, risks, status and links
+### Step 6 — Stretch goals, risks, resource budget, threat model, status and links
 
 List stretch goals explicitly as not required for done; each is a candidate for a later milestone or
-`DEFERRED.md`. Fill the risks with a likelihood and a fallback. Record any hard-to-reverse design choice
-through `08-decisions`. Then check the folder's definition of done, set `Status: Ready`, and link the
-spec from the current milestone by full path.
+`DEFERRED.md`. Fill the risks with a likelihood and a fallback. **For a project whose Budget is not
+`N/A`** (never `N/A` for a kernel-config, OS or LLM project), fill `## 8. Resource budget` — each
+resource the project must stay within and the tool that measures it — and fill `## 9. Threat model`
+with the assets, threats and mitigations, or the non-negotiable it runs under (`.claude/CLAUDE.md`
+Section 5). Record any hard-to-reverse design choice through `08-decisions`. Then check the folder's
+definition of done, set `Status: Ready`, and link the spec from the current milestone by full path.
 
-_Done when the spec is `Ready` and linked from every milestone it spans so far._
+_Done when the spec is `Ready`, its budget and threat model are filled (or `N/A` with a reason), and it
+is linked from every milestone it spans so far._
 
 ### Step 7 — Commit by explicit path
 
@@ -128,4 +132,4 @@ If this workflow created files or folders, or settled a new convention:
 ## Completion
 
 Run through `CHECKLIST.md` before marking this workflow complete. Next, as flagged:
-`project-management/workflows/06-kernel-spec/` or `07-distro-tier-spec/`, then `08-decisions/`.
+`project-management/workflows/06-kernel-spec/` or `07-os-profile-spec/`, then `08-decisions/`.

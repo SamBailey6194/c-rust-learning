@@ -1,0 +1,12 @@
+# Resources — tooling-03-shell-scripting
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 Quoting, expansion order and word splitting | `man bash` (bash 5.2.21) → EXPANSION, Word Splitting, QUOTING, Special Parameters; POSIX.1-2024 XCU 2.2 and 2.6.5, <https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html>; XBD 12.2 Guideline 10, <https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap12.html>; SC2086, <https://www.shellcheck.net/wiki/SC2086> | `code/src/scripts/CONTEXT.md` — The shape every script shares | — |
+| 02 Exit status and `set -euo pipefail` | `man bash` (bash 5.2.21) → EXIT STATUS, Pipelines, `set`, `local`, `shopt` (`inherit_errexit`), `${parameter:?word}`; SC2155, <https://github.com/koalaman/shellcheck/wiki/SC2155> | `code/src/scripts/CONTEXT.md` — the 0/1/2 contract | — |
+| 03 Functions, locals and arrays | `man bash` (bash 5.2.21) → FUNCTIONS, Arrays, `local`, `declare`, `mapfile` | `code/src/scripts/_lib/common.sh` — `need_tool`, `run_gate` | — |
+| 04 Redirection and here-documents | `man bash` (bash 5.2.21) → REDIRECTION, Here Documents, Here Strings, `set` (`noclobber`); POSIX.1-2024 XCU 2.7, <https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html> | `code/src/scripts/_lib/common.sh` — `die` | — |
+| 05 `trap` and cleanup | `man bash` (bash 5.2.21) → `trap`; `man 1 mktemp` (GNU coreutils 9.4); `man 7 signal`; `man 1 dash` (dash 0.5.12) | — | — |
+| 06 POSIX sh against bash | POSIX.1-2024 XCU 2.2.4, 2.4, 2.9.2, <https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html>; `man 1 dash` (dash 0.5.12); ShellCheck 0.9.0 manual `-s`, <https://github.com/koalaman/shellcheck/blob/v0.9.0/shellcheck.1.md> | — | — |
+| 07 Reading ShellCheck findings | ShellCheck 0.9.0 manual, <https://github.com/koalaman/shellcheck/blob/v0.9.0/shellcheck.1.md>; directives, <https://github.com/koalaman/shellcheck/wiki/Directive>; Ubuntu 24.04 runner image, <https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md> | `.github/workflows/syntax-shell.yml` — the CI gate | — |
+| 08 A build-and-verify script to the contract | `code/src/scripts/CONTEXT.md`; `code/docs/BUILD.md` (make targets); `man bash` (bash 5.2.21) → `set`, `trap` | `code/src/scripts/CONTEXT.md` — The shape every script shares | `code/src/c/msNNN-<kebab>/verify.sh` (planned — `NNN` from its milestone) |

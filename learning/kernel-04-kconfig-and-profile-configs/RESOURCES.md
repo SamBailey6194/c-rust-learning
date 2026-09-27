@@ -1,0 +1,11 @@
+# Resources — kernel-04-kconfig-and-profile-configs
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 The Kconfig language | <https://docs.kernel.org/kbuild/kconfig-language.html> (Menu entries; Menu attributes; docs build 7.3.0-rc4); init/Kconfig at v7.2 | — | — |
+| 02 The fragment method | scripts/kconfig/merge_config.sh, scripts/kconfig/Makefile and scripts/diffconfig at v7.2; <https://docs.kernel.org/kbuild/kconfig.html> | `project-management/src/06-KERNEL/KERNEL-PLAN-MS000-TEMPLATE.md` — 4. Configuration approach | `code/src/kernel/msNNN-fragment-method/` (planned — added at P4) |
+| 03 A hardening baseline and the gap to KSPP | kernel/configs/hardening.config at v7.2; <https://kspp.github.io/Recommended_Settings> (read 27/09/2026); <https://github.com/a13xp0p0v/kernel-hardening-checker> (README); <https://docs.kernel.org/process/threat-model.html> | — | `code/src/kernel/msNNN-profile-fragments/` (planned — added at P4) |
+| 04 Longterm or stable, per profile | <https://www.kernel.org/category/releases.html>; <https://www.kernel.org/releases.json>; <https://docs.kernel.org/process/cve.html> (Process) | `project-management/src/08-DECISIONS/ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` | — |
+| 05 Firmware and initramfs needs | <https://docs.kernel.org/driver-api/firmware/fw_search_path.html>; <https://docs.kernel.org/driver-api/firmware/built-in-fw.html>; <https://docs.kernel.org/filesystems/ramfs-rootfs-initramfs.html> | — | — |
+| 06 The base, server and homelab fragments | <https://docs.kernel.org/kbuild/kconfig-language.html>; merge_config.sh and kernel/configs/kvm_guest.config at v7.2 | `project-management/src/07-OS-PROFILES/` — the profile specs | `code/src/kernel/msNNN-profile-fragments/` (planned — added at P4), then the downstream kernel repository (created when kernel-05's build starts) |
+| 07 Measuring a config | <https://docs.kernel.org/admin-guide/kernel-parameters.html> (`printk.time=`, `initcall_debug`); <https://docs.kernel.org/kbuild/kbuild.html> (INSTALL_MOD_PATH); scripts/bloat-o-meter at v7.2; `man 1 size` | `project-management/src/01-ROADMAP/ROADMAP.md` — cross-cutting lenses | `code/src/kernel/msNNN-config-metrics/` (planned — added at P4) |

@@ -1,0 +1,10 @@
+# Resources — ui-04-file-manager-tui
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 Reading Yazi: how a fast file manager is built | Yazi v26.9.1 (MIT), <https://github.com/sxyazi/yazi/tree/v26.9.1>; "Why is Yazi fast?", <https://yazi-rs.github.io/blog/why-is-yazi-fast> | `code/docs/CODING-PRINCIPLES.md` — Section 2 Linus Torvalds | — |
+| 02 Listing directories without blocking, even huge ones | `man 2 getdents`, `man 2 statx` (Linux man-pages 6.7); Rust 1.92.0 `std::fs::read_dir`, <https://doc.rust-lang.org/1.92.0/std/fs/fn.read_dir.html>; tokio 1.53.1 `fs`, <https://docs.rs/tokio/1.53.1/tokio/fs/index.html> | `code/docs/TESTING.md` — Section 2 Rust | `code/src/rust/crates/msNNN_dir_listing/` (planned) |
+| 03 Safe previews of untrusted files | POSIX.1-2024 Base Definitions 3.146 "Filename", <https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap03.html>; CWE-150 (4.20), <https://cwe.mitre.org/data/definitions/150.html>; `man 7 fifo`, `man 2 open` (Linux man-pages 6.7) | `code/docs/TESTING.md` — Section 3 Test discipline | `code/src/rust/crates/msNNN_safe_preview/` (planned) |
+| 04 A trash that follows the FreeDesktop specification | FreeDesktop Trash Specification 1.0, <https://specifications.freedesktop.org/trash/latest/>; `man 2 rename` (Linux man-pages 6.7) | `code/docs/RUST-CODING-PRINCIPLES.md` — Section 3 Errors are values | `code/src/rust/crates/msNNN_trash/` (planned) |
+| 05 Long operations: progress, cancellation and undo | `man 2 copy_file_range` (Linux man-pages 6.7); tokio-util 0.7.19 `CancellationToken`, <https://docs.rs/tokio-util/0.7.19/tokio_util/sync/struct.CancellationToken.html> | `code/docs/TESTING.md` — Section 3 Test discipline | `code/src/rust/crates/msNNN_undo_log/` (planned) |
+| 06 From exercises to a tool others can build on | Developer Certificate of Origin, <https://developercertificate.org/>; Yazi v26.9.1 `CONTRIBUTING.md` | `code/docs/RUST-CODING-PRINCIPLES.md` — Section 5 Crate and module layout | the Syntek OS file-manager repository (created when this build starts) |

@@ -125,7 +125,14 @@ For a milestone whose QEMU flag is not `N/A`, run the exact `qemu-system-x86_64`
 criterion names and capture the serial-console line that proves the boot. The kernel and any module stay
 inside the guest.
 
-_Done when each flagged walkthrough or boot is recorded with its commands and its evidence line._
+For a milestone whose **Budget** flag is not `N/A` (never `N/A` for a kernel-config, OS or LLM
+milestone), run the measurement the flag names — for example `torch.cuda.max_memory_allocated()`,
+`ls -l <image>`, `/usr/bin/time -v`, or `valgrind --tool=cachegrind` where `perf` counters are locked
+down (`how-to/docs/TOOLCHAIN.md`) — and record the value against the budget in section 2.7 of the
+record. A value over budget is a failure, sending the milestone back to `In Progress` like any other.
+
+_Done when each flagged walkthrough, boot or measurement is recorded with its commands and its evidence
+line._
 
 ### Step 8 — Run the explain-back scenario, then the full gate suite
 
@@ -182,8 +189,8 @@ owned by its folder's `CLAUDE.md` (`project-management/docs/planning/MILESTONES.
   (`project-management/src/06-KERNEL/CLAUDE.md`)
 - its `EX-MS###` spec, and a `PROJ-` spec on the project's last milestone, once the record cites them →
   `Done` (`project-management/src/04-EXERCISES/CLAUDE.md`, `project-management/src/05-PROJECTS/CLAUDE.md`)
-- at P6, each tier whose image passed its hypotheses → `Verified`
-  (`project-management/src/07-DISTRO-TIERS/CLAUDE.md`)
+- at P6, each profile whose image passed its hypotheses → `Verified`
+  (`project-management/src/07-OS-PROFILES/CLAUDE.md`)
 
 _Done when the As-Built summary is written, the Status matches the outcome in both places, and every
 record this run checked carries its new status._
@@ -195,7 +202,7 @@ git add project-management/src/10-PROGRESS/MS###-VERIFICATION.md \
         project-management/src/09-MILESTONE-PLANS/<exec-order>-PLAN-MS###-<DESC>.md \
         project-management/src/02-MILESTONES/MS###-<TITLE>.md \
         project-management/src/01-ROADMAP/ROADMAP.md
-git add <each spec, kernel record or tier file whose status moved in Step 10>
+git add <each spec, kernel record or profile file whose status moved in Step 10>
 git commit -m "docs(pm): verify MS###"
 ```
 

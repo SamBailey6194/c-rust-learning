@@ -13,7 +13,7 @@ read in fragments and capped at 300 cloc code lines.
 ```text
 how-to/docs/
 ├── CONTEXT.md · CLAUDE.md   ← this index · operating rules for this folder
-├── TOOLCHAIN.md             ← owner of toolchain versions: prerequisites, P4 packages, troubleshooting
+├── TOOLCHAIN.md             ← owner of toolchain versions: prerequisites, P4, P6, L1–L2 and security packages, troubleshooting
 ├── CLI-TOOLING.md           ← every command by intent: C build, memory, debugging, Rust, docs, P4 preview
 └── GUIDE-CRAFT.md           ← the reader, two homes, the runbook spine, command discipline
 ```
@@ -22,7 +22,7 @@ how-to/docs/
 
 | Guide | Scope |
 | --- | --- |
-| `TOOLCHAIN.md` | The recorded tool versions (owner), Ubuntu 24.04 and rustup prerequisites, the P4 kernel and Rust-for-Linux packages not yet installed, toolchain troubleshooting |
+| `TOOLCHAIN.md` | The recorded tool versions (owner), including the later-track tools already installed; Ubuntu 24.04 and rustup prerequisites; the P4 kernel and Rust-for-Linux, P6 Syntek OS, L1–L2 LLM and security-track packages not yet installed; toolchain troubleshooting |
 | `CLI-TOOLING.md` | The raw commands and the scripts that wrap them, grouped by intent, with a P4 preview of kernel and QEMU commands |
 | `GUIDE-CRAFT.md` | The conventions behind every guide a person executes: the reader, the two homes and their length standards, the six-part spine, command discipline, execute-to-verify, scope |
 

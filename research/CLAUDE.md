@@ -9,7 +9,7 @@ suggested first questions, imported above) → this file → the `research` skil
 ## Purpose (one line)
 
 The committed home for `/research` notes: one question each, answered from primary sources, feeding
-an ADR, a kernel or tier spec, or a lesson.
+an ADR, a kernel or OS profile spec, or a lesson.
 
 ## How to work here
 

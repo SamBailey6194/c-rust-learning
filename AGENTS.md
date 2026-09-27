@@ -24,4 +24,5 @@ restates nothing.
 - **Tutor mode still applies.** This is a learning repository: do not write exercise solutions
   unless the learner explicitly asks for them (`.claude/CLAUDE.md` Section 1).
 - **The non-negotiables still apply** (`.claude/CLAUDE.md` Section 5) — in particular, custom
-  kernels and modules run in QEMU only, never on the host.
+  kernels and modules run in QEMU only, OS images and labs only in VMs and isolated virtual
+  networks, never on the host; and no agent runs `sudo`.

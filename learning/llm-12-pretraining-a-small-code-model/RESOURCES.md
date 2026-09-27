@@ -1,0 +1,11 @@
+# Resources — llm-12-pretraining-a-small-code-model
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 compute estimation | arXiv:2001.08361v1, Section 2.1 and Table 1; arXiv:2203.15556v1, Appendix F; Turing whitepaper, Table 1 (<https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf>) | `code/docs/PYTHON-CODING-PRINCIPLES.md` (planned — added at L1) | `code/src/python/` (planned — added at L1) |
+| 02 choosing N and D | arXiv:2203.15556v1, Section 3.4 and Table 3; PyTorch 2.14 `torch.cuda.memory.mem_get_info` (<https://docs.pytorch.org/docs/2.14/generated/torch.cuda.memory.mem_get_info.html>) | `project-management/docs/planning/MILESTONES.md` (the Budget flag) | the milestone's project spec (`project-management/workflows/05-project-spec/`) |
+| 03 FIM objective | arXiv:2207.14255v1, Sections 3, 3.1, 3.2 and 4.2 | `code/docs/PYTHON-CODING-PRINCIPLES.md` (planned — added at L1) | `code/src/python/` (planned) |
+| 04 fitting in VRAM | PyTorch 2.14 AMP (<https://docs.pytorch.org/docs/2.14/amp.html>), AMP examples (<https://docs.pytorch.org/docs/2.14/notes/amp_examples.html>) and `torch.utils.checkpoint` (<https://docs.pytorch.org/docs/2.14/checkpoint.html>); arXiv:1604.06174v2 | — | the model-training repository (created when this build starts) |
+| 05 checkpoints and resume | PyTorch 2.14 Serialization semantics (<https://docs.pytorch.org/docs/2.14/notes/serialization.html>); PyTorch tutorial on general checkpoints (<https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html>) | `.claude/CLAUDE.md` — Section 5 (the weights rule) | the model-training repository |
+| 06 divergence | PyTorch 2.14 AMP examples, "Working with Unscaled Gradients"; `clip_grad_norm_` (<https://docs.pytorch.org/docs/2.14/generated/torch.nn.utils.clip_grad_norm_.html>); arXiv:1710.03740v3, Section 3.2 | — | the model-training repository |
+| 07 throughput tuning | PyTorch 2.14 `torch.profiler` (<https://docs.pytorch.org/docs/2.14/profiler.html>), memory pinning (<https://docs.pytorch.org/docs/2.14/data.html>) and `torch.compile` (<https://docs.pytorch.org/docs/2.14/generated/torch.compile.html>); Triton v3.8.0 README (<https://github.com/triton-lang/triton/blob/v3.8.0/README.md>) | — | the model-training repository |

@@ -73,7 +73,7 @@ numbered `workflows/` that produce all of it.
 | `04-EXERCISES/` | `EX-MS###-<TOPIC>.md` |
 | `05-PROJECTS/` | `PROJ-MS###-<NAME>.md` |
 | `06-KERNEL/` | `KERNEL-PLAN-MS###-<DESCRIPTOR>.md` · `KERNEL-IMPL-MS###-<DESCRIPTOR>.md` |
-| `07-DISTRO-TIERS/` | `TIER-MATRIX.md` · `TIER-<NAME>.md` |
+| `07-OS-PROFILES/` | `PROFILE-MATRIX.md` · `PROFILE-<NAME>.md` |
 | `08-DECISIONS/` | `ADR-MS###-<DECISION>-DD-MM-YYYY.md` |
 | `09-MILESTONE-PLANS/` | `<exec-order>-PLAN-MS###-<DESCRIPTOR>.md` |
 | `10-PROGRESS/` | `MS###-VERIFICATION.md` |

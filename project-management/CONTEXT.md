@@ -26,14 +26,14 @@ project-management/
 │   └── SAFETY-GUIDE.md           ← UB and memory bugs, Rust unsafe, kernels in QEMU only
 ├── src/                          ← live artefacts, in four tiers (own pair inside)
 │   │   ── Plan (01–03) ──
-│   ├── 01-ROADMAP/               ← ROADMAP.md (owns the phases P1–P6) + track decision maps
+│   ├── 01-ROADMAP/               ← ROADMAP.md (owns the eighteen phases in six tracks) + track decision maps
 │   ├── 02-MILESTONES/            ← one MS### file per milestone; MS001 seeded
 │   ├── 03-STUDY-SPRINTS/         ← one SPRINT-## record per two-week study sprint
 │   │   ── Specify (04–07) ──
 │   ├── 04-EXERCISES/             ← exercise-set specs per milestone (no solutions)
 │   ├── 05-PROJECTS/              ← capstone project specs: own malloc, a shell, a Rust port
 │   ├── 06-KERNEL/                ← kernel plans before a build, implementation records after
-│   ├── 07-DISTRO-TIERS/          ← TIER-MATRIX.md + beginner, intermediate, experienced specs
+│   ├── 07-OS-PROFILES/           ← PROFILE-MATRIX.md + seven Syntek OS profile specs
 │   │   ── Decide & plan (08–09) ──
 │   ├── 08-DECISIONS/             ← ADRs; five seeded at MS001
 │   ├── 09-MILESTONE-PLANS/       ← the plan a milestone is studied from, prefixed by build order
@@ -51,7 +51,7 @@ project-management/
     ├── 04-exercise-design/       ← specify the exercise set (Exercises flag)
     ├── 05-project-spec/          ← specify a capstone project (Project flag)
     ├── 06-kernel-spec/           ← plan a kernel build or module, QEMU only (Kernel flag)
-    ├── 07-distro-tier-spec/      ← specify a distro tier against the matrix (Distro flag)
+    ├── 07-os-profile-spec/       ← specify a Syntek OS profile against the matrix (OS flag)
     │   ── Decide & plan (08–09) ──
     ├── 08-decisions/             ← record hard-to-reverse choices; check the ADR set holds
     ├── 09-milestone-plans/       ← write the plan the milestone is studied from

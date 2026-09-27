@@ -47,7 +47,7 @@ gaps, and the status that follows.
 - **Writes:** `project-management/src/10-PROGRESS/MS###-VERIFICATION.md` from
   `MS000-VERIFICATION-TEMPLATE.md`; the As-Built summary of the milestone's plan in
   `project-management/src/09-MILESTONE-PLANS/`; the Status line of the milestone file; on a pass, the
-  status of the `KERNEL-IMPL` record, the `EX-`/`PROJ-` spec and, at P6, the tier file it checked.
+  status of the `KERNEL-IMPL` record, the `EX-`/`PROJ-` spec and, at P6, the profile file it checked.
 - The folder's `CLAUDE.md` → Output & naming owns the filename pattern; dates DD/MM/YYYY in prose.
 - Gaps go to `GAPS.md`; deferrals go to `DEFERRED.md` with a `DEFERRED (MS###)` marker.
 - Commit scope `pm`, per `project-management/docs/git/COMMITS.md`.

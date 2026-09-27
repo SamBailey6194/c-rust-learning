@@ -116,7 +116,10 @@ Co-Authored-By: {AGENT NAME AND MODEL} <{AGENT ADDRESS}>
 | `c` | C exercises and projects under `code/src/c/` |
 | `rust` | Crates under `code/src/rust/` |
 | `kernel` | All kernel work, wherever it lives: `06-KERNEL` plans and records, config fragments, modules |
-| `distro` | All distro-tier work: `07-DISTRO-TIERS` specs, the matrix, and the images they describe |
+| `os` | All Syntek OS work: `07-OS-PROFILES` specs, the matrix, os lessons, `code/src/os/` (planned — added at P6) |
+| `ui` | TUI and GUI tools: the ui crates and lessons |
+| `llm` | LLM work: `code/src/python/` (planned — added at L1), `code/src/cuda/` (planned — added at L2), the LLM crates, llm lessons |
+| `sec` | Security-track work, wherever it lives: sec lessons, lab scope documents, the deliberately vulnerable exercises |
 | `pm` | The rest of `project-management/`: maps, milestones, sprints, specs, ADRs, plans, records, guides |
 | `learning` | Concept notes and progress under `learning/` |
 | `research` | Research notes under `research/` |
@@ -127,9 +130,11 @@ Co-Authored-By: {AGENT NAME AND MODEL} <{AGENT ADDRESS}>
 | `claude` | `.claude/` (manual, skills, hooks) and `handoffs/` |
 
 Pick the scope of the layer the change is **for**: an exercise spec written for a C milestone is
-`docs(pm)`, and the exercise code it describes is `feat(c)`. Kernel and distro-tier work are the
-exception: they span layers, so they are scoped by subject (`docs(kernel)` for a kernel plan,
-`feat(kernel)` for a module) and stay easy to find in the log.
+`docs(pm)`, and the exercise code it describes is `feat(c)`. Kernel, Syntek OS, UI, LLM and security
+work are the exception: they span layers, so they are scoped by subject (`docs(kernel)` for a kernel
+plan, `feat(kernel)` for a module; `docs(os)` for a profile spec, `feat(os)` for a build recipe;
+`feat(ui)` for a TUI crate; `feat(llm)` for training or inference code; `docs(sec)` for a lab scope
+document, `feat(sec)` for a mitigation exercise) and stay easy to find in the log.
 
 There is no breaking-change marker (`!` or a `BREAKING CHANGE:` footer) in use: nothing here is
 released or versioned (`project-management/REFERENCES.md` → Semantic Versioning, not used).
@@ -144,7 +149,11 @@ The Linux kernel accepts patches only with a `Signed-off-by:` line certifying th
 Certificate of Origin (https://docs.kernel.org/process/submitting-patches.html). This repository does
 not require it, but P4 onwards is practice for that world, so the habit is welcome early.
 `git commit -s` adds the line for you from your `user.name` and `user.email` configuration; nothing
-about it is written into this repository.
+about it is written into this repository. An agent never adds `Signed-off-by`: only a human can
+certify the DCO. Patches bound for the kernel — the downstream kernel repository or upstream — credit
+an assistant with an `Assisted-by:` tag in the kernel's own format, not `Co-Authored-By:`
+(https://docs.kernel.org/process/coding-assistants.html → Signed-off-by and Developer Certificate of
+Origin; Attribution).
 
 ### `Co-Authored-By` — when an agent wrote the change
 

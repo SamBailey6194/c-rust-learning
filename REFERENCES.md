@@ -2,7 +2,8 @@
 
 A curated index of the repository's own documentation and of the external sources worth
 consulting while working in it: every layer entry point, guide and workflow by path, the one
-cross-layer pairing table, and the primary sources behind the C, Rust, kernel and distro work.
+cross-layer pairing table, and the primary sources behind the C, Rust, kernel, Syntek OS, UI, LLM
+and security work, grouped by track.
 
 **In what order to consult them — internal docs first, then primary documentation (man pages,
 the standards, the official books and manuals), then Context7, then web search — is
@@ -22,7 +23,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | [`how-to/REFERENCES.md`](how-to/REFERENCES.md) | How-to layer index: guides, runbooks, workflows, tool manuals |
 | [`project-management/CONTEXT.md`](project-management/CONTEXT.md) | PM layer: the curriculum — roadmap, milestones, specs, decisions, records |
 | [`project-management/REFERENCES.md`](project-management/REFERENCES.md) | PM layer index: guides, artefact folders, workflows, planning references |
-| [`learning/CONTEXT.md`](learning/CONTEXT.md) | The `/teach` sandbox: one folder per topic, retrieval practice, spaced review |
+| [`learning/CONTEXT.md`](learning/CONTEXT.md) | The `/teach` sandbox: eight lesson families (c, tooling, rust, kernel, os, ui, llm, sec) across the roadmap's six tracks, one folder per topic (syllabus, mission, sources, recall log), spaced review |
 | [`research/CONTEXT.md`](research/CONTEXT.md) | `/research` notes: one question each, cited to primary sources |
 | [`handoffs/CONTEXT.md`](handoffs/CONTEXT.md) | `/handoff` documents: continuity between context windows |
 
@@ -36,6 +37,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | [`.claude/settings.json`](.claude/settings.json) | Shared Claude Code settings: read-only allowlist, `.env` denies, hooks, auto-compaction off |
 | [`.claude/hooks/CONTEXT.md`](.claude/hooks/CONTEXT.md) | The two session-continuity hooks: 50% / 75% context thresholds and the compaction block |
 | [`.claude/skills/CONTEXT.md`](.claude/skills/CONTEXT.md) | The skill roster — `teach`, `handoff`, `research`, `wait-what` — and when each loads |
+| [`.claude/skills/teach/FAMILIES.md`](.claude/skills/teach/FAMILIES.md) | What to teach per family — c, rust, tooling, kernel, os, ui, llm, sec — and from which sources |
 | [`GAPS.md`](GAPS.md) | Register: active toolchain gaps, knowledge gaps, blocked milestones, open questions |
 | [`DEFERRED.md`](DEFERRED.md) | Register: topics parked for a later milestone or phase |
 | [`AGENTS.md`](AGENTS.md) | Entry shim for coding agents other than Claude Code |
@@ -68,7 +70,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | [`how-to/docs/CLI-TOOLING.md`](how-to/docs/CLI-TOOLING.md) | The commands used day to day and the scripts that wrap them |
 | [`how-to/docs/GUIDE-CRAFT.md`](how-to/docs/GUIDE-CRAFT.md) | How a guide or runbook in this repository is written and proved |
 | [`how-to/src/MACHINE-SETUP.md`](how-to/src/MACHINE-SETUP.md) | Setting up a machine to work in this repository |
-| [`how-to/src/HOST-MAINTENANCE.md`](how-to/src/HOST-MAINTENANCE.md) | Keeping the Ubuntu host healthy, via the sibling maintenance-scripts repository |
+| [`how-to/src/HOST-MAINTENANCE.md`](how-to/src/HOST-MAINTENANCE.md) | Keeping the Ubuntu host healthy, via the sibling repository [reboot-purge](https://github.com/SamBailey6194/reboot-purge) |
 
 ### Project-management guides (`project-management/docs/`)
 
@@ -89,10 +91,37 @@ the standards, the official books and manuals), then Context7, then web search �
 
 | Artefact | Purpose |
 | --- | --- |
-| [`project-management/src/01-ROADMAP/ROADMAP.md`](project-management/src/01-ROADMAP/ROADMAP.md) | **Owner** of the phases P1–P6 and their exit gates |
+| [`project-management/src/01-ROADMAP/ROADMAP.md`](project-management/src/01-ROADMAP/ROADMAP.md) | **Owner** of the phases of every track (P1–P6, U1–U3, L1–L6, S1–S3), their exit gates, the critical path, and the efficiency and security lenses |
 | [`project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md`](project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md) | The current milestone |
-| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001: C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin |
-| [`project-management/src/07-DISTRO-TIERS/TIER-MATRIX.md`](project-management/src/07-DISTRO-TIERS/TIER-MATRIX.md) | What separates the beginner, intermediate and experienced tiers |
+| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning decisions below |
+| [`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md`](project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md) | What separates the seven Syntek OS profiles, on one set of axes |
+
+**Maps** (`project-management/src/01-ROADMAP/`, Charting drafts): `MAP-KERNEL.md` (P4–P5) ·
+`MAP-SYNTEK-OS.md` (P6) · `MAP-UI.md` (U1–U3) · `MAP-LLM.md` (L1–L6) · `MAP-SECURITY.md` (S1–S3).
+
+**Syntek OS profiles** (`project-management/src/07-OS-PROFILES/`): `PROFILE-000-TEMPLATE.md` ·
+`PROFILE-BEGINNER.md` · `PROFILE-INTERMEDIATE.md` · `PROFILE-EXPERT.md` · `PROFILE-SERVER.md` ·
+`PROFILE-NAS.md` · `PROFILE-HOMELAB.md` · `PROFILE-ROUTER.md`.
+
+**Planning decisions of 27/09/2026** (`project-management/src/08-DECISIONS/`, one decision each):
+
+| ADR | Subject |
+| --- | --- |
+| `ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` | The widened mission and the kernel, Syntek OS, UI and LLM tracks |
+| `ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` | A downstream of upstream Linux, not a fork and not from scratch |
+| `ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` | Syntek OS built from scratch, derived from no other distribution |
+| `ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md` | Seven profiles on one base, build system and package set |
+| `ADR-MS001-SYNTEK-OS-DESKTOPS-REUSED-27-09-2026.md` | Existing desktop environments per profile |
+| `ADR-MS001-SYNTEK-OS-TOOLS-RUST-TUI-FIRST-27-09-2026.md` | Custom tools in Rust, TUI first |
+| `ADR-MS001-LLM-SKILLS-NOT-AGENTS-27-09-2026.md` | Markdown skills with progressive disclosure, not agent loops |
+| `ADR-MS001-LLM-EFFICIENCY-AND-SECURITY-FIRST-27-09-2026.md` | Budgets and a threat model on every LLM milestone |
+| `ADR-MS001-LLM-BASE-MODEL-PLUS-ADAPTERS-27-09-2026.md` | One base model with per-domain adapters |
+| `ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md` | Apache-2.0-only crates by documented per-crate exception |
+| `ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md` | gtk4-rs for the GUI lessons |
+| `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` | The security track and its authorised, isolated-lab rules |
+
+**Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
+every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.
 
 ---
 
@@ -112,6 +141,7 @@ order.
 | Verify (05–06) | [05 — Review](code/workflows/05-review/CONTEXT.md) · [06 — Memory check](code/workflows/06-memory-check/CONTEXT.md) |
 | Diagnose & improve (07–08) | [07 — Debug](code/workflows/07-debug/CONTEXT.md) · [08 — Refactor](code/workflows/08-refactor/CONTEXT.md) |
 | Planned — added at P4 | 09 — Kernel module |
+| Planned — added at L1, L2 and U1 | 10 — Python exercise (L1) · 11 — Profile and optimise (L2) · 12 — CUDA kernel (L2) · 13 — TUI app (U1) |
 
 ### How-to workflows (`how-to/workflows/`)
 
@@ -124,6 +154,7 @@ order.
 | Diagnose (05) | [05 — Debugging environment](how-to/workflows/05-debugging-environment/CONTEXT.md) |
 | Author (06) | [06 — Write a guide](how-to/workflows/06-write-a-guide/CONTEXT.md) |
 | Planned — added at P4 | 07 — Kernel source setup · 08 — Build and boot kernel |
+| Planned — added at L1–L2, P6 and L5 | 09 — GPU toolchain setup (L1–L2) · 10 — LFS build VM (P6) · 11 — Isolated network lab (P6) · 12 — Local model runtime (L5) |
 
 ### Project-management workflows (`project-management/workflows/`)
 
@@ -131,7 +162,7 @@ order.
 | --- | --- |
 | Index | [`project-management/workflows/CONTEXT.md`](project-management/workflows/CONTEXT.md) |
 | Plan (01–03) | [01 — Roadmap map](project-management/workflows/01-roadmap-map/CONTEXT.md) · [02 — Milestone creation](project-management/workflows/02-milestone-creation/CONTEXT.md) · [03 — Sprint planning](project-management/workflows/03-sprint-planning/CONTEXT.md) |
-| Specify (04–07) | [04 — Exercise design](project-management/workflows/04-exercise-design/CONTEXT.md) · [05 — Project spec](project-management/workflows/05-project-spec/CONTEXT.md) · [06 — Kernel spec](project-management/workflows/06-kernel-spec/CONTEXT.md) · [07 — Distro tier spec](project-management/workflows/07-distro-tier-spec/CONTEXT.md) |
+| Specify (04–07) | [04 — Exercise design](project-management/workflows/04-exercise-design/CONTEXT.md) · [05 — Project spec](project-management/workflows/05-project-spec/CONTEXT.md) · [06 — Kernel spec](project-management/workflows/06-kernel-spec/CONTEXT.md) · [07 — OS profile spec](project-management/workflows/07-os-profile-spec/CONTEXT.md) |
 | Decide & plan (08–09) | [08 — Decisions](project-management/workflows/08-decisions/CONTEXT.md) · [09 — Milestone plans](project-management/workflows/09-milestone-plans/CONTEXT.md) |
 | Build (10) | [10 — Study and build](project-management/workflows/10-study-and-build/CONTEXT.md) |
 | Record (11–13) | [11 — Verification](project-management/workflows/11-verification/CONTEXT.md) · [12 — Review and reflect](project-management/workflows/12-review-and-reflect/CONTEXT.md) · [13 — PR and merge](project-management/workflows/13-pr-and-merge/CONTEXT.md) |
@@ -152,7 +183,7 @@ interlock — no layer's `CONTEXT.md` restates it; they cite it.
 | `04-exercise-design` | `project-management/src/04-EXERCISES/` | `code/workflows/01-c-exercise/`, `code/workflows/03-rust-exercise/` |
 | `05-project-spec` | `project-management/src/05-PROJECTS/` | — |
 | `06-kernel-spec` | `project-management/src/06-KERNEL/` | The P4 how-to kernel workflows and `code/workflows/09-kernel-module/` (all planned — added at P4) |
-| `07-distro-tier-spec` | `project-management/src/07-DISTRO-TIERS/` | `research/` |
+| `07-os-profile-spec` | `project-management/src/07-OS-PROFILES/` | `research/` |
 | `08-decisions` | `project-management/src/08-DECISIONS/` | `research/` |
 | `09-milestone-plans` | `project-management/src/09-MILESTONE-PLANS/` | — |
 | `10-study-and-build` | `learning/` + `code/src/` | `.claude/skills/teach/SKILL.md`, `code/workflows/` 01–04 |
@@ -233,10 +264,10 @@ recorded once, in `project-management/REFERENCES.md`.
 - **markdownlint-cli2** — <https://github.com/DavidAnson/markdownlint-cli2> — the Markdown linter
   configured by `.markdownlint-cli2.jsonc`.
 
-## External — Kernel & distro
+## External — Kernel
 
 - **The Linux kernel documentation** — <https://docs.kernel.org/> — the primary source for all P4
-  and P5 work.
+  and P5 work, with the kernel tree's own `Documentation/`.
 - **Minimal requirements to compile the kernel** — <https://docs.kernel.org/process/changes.html>
   — the tool versions a kernel build needs (see `GAPS.md`).
 - **Kbuild** — <https://docs.kernel.org/kbuild/index.html> — Kconfig and the kernel build system.
@@ -251,18 +282,138 @@ recorded once, in `project-management/REFERENCES.md`.
   format and the Developer Certificate of Origin, for P5's patch series.
 - **kernel.org releases** — <https://www.kernel.org/category/releases.html> — mainline, stable and
   longterm, for choosing a kernel base.
+- **Kconfig language** — <https://docs.kernel.org/kbuild/kconfig-language.html> — the language the
+  per-profile configuration fragments are written against.
+- **Stable kernel rules** — <https://docs.kernel.org/process/stable-kernel-rules.html> — how
+  patches reach the -stable releases the downstream tree tracks.
+- **Reproducible kernel builds** — <https://docs.kernel.org/kbuild/reproducible-builds.html> — the
+  timestamp, user and host variables a reproducible kernel build pins.
+- **The kernel's CVE process** — <https://docs.kernel.org/process/cve.html> — how the kernel CNA
+  assigns CVEs; its records are in `vulns.git`
+  (`git ls-remote https://git.kernel.org/pub/scm/linux/security/vulns.git`, checked 27/09/2026).
+- **KSPP Recommended Settings** — <https://kspp.github.io/Recommended_Settings> — the hardening
+  baseline, measured with kernel-hardening-checker
+  (<https://github.com/a13xp0p0v/kernel-hardening-checker>).
+- **b4** — <https://b4.docs.kernel.org/> — preparing and sending patch series upstream.
+- **Tracing and locking** — ftrace (<https://docs.kernel.org/trace/ftrace.html>) and lockdep
+  (<https://docs.kernel.org/locking/lockdep-design.html>), for syscalls and locking bugs in QEMU.
+- **Rust in the kernel** — <https://docs.kernel.org/rust/index.html> — the in-tree Rust
+  documentation.
 - **QEMU documentation** — <https://www.qemu.org/docs/master/> — `qemu-system-x86_64`
   invocation (<https://www.qemu.org/docs/master/system/invocation.html>) and its gdb stub
   (<https://www.qemu.org/docs/master/system/gdb.html>).
 - **BusyBox** — <https://busybox.net/> — the minimal userland for the first initramfs.
-- **Linux From Scratch** — <https://www.linuxfromscratch.org/lfs/> — building a system from
-  source, one package at a time; Beyond LFS at <https://www.linuxfromscratch.org/blfs/>.
-- **Buildroot manual** — <https://buildroot.org/downloads/manual/manual.html> — a build system for
-  small, reproducible images.
-- **Yocto Project documentation** — <https://docs.yoctoproject.org/> — a layered build system for
-  custom distributions.
-- **Debootstrap** — <https://wiki.debian.org/Debootstrap> — bootstrapping a Debian-based root
-  filesystem. These last four are the candidates in `GAPS.md` → _Distro build approach undecided_.
+
+## External — Syntek OS
+
+- **Linux From Scratch 13.1-systemd** — <https://www.linuxfromscratch.org/lfs/view/stable-systemd/>
+  (published 01/09/2026) — the book the learning build follows; Beyond LFS 13.1, systemd edition,
+  at <https://www.linuxfromscratch.org/blfs/view/stable-systemd/> (03/09/2026). The System V book
+  stays at LFS 12.4 (<https://www.linuxfromscratch.org/lfs/view/stable/>) and is no longer updated
+  (<https://www.linuxfromscratch.org/news.html>): a historical reference only.
+- **Filesystem Hierarchy Standard 3.0** — <https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html>.
+- **Package managers studied** — pacman (<https://man.archlinux.org/man/pacman.8>), apk
+  (<https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper>) and xbps
+  (<https://docs.voidlinux.org/xbps/index.html>).
+- **Reproducible builds** — <https://reproducible-builds.org/>, its `SOURCE_DATE_EPOCH`
+  specification (<https://reproducible-builds.org/specs/source-date-epoch/>) and diffoscope
+  (<https://diffoscope.org/>).
+- **Signing and updates** — the TUF specification
+  (<https://theupdateframework.github.io/specification/latest/>) and minisign
+  (<https://jedisct1.github.io/minisign/>).
+- **Init and boot** — systemd (<https://systemd.io/>, manual pages at
+  <https://www.freedesktop.org/software/systemd/man/latest/>, including systemd-boot), runit
+  (<https://smarden.org/runit/>) and s6 (<https://skarnet.org/software/s6/>).
+- **Networking and storage** — nftables (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>),
+  WireGuard (<https://www.wireguard.com/>), Samba (<https://www.samba.org/samba/docs/>) and OpenZFS
+  (<https://openzfs.github.io/openzfs-docs/>; see `GAPS.md` for its licence).
+- **QEMU disk images** — <https://www.qemu.org/docs/master/system/images.html> — the images every
+  OS lesson runs on.
+- **Build systems as study references** — the Buildroot manual
+  (<https://buildroot.org/downloads/manual/manual.html>) and the Yocto Project documentation
+  (<https://docs.yoctoproject.org/>). Syntek OS is built from scratch, so these are read for ideas,
+  not adopted.
+
+## External — UI
+
+- **ratatui** — <https://ratatui.rs/> (API: <https://docs.rs/ratatui/latest/ratatui/>) and
+  **crossterm** — <https://docs.rs/crossterm/latest/crossterm/> — the TUI stack.
+- **tokio** — <https://tokio.rs/tokio/tutorial> — async Rust, and background work beside a render
+  loop.
+- **Yazi** — <https://github.com/sxyazi/yazi> — the terminal file manager whose architecture U2
+  studies.
+- **gtk4-rs** — <https://gtk-rs.org/gtk4-rs/stable/latest/book/> — the GUI toolkit of the lessons.
+- **zbus** — <https://docs.rs/zbus/latest/zbus/> and **polkit** —
+  <https://www.freedesktop.org/software/polkit/docs/latest/> — privilege separation for system
+  tools.
+- **Wayland** — <https://wayland.freedesktop.org/docs/html/> and The Wayland Book
+  (<https://wayland-book.com/>).
+- **Slint** — <https://slint.dev/> — the toolkit of the Syntek OS GUI products; studied here only,
+  and built in the Syntek OS GUI-tools repository.
+
+## External — LLM
+
+- **PyTorch 2.14** — <https://docs.pytorch.org/docs/2.14/> — including the serialization notes
+  (<https://docs.pytorch.org/docs/2.14/notes/serialization.html>) and automatic mixed precision
+  (<https://docs.pytorch.org/docs/2.14/amp.html>).
+- **NVIDIA** — the CUDA programming guide (<https://docs.nvidia.com/cuda/cuda-programming-guide/>),
+  the CUDA installation guide for Linux (<https://docs.nvidia.com/cuda/cuda-installation-guide-linux/>)
+  and the Turing architecture whitepaper
+  (<https://images.nvidia.com/aem-dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf>).
+- **Reference implementations** — llm.c, pinned at commit f1e2ace
+  (<https://github.com/karpathy/llm.c/tree/f1e2ace651495b74ae22d45d1723443fd00ecd3a>); nanochat
+  (<https://github.com/karpathy/nanochat>), its maintained successor; nanoGPT
+  (<https://github.com/karpathy/nanoGPT>), deprecated, for reading only; micrograd
+  (<https://github.com/karpathy/micrograd>). All MIT-licensed.
+- **Formats and runtimes** — safetensors (<https://github.com/safetensors/safetensors>, format docs
+  <https://huggingface.co/docs/safetensors/>); Hugging Face tokenizers
+  (<https://huggingface.co/docs/tokenizers/>); candle (<https://github.com/huggingface/candle>);
+  llama.cpp (<https://github.com/ggml-org/llama.cpp>) and the GGUF specification
+  (<https://github.com/ggml-org/ggml/blob/master/docs/gguf.md>); vLLM (<https://docs.vllm.ai/>);
+  ollama (<https://github.com/ollama/ollama>).
+- **Data** — The Stack v2 dataset card and its terms
+  (<https://huggingface.co/datasets/bigcode/the-stack-v2>), and The Stack v3 dataset card (ODC-By)
+  (<https://huggingface.co/datasets/HuggingFaceCode/stack-v3-train>); `llm-10` compares the two.
+- **LLM security** — the OWASP Top 10 for LLM Applications 2025 (<https://genai.owasp.org/llm-top-10/>),
+  whose IDs are this repository's citation key; its 2026 edition
+  (<https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/>, published 03/08/2026), which
+  re-ranks them — mapped in `learning/llm-18-secure-llm-systems/` lesson 01; the OWASP Top 10 for
+  Agentic Applications for 2026
+  (<https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/>, published
+  09/12/2025); the kernel's Landlock (<https://docs.kernel.org/userspace-api/landlock.html>) and
+  seccomp (<https://docs.kernel.org/userspace-api/seccomp_filter.html>) documentation.
+- **Papers, by arXiv ID** (abstract pages at `https://arxiv.org/abs/<id>`, each checked
+  27/09/2026) — Attention, 1706.03762; Kaplan scaling laws, 2001.08361; Chinchilla, 2203.15556;
+  FlashAttention, 2205.14135; multi-query attention, 1911.02150; grouped-query attention,
+  2305.13245; DeepSeek-V2 (latent attention), 2405.04434; sparsely-gated mixture of experts,
+  1701.06538; Switch Transformers, 2101.03961; LoRA, 2106.09685; QLoRA, 2305.14314;
+  PagedAttention, 2309.06180; speculative decoding, 2211.17192 and 2302.01318; fill-in-the-middle,
+  2207.14255; Codex and HumanEval, 2107.03374; retrieval-augmented generation, 2005.11401;
+  InstructGPT, 2203.02155; DPO, 2305.18290; StarCoder 2 and The Stack v2, 2402.19173; Adam,
+  1412.6980; AdamW, 1711.05101.
+
+## External — Security
+
+- **The law** — the UK Computer Misuse Act 1990
+  (<https://www.legislation.gov.uk/ukpga/1990/18/contents>).
+- **Method** — NIST SP 800-115, security testing (<https://csrc.nist.gov/pubs/sp/800/115/final>);
+  NIST SP 800-61 Rev. 3, incident response (<https://csrc.nist.gov/pubs/sp/800/61/r3/final>);
+  CVSS v4.0 (<https://www.first.org/cvss/v4-0/specification-document>); RFC 9116, security.txt
+  (<https://www.rfc-editor.org/rfc/rfc9116>).
+- **Weakness and attack catalogues** — MITRE CWE (<https://cwe.mitre.org/>) and ATT&CK
+  (<https://attack.mitre.org/>, Linux matrix at <https://attack.mitre.org/matrices/enterprise/linux/>).
+- **Web** — the OWASP Top 10 (<https://owasp.org/www-project-top-ten/>), the Web Security Testing
+  Guide (<https://owasp.org/www-project-web-security-testing-guide/>) and Juice Shop
+  (<https://owasp.org/www-project-juice-shop/>).
+- **Kernel hardening and integrity** — self-protection
+  (<https://docs.kernel.org/security/self-protection.html>) and dm-verity
+  (<https://docs.kernel.org/admin-guide/device-mapper/verity.html>).
+- **Detection** — the EICAR test file (<https://www.eicar.org/download-anti-malware-testfile/>),
+  ClamAV (<https://github.com/Cisco-Talos/clamav>), YARA (<https://yara.readthedocs.io/>) and AIDE
+  (<https://aide.github.io/>).
+- **Training platforms**, used under their own rules — OverTheWire
+  (<https://overthewire.org/wargames/>), pwn.college (<https://pwn.college/>) and picoCTF
+  (<https://picoctf.org/>).
 
 ## External — Process
 
@@ -283,7 +434,11 @@ recorded once, in `project-management/REFERENCES.md`.
 - **FSF — Various licenses and comments about them** —
   <https://www.gnu.org/licenses/license-list.html#apache2> — the FSF's statement that Apache-2.0 is
   not compatible with GPL version 2, which is why `code/src/rust/deny.toml` leaves it off the allow
-  list.
+  list; the same page lists the Boost Software License (`#boost`) as GPL-compatible and the CDDL
+  (`#CDDL`) as incompatible (read through the Internet Archive's copy on 27/09/2026, as gnu.org did
+  not answer).
+- **REUSE** — <https://reuse.software/> — licence and copyright information per file, alongside the
+  SPDX identifiers.
 - **EditorConfig** — <https://editorconfig.org/> — the format of `.editorconfig`.
 - **Claude Code — hooks reference** — <https://code.claude.com/docs/en/hooks> — the event
   semantics behind `.claude/hooks/`.

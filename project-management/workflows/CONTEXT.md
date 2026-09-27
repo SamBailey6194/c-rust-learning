@@ -79,7 +79,7 @@ project-management/workflows/
 ├── 04-exercise-design/         ← the milestone's exercise set (Exercises flag)
 ├── 05-project-spec/            ← a capstone project spec (Project flag)
 ├── 06-kernel-spec/             ← a kernel build or module plan for QEMU, then its record (Kernel flag)
-├── 07-distro-tier-spec/        ← a distro tier's axis values and hypotheses (Distro flag)
+├── 07-os-profile-spec/         ← a Syntek OS profile's axis values and hypotheses (OS flag)
 │   ── Decide & plan (08–09) ──
 ├── 08-decisions/               ← ADRs when choices surface; the per-milestone coherence check
 ├── 09-milestone-plans/         ← the plan the milestone is studied from
@@ -104,7 +104,7 @@ Every workflow folder holds exactly four files: `CONTEXT.md` · `CLAUDE.md`, `ST
 | `04-exercise-design/` | `specify` | Specify the exercise set: problems, constraints, expected I/O, tests |
 | `05-project-spec/` | `specify` | Specify a capstone project and slice it across milestones |
 | `06-kernel-spec/` | `specify` | Plan a kernel build or module for QEMU; afterwards, record what was built |
-| `07-distro-tier-spec/` | `specify` | Specify a distro tier as axis values and QEMU-testable hypotheses |
+| `07-os-profile-spec/` | `specify` | Specify a Syntek OS profile as axis values and QEMU-testable hypotheses |
 | `08-decisions/` | `decide-and-plan` | Record hard-to-reverse choices as ADRs; check the set still holds |
 | `09-milestone-plans/` | `decide-and-plan` | Write the plan the milestone is studied from |
 | `10-study-and-build/` | `build` | Learn the concept with `/teach`, then build the exercises test-first |

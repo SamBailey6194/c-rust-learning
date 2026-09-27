@@ -222,13 +222,16 @@ workflows that fetch, build and boot the kernel — `how-to/workflows/07-kernel-
 
 ```bash
 qemu-system-x86_64 -kernel <bzImage> -initrd <initramfs> \
-    -append "console=ttyS0 nokaslr" -nographic -s -S
+    -append "console=ttyS0 nokaslr" -nographic -gdb tcp:127.0.0.1:1234 -S
 ```
 
-- **`-s`** is shorthand for `-gdb tcp::1234`; **`-S`** freezes the CPU at start-up until gdb says `c`
-  (both from `qemu-system-x86_64 --help`, QEMU 8.2).
+- **`-gdb tcp:127.0.0.1:1234`** binds the gdb server to loopback only; **`-S`** freezes the CPU at
+  start-up until gdb says `c` (both from `qemu-system-x86_64 --help`, QEMU 8.2).
+- **Never bare `-s`.** It is shorthand for `-gdb tcp::1234`, and with no host given QEMU listens on
+  every interface (`0.0.0.0` and `[::]`, checked with `ss -ltn` on QEMU 8.2.2, 27/09/2026), which
+  hands control of the guest kernel to anyone who can reach the port.
 - In a second terminal: `gdb vmlinux` (the uncompressed kernel with symbols, from the build tree), then
-  `target remote :1234`, `break start_kernel`, `continue`.
+  `target remote 127.0.0.1:1234`, `break start_kernel`, `continue`.
 - The kernel's own guide, [Debugging kernel and modules via gdb](https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html),
   asks for a kernel built with debug information and `CONFIG_GDB_SCRIPTS`, with
   `CONFIG_DEBUG_INFO_REDUCED` off and `CONFIG_FRAME_POINTER` on where the architecture supports it, and

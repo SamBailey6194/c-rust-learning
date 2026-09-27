@@ -20,12 +20,12 @@ project-management/workflows/06-kernel-spec/
 
 **Entry condition: the milestone's `Kernel` flag is not `N/A`.** A milestone whose flag reads `N/A`
 skips this gate (`project-management/docs/planning/MILESTONES.md` → _The FLAGS table_). Kernel work
-starts at P4 and continues through the P5 per-tier configurations
+starts at P4 and continues through the P5 per-profile configurations
 (`project-management/src/01-ROADMAP/ROADMAP.md`).
 
 - **PLAN:** after `03-sprint-planning` admits the milestone and before `08-decisions` and
   `09-milestone-plans`: a first QEMU boot, a Kconfig fragment, an out-of-tree module, a patch series, a
-  tier configuration.
+  profile configuration.
 - **RECORD:** during `10-study-and-build`, once the build has run, to write the build record against the
   plan; `11-verification` then checks its evidence.
 
@@ -64,7 +64,7 @@ starts at P4 and continues through the P5 per-tier configurations
 
 - `project-management/docs/SAFETY-GUIDE.md` — why QEMU only, and what a kernel milestone plans for
 - `project-management/workflows/08-decisions/` — kernel base, bootloader and init-system ADRs
-- `project-management/workflows/07-distro-tier-spec/` — the tier specs a P5 configuration serves
+- `project-management/workflows/07-os-profile-spec/` — the profile specs a P5 configuration serves
 - `research/CONTEXT.md` — primary-source notes behind version and config choices
 - `how-to/workflows/CONTEXT.md` — where the kernel source-setup and build-and-boot workflows join
   (planned — added at P4)

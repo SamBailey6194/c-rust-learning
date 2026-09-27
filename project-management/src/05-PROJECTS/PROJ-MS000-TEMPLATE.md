@@ -9,8 +9,8 @@ solution** — design stays at the level of parts and responsibilities._
 | --- | --- |
 | **First milestone** | `MS###` — {short title} |
 | **All milestones** | {`MS###`, `MS###`, ... in build order} |
-| **Phase** | {P1 to P6} — `project-management/src/01-ROADMAP/ROADMAP.md` |
-| **Track** | {C / Rust / C + Rust} |
+| **Phase** | {P1–P6 / U1–U3 / L1–L6 / S1–S3} — `project-management/src/01-ROADMAP/ROADMAP.md` |
+| **Track** | {C / Rust / C + Rust / Kernel / OS / UI / LLM / Security} |
 | **Code location** | {`code/src/c/ms###-<kebab>/` and/or `code/src/rust/crates/ms###_<snake>/`} |
 | **Status** | {Draft / Ready / Done} |
 | **Date** | {DD/MM/YYYY} |
@@ -128,6 +128,30 @@ Explicitly **not required** for Done; each one is a candidate for a later milest
 | --- | --- | --- |
 | [EXAMPLE] Signal handling interacts badly with the pipeline code | medium | ship without Ctrl-C handling; add it as a stretch milestone |
 | {PLACEHOLDER} | {low / medium / high} | {PLACEHOLDER} |
+
+---
+
+## 8. Resource budget
+
+<!-- The Efficiency lens (project-management/src/01-ROADMAP/ROADMAP.md -> Cross-cutting lenses;
+     ADR-MS001-LLM-EFFICIENCY-AND-SECURITY-FIRST-27-09-2026.md). Each resource the project must stay
+     within and the tool that measures it. Required for a kernel-config, OS or LLM project; a
+     Foundation project with no measurable target writes "N/A — no resource target" with that reason.
+     11-verification records budget against measured in the milestone's 10-PROGRESS record. -->
+
+| Resource | Budget | Measured with |
+| --- | --- | --- |
+| [EXAMPLE] Peak heap | ≤ 64 MiB for the test corpus | `valgrind --tool=massif` / `/usr/bin/time -v` |
+| {PLACEHOLDER} | {the number it must stay within} | {the tool and command} |
+
+---
+
+## 9. Threat model
+
+<!-- The Security lens. One to three lines: assets, threats and mitigations, or the non-negotiable the
+     project runs under (.claude/CLAUDE.md Section 5). Never blank. -->
+
+{PLACEHOLDER — assets, threats, mitigations; or the rule that already covers this project.}
 
 ---
 

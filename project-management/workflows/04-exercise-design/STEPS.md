@@ -129,5 +129,5 @@ If this workflow created files or folders, or settled a new convention:
 ## Completion
 
 Run through `CHECKLIST.md` before marking this workflow complete. Next, as flagged:
-`project-management/workflows/05-project-spec/`, `06-kernel-spec/` or `07-distro-tier-spec/`, then
+`project-management/workflows/05-project-spec/`, `06-kernel-spec/` or `07-os-profile-spec/`, then
 `08-decisions/`.

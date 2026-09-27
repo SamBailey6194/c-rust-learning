@@ -17,7 +17,7 @@ environment debugging. `STEPS.md` files point into these tables by section name.
 | `how-to/CONTEXT.md` | Layer entry point: what lives here, when to read it, where else to go |
 | `how-to/docs/CONTEXT.md` | Reference-guide index |
 | `how-to/src/CONTEXT.md` | Runbook index |
-| `how-to/workflows/CONTEXT.md` | Workflow catalogue: six workflows in five families, two planned for P4 |
+| `how-to/workflows/CONTEXT.md` | Workflow catalogue: six workflows in five families, six more planned (P4, P6, L1–L2, L5) |
 | `how-to/workflows/01-toolchain-setup/CONTEXT.md` | When to set up a machine, and the two-toolchain model |
 | `how-to/workflows/02-daily-study-session/CONTEXT.md` | The session routine and why it starts with the handoff |
 | `how-to/workflows/03-quality-gates/CONTEXT.md` | The gate list (owner) and the exit-code contract |
@@ -41,7 +41,7 @@ environment debugging. `STEPS.md` files point into these tables by section name.
 
 | File | Purpose |
 | --- | --- |
-| `how-to/docs/TOOLCHAIN.md` | Owner of the recorded versions; prerequisites; P4 packages; toolchain troubleshooting |
+| `how-to/docs/TOOLCHAIN.md` | Owner of the recorded versions; prerequisites; P4, P6, L1–L2 and security-track packages; toolchain troubleshooting |
 | `how-to/docs/CLI-TOOLING.md` | Commands by intent (C build, memory, debugging, Rust, docs, P4 preview), raw then scripted |
 | `how-to/docs/GUIDE-CRAFT.md` | The reader, two homes, the six-part spine, command discipline, execute-to-verify |
 
@@ -70,7 +70,7 @@ environment debugging. `STEPS.md` files point into these tables by section name.
 | `project-management/docs/git/BRANCHES.md` | Branch names, settled before the first commit |
 | `project-management/docs/git/COMMITS.md` | Conventional Commits, scopes, staging by explicit path |
 | `project-management/docs/git/PR-AND-CHECKS.md` | Pull requests and the CI checks they wait for |
-| `project-management/src/01-ROADMAP/ROADMAP.md` | The phases P1 to P6, and when P4 material arrives |
+| `project-management/src/01-ROADMAP/ROADMAP.md` | The phases of every track, and when each track's material arrives |
 | `project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md` | The current milestone, evidenced by workflow 01 |
 | `project-management/src/03-STUDY-SPRINTS/` | Current study sprint: where today's unit comes from |
 | `project-management/src/09-MILESTONE-PLANS/` | Milestone plans, when no sprint is open |
@@ -140,6 +140,23 @@ environment debugging. `STEPS.md` files point into these tables by section name.
 | [QEMU invocation](https://www.qemu.org/docs/master/system/invocation.html) | `-kernel`, `-initrd`, `-append`, `-nographic` |
 | [QEMU GDB usage](https://www.qemu.org/docs/master/system/gdb.html) | The gdb stub: `-s` and `-S` |
 | [BusyBox](https://busybox.net/) | The single-binary userland for the initramfs |
+
+---
+
+## External — Later tracks (P6, L1–L2, security)
+
+| Reference | Description |
+| --- | --- |
+| [LFS 13.1-systemd — host system requirements](https://www.linuxfromscratch.org/lfs/view/stable-systemd/chapter02/hostreqs.html) | What the LFS build VM's own system needs (Section 2.2) |
+| [LFS 13.1-systemd — creating a new partition](https://www.linuxfromscratch.org/lfs/view/stable-systemd/chapter02/creatingpartition.html) | How much disk the build VM needs (Section 2.4) |
+| [QEMU disk images](https://www.qemu.org/docs/master/system/images.html) | qcow2 images, backing files and snapshots for the VMs |
+| [libvirt documentation](https://libvirt.org/docs.html) | Virtual networks and VMs for the isolated labs |
+| [uv](https://docs.astral.sh/uv/) | Per-project Python environments and interpreter pins |
+| [PyTorch — get started locally](https://pytorch.org/get-started/locally/) | Choosing and installing a PyTorch build |
+| [NVIDIA CUDA installation guide for Linux](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/) | Installing a CUDA toolkit beside the driver |
+| [NVIDIA — GPU performance counter permissions](https://developer.nvidia.com/nvidia-development-tools-solutions-err_nvgpuctrperm-permission-issue-performance-counters) | `NVreg_RestrictProfilingToAdminUsers` and how counter access is granted |
+| [Perf events and tool security](https://docs.kernel.org/admin-guide/perf-security.html) | Who may use `perf`, and `CAP_PERFMON` |
+| [Kernel sysctl — perf_event_paranoid](https://docs.kernel.org/admin-guide/sysctl/kernel.html) | The levels `kernel.perf_event_paranoid` takes |
 
 ---
 

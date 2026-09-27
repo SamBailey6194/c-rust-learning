@@ -26,8 +26,8 @@ diagnose (`05`), author (`06`) — each a four-file procedure for one recurring 
 
 - **Keep the four-file shape.** Every workflow folder holds exactly `CONTEXT.md`, `CLAUDE.md`, `STEPS.md`
   and `CHECKLIST.md`; the two execution files do different jobs and neither replaces the other.
-- **Append, never renumber.** A new workflow takes the next free number (07 and 08 are reserved for the
-  P4 kernel lab); an existing number never changes.
+- **Append, never renumber.** A new workflow takes the next free number (07 to 12 are reserved for the
+  planned workflows listed in `CONTEXT.md`); an existing number never changes.
 - **Respect the hard gates.** Branch naming (`project-management/docs/git/BRANCHES.md`) is settled before
   the first commit in any workflow that commits.
 - **Teach the raw command, then name the script.** Steps show the `gcc`/`make`/`cargo` command first and

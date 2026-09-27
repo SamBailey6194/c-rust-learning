@@ -55,7 +55,7 @@ project-management/workflows/09-milestone-plans/
 
 - `project-management/src/02-MILESTONES/` — the milestone and its mastery criteria
 - `project-management/src/03-STUDY-SPRINTS/` — the sprint the milestone sits in
-- `project-management/src/04-EXERCISES/` · `05-PROJECTS/` · `06-KERNEL/` · `07-DISTRO-TIERS/` — the
+- `project-management/src/04-EXERCISES/` · `05-PROJECTS/` · `06-KERNEL/` · `07-OS-PROFILES/` — the
   specs the plan sequences
 - `project-management/src/08-DECISIONS/` — the ADRs the plan works under
 - `code/docs/BUILD.md` — the make targets and flags the verification commands call

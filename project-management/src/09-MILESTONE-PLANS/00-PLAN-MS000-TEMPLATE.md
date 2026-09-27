@@ -8,7 +8,7 @@ before any study starts._
 | Field | Value |
 | --- | --- |
 | **Milestone** | MS### — {title} · `project-management/src/02-MILESTONES/MS###-{TITLE}.md` |
-| **Phase · Track** | P{N} — {phase name} · {C / Rust / Kernel / Distro} (`project-management/src/01-ROADMAP/ROADMAP.md`) |
+| **Phase · Track** | {P1–P6 / U1–U3 / L1–L6 / S1–S3} — {phase name} · {C / Rust / Kernel / OS / UI / LLM / Security} (`project-management/src/01-ROADMAP/ROADMAP.md`) |
 | **Sprint** | `project-management/src/03-STUDY-SPRINTS/SPRINT-##.md` |
 | **Exec-order** | {NN} — this milestone's position in the build order of the whole roadmap |
 | **Branch** | `ms###/{short-kebab}` |

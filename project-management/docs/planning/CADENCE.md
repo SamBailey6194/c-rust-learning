@@ -119,7 +119,7 @@ apart the first time one is tuned.
 - It cleared `02-milestone-creation`: mastery criteria written, every flag filled or `N/A`
 - It is admitted to the open sprint (`03-sprint-planning`)
 - Every spec its flags call for exists under `project-management/src/04-EXERCISES/` to
-  `project-management/src/07-DISTRO-TIERS/`
+  `project-management/src/07-OS-PROFILES/`
 - `08-decisions` confirmed that the ADRs it relies on still hold
 - Its plan exists in `project-management/src/09-MILESTONE-PLANS/`
 - Every milestone it depends on is `Completed`

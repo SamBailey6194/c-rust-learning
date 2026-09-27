@@ -1,8 +1,12 @@
 # Contributing
 
 Thanks for looking. c-rust-learning is a **personal learning repository** — one person working
-through C, then Rust, then kernel and distro building, in public. That shapes what kind of help
-is useful.
+through C and Rust, then a downstream Linux kernel, the Syntek OS distribution and its tools, and a
+small language model, in public. That shapes what kind of help is useful.
+
+The Syntek OS tools that take outside contributions will each live in a repository of their own,
+with its own contribution guide, once their build starts; this repository keeps the lessons and the
+learner's own exercises.
 
 ## Welcome
 

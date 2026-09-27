@@ -31,12 +31,13 @@ Every milestone is a copy of `project-management/src/02-MILESTONES/MS000-TEMPLAT
 
 | Field | What it holds |
 | --- | --- |
-| **Track** | `C`, `Rust`, `Kernel` or `Distro`; a milestone that genuinely spans two (a toolchain or FFI milestone) names both, as `C + Rust` |
-| **Phase** | Exactly one of `P1`–`P6`, as defined in `project-management/src/01-ROADMAP/ROADMAP.md` |
+| **Track** | `C`, `Rust`, `Kernel`, `OS`, `UI`, `LLM` or `Security`; a milestone that genuinely spans two (a toolchain or FFI milestone) names both, as `C + Rust` |
+| **Phase** | Exactly one of the phases in `project-management/src/01-ROADMAP/ROADMAP.md` — a Foundation/Kernel/OS phase (`P1`–`P6`) or a side-track phase (`U1`–`U3`, `L1`–`L6`, `S1`–`S3`) |
 | **Status** | One value from _Statuses_ below; a new milestone starts `Open` |
 | **Learning story** | `As a learner, I want to [skill or concept], so that [what it unlocks next].` |
 | **Why this matters** | Two or three sentences: where this sits on the road to the phase exit gate |
 | **FLAGS** | The learning-gate table below, every row filled or `N/A` |
+| **Threat model** | One to three lines: assets, threats and mitigations, or the non-negotiable the milestone runs under (the Security lens; `project-management/src/01-ROADMAP/ROADMAP.md` → Cross-cutting lenses) |
 | **Mastery Criteria** | Gherkin scenarios naming real commands (next section) |
 | **MoSCoW · Points** | Priority and Fibonacci estimate (sections below) |
 | **Dependencies** | Milestones that must be `Completed` first, each with its reason |
@@ -96,25 +97,47 @@ the gate closes.
 | **Exercises** | `04-exercise-design` → `project-management/src/04-EXERCISES/` | `C: 5 exercises, recall → extend` |
 | **Project** | `05-project-spec` → `project-management/src/05-PROJECTS/` | `own malloc, part A: free list` |
 | **Kernel** | `06-kernel-spec` → `project-management/src/06-KERNEL/` | `out-of-tree module, load and unload in QEMU` |
-| **Distro** | `07-distro-tier-spec` → `project-management/src/07-DISTRO-TIERS/` | `beginner tier: init-system hypothesis` |
+| **OS** | `07-os-profile-spec` → `project-management/src/07-OS-PROFILES/` | `server profile: firewall-default hypothesis` |
 | **Tests** | `11-verification` | `make -C code/src/c/ms007-dynamic-array test` · `cargo test` |
 | **Memory** | `11-verification` | `make -C <exercise> san` + `make -C <exercise> memcheck` (C); FFI crates run both |
 | **Debugger** | `10-study-and-build`, evidenced at `11` | `gdb: watch the buffer move across realloc` |
 | **Lint** | `11-verification` | `make -C <exercise> lint` (gcc `-fanalyzer`) · `cargo fmt --check` + `cargo clippy --all-targets -- -D warnings` |
 | **QEMU** | `11-verification` | `qemu-system-x86_64` boot to a busybox shell |
+| **Budget** | `11-verification` | `VRAM peak ≤ 9 GiB — torch.cuda.max_memory_allocated`; `bzImage ≤ N MiB — ls -l` |
 | **Notes** | `10-study-and-build` (`.claude/skills/teach/SKILL.md`) | a `learning/<track>-NN-<topic>/` note |
 | **Research** | any spec or decision step (`.claude/skills/research/SKILL.md`) | a `research/<SCREAMING-KEBAB-TOPIC>.md` note |
+
+The **Budget** flag is the Efficiency lens's milestone-level home
+(`project-management/src/01-ROADMAP/ROADMAP.md` → Cross-cutting lenses;
+`project-management/src/08-DECISIONS/ADR-MS001-LLM-EFFICIENCY-AND-SECURITY-FIRST-27-09-2026.md`). It
+names each resource the milestone must stay within and the tool that measures it (`11-verification`
+records budget against measured in `project-management/src/10-PROGRESS/`). **`N/A` needs a reason and
+is not allowed for a kernel-config, OS or LLM milestone**, because those always have a resource target
+(image size, boot time, VRAM peak, throughput); a Foundation milestone that allocates no measurable
+budget may read `N/A — no resource target` with that reason.
 
 Three rules follow, and each closes a way the mechanism fails quietly:
 
 - **A blank row is not `N/A`.** `N/A` is a decision with a reason; a blank is an unanswered question
-  that skips a gate without anyone choosing to. All eleven rows are filled or the milestone is not
+  that skips a gate without anyone choosing to. All twelve rows are filled or the milestone is not
   written.
 - **The flag is a manifest, never the design.** It says which gates run and gives them a starting
   point. Treating it as the design and skipping the gate is the failure this table invites.
 - **Downstream checklists read the flag.** Any checklist box that demands a gate's artefact is
   written "for a milestone whose <flag> is not `N/A`", so a milestone that correctly skipped the gate
   can still tick it honestly.
+
+---
+
+## The Threat model section
+
+Every milestone carries a `## Threat model` section of one to three lines — the Security lens's
+milestone-level home (`project-management/src/01-ROADMAP/ROADMAP.md` → Cross-cutting lenses). It names
+the assets in play, the threats to them and the mitigations, **or** the non-negotiable the milestone
+runs under (`.claude/CLAUDE.md` Section 5) when the milestone raises no threat of its own. A
+toolchain-smoke milestone might read "a gate that could not run is not a pass"; an LLM milestone names
+the OWASP LLM risks it touches and how they are contained. It is never blank: a milestone with nothing
+to say about security says which rule already covers it.
 
 ---
 
@@ -188,8 +211,8 @@ owned by their folder and never written on a milestone's `**Status:**` line: map
 (`project-management/src/13-BUGS/CLAUDE.md`), a review's verdict
 (`project-management/src/11-REVIEWS/CLAUDE.md`), exercise and project spec status
 (`project-management/src/04-EXERCISES/CLAUDE.md`, `project-management/src/05-PROJECTS/CLAUDE.md`), kernel
-plan and record status (`project-management/src/06-KERNEL/CLAUDE.md`) and tier status
-(`project-management/src/07-DISTRO-TIERS/CLAUDE.md`). Each folder owns its own words; this section owns
+plan and record status (`project-management/src/06-KERNEL/CLAUDE.md`) and profile status
+(`project-management/src/07-OS-PROFILES/CLAUDE.md`). Each folder owns its own words; this section owns
 only the milestone's.
 
 ---

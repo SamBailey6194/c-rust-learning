@@ -134,5 +134,5 @@ If this workflow created files or folders, or settled a new convention:
 ## Completion
 
 Run through `CHECKLIST.md` before marking this workflow complete. Next, as the milestone's flags
-require: `project-management/workflows/04-exercise-design/` to `07-distro-tier-spec/`, then
+require: `project-management/workflows/04-exercise-design/` to `07-os-profile-spec/`, then
 `08-decisions/`.

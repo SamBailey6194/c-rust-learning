@@ -4,7 +4,8 @@
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 The repo's own Claude Code skills: four session mechanics that shape how a study session runs,
-rather than what gets built. Each skill is one folder holding one `SKILL.md` in the
+rather than what gets built. Each skill is one folder holding a `SKILL.md` (and, where it outgrew
+one file, a sub-document beside it) in the
 [Agent Skills format](https://agentskills.io/specification), reached either by Sam typing
 `/<name>` or by Claude matching the work against the skill's `description`. This file is the
 roster and the only when-to-load table; the authoring rules are in `.claude/skills/CLAUDE.md`.
@@ -15,7 +16,8 @@ roster and the only when-to-load table; the authoring rules are in `.claude/skil
 .claude/skills/
 ├── CONTEXT.md · CLAUDE.md   ← this roster and table · the skill-authoring rules
 ├── teach/                   ← /teach <topic>: one lesson, mission → level → sources → recall + build → review
-│   └── SKILL.md             ← the six-step loop and the MISSION, RESOURCES and PROGRESS formats
+│   ├── SKILL.md             ← the six-step loop and the SYLLABUS, MISSION, RESOURCES and PROGRESS formats
+│   └── FAMILIES.md          ← what to teach per family (c · rust · tooling · kernel · os · ui · llm · sec)
 ├── wait-what/               ← /wait-what [level]: the last explanation missed, so re-pitch it
 │   └── SKILL.md             ← the levels, the re-pitch steps and the teaching detour
 ├── research/                ← /research: one question, primary sources, a cited note in research/
@@ -28,9 +30,9 @@ roster and the only when-to-load table; the authoring rules are in `.claude/skil
 
 | Skill | Load when | Writes to |
 | --- | --- | --- |
-| `teach` | Sam types `/teach <topic>`, asks to learn, practise or revise a C, Rust, kernel or tooling concept, or a topic's `PROGRESS.md` has a review due | `learning/<track>-NN-<topic>/`; Sam's code in `code/src/` |
+| `teach` | Sam types `/teach <topic>`, asks to learn, practise or revise a C, Rust, kernel, OS, TUI/GUI, LLM, security or tooling concept, or a topic's `PROGRESS.md` has a review due | `learning/<track>-NN-<topic>/`; Sam's code in `code/src/` |
 | `wait-what` | Sam types `/wait-what`, optionally with a level: the last explanation did not land. User-invoked only | nothing; a detour handoff is written by `handoff` |
-| `research` | Sam types `/research`, or a decision (an ADR, a TIER spec, a kernel spec, a contested lesson source) needs synthesis across primary sources | `research/<SCREAMING-KEBAB-TOPIC>.md` |
+| `research` | Sam types `/research`, or a decision (an ADR, an OS profile spec, a kernel spec, a contested lesson source) needs synthesis across primary sources | `research/<SCREAMING-KEBAB-TOPIC>.md` |
 | `handoff` | Sam types `/handoff`, a hook reports the context window filling, the day ends, or other work takes over mid-task | `handoffs/HANDOFF-<SCREAMING-KEBAB>-DD-MM-YYYY.md` |
 
 ## How the four connect
@@ -40,8 +42,8 @@ roster and the only when-to-load table; the authoring rules are in `.claude/skil
 - **An explanation misses** → `/wait-what` re-pitches it; a knowledge gap becomes a
   `HANDOFF-TEACH-<TOPIC>` handoff and a `/teach` session.
 - **A question needs a decision** → `/research` writes a note that feeds an ADR
-  (`project-management/workflows/08-decisions/`), a TIER spec
-  (`project-management/workflows/07-distro-tier-spec/`) or a lesson's `RESOURCES.md`.
+  (`project-management/workflows/08-decisions/`), an OS profile spec
+  (`project-management/workflows/07-os-profile-spec/`) or a lesson's `RESOURCES.md`.
 - **A session ends before its work does** → `/handoff` writes the bridge and stops.
 
 Every workflow `STEPS.md` and `CHECKLIST.md` names its skills in a `skills:` frontmatter list drawn

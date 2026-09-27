@@ -18,7 +18,7 @@ how-to/
 ├── REFERENCES.md                ← internal and external reference register (tables only)
 ├── docs/                        ← reference guides, read in fragments (≤ 300 cloc lines each)
 │   ├── CONTEXT.md · CLAUDE.md
-│   ├── TOOLCHAIN.md             ← owner of toolchain versions; prerequisites; troubleshooting
+│   ├── TOOLCHAIN.md             ← owner of toolchain versions; prerequisites per phase; troubleshooting
 │   ├── CLI-TOOLING.md           ← every command by intent, raw first, then the script
 │   └── GUIDE-CRAFT.md           ← how a guide here is written: reader, homes, spine, discipline
 ├── src/                         ← long-form runbooks, executed top to bottom (length-exempt)
@@ -40,8 +40,10 @@ how-to/
     └── 06-write-a-guide/        ← add a reference or runbook, run it, index it
 ```
 
-Each `how-to/workflows/NN-…/` folder carries `CONTEXT.md`, `CLAUDE.md`, `STEPS.md` and `CHECKLIST.md`. Two more
-workflows, `07-kernel-source-setup` and `08-build-and-boot-kernel`, are planned and added at P4.
+Each `how-to/workflows/NN-…/` folder carries `CONTEXT.md`, `CLAUDE.md`, `STEPS.md` and `CHECKLIST.md`. Six more
+are planned, each added when its phase opens: `07-kernel-source-setup` and `08-build-and-boot-kernel` (P4),
+`09-gpu-toolchain-setup` (L1–L2), `10-lfs-build-vm` and `11-isolated-network-lab` (P6) and
+`12-local-model-runtime` (L5).
 
 ## When to read this
 
@@ -76,6 +78,8 @@ workflows, `07-kernel-source-setup` and `08-build-and-boot-kernel`, are planned 
 
 - `REFERENCES.md` — the root index of every layer, guide and workflow
 - `how-to/REFERENCES.md` — this layer's own register, internal and external
-- `.claude/CLAUDE.md` — the non-negotiables, including the kernel safety rule (QEMU only)
+- `.claude/CLAUDE.md` — the non-negotiables, including the kernel safety rule (QEMU only), VM-only OS
+  images and isolated labs, and no `sudo` by Claude
 - `code/src/scripts/CONTEXT.md` — the scripts every workflow here runs
-- `project-management/src/01-ROADMAP/ROADMAP.md` — the phases that decide when the P4 material arrives
+- `project-management/src/01-ROADMAP/ROADMAP.md` — the phases that decide when the P4, P6, L1–L2 and L5
+  material arrives

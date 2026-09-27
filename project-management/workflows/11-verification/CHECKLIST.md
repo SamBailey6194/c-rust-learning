@@ -58,6 +58,8 @@ skills: []
       and a transcript excerpt
 - [ ] For a milestone whose QEMU flag is not `N/A`: the boot ran in QEMU and the proving console line is
       captured
+- [ ] For a milestone whose Budget flag is not `N/A`: the measurement ran and its value against budget is
+      recorded in section 2.7 (a value over budget fails the milestone)
 
 ### Step 8 — Run the explain-back scenario, then the full gate suite
 
@@ -82,7 +84,7 @@ skills: []
 - [ ] The milestone's Status matches the outcome: `Verifying`, `In Progress` or `Blocked`
 - [ ] Nothing was set to `Completed` in this workflow
 - [ ] On a pass: the `KERNEL-IMPL` record is `Verified`, the cited `EX-` (and last-milestone `PROJ-`) spec
-      is `Done`, and at P6 each passing tier is `Verified`
+      is `Done`, and at P6 each passing profile is `Verified`
 
 ### Step 11 — Commit by explicit path
 

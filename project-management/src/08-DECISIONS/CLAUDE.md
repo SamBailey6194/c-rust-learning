@@ -3,8 +3,8 @@
 # CLAUDE.md — project-management/src/08-DECISIONS/
 
 Read order: `.claude/CLAUDE.md` → `.claude/MEMORY.md` → this folder's `CONTEXT.md` (the ADR listing,
-what a record holds, the five scaffold defaults — imported above) → this file →
-`project-management/workflows/08-decisions/STEPS.md`.
+what a record holds, the scaffold defaults and the planning-conversation set — imported above) → this
+file → `project-management/workflows/08-decisions/STEPS.md`.
 
 ## Purpose (one line)
 
@@ -35,8 +35,9 @@ arguing its context, options, decision and consequences with cited sources.
   later, or a change of mind is a new ADR that supersedes the old one.
 - **Argue here; enforce in the guide.** An ADR explains why; the rule itself lives in its owning file
   (`code/docs/BUILD.md`, `code/docs/C-CODING-PRINCIPLES.md`, `code/docs/TESTING.md`,
-  `code/docs/RUST-CODING-PRINCIPLES.md`, `how-to/docs/TOOLCHAIN.md`). A record that states a rule
-  without arguing it belongs in the guide instead.
+  `code/docs/RUST-CODING-PRINCIPLES.md`, `how-to/docs/TOOLCHAIN.md`, `code/src/rust/deny.toml`,
+  `project-management/src/01-ROADMAP/ROADMAP.md`, `.claude/CLAUDE.md` Section 5). A record that states
+  a rule without arguing it belongs in the guide instead.
 - **Anchor every ADR to a milestone.** The `MS###` is the milestone whose work surfaced the choice; a
   decision invented in the abstract has no evidence behind it.
 - **Check facts on the day, and say when you could not.** Version support moves faster than memory:

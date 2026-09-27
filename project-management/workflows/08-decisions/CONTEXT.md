@@ -24,9 +24,13 @@ project-management/workflows/08-decisions/
 - **When an Accepted decision needs to change.** The change is a new ADR that supersedes the old one.
 
 The five seed ADRs (C17, Linux kernel coding style, GNU make, `check.h`, Rust edition 2024 with a pinned
-toolchain) were accepted with the scaffold on 27/09/2026. Decisions still ahead include the kernel base
-(mainline or LTS), Rust-for-Linux feasibility (blocked until clang/LLVM is installed), bootloader, init
-system, distro base and package manager.
+toolchain) were accepted with the scaffold on 27/09/2026, and twelve more were written the same day from
+Sam's planning conversation (the roadmap tracks, the downstream kernel, Syntek OS and its profiles and
+tools, the LLM, the crate licences, the GUI toolkit and the security track —
+`project-management/src/08-DECISIONS/CONTEXT.md` → The planning-conversation set). Decisions still ahead
+include each profile's kernel line (longterm or stable), Rust-for-Linux feasibility (blocked until
+clang/LLVM is installed), bootloader, Syntek OS's own init system, the package format and signing
+scheme, and each profile's hardware.
 
 ## Key concepts
 
@@ -62,7 +66,7 @@ system, distro base and package manager.
 - `project-management/src/08-DECISIONS/ADR-MS001-C-STANDARD-C17-27-09-2026.md` — a seed ADR that names
   the condition for revisiting it (complete C23 support in gcc), which is when a superseding ADR is due
 - `research/CONTEXT.md` — how a research note is written and named
-- `project-management/workflows/07-distro-tier-spec/` — upstream: tier specs surface init, package-manager
-  and distro-base decisions
+- `project-management/workflows/07-os-profile-spec/` — upstream: profile specs surface init,
+  package-manager and storage decisions
 - `project-management/workflows/09-milestone-plans/` — downstream: the plan cites the settled ADR set
 - `GAPS.md` — where a decision blocked on a missing tool or unanswered question is recorded

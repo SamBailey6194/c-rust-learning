@@ -3,9 +3,9 @@
 **Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
-Six workflows in five families: set up, run, maintain, diagnose and author. Like `code/workflows/`, this
-is a **catalogue entered by task type**, not a sequence: the number is a stable identifier and a shelf
-position, nothing more. Each workflow is the operational procedure for one recurring job on this
+Six workflows in five families: set up, run, maintain, diagnose and author, with six more planned. Like
+`code/workflows/`, this is a **catalogue entered by task type**, not a sequence: the number is a stable
+identifier and a shelf position, nothing more. Each workflow is the operational procedure for one recurring job on this
 machine, from a bare Ubuntu install to a guide that documents it.
 
 ## Directory Tree
@@ -67,15 +67,19 @@ Every workflow folder carries `CONTEXT.md` (when to use), `CLAUDE.md` (operating
 | --- | --- |
 | `06-write-a-guide/` | Write or restructure a guide in `how-to/docs/` or `how-to/src/`, run it, index it |
 
-### Planned — kernel lab (07–08, added at P4)
+### Planned — appended when their phase opens (07–12)
 
-These are not created yet; they are appended when P4 (kernel internals) opens, per
+These are not created yet; each is appended when its phase opens, per
 `project-management/src/01-ROADMAP/ROADMAP.md`.
 
-| Workflow (planned) | Purpose |
-| --- | --- |
-| `07-kernel-source-setup/` | Fetch a pinned kernel tree outside the repository and set up an out-of-tree build directory |
-| `08-build-and-boot-kernel/` | Configure, build, pack a busybox initramfs and boot the kernel in QEMU, gdb attached |
+| Workflow (planned) | Purpose | Added at |
+| --- | --- | --- |
+| `07-kernel-source-setup/` | Fetch a pinned kernel tree outside the repository and set up an out-of-tree build directory | P4 |
+| `08-build-and-boot-kernel/` | Configure, build, pack a busybox initramfs and boot the kernel in QEMU, gdb attached | P4 |
+| `09-gpu-toolchain-setup/` | Install and record the GPU toolchain for this machine's RTX 2080 Ti: a per-project PyTorch through uv, then the CUDA toolkit and profilers | L1–L2 |
+| `10-lfs-build-vm/` | Create the VM and disk image the LFS build runs in, with a dedicated user and snapshots, kept off the host's own disks | P6 |
+| `11-isolated-network-lab/` | Build a virtual network with no route to the home LAN, and prove it, for the router and security labs | P6 (router) |
+| `12-local-model-runtime/` | Run and measure a local model server — load time, tokens per second, RAM and VRAM — for the inference and skills lessons | L5 |
 
 ## Boundaries worth knowing
 
@@ -94,7 +98,7 @@ Read a workflow's `CONTEXT.md` first; enter its `STEPS.md` when the task calls f
 
 A new workflow is appended with the next free number and grouped by editing the family tables above;
 existing numbers stay fixed. A stale number in a cross-reference is a silent routing failure, which is why
-the planned kernel workflows already have theirs.
+the planned workflows already have theirs.
 
 ## Cross-references
 
@@ -102,4 +106,4 @@ the planned kernel workflows already have theirs.
 - `how-to/REFERENCES.md` → **Internal → Steps & checklists** — every `STEPS.md` in one table
 - `code/workflows/CONTEXT.md` — the build, verify and debug workflows for code itself
 - `project-management/workflows/CONTEXT.md` — planning, verification and pull-request workflows
-- `project-management/src/01-ROADMAP/ROADMAP.md` — the phases that decide when 07 and 08 arrive
+- `project-management/src/01-ROADMAP/ROADMAP.md` — the phases that decide when 07 to 12 arrive

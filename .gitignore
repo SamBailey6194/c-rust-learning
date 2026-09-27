@@ -62,6 +62,26 @@ modules.order
 *.iso
 initramfs*.cpio*
 
+# ── Models, Python and profiler output (LLM and OS tracks) ────────────────────
+# Model weights and checkpoints are large and, for a downloaded model, someone else's
+# licensed work; a pickle checkpoint can also carry code. Datasets and LFS source
+# tarballs are fetched and built outside git (.claude/CLAUDE.md Section 5). Python's
+# virtual environments and caches are regenerated per machine. perf, Nsight Systems and
+# Nsight Compute write profiles that record this machine's paths and hardware.
+*.safetensors
+*.gguf
+*.pt
+*.pth
+*.ckpt
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+perf.data*
+*.nsys-rep
+*.ncu-rep
+
 # ── Editors and operating systems ─────────────────────────────────────────────
 # Per-person editor state and swap files; the shared settings are .editorconfig.
 .vscode/

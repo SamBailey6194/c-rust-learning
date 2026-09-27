@@ -4,11 +4,11 @@
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 The evidence layer beneath decisions. Each note answers one question (a C standard choice, a
-warning-flag set, a kernel configuration baseline, a distro build system) against primary sources,
-with a citation on every claim, and feeds something that acts on it: an ADR in
-`project-management/src/08-DECISIONS/`, a distro tier spec in `project-management/src/07-DISTRO-TIERS/`,
-a kernel spec in `project-management/src/06-KERNEL/`, or a learning topic's `RESOURCES.md`. The
-`research` skill writes every note.
+warning-flag set, a kernel configuration baseline, an init system for Syntek OS, a crate licence)
+against primary sources, with a citation on every claim, and feeds something that acts on it: an
+ADR in `project-management/src/08-DECISIONS/`, a Syntek OS profile spec in
+`project-management/src/07-OS-PROFILES/`, a kernel spec in `project-management/src/06-KERNEL/`, or
+a learning topic's `RESOURCES.md`. The `research` skill writes every note.
 
 ## Directory Tree
 
@@ -33,12 +33,25 @@ changes before the planned revisit. A `GCC-WARNING-FLAG-SET.md` note would trace
 Before P4, a `RUST-FOR-LINUX-STATUS.md` note would establish what the kernel's Rust support covers
 at the kernel version the repo pins, and what toolchain it needs (the host has no clang or bindgen
 yet; `how-to/docs/TOOLCHAIN.md`). A `KERNEL-CONFIG-BASELINE-TINYCONFIG-VS-DEFCONFIG.md` note would
-choose the starting configuration the per-tier fragments build on.
+choose the starting configuration the per-profile fragments build on, and
+`LTS-VS-STABLE-PER-PROFILE.md` which kernel line each Syntek OS profile tracks — the follow-on the
+downstream-kernel ADR names.
 
-Before P6, four notes shape the distributions themselves:
-`DISTRO-BUILD-SYSTEM-LFS-VS-BUILDROOT-VS-YOCTO.md`, `INIT-SYSTEM-CHOICE.md`, `BOOTLOADER-CHOICE.md`,
-and `DISTRO-TIER-DEFINITIONS.md`, which feeds
-`project-management/src/07-DISTRO-TIERS/TIER-MATRIX.md`. All eight are planned, not yet written.
+Before P6, four notes shape Syntek OS itself: `INIT-SYSTEM-CHOICE.md` (the init Syntek OS ships,
+parked in `DEFERRED.md` until an ADR settles it), `BOOTLOADER-CHOICE.md`,
+`PACKAGE-SIGNING-SCHEME.md`, and `SYNTEK-OS-PROFILE-DEFINITIONS.md`, which feeds
+`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md`. How Syntek OS is built is already
+answered, by `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md`.
+
+For the UI and LLM tracks, `GUI-TOOLKIT-LICENCE.md` and `LLM-RUST-CRATE-LICENCES.md` would ground
+the two licence ADRs with evidence, as the C17 note grounds its ADR. `PYTORCH-SM75-SUPPORT.md` and
+`CUDA-TOOLKIT-FOR-DRIVER-580.md` would settle, before L1 and L2, which PyTorch build and which CUDA
+toolkit suit this machine's RTX 2080 Ti (compute capability 7.5, driver 580). `LLM-SANDBOX-DESIGN.md`
+would design the sandbox that model- and skill-generated code runs in.
+
+For the security track, `PENTEST-LAB-NETWORK-ISOLATION.md` would show how the lab network is kept
+from reaching the home LAN, and `VULNERABLE-TARGET-LICENCES.md` which intentionally vulnerable
+targets the lab may use and publish work on. All sixteen are planned, not yet written.
 
 ## Boundary with Context7
 
@@ -48,7 +61,7 @@ the groundwork for an ADR, or how a standard or the kernel actually behaves.
 
 ## When to read this
 
-- Before proposing an ADR, a kernel spec or a tier spec whose choice is not obvious.
+- Before proposing an ADR, a kernel spec or an OS profile spec whose choice is not obvious.
 - When a lesson's source is contested, or two sources disagree.
 - Before quoting any external text anywhere in the repo: the licence guardrails in
   `research/CLAUDE.md` apply repo-wide.
@@ -66,12 +79,12 @@ the groundwork for an ADR, or how a standard or the kernel actually behaves.
 | --- | --- |
 | `.claude/skills/research/SKILL.md` | Before any note: the steps, the primary-source list, the licence ladder, the note format |
 | `project-management/workflows/08-decisions/` | When a note feeds an ADR |
-| `project-management/workflows/07-distro-tier-spec/` | When a note feeds a tier spec |
+| `project-management/workflows/07-os-profile-spec/` | When a note feeds a Syntek OS profile spec |
 | `REFERENCES.md` | The index of external primary sources the repo cites repeatedly |
 
 ## Cross-references
 
 - `research/CLAUDE.md`: how to work here, and the two guardrails that matter most in a public repo.
 - `project-management/src/08-DECISIONS/ADR-MS000-TEMPLATE.md`: the ADR a note usually feeds.
-- `project-management/src/07-DISTRO-TIERS/TIER-000-TEMPLATE.md`: the tier spec a distro note feeds.
+- `project-management/src/07-OS-PROFILES/PROFILE-000-TEMPLATE.md`: the profile spec an OS note feeds.
 - `LICENSE`: the GPL-2.0-only licence any quotation sits beside.

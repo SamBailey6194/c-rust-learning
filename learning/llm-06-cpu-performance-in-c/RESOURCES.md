@@ -1,0 +1,10 @@
+# Resources — llm-06-cpu-performance-in-c
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 Measuring honestly: warm-up, repeats, variance and a budget | `man perf-stat` (perf 7.0.14); `man 1 time`; `man 2 clock_gettime`; `man 8 sysctl`; kernel docs "perf_event_paranoid", <https://docs.kernel.org/admin-guide/sysctl/kernel.html>, and "Perf events and tool security", <https://docs.kernel.org/admin-guide/perf-security.html>; Valgrind User Manual Section 5, <https://valgrind.org/docs/manual/cg-manual.html> | `code/docs/BUILD.md` — Section 2 Every flag, and why | `code/src/c/msNNN-<kebab>/` |
+| 02 The memory hierarchy with this machine's numbers | `man lscpu` (`-C`); Drepper, Section 3.3.2, <https://www.akkadia.org/drepper/cpumemory.pdf> | `code/docs/MEMORY-SAFETY.md` — Section 6 What "clean" means | `code/src/c/msNNN-<kebab>/` |
+| 03 Cache lines, locality and false sharing | Drepper, Sections 6.2.1 and 6.4.1; Valgrind User Manual Section 5.2.11; WG14 N2310 Section 6.7.5, <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf> | `code/docs/C-CODING-PRINCIPLES.md` | `code/src/c/msNNN-<kebab>/` |
+| 04 SIMD on AVX2 and FMA | GCC 13.3 "Options That Control Optimization", <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/Optimize-Options.html>; "x86 Options", <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/x86-Options.html>; "x86 Built-in Functions", <https://gcc.gnu.org/onlinedocs/gcc-13.3.0/gcc/x86-Built-in-Functions.html>; gcc 13's `avxintrin.h` and `fmaintrin.h` | `code/docs/BUILD.md` — Section 2 Every flag, and why | `code/src/c/msNNN-<kebab>/` |
+| 05 The roofline and why decode is memory-bound | Williams, Waterman and Patterson, Section 3, <https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf>; STREAM, <https://www.cs.virginia.edu/stream/> | — | `code/src/c/msNNN-<kebab>/` |
+| 06 Tiling a matrix multiply for the cache | Drepper, Section 6.2.1, <https://www.akkadia.org/drepper/cpumemory.pdf>; Valgrind User Manual Section 5 | `code/docs/TESTING.md` — Section 1 C — the `check.h` harness | `code/src/c/msNNN-<kebab>/` |

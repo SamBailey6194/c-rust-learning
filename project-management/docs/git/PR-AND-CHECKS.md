@@ -43,8 +43,10 @@ Add `--draft` to get CI's verdict before the milestone is finished.
 authoritative; this section only explains what each part is for.
 
 - **What this changes / Why** — one or two sentences each, and the `MS###` the change serves.
-- **Type** — tick the kind of change (a C or Rust exercise, kernel or distro work, notes or research,
-  tooling and CI, a fix).
+- **Type** — tick the kind of change. The list (fixed here, and written identically in
+  `.github/PULL_REQUEST_TEMPLATE.md`): `Lesson/exercise (C)` · `Lesson/exercise (Rust)` · `Kernel` ·
+  `Syntek OS` · `TUI / GUI tools` · `LLM` · `Security` · `Notes, syllabus or research` ·
+  `Tooling / CI` · `Fix`.
 - **Build & test** — what you ran locally before pushing: the C targets, the Rust format, lint and
   test commands, the memory tools where the change allocates, and the two kernel boxes (QEMU only;
   nothing built committed). For a milestone, the evidence already sits in its

@@ -57,7 +57,7 @@ after it, for kernels and modules that run in QEMU only.
 - **Generated:** none. Build output never lands here.
 - A plan and its record share the driving milestone and a `SCREAMING-KEBAB-CASE` descriptor:
   `KERNEL-PLAN-MS030-FIRST-QEMU-BOOT.md` pairs with `KERNEL-IMPL-MS030-FIRST-QEMU-BOOT.md`
-  (numbers illustrative). A P5 tier build puts the tier in the descriptor
-  (`...-TIER-BEGINNER-CONFIG`).
+  (numbers illustrative). A P5 profile build puts the profile in the descriptor
+  (`...-PROFILE-SERVER-CONFIG`).
 - Status words: a plan is `Draft` then `Ready`; a record is `Draft` then `Verified` once
   `11-verification` has checked its evidence. Dates DD/MM/YYYY.

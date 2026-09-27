@@ -49,8 +49,8 @@ cp project-management/src/06-KERNEL/KERNEL-PLAN-MS000-TEMPLATE.md \
    project-management/src/06-KERNEL/KERNEL-PLAN-MS030-FIRST-QEMU-BOOT.md
 ```
 
-Fill the header (milestone, phase, tier for a P5 build, the record's future path, `Status: Draft`, date)
-and section 1, _What this build proves_, from Step 1.
+Fill the header (milestone, phase, profile for a P5 build, the record's future path, `Status: Draft`,
+date) and section 1, _What this build proves_, from Step 1.
 
 _Done when the plan exists under the folder's naming pattern with its header and section 1 filled._
 
@@ -77,7 +77,7 @@ _Done when every prerequisite is recorded as present, or as a `GAPS.md` entry wi
 ### Step 5 — Plan the configuration, patches, modules and initramfs
 
 - **Configuration:** name the base (`x86_64_defconfig` plus `kvm_guest.config`, or `tinyconfig`, or the
-  previous tier's config) and write the fragment with one reason per option on the comment line above it.
+  base or another profile's config) and write the fragment with one reason per option on the comment line above it.
   Plan the merge with `scripts/kconfig/merge_config.sh`, then `make olddefconfig`, then a `diffconfig`
   check, because `olddefconfig` drops an option whose dependencies are unmet without saying so.
 - **Patches:** `None`, or each patch with what it changes and why.
@@ -102,7 +102,8 @@ qemu-system-x86_64 -m 512M -nographic -no-reboot \
 `-nographic` with `console=ttyS0` puts the whole boot on the terminal as text; `panic=-1` with
 `-no-reboot` makes a panic exit QEMU instead of looping. Name **the line on the serial console that
 proves success** (the busybox prompt, a module's `pr_info` message). For a debugging milestone, add the
-`-s -S` variant and the `nokaslr` argument, and the gdb session that attaches to `vmlinux`.
+`-gdb tcp:127.0.0.1:1234 -S` variant (loopback only, never bare `-s`) and the `nokaslr` argument, and
+the gdb session that attaches to `vmlinux`.
 
 _Done when the QEMU command runs from a copy-paste and the success line is named._
 
@@ -174,5 +175,5 @@ If this workflow created files or folders, or settled a new convention:
 ## Completion
 
 Run through `CHECKLIST.md` before marking this workflow complete. After PLAN, next as flagged:
-`project-management/workflows/07-distro-tier-spec/`, then `08-decisions/`. After RECORD, the
+`project-management/workflows/07-os-profile-spec/`, then `08-decisions/`. After RECORD, the
 milestone continues in `10-study-and-build` and then `11-verification/`.

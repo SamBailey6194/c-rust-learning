@@ -1,0 +1,12 @@
+# Resources — llm-10-data-pipeline-and-licensing
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 data sized to the budget | arXiv:2203.15556v1, Section 3.4 and Table 3; Hugging Face Hub Quickstart, "Login command" (<https://huggingface.co/docs/huggingface_hub/quick-start>) | `code/docs/PYTHON-CODING-PRINCIPLES.md` (planned — added at L1) | `code/src/python/` (planned — added at L1) |
+| 02 The Stack v2 and v3 terms | The Stack v2 dataset card, "Terms of Use" (<https://huggingface.co/datasets/bigcode/the-stack-v2>); The Stack v3 dataset card, "Licensing" and "Opt-out" (<https://huggingface.co/datasets/HuggingFaceCode/stack-v3-train>, last modified 25/09/2026); Software Heritage statement, "Principles" (<https://www.softwareheritage.org/2023/10/19/swh-statement-on-llm-for-code/>); opt-out-v2 README (<https://github.com/bigcode-project/opt-out-v2>) | `project-management/workflows/08-decisions/` | — |
+| 03 licence filtering | The Stack v2 dataset card, "Data Fields" and "Licensing Information"; arXiv:2402.19173v1, Section 2.1; Choose a License, "No License" (<https://choosealicense.com/no-permission/>) | `code/docs/PYTHON-CODING-PRINCIPLES.md` (planned — added at L1) | `code/src/python/` (planned) |
+| 04 deduplication | arXiv:2107.06499v2, Section 4.2; arXiv:2402.19173v1, Section 3.1 | `code/docs/PYTHON-CODING-PRINCIPLES.md` (planned — added at L1) | `code/src/python/` (planned) |
+| 05 decontamination | arXiv:2402.19173v1, Section 3.3; arXiv:2305.06161v2, Section 5.2; arXiv:2005.14165v4, Appendix C | `code/docs/TESTING.md` — Section 3 | `code/src/python/` (planned) |
+| 06 quality and weighting | arXiv:2107.03374v2, Section 3.1; arXiv:2305.06161v2, Sections 3.1 and 3.6 | `code/docs/PYTHON-CODING-PRINCIPLES.md` (planned — added at L1) | `code/src/python/` (planned) |
+| 07 secrets and PII | arXiv:2402.19173v1, Sections 3.2 and 3.4; arXiv:2305.06161v2, Section 4; TruffleHog v3.97.9 README (<https://github.com/trufflesecurity/trufflehog/blob/v3.97.9/README.md>) | `.github/workflows/audit-secrets.yml` (the repository's own secrets gate) | `code/src/python/` (planned); real scans in the model-training repository (created when this build starts) |
+| 08 dataset card | Hugging Face Hub, "Dataset Cards" (<https://huggingface.co/docs/hub/datasets-cards>); arXiv:1803.09010v8 | — | the model-training repository (created when this build starts) |

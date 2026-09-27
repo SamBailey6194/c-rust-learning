@@ -34,9 +34,11 @@ A thin index. The git standard is split across three sub-documents that follow a
 Each milestone lives on one `ms###/<short-kebab>` branch from the moment it is written to the moment it
 merges; planning work owned by no milestone uses `pm/`, other documentation `docs/`, and tooling `ci/`.
 Every commit stages its files by name, runs the gates for what it touched, and follows Conventional
-Commits with one of twelve scopes; a `Signed-off-by` line is optional practice for kernel work, and an
-agent's commits carry a co-author trailer. The branch reaches `main` through a pull request that passes
-the six CI checks, and merges with a merge commit so the red → green → refactor history survives.
+Commits with one of fifteen scopes; a `Signed-off-by` line is optional practice for kernel work and is
+only ever added by a human, and an agent's commits carry a co-author trailer here — while patches
+bound for the kernel credit an assistant with `Assisted-by:` instead. The branch reaches `main`
+through a pull request that passes the six CI checks, and merges with a merge commit so the red →
+green → refactor history survives.
 
 ---
 

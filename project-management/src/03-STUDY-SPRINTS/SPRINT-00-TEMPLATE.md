@@ -32,12 +32,13 @@ _Template — copy to `SPRINT-##.md` (the next number) when a sprint opens, repl
 | Exercises | [EXAMPLE] MS002: C, 5 exercises |
 | Project | [EXAMPLE] N/A |
 | Kernel | [EXAMPLE] N/A |
-| Distro | [EXAMPLE] N/A |
+| OS | [EXAMPLE] N/A |
 | Tests | [EXAMPLE] `make -C code/src/c/ms002-<kebab> test` |
 | Memory | [EXAMPLE] `make ... san` + `make ... memcheck` |
 | Debugger | [EXAMPLE] MS002: gdb walk of an off-by-one |
 | Lint | [EXAMPLE] `make ... lint` |
 | QEMU | [EXAMPLE] N/A |
+| Budget | [EXAMPLE] N/A — no resource target this sprint |
 | Notes | [EXAMPLE] `learning/c-01-foundations/` |
 | Research | [EXAMPLE] N/A |
 

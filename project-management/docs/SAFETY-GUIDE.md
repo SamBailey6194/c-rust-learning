@@ -7,11 +7,13 @@ type: guide
 **Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
-Three kinds of hazard run through this curriculum. C's undefined behaviour and memory bugs corrupt a
+Hazards run through this curriculum at every level. C's undefined behaviour and memory bugs corrupt a
 program quietly. Rust's `unsafe` hands the same bugs back to you behind a keyword. Kernel code can take
-the whole machine down with it. This guide says what a milestone has to **plan** for each of them, at
-the PM stage, so the right gates are flagged before any code exists. The rules themselves are owned
-elsewhere, and each section routes there.
+the whole machine down with it. OS images and network labs, an LLM that loads files and runs generated
+code, and the security track's offensive work each carry hazards of their own. This guide says what a
+milestone has to **plan** for each of them, at the PM stage, so the right gates and the threat model are
+set before any code exists. The rules themselves are owned by `.claude/CLAUDE.md` Section 5, and each
+section here routes there.
 
 ---
 
@@ -104,9 +106,11 @@ why it exists and what it costs a milestone to follow it.
 
 **What QEMU gives instead:** a machine you can crash and restart in seconds; `-snapshot`, which writes
 disk changes to temporary files so the image is never modified; `-nographic` with `console=ttyS0`, so
-the whole boot log arrives as text you can paste into a record; and `-s -S`, which opens a gdb stub on
-port 1234 and holds the CPU until gdb tells it to continue, so a kernel can be debugged from its
-first instruction (https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html).
+the whole boot log arrives as text you can paste into a record; and `-gdb tcp:127.0.0.1:1234 -S`,
+which opens a gdb stub on loopback port 1234 and holds the CPU until gdb tells it to continue, so a
+kernel can be debugged from its first instruction
+(https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html). Not the bare `-s` shorthand:
+it means `-gdb tcp::1234`, which listens on every interface (`code/docs/DEBUGGING.md` Section 6).
 
 **What a kernel milestone plans for** (in its `project-management/src/06-KERNEL/` plan):
 
@@ -118,6 +122,56 @@ first instruction (https://docs.kernel.org/process/debugging/gdb-kernel-debuggin
 - the missing build dependencies as blockers: flex, bison, libelf-dev and dwarves (for pahole) are not
   yet installed, and Rust-for-Linux also needs clang/LLVM and bindgen, so those milestones stay
   `Blocked` with a `GAPS.md` entry until they are
+
+---
+
+## OS images and network labs — VMs and isolated networks only
+
+The kernel QEMU-only rule extends to the OS track. **OS images, installers and partitioning run in VMs
+or on QEMU disk images; network and router labs run on isolated virtual networks.** Real-hardware tests
+run only on dedicated, wiped test hardware named in the milestone — never the host, never the home
+network. No hardware is chosen for any Syntek OS profile yet
+(`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md` → Hardware target). What a profile milestone
+plans for: a `qemu-system-x86_64` command against a disk image, `-snapshot` so the image is never
+modified, and, for a router or a pentest lab, an isolated network (QEMU `restrict=on` or a libvirt
+isolated network) proved to have no route to the home LAN before anything offensive runs. The rules are
+owned by `.claude/CLAUDE.md` Section 5.
+
+---
+
+## LLM — untrusted weights, licensed data, sandboxed code
+
+An LLM milestone plans for three hazards, all owned by `.claude/CLAUDE.md` Section 5 and argued in
+`project-management/src/08-DECISIONS/ADR-MS001-LLM-EFFICIENCY-AND-SECURITY-FIRST-27-09-2026.md`:
+
+- **Weights load from safetensors, or from a torch checkpoint this machine produced with
+  `weights_only=True` — never an untrusted pickle.** `torch.load` unpickles, which can execute
+  arbitrary code; safetensors is a data-only format.
+- **Training data is licence-checked and scrubbed of secrets and personal data** before it enters a
+  run; what may be trained on is decided per file licence and per dataset terms.
+- **Code a model or a skill generates runs sandboxed** — no network, rlimits and timeouts, over the
+  `sec-04` launcher. Every LLM milestone also states a resource budget (the `Budget` flag) and measures
+  it, because the machine's ~9 GiB of free VRAM makes fitting the first question a plan must answer.
+
+---
+
+## Security track — authorised and isolated
+
+Offensive security work is a discipline this curriculum teaches, under rules that make it lawful and
+safe (owned by `.claude/CLAUDE.md` Section 5 and
+`project-management/src/08-DECISIONS/ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md`):
+
+- Techniques run only against systems Sam owns, or is authorised in writing to test, inside isolated
+  lab networks; attack tooling runs in VMs, never on the host.
+- A training or CTF platform's rules on publishing solutions are respected; the public repository never
+  holds a working exploit for an unpatched third-party vulnerability (coordinated disclosure first), and
+  a deliberately vulnerable exercise build is confined to a clearly named target that is never installed
+  or shipped.
+- No malware is written or distributed; no live malware sample enters the repository, the host or CI —
+  detection is tested with the EICAR test file and synthetic, harmless files.
+
+A security milestone's `## Threat model` names which of these it runs under, and its lab-setup milestone
+proves the network's isolation in its verification record before any offensive step.
 
 ---
 

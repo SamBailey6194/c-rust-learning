@@ -16,7 +16,11 @@ body:
       options:
         - C exercise (code/src/c)
         - Rust exercise (code/src/rust)
-        - Kernel or distro work
+        - Kernel (code/src/kernel — from P4)
+        - Syntek OS build (code/src/os — from P6)
+        - TUI or GUI tool
+        - LLM (training, inference, skills)
+        - Security
         - Scripts or CI (code/src/scripts, .github/workflows)
         - Notes or docs are wrong
         - Something else
@@ -72,6 +76,8 @@ body:
         - gcc:
         - rustc/cargo:
         - qemu:
+        - GPU / driver (LLM work):
+        - python / uv:
       render: markdown
     validations:
       required: true

@@ -41,7 +41,7 @@ the prediction becomes the first risk at Step 6. Then gather:
   criteria
 - the sprint record in `project-management/src/03-STUDY-SPRINTS/` that holds the milestone
 - every spec the milestone flagged: exercises (`04-EXERCISES/`), project (`05-PROJECTS/`), kernel
-  (`06-KERNEL/`), distro tier (`07-DISTRO-TIERS/`)
+  (`06-KERNEL/`), OS profile (`07-OS-PROFILES/`)
 - the Accepted ADRs from `08-decisions`
 - entries marked `DEFERRED (MS###)` for this milestone in `DEFERRED.md`, and open items in `GAPS.md`
 

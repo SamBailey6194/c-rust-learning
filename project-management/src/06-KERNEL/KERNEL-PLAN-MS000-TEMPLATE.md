@@ -11,7 +11,7 @@ rule in `.claude/CLAUDE.md`._
 | **Milestone** | `MS###` — {short title} |
 | **Milestone doc** | `project-management/src/02-MILESTONES/MS###-<TITLE>.md` |
 | **Phase** | {P4 / P5} — `project-management/src/01-ROADMAP/ROADMAP.md` |
-| **Tier** | {— / beginner / intermediate / experienced (P5)} |
+| **Profile** | {— / base / beginner / intermediate / expert / server / nas / homelab / router (P5)} |
 | **Build record** | `project-management/src/06-KERNEL/KERNEL-IMPL-MS###-<DESCRIPTOR>.md` (written after the build) |
 | **Status** | {Draft / Ready} |
 | **Date** | {DD/MM/YYYY} |
@@ -32,7 +32,7 @@ planning, and record the date read. Branches and end-of-life dates change; memor
 
 | Candidate | Branch | Why for / against | Read on |
 | --- | --- | --- | --- |
-| [EXAMPLE] {x.y.z} | longterm | [EXAMPLE] years of fixes; matches a real distro kernel | DD/MM/YYYY |
+| [EXAMPLE] {x.y.z} | longterm | [EXAMPLE] years of fixes; suits the server family | DD/MM/YYYY |
 | [EXAMPLE] {x.y.z} | stable | [EXAMPLE] newest features and docs; short support window | DD/MM/YYYY |
 
 **Chosen:** {version} — {the deciding reason}. {If this sets the kernel base for later phases, it
@@ -71,10 +71,11 @@ Checked against "Minimal requirements to compile the kernel"
 ## 4. Configuration approach
 
 **Base:** {e.g. `make O=<build-dir> x86_64_defconfig` then `make O=<build-dir> kvm_guest.config`,
-or `tinyconfig`, or the previous tier's config}
+or `tinyconfig`, or the base or another profile's config}
 
 **Fragment:** committed at `code/src/kernel/{fragment-name}.config` (planned — the folder is added
-at P4). Every option carries its reason on the comment line above it: the `.config` syntax has no
+at P4), or, from `kernel-05-downstream-tree` lesson 02, in the downstream kernel repository (cite its
+URL, path and commit). Every option carries its reason on the comment line above it: the `.config` syntax has no
 trailing comments, because Kconfig takes everything after `=` as the value.
 
 ```text
@@ -113,8 +114,9 @@ read line by line to confirm every fragment option survived.
 | --- | --- | --- | --- |
 | [EXAMPLE] 0001 | {subject line} | {what it changes and why} | {version} |
 
-Applied with `git am` (or `patch -p1`), checked with `scripts/checkpatch.pl`. The series is
-committed under `code/src/kernel/` (planned).
+Applied with `git am` (or `patch -p1`), checked with `scripts/checkpatch.pl`. A practice series is
+committed under `code/src/kernel/` (planned); the real series lives in the downstream kernel
+repository from `kernel-05-downstream-tree` lesson 02.
 
 ---
 
@@ -167,8 +169,9 @@ qemu-system-x86_64 -m 512M -nographic \
 - **Proof of boot:** {the exact serial-console line, e.g. the busybox shell prompt}
 - **Exit:** `Ctrl-A` then `X` quits QEMU from `-nographic`.
 - **Debug variant** (Debugger flag): a config with debug information on and
-  `CONFIG_GDB_SCRIPTS=y`; add `-s -S` to the QEMU command and `nokaslr` to `-append`, then
-  `gdb <build-dir>/vmlinux` and `target remote :1234`
+  `CONFIG_GDB_SCRIPTS=y`; add `-gdb tcp:127.0.0.1:1234 -S` to the QEMU command (never bare `-s`,
+  which listens on every interface) and `nokaslr` to `-append`, then `gdb <build-dir>/vmlinux` and
+  `target remote 127.0.0.1:1234`
   (<https://docs.kernel.org/process/debugging/gdb-kernel-debugging.html>).
 
 ---

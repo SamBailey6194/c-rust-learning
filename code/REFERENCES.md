@@ -42,6 +42,14 @@ external link was checked on 27/09/2026 except where an entry says otherwise.
   green throughout
 - `code/workflows/09-kernel-module/` — **planned — added at P4** — an out-of-tree kernel module in C,
   built against the configured tree and loaded only inside QEMU
+- `code/workflows/10-python-exercise/` — **planned — added at L1** — one Python exercise under
+  `code/src/python/` (planned), tests first with pytest, ruff clean
+- `code/workflows/11-profile-and-optimise/` — **planned — added at L2** — budget, honest measurement,
+  one change, measure again
+- `code/workflows/12-cuda-kernel/` — **planned — added at L2** — one CUDA kernel, correct against a
+  reference first, then timed
+- `code/workflows/13-tui-app/` — **planned — added at U1** — a terminal UI crate, restored on exit and
+  panic, tested against the rendered buffer
 
 ### Guides in code/docs/
 
@@ -66,6 +74,9 @@ external link was checked on 27/09/2026 except where an entry says otherwise.
   split, banned headings, route-don't-restate, and the exemption classes
 - `code/docs/DOCUMENTATION-LENGTH.md` — **owner of the length rule**: 300 cloc code lines, what is bound
   and exempt, and how a guide splits
+- `code/docs/PYTHON-CODING-PRINCIPLES.md` — **planned — added at L1** — Python style and the ruff and
+  pytest policy
+- `code/docs/CUDA-CODING-PRINCIPLES.md` — **planned — added at L2** — CUDA C style and error checking
 
 ---
 
@@ -186,9 +197,35 @@ external link was checked on 27/09/2026 except where an entry says otherwise.
 - **FSF licence list — Apache 2.0** — <https://www.gnu.org/licenses/license-list.html#apache2> — why
   `code/src/rust/deny.toml` does not allow Apache-2.0 on its own in a GPL-2.0-only repository (read
   through a web archive on 27/09/2026; gnu.org was unreachable from the checking environment)
+- **FSF licence list — Boost Software License** — <https://www.gnu.org/licenses/license-list.html#boost>
+  — lax, permissive and compatible with the GNU GPL, which is why `BSL-1.0` is on the `deny.toml` allow
+  list (read through the Internet Archive's copy on 27/09/2026, for the same reason)
+- **cargo-fuzz setup** — <https://rust-fuzz.github.io/book/cargo-fuzz/setup.html> — cargo-fuzz needs
+  the nightly compiler, which the pinned workspace does not use (`GAPS.md`)
 - **cloc** — <https://github.com/AlDanial/cloc> — counts the code lines the length rule measures
 - **markdownlint-cli2** — <https://github.com/DavidAnson/markdownlint-cli2> — the Markdown gate
 - **ShellCheck** — <https://www.shellcheck.net/> — the shell-script gate in `Syntax — Shell`
+
+---
+
+## External — Python, CUDA and UI crates (L1, L2, U1)
+
+- **uv** — <https://docs.astral.sh/uv/> — per-project Python environments, for the projects under
+  `code/src/python/` (planned — added at L1)
+- **Ruff** — <https://docs.astral.sh/ruff/> — the Python linter and formatter
+- **pytest** — <https://docs.pytest.org/> — Python tests
+- **PyTorch 2.14** — <https://docs.pytorch.org/docs/2.14/> — tensors, autograd, `torch.cuda`, and the
+  [serialization notes](https://docs.pytorch.org/docs/2.14/notes/serialization.html) behind the
+  weights-loading rule in `.claude/CLAUDE.md`
+- **CUDA programming guide** — <https://docs.nvidia.com/cuda/cuda-programming-guide/> — the CUDA C
+  model `code/src/cuda/` (planned — added at L2) will follow
+- **ratatui** — <https://ratatui.rs/> and <https://docs.rs/ratatui/latest/ratatui/> — the TUI crate
+  (U1); its `ryu` dependency is why `BSL-1.0` is allowed
+- **crossterm** — <https://docs.rs/crossterm/latest/crossterm/> — the terminal backend ratatui drives
+- **gtk4-rs book** — <https://gtk-rs.org/gtk4-rs/stable/latest/book/> — the GUI toolkit the lessons use
+  (U3)
+- **tokio tutorial** — <https://tokio.rs/tokio/tutorial> — async Rust (P3), and background work in a
+  TUI
 
 ---
 

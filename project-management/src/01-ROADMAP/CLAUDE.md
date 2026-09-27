@@ -7,8 +7,9 @@ roadmap and a map hold, and the map index — imported above) → this file → 
 
 ## Purpose (one line)
 
-The phase roadmap and the track decision maps — `ROADMAP.md` owns the six phases and their exit
-gates; each `MAP-<TRACK>.md` charts one track's decisions and cuts it into milestone slices.
+The phase roadmap and the track decision maps — `ROADMAP.md` owns the eighteen phases across six
+tracks and their exit gates; each `MAP-<TRACK>.md` charts one track's decisions and cuts it into
+milestone slices.
 
 ## How to work here
 
@@ -28,8 +29,9 @@ gates; each `MAP-<TRACK>.md` charts one track's decisions and cuts it into miles
 
 ## Guardrails
 
-- **Keep the phases in one place.** `ROADMAP.md` owns them. Anywhere else a phase appears, it is a
-  citation (`project-management/src/01-ROADMAP/ROADMAP.md` → P3), never a second definition.
+- **Keep the phases in one place.** `ROADMAP.md` owns them. Anywhere else a phase appears — including
+  a track letter such as U2, L4 or S1 — it is a citation
+  (`project-management/src/01-ROADMAP/ROADMAP.md` → P3), never a second definition.
 - **Move the position marker only on evidence.** A milestone is closed by its verification record
   and a phase by its exit gate passing, not by the topics feeling familiar.
 - **Keep changed wording visible.** When a phase's scope or exit gate changes, leave the previous

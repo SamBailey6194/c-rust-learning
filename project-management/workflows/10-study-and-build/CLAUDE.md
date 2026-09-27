@@ -49,7 +49,7 @@ matching exercise through the code workflows, in tutor mode throughout.
   `project-management/src/13-BUGS/` through `code/workflows/07-debug/`; for a kernel milestone, the
   `KERNEL-IMPL` record in `project-management/src/06-KERNEL/` through
   `project-management/workflows/06-kernel-spec/` → RECORD.
-- Tracks `c`, `rust`, `kernel`, `tooling` (`learning/CLAUDE.md` owns the naming); `NN` two digits;
-  `<topic>` kebab-case; review dates DD/MM/YYYY.
-- Commit scopes `c`, `rust` or `kernel` for code and `learning` for notes and progress, per
-  `project-management/docs/git/COMMITS.md`.
+- Tracks `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm`, `sec` (`learning/CLAUDE.md` owns the
+  naming); `NN` two digits; `<topic>` kebab-case; review dates DD/MM/YYYY.
+- Commit scopes `c`, `rust`, `kernel`, `os`, `ui`, `llm` or `sec` for code and `learning` for notes
+  and progress, per `project-management/docs/git/COMMITS.md`.

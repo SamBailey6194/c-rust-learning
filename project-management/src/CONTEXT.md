@@ -4,7 +4,7 @@
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 Every planning and record artefact of the learning journey lives here: the roadmap that defines the
-six phases, the milestones cut from it, the sprints that batch them, the specs that say what gets
+eighteen phases across six tracks, the milestones cut from it, the sprints that batch them, the specs that say what gets
 built, the decisions and plans made before building, and the records written afterwards. The
 numbered folders run in four tiers — _plan_ (01–03), _specify_ (04–07), _decide & plan_ (08–09)
 and _record_ (10–13). Everything from `02-MILESTONES/` onwards is anchored to a milestone
@@ -18,7 +18,7 @@ evidence that the skill was built.
 | Tier | Folders | What happens |
 | --- | --- | --- |
 | **Plan** | 01–03 | Define the phases and their exit gates, chart a track map, cut milestones from it, batch milestones into study sprints |
-| **Specify** | 04–07 | Say what gets built for a milestone: exercise sets, capstone projects, kernel plans and build records, distro-tier specs |
+| **Specify** | 04–07 | Say what gets built for a milestone: exercise sets, capstone projects, kernel plans and build records, Syntek OS profile specs |
 | **Decide & plan** | 08–09 | Record hard-to-reverse choices as ADRs, then plan each milestone — both before study and build starts |
 | **Record** | 10–13 | After the work: verification evidence, reviews, findings (what was learned or unlearned), bugs |
 
@@ -43,7 +43,7 @@ project-management/src/
 ├── 04-EXERCISES/              ← EX-MS###-<TOPIC>.md — exercise-set specs, hints but no solutions
 ├── 05-PROJECTS/               ← PROJ-MS###-<NAME>.md — capstone project specs
 ├── 06-KERNEL/                 ← KERNEL-PLAN-MS###-* before a kernel build, KERNEL-IMPL-MS###-* after
-├── 07-DISTRO-TIERS/           ← TIER-MATRIX.md + TIER-<NAME>.md — beginner, intermediate, experienced
+├── 07-OS-PROFILES/            ← PROFILE-MATRIX.md + PROFILE-<NAME>.md — seven Syntek OS profiles
 │
 │   ── Decide & plan (08–09) ──
 ├── 08-DECISIONS/              ← ADR-MS###-<DECISION>-DD-MM-YYYY.md — five seeded at MS001
@@ -73,6 +73,11 @@ are a running order and can be renumbered; these folder numbers are identifiers.
 is a convenience; the cross-links are the record. The divergence between workflows 10–13 and
 folders 10–13 is explained once, in `project-management/REFERENCES.md`.
 
+07 was renamed from `07-DISTRO-TIERS/` to `07-OS-PROFILES/` on 27/09/2026 (the ROADMAP ADR,
+`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`); the
+**number is unchanged**, so no cross-link that cited the folder by its number broke, and a rename of a
+`src/` folder's name (not its number) is the rare exception the ADR authorised.
+
 ---
 
 ## Zero-ID templates
@@ -98,7 +103,7 @@ Output & naming. The workflow-to-folder table is owned by the root `REFERENCES.m
 | `EX-MS###-<TOPIC>.md` | `04-EXERCISES/` | `project-management/workflows/04-exercise-design/` |
 | `PROJ-MS###-<NAME>.md` | `05-PROJECTS/` | `project-management/workflows/05-project-spec/` |
 | `KERNEL-PLAN-MS###-*`, `KERNEL-IMPL-MS###-*` | `06-KERNEL/` | `project-management/workflows/06-kernel-spec/` |
-| `TIER-<NAME>.md`, `TIER-MATRIX.md` | `07-DISTRO-TIERS/` | `project-management/workflows/07-distro-tier-spec/` |
+| `PROFILE-<NAME>.md`, `PROFILE-MATRIX.md` | `07-OS-PROFILES/` | `project-management/workflows/07-os-profile-spec/` |
 | `ADR-MS###-<DECISION>-DD-MM-YYYY.md` | `08-DECISIONS/` | `project-management/workflows/08-decisions/` |
 | milestone plans | `09-MILESTONE-PLANS/` | `project-management/workflows/09-milestone-plans/` |
 | verification records | `10-PROGRESS/` | `project-management/workflows/11-verification/` |
@@ -114,7 +119,7 @@ milestone numbers are three digits, sprint numbers two.
 
 ```text
 ROADMAP.md phase → MAP-<TRACK>.md slice → MS### → SPRINT-##
-  → specs as flagged: 04 exercises, 05 project, 06 kernel, 07 tier
+  → specs as flagged: 04 exercises, 05 project, 06 kernel, 07 OS profile
   → 08 ADRs → 09 plan → study and build (learning/ + code/src/)
   → 10 verification → 11 review, 12 findings, 13 bugs → next milestone
 ```

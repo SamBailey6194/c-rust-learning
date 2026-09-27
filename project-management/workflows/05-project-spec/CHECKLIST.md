@@ -44,9 +44,11 @@ skills: [research]
 - [ ] Every C part names `san` and `memcheck`; an allocator states which memory-testing option it takes
       and what that option cannot detect
 
-### Step 6 — Stretch goals, risks, status and links
+### Step 6 — Stretch goals, risks, resource budget, threat model, status and links
 
 - [ ] Stretch goals are marked not required; risks have a likelihood and a fallback
+- [ ] `## 8. Resource budget` filled (or `N/A` with a reason; never `N/A` for a kernel-config, OS or LLM project)
+- [ ] `## 9. Threat model` filled — assets, threats and mitigations, or the non-negotiable it runs under
 - [ ] Hard-to-reverse design choices went to `08-decisions`
 - [ ] `Status: Ready`, linked from every milestone the project spans so far
 

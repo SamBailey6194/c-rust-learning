@@ -1,5 +1,5 @@
 name: Topic suggestion
-description: Suggest a topic, exercise, resource or correction for the learning path — C, Rust, the kernel or the distro tiers
+description: Suggest a topic, exercise, resource or correction for the learning path — C, Rust, the kernel, Syntek OS, TUI/GUI tools, the LLM or security
 labels: [enhancement]
 body:
   - type: markdown
@@ -18,8 +18,11 @@ body:
         - C
         - Rust
         - FFI (C and Rust together)
-        - Kernel
-        - Distro tiers (beginner / intermediate / experienced)
+        - Kernel (downstream)
+        - Syntek OS (profiles)
+        - TUI and GUI tools
+        - LLM
+        - Security
         - Tooling, CI or docs
     validations:
       required: true

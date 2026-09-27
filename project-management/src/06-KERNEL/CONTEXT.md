@@ -35,8 +35,11 @@ a build nobody decided on.
 
 ## What lives elsewhere
 
-- **Config fragments and patch series** — small, reviewable text that is committed, under
-  `code/src/kernel/` (planned — added at P4). These records cite them by path.
+- **Config fragments and patch series** — small, reviewable text. The lesson fragments and practice
+  patches of `kernel-01` to `kernel-04` are committed under `code/src/kernel/` (planned — added at
+  P4), and these records cite them by path. From `kernel-05-downstream-tree` lesson 02 the profile
+  fragments and the real patch series live in the downstream kernel repository, and these records
+  cite them by that repository's URL and commit.
 - **Kernel sources, build directories, `bzImage`, initramfs archives, disk images** — outside the
   repository entirely; only text excerpts of their output are pasted into the records here.
 - **How to set up and boot** — the how-to workflows `07-kernel-source-setup` and
@@ -47,6 +50,6 @@ a build nobody decided on.
 - `project-management/workflows/06-kernel-spec/` — the procedure that writes the plans
 - `project-management/workflows/11-verification/` — where a build record's evidence is checked
 - `project-management/src/01-ROADMAP/ROADMAP.md` — P4 and P5: topics, candidate milestones, exit gates
-- `project-management/src/07-DISTRO-TIERS/TIER-MATRIX.md` — the per-tier kernel config hypotheses P5 builds
+- `project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md` — the per-profile kernel config hypotheses P5 builds
 - `project-management/docs/SAFETY-GUIDE.md` — the kernel-in-QEMU-only rule and why it exists
 - `.claude/CLAUDE.md` — the kernel safety rule (its owner)

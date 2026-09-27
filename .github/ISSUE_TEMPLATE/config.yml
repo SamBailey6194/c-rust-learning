@@ -5,4 +5,4 @@ contact_links:
     about: Report privately — never in a public issue. See SECURITY.md.
   - name: Where is this repository going?
     url: https://github.com/SamBailey6194/c-rust-learning/blob/main/project-management/src/01-ROADMAP/ROADMAP.md
-    about: The roadmap — phases P1 to P6, from C foundations to the three distro tiers.
+    about: The roadmap — C and Rust foundations (P1–P3), kernel (P4–P5), Syntek OS (P6), UI (U1–U3), LLM (L1–L6) and Security (S1–S3).

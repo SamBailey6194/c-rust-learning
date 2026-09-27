@@ -68,7 +68,7 @@ skills: [teach, handoff]
 
 - [ ] Work committed on the milestone branch, staged by explicit path after `git status --short`
 - [ ] No build output (`build/`, `target/`) staged
-- [ ] Conventional Commits messages with scope `c`, `rust`, `kernel` or `learning` (and `pm` for a status change)
+- [ ] Conventional Commits messages with scope `c`, `rust`, `kernel`, `os`, `ui` or `llm` for code, or `learning` (and `pm` for a status change)
 
 ### Step 10 — Close the session
 

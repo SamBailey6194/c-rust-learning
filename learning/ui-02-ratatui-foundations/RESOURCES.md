@@ -1,0 +1,10 @@
+# Resources — ui-02-ratatui-foundations
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 Setting up ratatui and crossterm safely | ratatui 0.30.2 `init` / `restore` / `run`, <https://docs.rs/ratatui/0.30.2/ratatui/fn.init.html>; crossterm 0.29.0 `terminal` — "Raw Mode", <https://docs.rs/crossterm/0.29.0/crossterm/terminal/index.html> | `code/docs/RUST-CODING-PRINCIPLES.md` — Section 2 The lint policy; `code/src/rust/deny.toml` | `code/src/rust/crates/msNNN_tiny_tui/` (planned) |
+| 02 The immediate-mode render loop | ratatui 0.30.2 `Terminal` — "Rendering Pipeline", <https://docs.rs/ratatui/0.30.2/ratatui/struct.Terminal.html>; ratatui.rs "Rendering", <https://ratatui.rs/concepts/rendering/> | `code/docs/TESTING.md` — Section 2 Rust | `code/src/rust/crates/msNNN_tiny_tui/` (planned) |
+| 03 Layout: dividing the screen | ratatui 0.30.2 `Layout`, <https://docs.rs/ratatui/0.30.2/ratatui/layout/struct.Layout.html>, and `Constraint`, <https://docs.rs/ratatui/0.30.2/ratatui/layout/enum.Constraint.html>; `man 3 wcwidth` (Linux man-pages 6.7) | `code/docs/TESTING.md` — Section 3 Test discipline | `code/src/rust/crates/msNNN_tiny_tui/` (planned) |
+| 04 Widgets and stateful widgets | ratatui 0.30.2 `widgets`, <https://docs.rs/ratatui/0.30.2/ratatui/widgets/index.html>; `ListState`, <https://docs.rs/ratatui/0.30.2/ratatui/widgets/struct.ListState.html> | `code/docs/RUST-CODING-PRINCIPLES.md` — Section 5 Crate and module layout | `code/src/rust/crates/msNNN_tiny_tui/` (planned) |
+| 05 Events and application state | crossterm 0.29.0 `event`, <https://docs.rs/crossterm/0.29.0/crossterm/event/index.html>, and `Event`, <https://docs.rs/crossterm/0.29.0/crossterm/event/enum.Event.html> | `code/docs/TESTING.md` — Section 2 Rust | `code/src/rust/crates/msNNN_tiny_tui/` (planned) |
+| 06 Styling and accessibility | ratatui 0.30.2 `style`, <https://docs.rs/ratatui/0.30.2/ratatui/style/index.html>; WCAG 2.2 SC 1.4.1, 1.4.3, 2.1.1, <https://www.w3.org/TR/WCAG22/>; <https://no-color.org/> | — | `code/src/rust/crates/msNNN_tiny_tui/` (planned) |

@@ -6,9 +6,11 @@ assumes the map below.
 
 ## What this project is
 
-> A public learning space: learn C thoroughly from the base level, then deepen Rust knowledge and
-> skills, and then build a custom Linux kernel for a custom set of Linux distributions at three
-> tiers — beginner, intermediate and experienced.
+> A public learning space: learn C thoroughly from the base level and deepen Rust; learn Linux kernel development and
+> maintain a downstream kernel; build Syntek OS — an independent Linux distribution, built from scratch, with profiles
+> for beginner, intermediate and expert desktops and laptops, servers, NAS, homelab and routers, and its own TUI and GUI
+> tools; and, in parallel, build and train a language model in C, Rust and Python that uses CPU, RAM, GPU, VRAM and
+> cache efficiently and securely, and works through Markdown skills, workflows and documentation.
 
 **Read that first, every session.** It is the only statement of what this repository is for, and
 every phase exit gate, milestone and exercise is judged against it. If it ever drifts from what
@@ -21,8 +23,11 @@ GPL-2.0-only, the same licence as the Linux kernel it builds towards.
 
 ## How it is built
 
-The curriculum runs in six phases — C foundations, C systems, Rust, kernel internals, a custom
-kernel, and the three distro tiers — owned by `project-management/src/01-ROADMAP/ROADMAP.md`.
+The curriculum runs in eighteen phases across six tracks — Foundation (C foundations, C systems
+and Rust, P1–P3), Kernel (kernel internals and a downstream kernel, P4–P5), Syntek OS (P6), UI
+(U1–U3), LLM (L1–L6) and Security (S1–S3) — owned by `project-management/src/01-ROADMAP/ROADMAP.md`.
+A phase opens when the gates it depends on pass, so several tracks can be open at once, while
+milestones still run one at a time (`project-management/docs/planning/CADENCE.md`).
 
 - **C** is C17, compiled by gcc with warnings as errors and written in the Linux kernel coding
   style from the first exercise. Each exercise is a `msNNN-kebab/` folder built by plain GNU make
@@ -30,8 +35,17 @@ kernel, and the three distro tiers — owned by `project-management/src/01-ROADM
   AddressSanitizer + UndefinedBehaviorSanitizer and, separately, valgrind (`code/docs/BUILD.md`).
 - **Rust** is one Cargo workspace on edition 2024 with the toolchain pinned by
   `code/src/rust/rust-toolchain.toml`; rustfmt, clippy and cargo-deny gate it.
-- **The kernel and distro work** (P4 onwards) is built on the host and run only inside QEMU
-  (`qemu-system-x86_64`), with `code/src/kernel/` added at P4 and `code/src/distro/` at P6.
+- **Kernels and Syntek OS images** (P4 onwards) are built on the host and run only inside QEMU
+  (`qemu-system-x86_64`) or a VM, and network labs only on isolated virtual networks;
+  `code/src/kernel/` (planned — added at P4) and `code/src/os/` (planned — added at P6) hold their
+  exercises.
+- **The language model** (from L1) adds Python (`code/src/python/`, planned — added at L1) and CUDA
+  (`code/src/cuda/`, planned — added at L2), with every milestone's resource budget measured on this
+  machine's RTX 2080 Ti; the security track's offensive work stays inside an isolated lab.
+- **Substantial builds get their own repositories.** This one holds the lessons, notes and small
+  exercises; the downstream kernel tree, the Syntek OS build system, package manager, installer
+  and tools, and the LLM's data, training and inference code each move to a repository of their
+  own when that build starts.
 - **Gates** are bash scripts under `code/src/scripts/`, run locally and by GitHub Actions on
   `ubuntu-24.04`. The docs teach the raw command first, then name the script that wraps it.
 
@@ -56,7 +70,7 @@ c-rust-learning/
 │   ├── CONTEXT.md · CLAUDE.md · REFERENCES.md   ← layer entry pair + reference index
 │   ├── docs/                    ← standards: C, Rust, build, testing, memory safety, debugging, FFI
 │   ├── src/                     ← C exercises (make), Rust workspace (cargo), gate scripts;
-│   │                              kernel/ added at P4, distro/ at P6
+│   │                              kernel/ added at P4, os/ at P6, python/ at L1, cuda/ at L2
 │   └── workflows/               ← numbered coding procedures (01–08)
 ├── how-to/                      ← toolchain, machine setup, the daily study routine, the gates
 │   ├── CONTEXT.md · CLAUDE.md · REFERENCES.md   ← layer entry pair + reference index
@@ -68,7 +82,7 @@ c-rust-learning/
 │   ├── docs/                    ← planning, git, verification and safety guides
 │   ├── src/                     ← live artefacts, 01-ROADMAP … 13-BUGS
 │   └── workflows/               ← numbered PM procedures in running order (01–13)
-├── learning/                    ← /teach sandbox — one folder per topic, spaced-review log
+├── learning/                    ← /teach sandbox — one folder per topic: syllabus, mission, spaced-review log
 ├── research/                    ← /research notes — one question each, cited to primary sources
 ├── handoffs/                    ← /handoff documents — the auto-compaction replacement
 ├── AGENTS.md                    ← entry shim for coding agents other than Claude Code
@@ -90,9 +104,9 @@ c-rust-learning/
 
 | Layer | Purpose |
 | --- | --- |
-| `project-management/` | The curriculum: phases, milestones, exercise and project specs, kernel and distro-tier specs, decisions, and the verification record |
-| `learning/` | Drilling: one `/teach` folder per topic, retrieval practice, spaced review dates |
-| `code/` | Working, tested C and Rust, with the standards and procedures that govern it |
+| `project-management/` | The curriculum: phases, maps, milestones, exercise and project specs, kernel specs and Syntek OS profiles, decisions, and the verification record |
+| `learning/` | Drilling: one `/teach` folder per topic, a syllabus, retrieval practice, spaced review dates |
+| `code/` | Working, tested code — C and Rust now, then kernel, OS, Python and CUDA as their phases open — with the standards and procedures that govern it |
 | `how-to/` | The toolchain, machine setup, the daily study routine and the quality gates |
 | `research/` | One-question notes cited to primary sources, feeding decisions |
 | `handoffs/` | Continuity between context windows when a session ends mid-work |
@@ -136,8 +150,13 @@ are in `project-management/src/01-ROADMAP/ROADMAP.md`.
 
 The scaffold ships one worked example per language — `code/src/c/ms001-hello/` and
 `code/src/rust/crates/ms001_hello/` — so every gate has something real to run against from the
-first commit. Documentation metadata is at version 0.1.0 (27/09/2026). Active blockers, including
-the kernel build dependencies P4 needs, are tracked in `GAPS.md`.
+first commit. Documentation metadata is at version 0.1.0 (27/09/2026).
+
+The later tracks are planned, not started: their topic folders under `learning/` hold pre-seeded
+syllabi and draft missions, their maps in `project-management/src/01-ROADMAP/` are Charting drafts,
+and the decisions from Sam's planning conversation of 27/09/2026 are ADRs in
+`project-management/src/08-DECISIONS/`. Active blockers, including the kernel build dependencies P4
+needs and the missing GPU toolchain, are tracked in `GAPS.md`.
 
 ## Cross-references
 

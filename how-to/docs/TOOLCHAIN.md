@@ -37,6 +37,19 @@ Recorded on 27/09/2026 on Ubuntu 24.04.5 LTS (x86_64), from each tool's own `--v
 cargo, rustc, rustfmt and clippy-driver as **required** (exit 2 if any is missing) and
 qemu-system-x86_64, cloc and cargo-deny as **optional**.
 
+### Later-track tools already installed — recorded 27/09/2026
+
+Present on the host before their tracks open; `check.sh` does not report them yet.
+
+| Tool | Version | Purpose |
+| --- | --- | --- |
+| perf | 7.0.14 (`linux-tools-common`) | CPU performance counters — locked for unprivileged users (`GAPS.md`) |
+| python3 | 3.12.3 (Ubuntu's default `/usr/bin/python3`) | The LLM track's Python, from L1; `python3.13` 3.13.15 and `python3.14` 3.14.6 are also installed from the deadsnakes PPA |
+| uv | 0.12.5 | Per-project Python environments and interpreter pins (L1) |
+| ruff | 0.14.11 | Python linting and formatting (L1) |
+| ollama | 0.34.0 | Runs an open coding model locally — the LLM track's first baseline |
+| NVIDIA driver | 580.178.04 | The RTX 2080 Ti (11264 MiB, compute capability 7.5); `nvidia-smi` reports CUDA Version 13.0. GPU counters are admin-only (`GAPS.md`) |
+
 ### Not installed, and why
 
 | Tool | Why it is absent |
@@ -178,6 +191,67 @@ whether everything is found. The learner installs these at P4:
 sudo apt install flex bison libelf-dev dwarves
 sudo apt install clang lld libclang-dev bindgen-0.71
 ```
+
+---
+
+## P6 prerequisites — not yet installed
+
+P6 (Syntek OS, `project-management/src/01-ROADMAP/ROADMAP.md`) builds Linux From Scratch **inside a
+VM**, never on the host's disks, so the LFS 13.1-systemd book's host requirements (its Section 2.2)
+apply to the VM's own system, not to this machine — `bison` and `texinfo`, absent here, are
+installed in the VM. On the host, P6 needs the VM tooling and two tools of its own.
+
+| Package or tool | Needed for | State on 27/09/2026 |
+| --- | --- | --- |
+| `qemu-system-x86`, `qemu-utils` | the build VM and every profile image; `qemu-img` disk images and snapshots | installed (8.2.2) |
+| `ovmf` | UEFI firmware for QEMU, for the ESP and UEFI boot lessons | installed (2024.02) |
+| `util-linux`, `e2fsprogs` | `sfdisk`, `losetup`, `mkfs.ext4` on disk images | installed (2.39.3, 1.47.0) |
+| `diffoscope` | comparing two builds for reproducibility | **not installed** (candidate 259) |
+| `minisign` | signing a package repository | **not installed** (candidate 0.11) |
+
+The build VM itself, with disk room for LFS, is tracked in `GAPS.md`.
+
+---
+
+## L1–L2 prerequisites — not yet installed
+
+The LLM track (L1–L2 first) needs more than the tools recorded above.
+
+| Package or tool | Needed for | State on 27/09/2026 |
+| --- | --- | --- |
+| PyTorch | L1 onwards; installed per project through uv, never system-wide | **not installed** — which build suits compute capability 7.5 is a planned research note (`research/CONTEXT.md`) |
+| pytest | Python tests (the planned Python CI gate) | **not installed**; per project through uv |
+| CUDA toolkit (`nvcc`) | CUDA kernels (L2) and llm.c's CUDA path | **not installed**; Ubuntu 24.04's `nvidia-cuda-toolkit` is 12.0.140 — the choice is a planned research note |
+| Nsight Systems, Nsight Compute | GPU profiling (L2) | **not installed**; counters are admin-only (`GAPS.md`) |
+| `hyperfine` | repeated, warmed-up command timing | **not installed** (candidate 1.18.0) |
+| `heaptrack` | heap profiling | **not installed** (candidate 1.5.0) |
+| llama.cpp | local inference, reading ggml | **not installed**; the release build (b11221: CPU, and CUDA 12.8 x64 for driver 580) needs no cmake; a source build with `-DCMAKE_CUDA_ARCHITECTURES=75` needs cmake and the CUDA toolkit |
+| `cmake` | building llama.cpp from source (its build docs use CMake), not its release build | **not installed** (candidate 3.28.3) |
+| `clang` | also needed by Rust-for-Linux (P4) and libFuzzer (security track) | **not installed** (candidate 18) |
+| `git-lfs` | fetching large model and dataset files outside this repository | **not installed** (candidate 3.4.1) |
+
+`perf` and the GPU counters need a restriction relaxed; a lesson shows Sam how, for one session, and
+teaches the unprivileged fallback (`valgrind --tool=cachegrind`, `torch.profiler`). Claude never
+runs `sudo`.
+
+---
+
+## Security track prerequisites
+
+S1–S3 (`project-management/src/01-ROADMAP/ROADMAP.md`). Attack tooling runs in VMs on an isolated
+lab network, never on the host (`.claude/CLAUDE.md` Section 5); only tools for Sam's own code
+(fuzzing, reading his own binaries) belong here.
+
+| Package or tool | Needed for | State on 27/09/2026 |
+| --- | --- | --- |
+| `libvirt-daemon-system`, `libvirt-clients` | the isolated lab network and its VMs | installed (10.0.0) |
+| `nmap`, `tcpdump` | scanning and packet capture — run from the attacker VM, not the host | installed (7.94SVN, 4.99.4) |
+| `wireshark` | reading captures | **not installed** (candidate 4.2.2) |
+| clang with libFuzzer, `afl++` | fuzzing Sam's own C | **not installed** (candidates 18, 4.09c) |
+| Ghidra | reverse engineering Sam's own binaries | **not installed**; not packaged in Ubuntu 24.04 |
+| pwntools | exploit practice on lab targets — inside the attacker VM | **not installed** (`python3-pwntools` candidate 4.12.0) |
+
+The attacker VM image is tracked in `GAPS.md`.
 
 ---
 

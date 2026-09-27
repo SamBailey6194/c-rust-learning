@@ -1,0 +1,12 @@
+# Resources — os-14-router-edition
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 Forwarding and NAT | docs.kernel.org "IP Sysctl" (`ip_forward`, `rp_filter`), <https://docs.kernel.org/networking/ip-sysctl.html>; nftables wiki NAT (revision 1113), <https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_(NAT)>; RFC 1918, <https://www.rfc-editor.org/rfc/rfc1918> | — | `code/src/os/` (planned — added at P6) |
+| 02 Bridges and VLANs | docs.kernel.org "Ethernet Bridging", <https://docs.kernel.org/networking/bridge.html>; `man 8 ip-link`; `man 8 bridge` | — | `code/src/os/` (planned — added at P6) |
+| 03 DHCP and DNS service for the LAN | dnsmasq(8), <https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html>; BLFS 13.1 Kea 3.0.2, <https://www.linuxfromscratch.org/blfs/view/13.1-systemd/server/kea.html>; Unbound documentation, <https://unbound.docs.nlnetlabs.nl/en/latest/> | `project-management/workflows/08-decisions/` | `code/src/os/` (planned — added at P6) |
+| 04 IPv6 for routers: advertisements and prefix delegation | RFC 4861, <https://www.rfc-editor.org/rfc/rfc4861>; RFC 4862, <https://www.rfc-editor.org/rfc/rfc4862>; RFC 9915, <https://www.rfc-editor.org/rfc/rfc9915>; RFC 7084, <https://www.rfc-editor.org/rfc/rfc7084>; Kea 3.0.2 DHCPv6, <https://kea.readthedocs.io/en/kea-3.0.2/arm/dhcp6-srv.html> | — | `code/src/os/` (planned — added at P6) |
+| 05 WireGuard | WireGuard, <https://www.wireguard.com/>; whitepaper, <https://www.wireguard.com/papers/wireguard.pdf>; `man 8 wg` | — | `code/src/os/` (planned — added at P6) |
+| 06 The router kernel fragment | docs.kernel.org "Kconfig Language", <https://docs.kernel.org/kbuild/kconfig-language.html> | the router profile spec (PROFILE-ROUTER in `project-management/src/07-OS-PROFILES/`) | `code/src/kernel/msNNN-profile-fragments/` (planned — added at P4) |
+| 07 Hardening and attack surface | `man 8 ss`; nftables wiki home router (revision 1057), <https://wiki.nftables.org/wiki-nftables/index.php/Simple_ruleset_for_a_home_router> | the router profile spec (PROFILE-ROUTER in `project-management/src/07-OS-PROFILES/`) | `code/src/os/` (planned — added at P6) |
+| 08 Choosing router hardware | BLFS 13.1 "About Firmware", <https://www.linuxfromscratch.org/blfs/view/13.1-systemd/postlfs/firmware.html> | `project-management/workflows/08-decisions/`; `GAPS.md` | — |

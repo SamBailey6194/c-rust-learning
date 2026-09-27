@@ -32,8 +32,9 @@ project-management/workflows/10-study-and-build/
   lesson's build-to-learn half is the plan's next exercise, built through code workflows `01` to `04`
   into `code/src/c/ms###-<kebab>/` or `code/src/rust/crates/ms###_<snake>/`. The lesson closes with a
   note, `NOTES/NN-<concept>.md`, in the learner's own words and linking the code by path.
-- **Tracks.** `c`, `rust`, `kernel` and `tooling`, as `learning/CLAUDE.md` names them; distro-tier study
-  sits in the kernel track. `NN` is a two-digit running number within the track.
+- **Tracks.** The tracks `learning/CLAUDE.md` names — `c`, `tooling`, `rust`, `kernel`, `os`, `ui`,
+  `llm` and `sec`; Syntek OS study sits in the `os` track. `NN` is a two-digit running number within
+  the track.
 - **Tutor mode.** Claude asks how the learner plans to approach a problem before helping, explains and
   asks guiding questions, and leaves exercise solutions to the learner unless they explicitly ask for
   one. A review points at the relevant `code/docs/` section instead of rewriting the code.

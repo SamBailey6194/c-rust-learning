@@ -107,6 +107,18 @@ so a non-zero raw exit is read from its evidence, and its script row says which 
 | --- | --- | --- |
 | {the explain-back scenario from the milestone} | {answer} | {Yes / No — and what was missing} |
 
+### 2.7 Resource measurements
+
+<!-- Keep when the Budget flag is not N/A (never N/A for a kernel-config, OS or LLM milestone). One row
+     per budgeted resource: the budget from the milestone, the value measured, the tool and command,
+     and whether it is within budget. The Efficiency lens
+     (project-management/src/01-ROADMAP/ROADMAP.md -> Cross-cutting lenses). -->
+
+| Resource | Budget | Measured | Tool / command | Within budget? |
+| --- | --- | --- | --- | --- |
+| [EXAMPLE] VRAM peak | ≤ 9 GiB | 7.4 GiB | `torch.cuda.max_memory_allocated()` | Yes |
+| [EXAMPLE] bzImage size | ≤ 12 MiB | 11.3 MiB | `ls -l arch/x86/boot/bzImage` | Yes |
+
 ---
 
 ## 3. How to reproduce

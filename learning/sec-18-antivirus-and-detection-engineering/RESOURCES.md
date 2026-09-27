@@ -1,0 +1,9 @@
+# Resources — sec-18-antivirus-and-detection-engineering
+
+| Lesson | Primary source (pinned) | House guide | Code |
+| --- | --- | --- | --- |
+| 01 How antivirus and EDR work, and their limits | ClamAV project (<https://github.com/Cisco-Talos/clamav>); MITRE ATT&CK (<https://attack.mitre.org/>) | — | — (comparison note in this topic folder) |
+| 02 ClamAV architecture and signatures | ClamAV project (<https://github.com/Cisco-Talos/clamav>); signature docs (<https://raw.githubusercontent.com/Cisco-Talos/clamav-documentation/main/src/manual/Signatures.md>; docs.clamav.net returns 403 to automated fetch on 27/09/2026); EICAR (<https://www.eicar.org/download-anti-malware-testfile/>) | — | signatures and note in this topic folder; database in the Syntek OS build-system repository (created when that build starts) |
+| 03 Writing YARA rules | YARA writing rules (<https://yara.readthedocs.io/en/stable/writingrules.html>); YARA modules (<https://yara.readthedocs.io/en/stable/modules.html>); YARA-X (<https://virustotal.github.io/yara-x/>, the maintained successor); EICAR (<https://www.eicar.org/download-anti-malware-testfile/>) | — | rules and note in this topic folder; deployed rules in the Syntek OS build-system repository (created when that build starts) |
+| 04 File-integrity monitoring with AIDE | AIDE (<https://aide.github.io/>); `aide --help` at lesson open | — | configuration and note in this topic folder |
+| 05 A scanner service for the NAS and server profiles | ClamAV project (<https://github.com/Cisco-Talos/clamav>); YARA (<https://yara.readthedocs.io/en/stable/writingrules.html>); YARA-X (<https://virustotal.github.io/yara-x/>); ratatui (Context7 `/ratatui/ratatui`); EICAR (<https://www.eicar.org/download-anti-malware-testfile/>) | — | the Syntek OS system-tools repository (created when that build starts), or `code/src/rust/crates/msNNN_scanner_service/` (planned) |

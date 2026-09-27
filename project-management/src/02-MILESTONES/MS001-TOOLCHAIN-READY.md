@@ -15,12 +15,13 @@
 | Exercises | N/A — `code/src/c/ms001-hello/` and `code/src/rust/crates/ms001_hello/` are smoke tests seeded with the repository, not a designed exercise set |
 | Project | N/A — P1's capstone comes at the end of the phase |
 | Kernel | N/A — kernel work starts at P4 |
-| Distro | N/A — distro work starts at P6 |
+| OS | N/A — Syntek OS work starts at P6 |
 | Tests | `make -C code/src/c/ms001-hello test` + `(cd code/src/rust && cargo test)` |
 | Memory | `make -C code/src/c/ms001-hello san` + `make -C code/src/c/ms001-hello memcheck` |
 | Debugger | gdb on `code/src/c/ms001-hello/build/test_greet`: break on `greet`, print an argument, `finish` to see the return value |
 | Lint | `make -C code/src/c/ms001-hello lint` + `cargo fmt --all --check` + `cargo clippy --all-targets -- -D warnings` (both cargo commands run inside `code/src/rust/`) |
 | QEMU | N/A — nothing boots before P4; `code/src/scripts/toolchain/check.sh` reports `qemu-system-x86_64` as optional only |
+| Budget | N/A — toolchain smoke tests have no resource target |
 | Notes | N/A — the toolchain is exercised here, not studied; the gdb transcript goes in the verification record |
 | Research | N/A — host versions are already recorded in `how-to/docs/TOOLCHAIN.md` |
 
@@ -69,6 +70,21 @@ by a new ADR that supersedes it.
   header-only `check.h` harness, no test library
 - `project-management/src/08-DECISIONS/ADR-MS001-RUST-EDITION-2024-TOOLCHAIN-PIN-27-09-2026.md` —
   edition 2024, toolchain pinned to 1.92.0 in `rust-toolchain.toml`
+
+The twelve MS001 ADRs from Sam's planning conversation (the roadmap tracks, the kernel, Syntek OS, the
+tools, the LLM, the crate licences, the GUI toolkit and the security track) are driven by this
+milestone too, because it was the only one open when they were written; they shape later phases, not
+MS001's gates (`project-management/src/08-DECISIONS/CONTEXT.md` → The planning-conversation set).
+
+---
+
+## Threat model
+
+Assets: the learner's host and this public repository. Threats: a gate that silently could not run,
+mistaken for a pass; a secret or absolute path committed. Mitigations: a missing tool is exit 2 (could
+not run), never clean (`project-management/docs/VERIFICATION-GUIDE.md`); `git diff --staged` is read
+before every commit and `Audit — Secrets` scans every push; Claude never runs `sudo`
+(`.claude/CLAUDE.md` Section 5).
 
 ---
 
