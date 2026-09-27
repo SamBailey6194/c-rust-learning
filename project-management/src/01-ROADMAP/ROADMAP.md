@@ -135,12 +135,13 @@ section):
 **Core** leads to the first server/homelab Syntek OS edition and the first own model; **Later** can
 wait. This orders the interleaving without fixing milestone numbers. Each phase section below lists
 its **topic folders** (`learning/<id>-<topic>/`), Core first and then Later; every folder's
-`SYLLABUS.md` header carries the same phase and **Path**.
+`SYLLABUS.md` header carries the same phase and **Path**. A topic whose appended lessons sit on the
+other path names both ranges in its header and on both lists, as `sec-05` does.
 
 | Path | Phases and topics | Leads to |
 | --- | --- | --- |
-| **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` | the first server/homelab edition and the first own model with a skills layer |
-| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4) --> | breadth once the first edition and model ship |
+| **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` lessons 01–07 | the first server/homelab edition and the first own model with a skills layer |
+| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Q9) --> | breadth once the first edition and model ship |
 
 ---
 
@@ -909,9 +910,14 @@ mitigations, the Linux security model and applied cryptography — turned on Sam
 - Fuzzing (coverage-guided, sanitisers, corpora, crash triage); the Linux security model (users,
   capabilities, namespaces, cgroups, seccomp, LSMs including Landlock — the sandbox launcher the OS
   and LLM tracks reuse); applied cryptography (hashes, MACs, signatures, key management, "don't roll
-  your own")
+  your own"); Later, a private CA built by hand and then run by an ACME issuer
+  <!-- CHANGED 27/09/2026: previously read "Fuzzing (coverage-guided, sanitisers, corpora, crash triage);
+       the Linux security model (users, capabilities, namespaces, cgroups, seccomp, LSMs including
+       Landlock — the sandbox launcher the OS and LLM tracks reuse); applied cryptography (hashes,
+       MACs, signatures, key management, "don't roll your own")" — networking and licensing round:
+       sec-05's private-CA lessons appended as Later (Q9) -->
 
-**Topic folders:** `sec-01`, `sec-02`, `sec-04`, `sec-05`; Later `sec-03`.
+**Topic folders:** `sec-01`, `sec-02`, `sec-04`, `sec-05` (lessons 01–07); Later `sec-03`, `sec-05` lessons 08–13.
 
 **Candidate milestones:**
 
@@ -921,6 +927,7 @@ mitigations, the Linux security model and applied cryptography — turned on Sam
 | Memory corruption and mitigations | a deliberately vulnerable C exercise shown corrupting memory under ASan with mitigations off, each mitigation toggled and read out of `readelf`, then fixed |
 | The Linux security model | the sandbox launcher (namespaces, seccomp, Landlock) the other tracks reuse |
 | Applied cryptography | signatures (Ed25519) and key management, using a vetted library |
+| Private CA (Later) | a lab root and a constrained intermediate by hand, short-lived leaves and revocation; then the ADR-chosen ACME issuer |
 
 **Exit gate:** a deliberately vulnerable C exercise (built as a clearly named, never-shipped target)
 is shown corrupting memory under AddressSanitizer with mitigations off; it is built with and without

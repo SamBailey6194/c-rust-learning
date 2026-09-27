@@ -32,7 +32,7 @@ licensing round the same day added more (`project-management/src/08-DECISIONS/CO
 networking and licensing round). Decisions still ahead
 include each profile's kernel line (longterm or stable), Rust-for-Linux feasibility (blocked until
 clang/LLVM is installed), bootloader, Syntek OS's own init system, the package format and signing
-scheme, and each profile's hardware.
+scheme, each profile's hardware, and the private CA's ACME issuer.
 
 ## Key concepts
 

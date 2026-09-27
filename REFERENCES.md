@@ -125,6 +125,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | ADR | Subject |
 | --- | --- |
 | `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` | Network labs stay isolated; a lab-proven config graduates to named devices Sam owns |
+| `ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md` | Proposed: a private CA — an offline root and constrained intermediate by hand, an ACME issuer for short-lived leaves |
 
 **Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
 every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.

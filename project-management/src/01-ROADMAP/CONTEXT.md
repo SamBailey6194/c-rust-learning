@@ -63,7 +63,7 @@ a map.
 | `MAP-SYNTEK-OS.md` | OS (P6) | Charting | 4 | 0 | 27/09/2026 |
 | `MAP-UI.md` | UI (U1–U3) | Charting | 1 | 0 | 27/09/2026 |
 | `MAP-LLM.md` | LLM (L1–L6) | Charting | 5 | 0 | 27/09/2026 |
-| `MAP-SECURITY.md` | Security (S1–S3) | Charting | 3 | 0 | 27/09/2026 |
+| `MAP-SECURITY.md` | Security (S1–S3) | Charting | 4 | 0 | 27/09/2026 |
 
 A map in this folder with no row here is an index that has drifted: the row arrives in the same
 change as the map. **P1 C foundations is still the first map to take through to milestones; the

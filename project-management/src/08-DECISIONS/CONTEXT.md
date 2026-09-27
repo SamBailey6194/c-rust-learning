@@ -38,6 +38,7 @@ project-management/src/08-DECISIONS/
 ├── ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md        ← authorised, isolated-lab-only offence; no malware; extended by the graduation path (below)
 │   ── Networking and licensing round, 27/09/2026 ──
 ├── ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md  ← labs isolated; a lab-proven config graduates to named devices
+├── ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md    ← Proposed: offline root, constrained intermediate by hand; ACME issuer for leaves
 └── ADR-MS###-<DECISION>-DD-MM-YYYY.md                         ← pattern for every later decision
 ```
 
@@ -107,6 +108,7 @@ question it answers. Records waiting on a research note stay `Proposed`.
 | ADR | Rule enforced in |
 | --- | --- |
 | Network lab first, graduation path | `.claude/CLAUDE.md` Section 5 · `project-management/docs/SAFETY-GUIDE.md` → Graduating a lab-proven config |
+| Private CA (Proposed) | `learning/sec-05-applied-cryptography/SYLLABUS.md` · `learning/ui-10-web-admin-dashboard/SYLLABUS.md` |
 
 ## When an ADR is written
 

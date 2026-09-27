@@ -3,7 +3,7 @@
 **Charted**: 27/09/2026 | **Charted by**: Sam Bailey | **Workflow**: `01-roadmap-map`
 **Phase**: S1–S3 — `project-management/src/01-ROADMAP/ROADMAP.md`
 **Status**: Charting
-**Frontier open**: 3 | **Blocking open**: 1
+**Frontier open**: 4 | **Blocking open**: 1
 
 > A `Charting` draft: destination and open decisions from Sam's request of 27/09/2026 and its ADR;
 > nodes resolve in later sessions, one at a time. **The map is an index, not a vault.**
@@ -31,14 +31,16 @@ defensive, tested with EICAR and synthetic files.
 | Standing preferences | authorised, isolated-lab-only offence; attack tooling in VMs; no working exploits for unpatched third-party bugs; defensive-only malware work; EICAR and synthetic files only; no offensive tooling on Sam's real network, even for a graduated config |
 | Umbrella ADRs | `project-management/src/08-DECISIONS/ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` · `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` |
 | Primary resources | the S1–S3 lists in `ROADMAP.md`; OWASP, NIST SP 800-115 and 800-61, MITRE ATT&CK, kernel hardening docs, man pages |
-| Register entries triaged | 0 closes, 2 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 0 closes, 3 blocks, 0 unrelated — from `GAPS.md` |
 
-**Register triage is a claim, not a close.** This track is blocked by two `GAPS.md` entries:
+**Register triage is a claim, not a close.** This track is blocked by three `GAPS.md` entries:
 "Security lab tools and the attacker VM" (Wireshark, clang with libFuzzer, AFL++, Ghidra, pwntools,
 an intercepting proxy and the Juice Shop image are missing and there is no attacker VM yet; nmap,
 tcpdump and libvirt are on the host, but attack tooling runs only in the VM) and "Fuzzing Rust needs
-a nightly toolchain" (an Open question settled by ADR at `sec-03-fuzzing`). Nothing here edits
-either register.
+a nightly toolchain" (an Open question settled by ADR at `sec-03-fuzzing`) and "No ACME issuer
+chosen for the private CA" (an Open question retired by `research/PRIVATE-CA-ACME-ISSUER.md` and the
+issuer ADR it feeds — N-006; it blocks `sec-05-applied-cryptography` lesson 13). Nothing here edits
+any register.
 
 ---
 
@@ -47,6 +49,7 @@ either register.
 | Node | Decision | Type | Settled | Became |
 | --- | --- | --- | --- | --- |
 | N-001 | Authorised, isolated-lab-only offensive work; defensive-only malware work | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` |
+| N-005 | Private CA: offline root and constrained intermediate by hand; leaves from a standing ACME issuer (Sam's explicit answer, 27/09/2026) | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md` (Proposed) · `learning/sec-05-applied-cryptography/SYLLABUS.md` lessons 08–13 |
 
 ---
 
@@ -67,6 +70,7 @@ Filled at CUT; candidates in `ROADMAP.md` → S1, S2, S3.
 | N-002 | How the lab network is proven isolated (QEMU `restrict=on` against a libvirt isolated network) | research | `research/PENTEST-LAB-NETWORK-ISOLATION.md` (planned) | yes |
 | N-003 | Which vulnerable targets have licences that permit this use | research | `research/VULNERABLE-TARGET-LICENCES.md` (planned) | no |
 | N-004 | The attacker-box VM image and the lab tooling install | spike | `GAPS.md` → "Security lab tools and the attacker VM" | no |
+| N-006 | Which ACME issuer runs the private CA | research | `research/PRIVATE-CA-ACME-ISSUER.md` (planned) | no |
 
 **Blocking a milestone?** N-002 blocks the S2 lab-setup milestone: no offensive exercise runs until
 the network is shown to have no route to the home LAN.
@@ -102,6 +106,7 @@ the network is shown to have no route to the home LAN.
 | --- | --- | --- | --- |
 | 27/09/2026 | N-001 | lab rules → `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` | [x] |
 | 27/09/2026 | — | no node settled; Sam's networking-round answer adds the real-LAN out-of-scope row → `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` | [x] |
+| 27/09/2026 | N-005 | private CA → `ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md` (Proposed) and `sec-05` lessons 08–13; the issuer choice opens as N-006 | [x] |
 
 ---
 

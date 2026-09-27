@@ -109,6 +109,8 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 ## External — Decisions
 
 - **Documenting Architecture Decisions (Michael Nygard)** — https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions — the original ADR form (Context, Decision, Status, Consequences) that `project-management/src/08-DECISIONS/` extends with Options considered
+- **RFC 5280, X.509 certificate and CRL profile** — https://www.rfc-editor.org/rfc/rfc5280 — basic and name constraints, CRLs and path validation, behind the private-CA ADR
+- **RFC 8555, ACME** — https://www.rfc-editor.org/rfc/rfc8555 — automated certificate issuance, the protocol the private CA's leaf issuer speaks
 
 ---
 
