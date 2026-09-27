@@ -21,8 +21,8 @@ choose, and each published one takes its licence when its build starts, under
 `project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`; until
 he does, lessons use these placeholders and no others: the downstream kernel repository; the
 Syntek OS build-system, package-manager, installer, system-tools, file-manager, GUI-tools and
-web-dashboard repositories; the sandbox-launcher repository; and the model-training, inference and
-model-release repositories. One more is private and holds no build: the private
+web-dashboard repositories; the sandbox-launcher repository; the remote-help repository; and the
+model-training, inference and model-release repositories. One more is private and holds no build: the private
 infrastructure repository, created at the first graduation, where Sam's real network configuration
 lives (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`);
 it is never published and carries no licence, and lessons name it but never link it, cite a path in
@@ -140,17 +140,23 @@ the architecture studied; the [gtk4-rs book](https://gtk-rs.org/gtk4-rs/stable/l
 [API docs](https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/); [zbus](https://docs.rs/zbus/latest/zbus/)
 and [polkit](https://www.freedesktop.org/software/polkit/docs/latest/); the
 [Wayland documentation](https://wayland.freedesktop.org/docs/html/) and [The Wayland Book](https://wayland-book.com/);
-[Slint](https://slint.dev/) for its model only.
+[Slint](https://slint.dev/) for its model only; `man 7 pty` and `man 3 openpty` (installed) and the
+[rustls docs](https://docs.rs/rustls/latest/rustls/) for remote help, with the law taken through
+`research/` notes, never from memory.
 
 - **Toolkits.** Lessons here use gtk4-rs
   (`project-management/src/08-DECISIONS/ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md`). Syntek OS
   products are written in Slint, in their own repositories; no Slint crate enters this one.
 - **Licences.** A crate outside `code/src/rust/deny.toml`'s allow list enters only as a documented
   per-crate exception citing the ADR that admits it, in the milestone that first needs it.
+- **Remote help** is consent-first by construction
+  (`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`;
+  `project-management/docs/SAFETY-GUIDE.md` → Remote help): lab first; a real session only under
+  the graduation path.
 - **Where it lands.** Lesson crates under `code/src/rust/crates/msNNN_<snake>/`; a substantial tool
   (and any tool taking outside contributions) moves to its own repository when its build starts —
   the Syntek OS file-manager, package-manager, installer, system-tools, GUI-tools or web-dashboard
-  repository.
+  repository, or the remote-help repository.
 
 ## llm — the language model (L1–L6)
 
