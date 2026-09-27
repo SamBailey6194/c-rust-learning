@@ -30,6 +30,20 @@ Append a new entry at the top, newest first:
 
 ---
 
+## 27/09/2026 — No ACME issuer chosen for the private CA
+
+**Type:** Open question
+**Summary:** The private CA
+(`project-management/src/08-DECISIONS/ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md`,
+Proposed) makes its offline root and constrained intermediate by hand with `openssl`, and a standing
+ACME issuer signs short-lived leaves. Which issuer is not chosen: its licence, maintenance, support
+for an external offline root, name constraints and sub-day lifetimes, challenge types, key storage,
+footprint and packaging are all unresearched (27/09/2026).
+**Blocked by / Action:** Blocks `learning/sec-05-applied-cryptography/` lesson 13 and the renewal
+half of `learning/os-18-own-network-operations/` lesson 06. Run `/research` for
+`research/PRIVATE-CA-ACME-ISSUER.md`, record the choice in an ADR, then Sam installs the issuer and
+records its version in `how-to/docs/TOOLCHAIN.md`; close this entry then.
+
 ## 27/09/2026 — GTK 4 development files not installed
 
 **Type:** Toolchain gap
