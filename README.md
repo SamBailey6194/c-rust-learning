@@ -147,7 +147,9 @@ builds towards, so that kernel patches and modules written here can carry the ke
 licence. Rust dependencies are held to GPL-2.0-compatible licences by `code/src/rust/deny.toml`;
 an Apache-2.0-only crate a lesson needs is admitted only as a documented per-crate exception, since
 this repository is for learning and distributes no binaries. Licences are chosen per repository:
-the product repositories choose their own.
+the product repositories choose their own when each build starts, from an approved list under inbound
+rules
+(`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
 
 ---
 

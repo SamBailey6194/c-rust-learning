@@ -1,6 +1,6 @@
 # GAPS.md — Active Gaps, Blockers & Open Questions
 
-**Last Updated**: 27/09/2026 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB)
 
 Tracks what currently stands between c-rust-learning and its next phases: missing tools,
@@ -29,6 +29,58 @@ Append a new entry at the top, newest first:
 ```
 
 ---
+
+## 27/09/2026 — No SBOM generator or REUSE linter installed
+
+**Type:** Toolchain gap
+**Summary:** None of `reuse`, `syft`, `cargo-cyclonedx`, `cargo-sbom`, `trivy` or `pyspdxtools` is on
+the host (`command -v`, 27/09/2026). cargo-deny 0.19.0's `list` prints the licences in a crate graph
+as text, JSON or TSV, but writes no SBOM format (`cargo deny list --help`). The component-register
+record
+(`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`,
+Proposed) leaves the generator and validator to research.
+**Blocked by / Action:** Blocks the generator half of
+`learning/tooling-05-licensing-and-collaboration/` lesson 08 (writing the SPDX document by hand and
+reading `cargo deny list` run without it), and leaves lesson 03's optional `reuse lint` check unrun. Run
+`/research` for `research/SBOM-FORMATS-AND-GENERATORS.md`, then Sam installs the chosen generator,
+validator and `reuse` and records their versions in `how-to/docs/TOOLCHAIN.md`; close this entry then.
+
+## 27/09/2026 — Licensor and copyright holder of the product repositories
+
+**Type:** Open question
+**Summary:** Who holds the copyright in the product repositories, and so who grants their licences,
+is not decided: Sam personally or an organisation. The inbound rules
+(`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`) adopt a
+contributor licence agreement only once the licensor is named, and the approved outbound list's two
+gated entries, proprietary and dual GPL-3.0-or-later plus commercial, need a named licensor
+(`ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`). This entry records an open
+engineering question; it is not legal advice.
+**Blocked by / Action:** Blocks only the CLA route and the gated entries; a product under an open entry
+with DCO sign-offs is not blocked. Sam decides before any product's licence ADR picks a gated entry,
+and `research/PRODUCT-CONTRIBUTIONS-DCO-AND-CLA.md` (planned) sets out what a CLA needs from the
+licensor. Close this entry when the answer is recorded in an ADR.
+
+## 27/09/2026 — Trademark policy for the Syntek OS name
+
+**Type:** Open question
+**Summary:** Syntek OS will be published under its own name, but nothing says how others may use that
+name: a respin, a derivative image, a mirror or a community spin. Other distributions publish
+trademark policies for this; none has been read for Syntek OS yet (27/09/2026). This entry records an
+open question; it is not legal advice.
+**Blocked by / Action:** Blocks the first public Syntek OS image. Run `/research` for
+`research/SYNTEK-OS-TRADEMARK-POLICY.md` (planned) before that image is published, record the policy
+in an ADR, and close this entry then.
+
+## 27/09/2026 — Export rules for shipping cryptography
+
+**Type:** Open question
+**Summary:** Several products will ship cryptographic code in their binaries and images — TLS, VPN and
+package signing among them. Whether the UK dual-use export controls, through their cryptography
+category and its notes on software and on publicly available code, ask anything of a public release
+has not been researched (27/09/2026). This entry records an open question; it is not legal advice.
+**Blocked by / Action:** Blocks any product's first public binary release. Run `/research` for
+`research/CRYPTOGRAPHY-EXPORT-RULES.md` (planned) before that release, record what it finds in the
+product's release process or an ADR, and close this entry then.
 
 ## 27/09/2026 — No ACME issuer chosen for the private CA
 
