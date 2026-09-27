@@ -96,6 +96,16 @@ perf.data*
 # Ignored anyway: a public repository is the worst place to learn that lesson.
 .env*
 
+# ── Private keys (security and networking lessons) ────────────────────────────
+# Lab keys are made outside the repository (in $XDG_RUNTIME_DIR) and destroyed; no
+# private key belongs in any repository. These patterns are a backstop only: the
+# secrets scan in CI reports only verified secrets, so it would not catch a lab key.
+*.key
+*-key.pem
+*.p12
+*.pfx
+privatekey
+
 # ── Claude Code runtime ───────────────────────────────────────────────────────
 # settings.local.json holds per-machine permission approvals; worktrees/ holds
 # nested git checkouts; the lock file is runtime state. The shared, committed
