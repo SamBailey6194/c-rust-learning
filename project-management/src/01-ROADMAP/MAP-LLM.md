@@ -31,15 +31,22 @@ OS that runs Sam's own efficient local model with skills built in.
 | Standing preferences | skills not agents; a budget and a threat model on every milestone; safetensors-only weights; licence-checked, scrubbed data; sandboxed generated code; ~100M locally before ~1B on rented GPUs |
 | Umbrella ADRs | `ADR-MS001-LLM-SKILLS-NOT-AGENTS-27-09-2026.md` · `ADR-MS001-LLM-EFFICIENCY-AND-SECURITY-FIRST-27-09-2026.md` · `ADR-MS001-LLM-BASE-MODEL-PLUS-ADAPTERS-27-09-2026.md` (Proposed) · `ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md` (all in `project-management/src/08-DECISIONS/`) |
 | Primary resources | the L1–L6 lists in `ROADMAP.md`; PyTorch and NVIDIA docs; papers by arXiv ID; llm.c and nanochat; the OWASP LLM Top 10 |
-| Register entries triaged | 0 closes, 7 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 0 closes, 10 blocks, 18 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 1 closes, 7 unrelated |
 
-**Register triage is a claim, not a close.** The `GAPS.md` entries this track meets: "CUDA toolkit
-(`nvcc`) not installed"; "Nsight Systems and Nsight Compute not installed"; "perf and GPU performance
-counters are locked for unprivileged users"; "LLM track tools not installed"; "Per-crate licence
-exceptions arrive with the first crate that needs them" (the Apache-2.0-only crates, admitted by ADR);
-"CI has no GPU"; and "L6 compute budget and provider not chosen". Each is a frontier node's blocker or
-a lesson-level Blocked mark; a Blocked lesson does not hold its phase closed. Nothing here edits either
-register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. The `GAPS.md` entries this track meets: "CUDA toolkit (`nvcc`) not installed";
+"Nsight Systems and Nsight Compute not installed"; "perf and GPU performance counters are locked for
+unprivileged users"; "LLM track tools not installed"; "Per-crate licence exceptions arrive with the
+first crate that needs them" (the Apache-2.0-only crates, admitted by ADR); "CI has no GPU"; and "L6
+compute budget and provider not chosen". Three more reach the model-training, inference and
+model-release repositories: "Licensor and copyright holder of the product repositories" (only if one
+picks a gated entry), "Export rules for shipping cryptography" (any first public binary release) and
+"No SBOM generator or REUSE linter installed" (a model release publishes its register beside its
+weights, under the Proposed component-register ADR). Each is a frontier node's blocker or a
+lesson-level Blocked mark; a Blocked lesson does not hold its phase closed. Of `DEFERRED.md`, this
+track takes up the domain adapters beyond coding (`DEFERRED (L6)`); the other seven are unrelated.
+Nothing here edits either register.
 
 ---
 

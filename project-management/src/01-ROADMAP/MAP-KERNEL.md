@@ -32,14 +32,18 @@ building and booting in QEMU, reproducibly from a pinned tag.
 | Standing preferences | downstream of upstream, not a fork or from scratch; QEMU only; longterm for the server family, stable for desktops (per profile) |
 | Umbrella ADRs | `project-management/src/08-DECISIONS/ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` · `ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` |
 | Primary resources | the P4 and P5 lists in `ROADMAP.md`; docs.kernel.org; kernel.org releases |
-| Register entries triaged | 0 closes, 4 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 0 closes, 4 blocks, 24 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 2 closes, 6 unrelated |
 
-**Register triage is a claim, not a close.** The four `GAPS.md` blockers this track meets are
-"Kernel build dependencies not installed" (flex, bison, libelf-dev, dwarves, and the GCC-plugin choice
-for `CONFIG_KSTACK_ERASE` at `kernel-04` lesson 03), "pahole minimum for P4
-is unclear", "Rust-for-Linux needs clang/LLVM and bindgen" and "git send-email and b4 not installed"
-(`kernel-07-upstreaming` lesson 04 only). The first three become frontier nodes' blockers below; the
-last is a lesson-level Blocked mark. Nothing in this map edits either register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. The four `GAPS.md` blockers this track meets are "Kernel build dependencies not
+installed" (flex, bison, libelf-dev, dwarves, and the GCC-plugin choice for `CONFIG_KSTACK_ERASE` at
+`kernel-04` lesson 03), "pahole minimum for P4 is unclear", "Rust-for-Linux needs clang/LLVM and
+bindgen" and "git send-email and b4 not installed" (`kernel-07-upstreaming` lesson 04 only). The first
+three become frontier nodes' blockers below; the last is a lesson-level Blocked mark. The other 24 name
+no lesson or milestone in this track. Of `DEFERRED.md`, this track takes up the two scripted-recorder
+rows targeted `DEFERRED (P4)`, TTY-console and remote-desktop capture, and only once the recorder's
+stages 1–4 are `Done`; the other six are unrelated. Nothing in this map edits either register.
 
 ---
 

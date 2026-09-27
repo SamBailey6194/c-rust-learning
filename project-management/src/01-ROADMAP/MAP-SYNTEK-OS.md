@@ -30,14 +30,31 @@ profile spec in `project-management/src/07-OS-PROFILES/`; the server and homelab
 | Standing preferences | independent, from scratch; seven profiles on one base; server and homelab first; QEMU and VM disk images only until hardware is chosen per profile; a lab-proven config reaches Sam's own devices only by the graduation path (no offensive tooling on the real LAN: `MAP-SECURITY.md` → Out of scope) |
 | Umbrella ADRs | `ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` · `ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md` · `ADR-MS001-SYNTEK-OS-DESKTOPS-REUSED-27-09-2026.md` · `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` (all in `project-management/src/08-DECISIONS/`) |
 | Primary resources | the P6 list in `ROADMAP.md`; the LFS/BLFS 13.1 systemd books; reproducible-builds.org; pacman/apk/xbps manuals |
-| Register entries triaged | 2 closes, 4 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 1 closes, 13 blocks, 14 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 2 closes, 6 unrelated |
 
-**Register triage is a claim, not a close.** This track retires "Distro build approach undecided"
-(closed by `ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md`) and "Syntek OS profile
-definitions are hypotheses" (once the matrix is checked against real builds); it is blocked by "A VM
-with spare disk for the LFS build", "No hardware chosen for the Syntek OS profiles", "diffoscope not
-installed" (`os-05` lesson 05) and "ZFS licence and kernel range for the NAS profile" (`os-13`).
-Nothing here edits either register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. This track retires "Syntek OS profile definitions are hypotheses" (once the matrix
+is checked against real builds). "Distro build approach undecided", which it also retired, is closed by
+`ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` and is no longer counted. Thirteen
+`GAPS.md` entries block it:
+
+- **The build:** "A VM with spare disk for the LFS build", "No hardware chosen for the Syntek OS
+  profiles", "diffoscope not installed" (`os-05` lesson 05), "ZFS licence and kernel range for the
+  NAS profile" (`os-13`), "Fuzzing Rust needs a nightly toolchain" (`os-07`), "perf and GPU
+  performance counters are locked for unprivileged users" (`os-17`, which teaches the fallback) and
+  "ShellCheck not installed locally" (`os-02` and `os-09` scripts are linted only in CI).
+- **Sam's own network (`os-18`):** "Monitoring and remote-help tools not installed" (lessons 07 and
+  10), "No ACME issuer chosen for the private CA" (lesson 06's renewal half) and "Remote-help law and
+  dual-use publishing not yet researched" (lesson 10's teaching waits on its consent note).
+- **A public release:** "No SBOM generator or REUSE linter installed" (a Syntek OS release publishes
+  its register beside its images, under the Proposed component-register ADR), "Trademark policy for
+  the Syntek OS name" (the first public image) and "Export rules for shipping cryptography" (any
+  first public binary release).
+
+Of `DEFERRED.md`, this track takes up the two rows targeted `DEFERRED (P6)`: UEFI Secure Boot for the
+images and the init system Syntek OS ships (N-004). The other six are unrelated. Nothing here edits
+either register.
 
 ---
 

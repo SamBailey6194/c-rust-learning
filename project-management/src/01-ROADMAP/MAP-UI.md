@@ -33,14 +33,26 @@ Later), in its own repository.
 | Standing preferences | custom tools in Rust; ratatui TUIs first, GUIs later; a library crate plus a thin front-end; contributions welcome once a tool moves to its own repository |
 | Umbrella ADRs | `ADR-MS001-SYNTEK-OS-TOOLS-RUST-TUI-FIRST-27-09-2026.md` · `ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md` · `ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md` (all in `project-management/src/08-DECISIONS/`) |
 | Primary resources | the U1–U3 lists in `ROADMAP.md`; ratatui and crossterm docs; the Yazi repository; gtk4-rs docs |
-| Register entries triaged | 0 closes, 3 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 0 closes, 7 blocks, 21 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 1 closes, 7 unrelated |
 
-**Register triage is a claim, not a close.** Two `GAPS.md` entries block U3's gtk4-rs builds: "GTK 4
-development files not installed" (retired when U3 opens and CI's runner installs the package too)
-and "Per-crate licence exceptions arrive with the first crate that needs them" (gtk4's
-`target-lexicon` build-dependency exception, frontier node N-003). A third, "Remote-help law and
-dual-use publishing not yet researched", blocks `ui-11` lessons 01, 06 and 09 and the remote-help
-ADR's acceptance (retired by the four research notes of N-005). Nothing here edits either register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. Seven `GAPS.md` entries block this track:
+
+- "GTK 4 development files not installed" (retired when U3 opens and CI's runner installs the package
+  too) and "Per-crate licence exceptions arrive with the first crate that needs them" (gtk4's
+  `target-lexicon` build-dependency exception, frontier node N-003) block U3's gtk4-rs builds.
+- "Remote-help law and dual-use publishing not yet researched" blocks `ui-11` lessons 01, 06 and 09
+  and the remote-help ADR's acceptance (retired by the four research notes of N-005). "Export rules
+  for shipping cryptography" blocks the first public binary release in `ui-11` lesson 09.
+- "No ACME issuer chosen for the private CA" blocks the renewed dashboard leaf of `ui-10` lesson 05,
+  through `sec-05` lesson 13.
+- "Scripted recorder build dependencies not installed" blocks every Build of `ui-12` and `ui-13`.
+- "Licensor and copyright holder of the product repositories" blocks a UI product repository only if
+  it picks a gated entry from the approved outbound list.
+
+Of `DEFERRED.md`, this track takes up "Graphical desktop sharing for remote help" (`DEFERRED (U3)`);
+the other seven are unrelated. Nothing here edits either register.
 
 ---
 

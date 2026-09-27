@@ -31,16 +31,26 @@ defensive, tested with EICAR and synthetic files.
 | Standing preferences | authorised, isolated-lab-only offence; attack tooling in VMs; no working exploits for unpatched third-party bugs; defensive-only malware work; EICAR and synthetic files only; no offensive tooling on Sam's real network, even for a graduated config |
 | Umbrella ADRs | `project-management/src/08-DECISIONS/ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` · `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` |
 | Primary resources | the S1–S3 lists in `ROADMAP.md`; OWASP, NIST SP 800-115 and 800-61, MITRE ATT&CK, kernel hardening docs, man pages |
-| Register entries triaged | 0 closes, 3 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 0 closes, 5 blocks, 23 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 2 closes, 6 unrelated |
 
-**Register triage is a claim, not a close.** This track is blocked by three `GAPS.md` entries:
-"Security lab tools and the attacker VM" (Wireshark, clang with libFuzzer, AFL++, Ghidra, pwntools,
-an intercepting proxy and the Juice Shop image are missing and there is no attacker VM yet; nmap,
-tcpdump and libvirt are on the host, but attack tooling runs only in the VM) and "Fuzzing Rust needs
-a nightly toolchain" (an Open question settled by ADR at `sec-03-fuzzing`) and "No ACME issuer
-chosen for the private CA" (an Open question retired by `research/PRIVATE-CA-ACME-ISSUER.md` and the
-issuer ADR it feeds — N-006; it blocks `sec-05-applied-cryptography` lesson 13). Nothing here edits
-any register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. This track is blocked by five `GAPS.md` entries:
+
+- "Security lab tools and the attacker VM" (Wireshark, clang with libFuzzer, AFL++, Ghidra, pwntools,
+  an intercepting proxy and the Juice Shop image are missing and there is no attacker VM yet; nmap,
+  tcpdump and libvirt are on the host, but attack tooling runs only in the VM).
+- "Fuzzing Rust needs a nightly toolchain" (an Open question settled by ADR at `sec-03-fuzzing`).
+- "No ACME issuer chosen for the private CA" (an Open question retired by
+  `research/PRIVATE-CA-ACME-ISSUER.md` and the issuer ADR it feeds — N-006; it blocks
+  `sec-05-applied-cryptography` lesson 13).
+- "No hardware chosen for the Syntek OS profiles" (`sec-13`'s real hardware waits for the per-profile
+  hardware ADR; its builds run in VMs).
+- "CI has no GPU" (`sec-15` runs its red-team suite locally with recorded evidence).
+
+Of `DEFERRED.md`, the two rows targeted `DEFERRED (S3)` are this track's to revisit: live malware
+analysis, and the router's flood and load testing (`sec-14`, if at all). The other six are unrelated.
+Nothing here edits any register.
 
 ---
 
