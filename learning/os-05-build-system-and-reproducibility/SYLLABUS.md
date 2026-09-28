@@ -97,8 +97,9 @@ boundary in `.claude/skills/teach/FAMILIES.md` sets out.
     `unshare --user --map-root-user --net`), so builds need no `sudo`; `bwrap` (bubblewrap 0.9.0 on the host) packages
     the same primitives.
   - Isolation also catches mistakes: a build that writes outside its `DESTDIR` fails instead of polluting the builder.
-  - sec-04's sandbox launcher (a lesson crate here, then the sandbox-launcher repository once that build starts) is the
-    one sandbox these builds share; the builder depends on it rather than writing a second.
+  - sec-04's sandbox launcher (a lesson crate here, then the sandbox-launcher repository, created at this lesson or at
+    `llm-13` lesson 03, whichever is taught first) is the one sandbox these builds share; the builder depends on it
+    rather than writing a second.
 - **Recall targets:** what each namespace type isolates for a build; why fetch and build are separate; why a chroot
   alone is not enough.
 - **Build:** the first code in the Syntek OS build-system repository (created when this build starts): a builder that

@@ -83,11 +83,12 @@ H4  Claim:      homelab services are reachable on the LAN but the firewall denie
     Tested at:  P6, the homelab image milestone.
 
 H5  Claim:      the homelab takes its address and resolver from the LAN's DHCP server and serves
-                neither DHCP nor DNS.
+                neither DHCP (v4 or v6) nor DNS, and sends no router advertisements.
     Test:       in QEMU on os-09's isolated lab, with os-09 lesson 07's lab-only dnsmasq serving
-                the LAN with a reservation, boot the image and probe UDP 53 and 67 and TCP 53
-                from a LAN guest.
-    Passes if:  the reserved lease is held, a lab name resolves, and nothing answers on 53 or 67.
+                the LAN with a reservation, boot the image and, from a LAN guest, probe UDP 53,
+                TCP 53, UDP 67 and UDP 547 and send a router solicitation (ICMPv6 type 133).
+    Passes if:  the reserved lease is held, a lab name resolves, nothing answers on UDP 53,
+                TCP 53, UDP 67 or UDP 547, and no router advertisement (type 134) comes back.
     Tested at:  P6, the homelab image milestone.
 ```
 

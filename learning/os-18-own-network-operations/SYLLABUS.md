@@ -130,8 +130,10 @@ for real values. It is marked **Later**: the first edition does not wait for it.
   - DNS rebinding: a public name answering with a private address lets a web page reach LAN devices;
     the resolver refuses such answers (dnsmasq's `--stop-dns-rebind`), with `--rebind-domain-ok` for
     the local zone only.
-  - The homelab consumes and serves neither: nothing on it answers on UDP 53, TCP 53 or UDP 67, which
-    is the homelab profile's hypothesis H5 (`project-management/src/07-OS-PROFILES/PROFILE-HOMELAB.md`).
+  - The homelab consumes and serves neither: nothing on it answers on UDP 53, TCP 53, UDP 67 or
+    UDP 547 (DHCPv6), and it answers no router solicitation (ICMPv6 type 133) with a router
+    advertisement (type 134), which is the homelab profile's hypothesis H5
+    (`project-management/src/07-OS-PROFILES/PROFILE-HOMELAB.md`).
   - What the router logs about other people's lookups, and for how long, is set only once the law
     note below exists.
 - **Recall targets:** why `home.arpa.` and not `.local`; what a rebinding attack needs and what
@@ -139,14 +141,17 @@ for real values. It is marked **Later**: the first edition does not wait for it.
 - **Build:** lab assertions in `code/src/os/` (planned — added at P6): the homelab guest holds its
   reserved lease, a lab name under `home.arpa.` resolves from a LAN guest, an upstream answer that
   maps a public name to a private address is refused, and nothing on the homelab answers on UDP 53,
-  TCP 53 or UDP 67.
+  TCP 53, UDP 67 or UDP 547, and it answers no router solicitation (ICMPv6 type 133) with a router
+  advertisement (type 134).
 - **Security lens:** rebinding; rogue DHCP; a second resolver the household does not know about.
 - **Safety:** lab first; real change under the graduation path, run by Sam.
 - **Sources:** RFC 8375, <https://www.rfc-editor.org/rfc/rfc8375>; RFC 6762 (Section 3),
   <https://www.rfc-editor.org/rfc/rfc6762>; `man 8 dnsmasq` (dnsmasq 2.91 on the host: `--dhcp-host`,
   `--domain`, `--expand-hosts`, `--stop-dns-rebind`, `--rebind-domain-ok`); Kea 3.0.2 reference manual,
   "Host Reservations in DHCPv4" (Section 9.3),
-  <https://kea.readthedocs.io/en/kea-3.0.2/arm/dhcp4-srv.html#host-reservations-in-dhcpv4>; the
+  <https://kea.readthedocs.io/en/kea-3.0.2/arm/dhcp4-srv.html#host-reservations-in-dhcpv4>; RFC 8415
+  (DHCPv6, Section 7.2 for ports 546 and 547), <https://www.rfc-editor.org/rfc/rfc8415>; RFC 4861
+  (Section 4.2, the router advertisement), <https://www.rfc-editor.org/rfc/rfc4861>; the
   HOME-NETWORK-OPERATION-LAW research note (planned — `research/HOME-NETWORK-OPERATION-LAW.md`).
   **Teaching waits on that note** for the query-log retention line.
 - **Done when:** the assertions pass and Sam explains why each refusal happens.
@@ -223,8 +228,9 @@ for real values. It is marked **Later**: the first edition does not wait for it.
 - **Key ideas:**
   - This lesson consumes `sec-05`'s CA; it designs nothing new. Sam's real root and intermediate are
     made under the graduation path, and their keys enter no repository.
-  - Name constraints on the intermediate are what make a home root safe to install: it can sign only
-    the home zone's names and addresses, where the client enforces them (`sec-05` lesson 09).
+  - Name constraints on the intermediate bound what a stolen intermediate can sign — only the home
+    zone's names and addresses — where clients enforce them; the root itself is unconstrained, so
+    installing it is safe only while its key stays offline (`sec-05` lessons 08–09).
   - Trust stores differ by client — the system store, an NSS database, an application's own file —
     and writing the system store needs root, so Sam runs that step on each device.
   - Leaves are renewed by ACME once the issuer is chosen; until then, hand-issued leaves are enough to
@@ -370,29 +376,47 @@ for real values. It is marked **Later**: the first edition does not wait for it.
   - `authorized_keys` options scope the helper's key: `expiry-time=` stops it being accepted after the
     session window, `from=` limits where it may connect from, and `restrict` switches off forwarding,
     PTY allocation and `~/.ssh/rc`, so the session re-enables only `pty`, which tmux needs.
+  - A forced `command="tmux -S <helped user's socket> attach -t <session>"` on the same key (or the
+    equivalent `ForceCommand` in a `Match User` block) means the key can do nothing but attach to the
+    watched session: no other shell, command or subsystem such as sftp. That is what makes "they
+    watch everything" true.
   - tmux's `server-access` lets the helped person make the helper read-only (`-r`) and revoke access,
-    which detaches the helper at once (`-d`).
+    which detaches the helper at once (`-d`); the session starts read-only (`-a -r`), and control is
+    granted later with `-w`.
   - The helped side keeps the record, with `script` or tmux logging; `script` logs output only by
     default, and logging input would also capture any password typed during the session.
-  - A session-only WireGuard peer, added for the session and removed after it (lesson 05).
+  - A session-only WireGuard peer, added for the session and removed after it (lesson 05). Unlike
+    lesson 04's roaming peers, it reaches nothing: its `AllowedIPs` is its single tunnel address, and
+    the router's forward chain admits only new connections from the helper's tunnel address to that
+    peer's SSH port, letting the peer send replies only (`ct state established,related`). It never
+    reaches the management, LAN or tunnel networks and cannot start a connection of its own.
   - **Whose consent is needed, and what the record holds, come from the research note below, not from
     this syllabus.** Filled consent records and session logs stay on the helped device, and on Sam's
     machine only if the helped person agrees; they enter no git repository, and only a blank template
     may live in the private infrastructure repository.
   - The Rust tool that builds these properties in is `ui-11-consent-first-remote-help`.
 - **Recall targets:** the seven properties and the mechanism that enforces each; what each
-  `authorized_keys` option does; why the log records output only.
+  `authorized_keys` option does, and which option forces the attach; why the helped device's peer
+  reaches nothing; why the log records output only.
 - **Build:** helper and helped lab guests, with assertions in `code/src/os/` (planned — added at P6)
-  that the helper's key is refused after its expiry time, `server-access -d` detaches the helper, and
-  nothing remains afterwards (no key, peer, account or process). **Blocked** (tmux is not installed;
-  `GAPS.md` → "Monitoring and remote-help tools not installed"). Teaching also waits on the
+  that the helper's key is refused after its expiry time; a login with the helper's key that asks for
+  any other command, or for a subsystem such as sftp, gets no shell and runs nothing but the attach;
+  the helped guest's peer is refused everything it starts itself (a scrape of a lab exporter, an SSH
+  attempt to the router) while the helper's SSH to it still works; `server-access -d` detaches the
+  helper; and nothing remains afterwards (no key, peer, account or process). **Blocked** (tmux is not
+  installed; `GAPS.md` → "Monitoring and remote-help tools not installed"). Teaching also waits on the
   REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT research note (planned —
   `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md`).
 - **Security lens:** a remote-access tool is an abuse vector, and the consent properties are its
   mitigations; a helper key left behind is a back door.
-- **Safety:** lab first; real change under the graduation path, run by Sam.
+- **Safety:** lab first; a real session only on a family device under graduation rule 3's
+  family-device clause, run by Sam, and only once Sam signs off the reading of this set-up recorded in
+  `project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` →
+  Clash check.
 - **Sources:** Computer Misuse Act 1990 section 17, <https://www.legislation.gov.uk/ukpga/1990/18/section/17>;
-  sshd(8), "AUTHORIZED_KEYS FILE FORMAT", <https://man.openbsd.org/sshd>; tmux(1) (`server-access`),
+  sshd(8), "AUTHORIZED_KEYS FILE FORMAT" (`command=`, `expiry-time=`, `from=`, `restrict`, `pty`),
+  <https://man.openbsd.org/sshd>; sshd_config(5) (`ForceCommand`, `Match`),
+  <https://man.openbsd.org/sshd_config>; tmux(1) (`server-access`),
   <https://man.openbsd.org/tmux>; `man 1 script` (util-linux 2.39.3 on the host: `--log-out`,
   `--log-in`); the REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT research note (planned).
 - **Done when:** the lab assertions pass, and the first real session runs with its consent record kept

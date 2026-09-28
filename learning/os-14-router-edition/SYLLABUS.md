@@ -12,9 +12,10 @@ marked **Later**: the first edition does not wait for it. Every lesson runs in `
 lab — an upstream namespace or guest standing in for the internet, the router guest, and client
 guests — and never touches the home network; testing on real hardware waits for dedicated, wiped
 hardware chosen by ADR (`GAPS.md`), and a lab-proven config reaches Sam's own network only under
-`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`. The router's web admin is `ui-10-web-admin-dashboard`'s work.
-Small scripts land in `code/src/os/` (planned — added at P6); the profile's recipes land in the
-Syntek OS build-system repository, created when that build starts.
+`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`.
+The router's web admin is `ui-10-web-admin-dashboard`'s work. Small scripts land in `code/src/os/`
+(planned — added at P6); the profile's recipes land in the Syntek OS build-system repository,
+created when that build starts.
 
 | # | Lesson | Size | Build | Lenses |
 | --- | --- | --- | --- | --- |
