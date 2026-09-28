@@ -177,8 +177,9 @@ images are not fetched yet (`GAPS.md` → "Scripted recorder build dependencies 
 - **Builds on:** lessons 01–04; sec-01 (attack surface, trust boundaries and threat models); c-05 lesson 03 (the
   recorder's first-cut fixture); sec-04 lesson 07 (the sandbox launcher), once taken.
 - **Key ideas:**
-  - Hyprland's permission system works only with `hyprland-guiutils` installed and is off until enabled; a rule names
-    a binary by a path pattern and is not reloaded while the compositor runs.
+  - Hyprland's permission system works only with `hyprland-guiutils` installed and is off until enabled; a screencopy
+    rule names a binary by a path regex, a keyboard rule names a device by a regex of its name, and a plugin rule
+    takes a binary regex or a plugin path; rules are not reloaded while the compositor runs.
   - Screen copying defaults to asking, and asking pops a notification — on camera. The fixture allows the recorder's
     own binary and denies the rest; a denied copy renders a black "permission denied" frame, which a render check can
     catch.

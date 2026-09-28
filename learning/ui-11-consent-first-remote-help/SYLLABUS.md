@@ -176,8 +176,8 @@ exit gate does not wait on it.
 ## 09 — Publishing a dual-use tool, and the first real session
 
 - **Objective:** Sam can take the remote-help repository public with its non-goals and a `SECURITY.md` once the
-  research allows it, and run a first real session on a family device under the graduation path, with a written
-  consent record.
+  remote-help ADR's Publishing condition holds (the section 3A and GitHub notes exist and the ADR is Accepted), and
+  run a first real session on a family device under the graduation path, with a written consent record.
 - **Key ideas and sources:** written after `research/REMOTE-HELP-TOOL-AND-SECTION-3A.md` and
   `research/DUAL-USE-TOOLS-ON-GITHUB.md` (both planned) exist. A first public binary release also waits on
   `GAPS.md` → "Export rules for shipping cryptography".
