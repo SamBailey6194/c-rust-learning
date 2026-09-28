@@ -28,7 +28,8 @@ A remote-help tool is dual-use by nature: the software that lets a helper see an
 else's terminal is the same class of software an intruder reuses to keep control of a machine. The
 record therefore states only the text of the statutes and policies below. **How each applies to a
 family helping session, and to publishing this tool, is unverified** until the four planned notes
-named in the Research row (the consent, section 3A, session-records and GitHub notes) exist.
+named in the Research row (the consent, section 3A, session-records and GitHub notes) exist. The
+paraphrases below are a reading of the statutes' and guidance's text, not legal advice.
 
 Facts checked on 27/09/2026:
 
@@ -80,8 +81,9 @@ Facts checked on 27/09/2026:
 touches:
 
 - `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` allows remote-help sessions, never
-  configuration, on family devices named in the milestone, with a written consent record from whoever
-  controls the device. This record governs the tool such a session may use; the two are consistent.
+  configuration, on family devices named in the milestone by role label only (never a person's name or
+  a device's hostname), with a written consent record from whoever controls the device. This record
+  governs the tool such a session may use; the two are consistent.
 - `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md`, rule 2 (attack tooling runs in VMs, never on
   the host): the abuse-case harness and every weakened build run in VMs only. The helper client on the
   host is argued **not** to be attack tooling: it cannot start a session, it reaches only a person who
@@ -115,6 +117,13 @@ touches:
   configuration: nothing enters a system trust store, and constraint 6 leaves no service, timer or
   autostart entry behind. Sam's sign-off accepts or rejects that reading. The graduation record is
   Accepted, so if he rejects it, constraint 9 is revised before this record is Accepted.
+- **Open for Sam's sign-off — graduation rule 3 against `os-18` lesson 10's existing-tools set-up
+  (Option B's route).** A real session there needs, on the family device, a helper account, an
+  `authorized_keys` entry with an expiring key, a session-only WireGuard peer and an sshd started for
+  the session. The reading to sign off is that these are session-scoped artefacts the helped person
+  installs, and the lesson's Build proves they are removed afterwards, so they are not device
+  configuration under rule 3. If Sam rejects that reading, lesson 10 is revised before its first real
+  session, for example to a reverse connection started from the helped side.
 
 ## Options considered
 

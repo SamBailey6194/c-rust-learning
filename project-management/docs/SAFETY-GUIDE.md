@@ -11,10 +11,9 @@ Hazards run through this curriculum at every level. C's undefined behaviour and 
 program quietly. Rust's `unsafe` hands the same bugs back to you behind a keyword. Kernel code can take
 the whole machine down with it. OS images and network labs, remote help on someone else's device, an
 LLM that loads files and runs generated code, and the security track's offensive work each carry
-hazards of their own. This guide says what a
-milestone has to **plan** for each of them, at the PM stage, so the right gates and the threat model are
-set before any code exists. The rules themselves are owned by `.claude/CLAUDE.md` Section 5, and each
-section here routes there.
+hazards of their own. This guide says what a milestone has to **plan** for each of them, at the PM
+stage, so the right gates and the threat model are set before any code exists. The rules themselves
+are owned by `.claude/CLAUDE.md` Section 5, and each section here routes there.
 
 ---
 
@@ -151,7 +150,10 @@ This section owns the checklist a graduating milestone runs, in order; the ADR a
   so. The deployed config differs from the lab-proven one only by a listed set of substitutions
   (keys, addresses, names).
 - **Named devices.** Each target is a device Sam owns, named in the milestone by a role label only.
-  The study host takes userspace configuration only; kernels, modules and OS images never graduate.
+  Remote-help sessions, never configuration, may also reach family devices named in the milestone by
+  role label only (never a person's name or a device's hostname), each with a written consent record
+  from whoever controls the device (the ADR's rule 3). The study host takes userspace configuration
+  only; kernels, modules and OS images never graduate.
 - **Rollback rehearsed.** The way back to the last known-good config is rehearsed in the lab first. A
   change that can cut remote access runs behind a confirm-or-revert timer, with console access to hand.
 - **Sam runs root.** Sam runs every command on a real device. Claude never runs `sudo`, never opens a
@@ -179,20 +181,19 @@ intruder uses to keep control of a machine, so a remote-help milestone plans for
 one, or becoming one. Its threat model's mitigations are the ten constraints of
 `project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`
 (Proposed): the helped person starts every session, grants view and control separately, sees an
-indicator the helper cannot hide, keeps the log and can end it with one key, and nothing persists,
-hides or gains a privilege. What such a milestone plans for:
+indicator the helper cannot hide, keeps the log and can end it with one key, every session has a hard
+time limit and cannot resume, and nothing persists, hides or gains a privilege. What such a milestone
+plans for:
 
 - **Lab first.** Every build, and the abuse-case suite, is proved between two VM guests on `os-09`'s
   isolated lab network before any real session.
 - **A real session only under the graduation path.** It reaches only a family device named in the
-  milestone, under the family-device clause of the graduation-path ADR (Section "Graduating a
+  milestone by role label only, under the family-device clause of the graduation-path ADR (Section "Graduating a
   lab-proven config to Sam's own devices" above), with a written consent record from whoever controls
   the device, made before the session starts.
-- **Records stay with the helped person.** Filled consent records and session logs stay on the helped
-  device, and on Sam's machine only if the helped person agrees; they enter no git repository, and
-  only a blank template may live in the private infrastructure repository.
-- **Sam runs it.** Claude never runs `sudo`, never opens a session to a real device and never holds a
-  credential for one (`.claude/CLAUDE.md` Section 5).
+- **Records and commands follow the graduation checklist above.** Filled records and logs are handled
+  as "Logs and personal data stated per milestone" says, and every command as "Sam runs root" says;
+  Claude never connects to a real device.
 
 ---
 

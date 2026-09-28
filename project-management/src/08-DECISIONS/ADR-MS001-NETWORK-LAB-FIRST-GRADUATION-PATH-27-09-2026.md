@@ -127,10 +127,11 @@ rules:
 3. Targets are devices Sam owns, each named by a role label in the milestone. The study host is a
    target for userspace configuration only: a WireGuard peer, the private CA's root in its trust
    store, a metrics exporter. **Remote-help sessions — never configuration — may reach family
-   devices named in the milestone, each with a written consent record from whoever controls the
-   device.** The consent-first tool built later is argued in
-   `ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`; what the consent record must hold is set
-   by `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md` (planned), not here.
+   devices named in the milestone by role label only (never a person's name or a device's
+   hostname), each with a written consent record from whoever controls the device.** The
+   consent-first tool built later is argued in `ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`;
+   what the consent record must hold is set by
+   `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md` (planned), not here.
 4. Every graduation has a rollback, rehearsed in the lab first. A change that can cut remote access
    runs behind a confirm-or-revert timer, with console access to hand.
 5. Sam runs every command on a real device. Claude never runs `sudo`, never opens a session to a
