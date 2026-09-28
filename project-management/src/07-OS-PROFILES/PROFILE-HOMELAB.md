@@ -1,6 +1,6 @@
 # PROFILE-HOMELAB — Homelab Profile (first edition)
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 | Field | Value |
@@ -48,7 +48,7 @@ when the virtualisation stack is opaque or when an experiment cannot be torn dow
 | Kernel config + update cadence | Config for KVM and containers; longterm line; user-started updates | Virtualisation needs KVM and the container namespaces built in; the user times updates | assumption to test | H2 |
 | Documentation & guidance level | Reference plus container and VM how-tos | The user follows procedures for the stack | assumption to test | H1 |
 | Rescue / recovery tooling | Previous kernel kept; container and VM state recovery documented | Recovering guests is its own skill | assumption to test | H3 |
-| Network exposure & firewall default | Services on the LAN; firewall deny by default | Homelab services are for the LAN, not the internet | assumption to test | H4 |
+| Network exposure & firewall default | Services on the LAN; administration and metrics on the management network only; DNS and DHCP consumed from the router, not served; firewall deny by default | Homelab services are for the LAN, not the internet; one DNS and DHCP design serves the whole LAN (`os-14-router-edition` lesson 03's ADR draft), and the homelab consumes it (networking and licensing round, 27/09/2026) | assumption to test | H4, H5 |
 | Storage stack | LVM or Btrfs for VM and container images | Snapshots and thin volumes suit disposable guests | assumption to test | H3 |
 | Hardware target | VMs and QEMU disk images only until hardware is chosen by ADR | No hardware is chosen yet (Sam's decision after the critique, 27/09/2026) | assumption to test | — |
 
@@ -80,6 +80,15 @@ H4  Claim:      homelab services are reachable on the LAN but the firewall denie
     Test:       in QEMU on an isolated network, reach a service from a LAN guest and confirm the
                 firewall's default-deny with a scan.
     Passes if:  the chosen service is reachable and nothing else is.
+    Tested at:  P6, the homelab image milestone.
+
+H5  Claim:      the homelab takes its address and resolver from the LAN's DHCP server and serves
+                neither DHCP (v4 or v6) nor DNS, and sends no router advertisements.
+    Test:       in QEMU on os-09's isolated lab, with os-09 lesson 07's lab-only dnsmasq serving
+                the LAN with a reservation, boot the image and, from a LAN guest, probe UDP 53,
+                TCP 53, UDP 67 and UDP 547 and send a router solicitation (ICMPv6 type 133).
+    Passes if:  the reserved lease is held, a lab name resolves, nothing answers on UDP 53,
+                TCP 53, UDP 67 or UDP 547, and no router advertisement (type 134) comes back.
     Tested at:  P6, the homelab image milestone.
 ```
 

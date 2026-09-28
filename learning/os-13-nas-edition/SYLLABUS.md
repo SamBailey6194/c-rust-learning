@@ -1,6 +1,6 @@
 # Syllabus — os-13-nas-edition
 
-**Track**: os · **Phase**: P6 · **Path**: Later · **Detail**: full · **Prerequisites**: `os-12-homelab-edition`; `os-02-storage-and-boot-fundamentals` lessons 01–04 and 08 (block devices, disk images, GPT, filesystems, LUKS2); `os-09-networking-fundamentals` (the isolated lab); `kernel-04-kconfig-and-profile-configs` lessons 02 and 06 (the fragment method, the first-edition fragments); `tooling-05-licensing-and-collaboration` (for lesson 04)
+**Track**: os · **Phase**: P6 · **Path**: Later · **Detail**: full · **Prerequisites**: `os-12-homelab-edition`; `os-02-storage-and-boot-fundamentals` lessons 01–04 and 08 (block devices, disk images, GPT, filesystems, LUKS2); `os-09-networking-fundamentals` (the isolated lab); `kernel-04-kconfig-and-profile-configs` lessons 02 and 06 (the fragment method, the first-edition fragments); `tooling-05-licensing-and-collaboration` lessons 01–02 (for lesson 04)
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 The NAS profile is the server family's storage specialist: it keeps data safe across disk failures,
@@ -108,7 +108,7 @@ profile's recipes land in the Syntek OS build-system repository, created when th
 - **Objective:** Sam can explain why ZFS cannot be built into the Syntek OS kernel image, what
   shipping it as a separate module would involve, and how OpenZFS's declared kernel range would pin
   the NAS kernel line.
-- **Builds on:** `tooling-05-licensing-and-collaboration` (copyleft and licence compatibility);
+- **Builds on:** `tooling-05-licensing-and-collaboration` lessons 01–02 (copyleft and licence compatibility);
   `kernel-04-kconfig-and-profile-configs` lesson 04 (longterm or stable, per profile).
 - **Key ideas:**
   - OpenZFS is CDDL-licensed and Linux is GPLv2. The FSF's statement calls the CDDL incompatible with

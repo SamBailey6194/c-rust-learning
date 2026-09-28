@@ -93,7 +93,7 @@ the standards, the official books and manuals), then Context7, then web search �
 | --- | --- |
 | [`project-management/src/01-ROADMAP/ROADMAP.md`](project-management/src/01-ROADMAP/ROADMAP.md) | **Owner** of the phases of every track (P1–P6, U1–U3, L1–L6, S1–S3), their exit gates, the critical path, and the efficiency and security lenses |
 | [`project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md`](project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md) | The current milestone |
-| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning decisions below |
+| [`project-management/src/08-DECISIONS/`](project-management/src/08-DECISIONS/) | ADRs — five seeded at MS001 (C17, kernel coding style, GNU make, `check.h`, Rust edition 2024 and toolchain pin) and the planning, networking-and-licensing and scripted-recorder decisions below |
 | [`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md`](project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md) | What separates the seven Syntek OS profiles, on one set of axes |
 
 **Maps** (`project-management/src/01-ROADMAP/`, Charting drafts): `MAP-KERNEL.md` (P4–P5) ·
@@ -119,6 +119,24 @@ the standards, the official books and manuals), then Context7, then web search �
 | `ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md` | Apache-2.0-only crates by documented per-crate exception |
 | `ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md` | gtk4-rs for the GUI lessons |
 | `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` | The security track and its authorised, isolated-lab rules |
+
+**Networking and licensing round of 27/09/2026** (`project-management/src/08-DECISIONS/`, one decision each):
+
+| ADR | Subject |
+| --- | --- |
+| `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` | Network labs stay isolated; a lab-proven config graduates to named devices Sam owns |
+| `ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md` | Proposed: a private CA — an offline root and constrained intermediate by hand, an ACME issuer for short-lived leaves |
+| `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md` | Proposed: what may enter a product repository — components, contributions, code from here, data and weights |
+| `ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md` | Proposed: the outbound licences a product may pick, two of them gated commercial entries |
+| `ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md` | Proposed: a generated SPDX SBOM per release and a hand-kept ledger, kept in each product repository |
+| `ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` | Proposed: a remote-help tool that is consent-first by construction — user-initiated, visible, time-limited and logged |
+
+**Scripted recorder round of 27/09/2026** (`project-management/src/08-DECISIONS/`, one decision each):
+
+| ADR | Subject |
+| --- | --- |
+| `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` | Proposed: the scripted demo recorder as a staged learning project — X11, then Wayland, then QEMU/KVM, then kernel interfaces in a guest |
+| `ADR-MS001-CAPTURE-LIBRARY-STANDALONE-27-09-2026.md` | Proposed: one standalone capture library under GPL-2.0-or-later, shared by the recorder and a second tool |
 
 **Lesson tracks** (`learning/`): `c`, `tooling`, `rust`, `kernel`, `os`, `ui`, `llm` and `sec` —
 every topic folder is listed in `learning/CONTEXT.md` → _Tracks and topic folders_.
@@ -303,6 +321,19 @@ recorded once, in `project-management/REFERENCES.md`.
   invocation (<https://www.qemu.org/docs/master/system/invocation.html>) and its gdb stub
   (<https://www.qemu.org/docs/master/system/gdb.html>).
 - **BusyBox** — <https://busybox.net/> — the minimal userland for the first initramfs.
+- **Input and uinput** — the input subsystem (<https://docs.kernel.org/input/input.html>), event codes
+  (<https://docs.kernel.org/input/event-codes.html>) and uinput
+  (<https://docs.kernel.org/input/uinput.html>) — the scripted recorder's guest keyboard (`kernel-09`).
+- **DRM userland interfaces** — <https://docs.kernel.org/gpu/drm-uapi.html> — reading a scanout back
+  in a guest, learning-only (`kernel-10`); checked 27/09/2026.
+- **The KVM API** — <https://docs.kernel.org/virt/kvm/api.html> — why a guest's display stays
+  emulated in QEMU under KVM (`KVM_EXIT_IO`, `KVM_EXIT_MMIO`).
+- **QMP** — `man 7 qemu-qmp-ref` (installed, QEMU 8.2.2) — `screendump`, `send-key` and
+  `input-send-event` for the recorder's QEMU/KVM stage (`kernel-11`).
+- **RFC 6143, the Remote Framebuffer Protocol** — <https://www.rfc-editor.org/rfc/rfc6143> — VNC over a
+  Unix socket (`kernel-11`).
+- **libvirt domain API** — <https://libvirt.org/html/libvirt-libvirt-domain.html> —
+  `virDomainScreenshot` and `virDomainSendKey`, as a wrapper over QEMU (`kernel-11`).
 
 ## External — Syntek OS
 
@@ -324,9 +355,11 @@ recorded once, in `project-management/REFERENCES.md`.
 - **Init and boot** — systemd (<https://systemd.io/>, manual pages at
   <https://www.freedesktop.org/software/systemd/man/latest/>, including systemd-boot), runit
   (<https://smarden.org/runit/>) and s6 (<https://skarnet.org/software/s6/>).
-- **Networking and storage** — nftables (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>),
-  WireGuard (<https://www.wireguard.com/>), Samba (<https://www.samba.org/samba/docs/>) and OpenZFS
-  (<https://openzfs.github.io/openzfs-docs/>; see `GAPS.md` for its licence).
+- **Networking, monitoring and storage** — nftables
+  (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>), WireGuard (<https://www.wireguard.com/>),
+  dnsmasq (<https://thekelleys.org.uk/dnsmasq/doc.html>), Prometheus
+  (<https://prometheus.io/docs/introduction/overview/>), Samba (<https://www.samba.org/samba/docs/>) and
+  OpenZFS (<https://openzfs.github.io/openzfs-docs/>; see `GAPS.md` for its licence).
 - **QEMU disk images** — <https://www.qemu.org/docs/master/system/images.html> — the images every
   OS lesson runs on.
 - **Build systems as study references** — the Buildroot manual
@@ -350,6 +383,21 @@ recorded once, in `project-management/REFERENCES.md`.
   (<https://wayland-book.com/>).
 - **Slint** — <https://slint.dev/> — the toolkit of the Syntek OS GUI products; studied here only,
   and built in the Syntek OS GUI-tools repository.
+- **X.Org XTEST library** — <https://www.x.org/releases/current/doc/libXtst/xtestlib.html> — fake key
+  events for the scripted recorder on Xvfb (`c-05`).
+- **WebVTT** — <https://www.w3.org/TR/webvtt1/> — the recorder's timeline and chapter cues.
+- **vhs** — <https://github.com/charmbracelet/vhs> — the tape language the recorder's parser follows
+  (MIT).
+- **Hyprland** — the wiki (<https://wiki.hypr.land/>) and the Hyprland
+  (<https://github.com/hyprwm/Hyprland>) and Aquamarine (<https://github.com/hyprwm/aquamarine>)
+  repositories — headless Wayland for the recorder (`ui-12`).
+- **Wayland protocol pages** — <https://wayland.app/protocols/> — ext-image-copy-capture, wlr-screencopy
+  and the virtual keyboard and pointer protocols.
+- **xdg-desktop-portal** — ScreenCast
+  (<https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html>) and
+  RemoteDesktop
+  (<https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.RemoteDesktop.html>) —
+  and **PipeWire** (<https://docs.pipewire.org/page_portal.html>) — capture on GNOME and KDE (`ui-13`).
 
 ## External — LLM
 
@@ -431,6 +479,11 @@ recorded once, in `project-management/REFERENCES.md`.
   — the channel `SECURITY.md` points to.
 - **SPDX License List** — <https://spdx.org/licenses/> — the licence identifiers used in
   `Cargo.toml` and `deny.toml`.
+- **SPDX specifications** — <https://spdx.dev/use/specifications/> — the SBOM format (2.3 and 3.0.x;
+  SPDX 2.2.1 is published as ISO/IEC 5962:2021) a product's component register is written in
+  (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`).
+- **CycloneDX** — <https://cyclonedx.org/specification/overview/> — the other SBOM format
+  (ECMA-424), compared with SPDX in `tooling-05` lesson 08.
 - **FSF — Various licenses and comments about them** —
   <https://www.gnu.org/licenses/license-list.html#apache2> — the FSF's statement that Apache-2.0 is
   not compatible with GPL version 2, which is why `code/src/rust/deny.toml` leaves it off the allow

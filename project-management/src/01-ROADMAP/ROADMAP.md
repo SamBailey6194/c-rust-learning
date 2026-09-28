@@ -1,6 +1,6 @@
 # ROADMAP — c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 <!-- CHANGED 27/09/2026: previously read "A public learning space: learn C thoroughly from the base
@@ -58,12 +58,12 @@ follow it; UI, LLM and Security interleave. The old six-phase table (P1 to P6) w
 | P5 | Downstream kernel <!-- CHANGED 27/09/2026: was "Custom kernel" — ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md --> | Kernel | P4 | base plus first-edition (server and homelab) fragments build and boot in QEMU | Not started |
 | P6 | Syntek OS <!-- CHANGED 27/09/2026: was "Distro tiers" — ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md --> | OS | P2 + `tooling-03` (+ P3 for the build system onward; `kernel-04` before `os-10`) | each profile image boots in QEMU and meets its PROFILE spec | Not started |
 | U1 | TUI foundations | UI | P2 (P3 for ratatui) | a raw-mode terminal program in C, then the same in ratatui with tests | Not started |
-| U2 | Syntek OS tools | UI | U1 + `tooling-05` (each later topic also names its `os-*` prerequisite) | the file manager, package-manager TUI, installer and system tools build and pass their tests | Not started |
+| U2 | Syntek OS tools | UI | U1 + `tooling-05` lessons 01–07 (each later topic also names its `os-*` prerequisite) <!-- CHANGED 27/09/2026: previously read "U1 + `tooling-05` (each later topic also names its `os-*` prerequisite)" — tooling-05 gained lesson 08 (SBOMs), needed at a product's first release, not here --> | the file manager, package-manager TUI, installer and system tools build and pass their tests | Not started |
 | U3 | GUI tools and web admin | UI | U2 | an accessible gtk4-rs app here, the beginner-profile Slint tool in the Syntek OS GUI-tools repository, and the NAS/router web dashboard | Not started |
 | L1 | ML foundations and a local-model baseline | LLM | P1 | an open coding model runs through ollama with three skills and a gap log; a tiny GPT trains on the 2080 Ti within a measured VRAM budget | Not started |
 | L2 | Hardware, memory and GPU programming | LLM | L1 (`llm-06` needs only P2) | the memory hierarchy and VRAM budget measured on this machine | Not started |
 | L3 | An LLM in C (llm.c) | LLM | L2 (its C parts) | llm.c's GPT-2 read, and its CPU `test_gpt2` run clean under ASan with UBSan and under valgrind memcheck | Not started |
-| L4 | Training a small code model (~100M, local GPU) | LLM | L1 + L2's GPU topic + `tooling-05`, `sec-01`, `sec-04` | a ~100M FIM code model trained within the VRAM budget, evaluated in the sandbox | Not started |
+| L4 | Training a small code model (~100M, local GPU) | LLM | L1 + L2's GPU topic + `tooling-05` lessons 01–07, `sec-01`, `sec-04` <!-- CHANGED 27/09/2026: previously read "L1 + L2's GPU topic + `tooling-05`, `sec-01`, `sec-04`" — tooling-05 gained lesson 08 (SBOMs), needed at a product's first release, not here --> | a ~100M FIM code model trained within the VRAM budget, evaluated in the sandbox | Not started |
 | L5 | Efficient, secure inference in Rust and the skills layer | LLM | L4 + P3 (with async) + `sec-01`, `sec-04` | a Rust inference path with a skill loader, its threat model and budget measured | Not started |
 | L6 | Efficient architectures, scale, adapters | LLM | L5 | efficient-architecture and adapter experiments within budget | Not started |
 | S1 | Security foundations | Security | P2 (sec-01 after P1) | a deliberately vulnerable C exercise shown corrupting memory with mitigations off, each mitigation toggled, then fixed; a threat model and the sandbox launcher | Not started |
@@ -135,12 +135,13 @@ section):
 **Core** leads to the first server/homelab Syntek OS edition and the first own model; **Later** can
 wait. This orders the interleaving without fixing milestone numbers. Each phase section below lists
 its **topic folders** (`learning/<id>-<topic>/`), Core first and then Later; every folder's
-`SYLLABUS.md` header carries the same phase and **Path**.
+`SYLLABUS.md` header carries the same phase and **Path**. A topic whose appended lessons sit on the
+other path names both ranges in its header and on both lists, as `sec-05` does.
 
 | Path | Phases and topics | Leads to |
 | --- | --- | --- |
-| **Core** | P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-04` and `sec-05` | the first server/homelab edition and the first own model with a skills layer |
-| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`) | breadth once the first edition and model ship |
+| **Core** | P1 to P3 (bar the scripted recorder's `c-05` and its Rust port); P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` lessons 01–07 <!-- CHANGED 28/09/2026: previously read "P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-04` and `sec-05`" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's lessons 08–13 appended as Later (Sam's networking-round answer on the private CA); scripted-recorder round: `c-05` and the recorder's Rust port carved out of P1 to P3 as Later, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md --> | the first server/homelab edition and the first own model with a skills layer |
+| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`), the local-model integration (`os-17`) and Sam's own network (`os-18`); the installer, system-tools and remote-help TUIs (`ui-06`, `ui-07`, `ui-11`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`); the scripted demo recorder's stages — `c-05` and its Rust port (P2–P3), `ui-12` and `ui-13` (U2), `kernel-09`, `kernel-11` (P4) and `kernel-10` (P5) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Sam's networking-round answer on the private CA); os-18 added (Sam's networking-round answer on his own network); ui-11 added (Sam's networking-round answer on remote help); scripted-recorder round: the recorder's stages added as Later leaves, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md --> | breadth once the first edition and model ship |
 
 ---
 
@@ -232,8 +233,13 @@ a memory allocator, a Unix shell and a small libc subset.
 - Threads: POSIX threads, mutexes, condition variables; finding data races with
   `-fsanitize=thread`, which runs in its own build because it cannot be combined with ASan
 - Sockets: a TCP client and server with `socket`, `bind`, `listen`, `accept`, `connect`
+- Later, a scripted demo recorder on Xvfb — a tape parser, a launched and reaped display and
+  application, XTest keys, frames piped to ffmpeg and a WebVTT timeline — as stage 1 of
+  `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`
+  <!-- CHANGED 28/09/2026: bullet added — scripted-recorder round: c-05 pre-seeded as Later, outside
+       P2's exit gate -->
 
-**Topic folders:** none pre-seeded; `/teach` creates the `c` topics suggested in `learning/CONTEXT.md`.
+**Topic folders:** Later `c-05`; `/teach` creates the Core `c` topics suggested in `learning/CONTEXT.md`.
 
 **Candidate milestones:**
 
@@ -247,6 +253,7 @@ a memory allocator, a Unix shell and a small libc subset.
 | Project: own `malloc` | specified in `project-management/src/05-PROJECTS/` |
 | Project: a Unix shell | pipelines, redirection, built-ins, job control as stretch |
 | Project: a small libc subset | string and memory functions, a minimal formatted printer |
+| Project: scripted recorder, stage 1 (Later) | `c-05`: a tape parser and timeline, Xvfb and the app launched, XTest keys, frames to ffmpeg, captions at two geometries; Budget: render time, peak RSS, fps |
 
 **Exit gate:** the shell and allocator projects pass their specified test suites, and for each
 project directory `make -C code/src/c/<project-dir> test` and
@@ -310,6 +317,7 @@ needed and how to contain it — by porting a P2 C project and by bridging Rust 
 | FFI: Rust and C in both directions | a C library called from Rust, a Rust function called from C |
 | Async I/O | the P2 sockets exercise rewritten as a concurrent tokio client and server |
 | Project: port a P2 C project to Rust | candidates: the shell or the libc subset |
+| Project: the recorder's Rust port (Later) | not the gate port: the parser and timeline ported, the capture trait and X11 backend in the capture-library repository; `cargo deny` clean in both new repositories |
 
 **Exit gate:** from `code/src/rust/`, where `rust-toolchain.toml` selects the pinned toolchain,
 all three commands exit 0, and the port's tests are built from the same cases as the C project's
@@ -363,8 +371,13 @@ loadable modules in C against that kernel.
   `CONFIG_GDB_SCRIPTS` helpers, `dmesg`
 - Rust-for-Linux: blocked until clang/LLVM and bindgen are installed; `make LLVM=1 rustavailable`
   reports what is missing
+- Later, the scripted recorder's guest stages: QMP, RFB over a Unix socket and libvirt to capture and
+  drive a QEMU guest from outside (stage 4, after both Wayland stages are `Done`), and a uinput
+  keyboard read back through evdev inside the guest (stage 5a)
+  <!-- CHANGED 28/09/2026: bullet added — scripted-recorder round: kernel-09 and kernel-11 pre-seeded
+       as Later, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md -->
 
-**Topic folders:** `kernel-01`, `kernel-02`, `kernel-03`; Later `kernel-08`.
+**Topic folders:** `kernel-01`, `kernel-02`, `kernel-03`; Later `kernel-08`, `kernel-09`, `kernel-11`.
 
 **Candidate milestones:**
 
@@ -378,6 +391,8 @@ loadable modules in C against that kernel.
 | System calls and tracing | following one syscall from user space into the kernel |
 | Debugging the kernel with QEMU and gdb | a breakpoint in kernel code, a backtrace read |
 | Rust-for-Linux (blocked) | needs clang/LLVM and bindgen; `GAPS.md` → "Rust-for-Linux needs clang/LLVM and bindgen" |
+| Recorder QEMU/KVM backend (Later) | `kernel-11`: QMP `screendump` and `send-key`, then RFB over a Unix socket, never TCP; waits for both Wayland stages; Budget: ms per grab, fps, host RSS |
+| Recorder uinput input (Later) | `kernel-09`: a uinput keyboard in the guest, read back from its evdev node over the serial console; Budget measured in the guest |
 
 **Exit gate:** a custom-configured kernel — a committed config fragment applied on a recorded
 base, not an untouched defconfig — boots in QEMU to a busybox shell; an out-of-tree module built
@@ -438,8 +453,12 @@ each build reproducible from a pinned tag and a committed fragment
   `KBUILD_BUILD_TIMESTAMP`, `KBUILD_BUILD_USER`, `KBUILD_BUILD_HOST`
 - The CI pipeline (new stable → apply series → build each profile → boot-test in QEMU) and CVE triage
   through the kernel CNA's `vulns.git` and `linux-cve-announce`, per profile
+- Later, DRM/KMS capture from user space in a QEMU guest, checked against kmsgrab — learning-only,
+  never a capture-library backend (stage 5b of the scripted recorder)
+  <!-- CHANGED 28/09/2026: bullet added — scripted-recorder round: kernel-10 pre-seeded as Later, per
+       ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md -->
 
-**Topic folders:** `kernel-04`, `kernel-05`, `kernel-06`; Later `kernel-07`.
+**Topic folders:** `kernel-04`, `kernel-05`, `kernel-06`; Later `kernel-07`, `kernel-10`.
 
 **Candidate milestones:**
 
@@ -450,6 +469,7 @@ each build reproducible from a pinned tag and a committed fragment
 | A patch series across an update | a small series rebased onto the next release, conflicts and range-diff |
 | Reproducible kernel builds | two clean builds from the same inputs, compared |
 | Kernel CI and CVE triage | the pipeline automated; CVEs triaged per profile from `vulns.git` |
+| DRM/KMS capture, learning-only (Later) | `kernel-10`: a guest scanout read back and checked against kmsgrab; no GEM handle leak; nothing on the host |
 
 **Exit gate:** base config plus the first-edition fragments (server and homelab), then
 `make olddefconfig`, then a build from a clean output directory succeeds; each resulting kernel boots
@@ -504,9 +524,15 @@ package set; ship the server and homelab edition first — recommended, still to
   extraction, crash-safe updates, a Rust library plus a thin CLI; repositories, signing and updates
 - Networking fundamentals and an isolated QEMU lab; profiles and the installer as a transaction; the
   server, homelab, NAS, router and desktop editions; the release and security process; a local-model
-  integration capstone
+  integration capstone; and, Later, running Sam's own network from the lab-proven pieces under the
+  graduation path
+  <!-- CHANGED 27/09/2026: previously read "Networking fundamentals and an isolated QEMU lab; profiles
+       and the installer as a transaction; the server, homelab, NAS, router and desktop editions; the
+       release and security process; a local-model integration capstone" — networking and licensing
+       round: os-18 added as Later (Sam's networking-round answers on his own network, its
+       monitoring, and its resilience and recovery) -->
 
-**Topic folders:** `os-01`, `os-02`, `os-03`, `os-04`, `os-05`, `os-06`, `os-07`, `os-08`, `os-09`, `os-10`, `os-11`, `os-12`, `os-16`; Later `os-13`, `os-14`, `os-15`, `os-17`.
+**Topic folders:** `os-01`, `os-02`, `os-03`, `os-04`, `os-05`, `os-06`, `os-07`, `os-08`, `os-09`, `os-10`, `os-11`, `os-12`, `os-16`; Later `os-13`, `os-14`, `os-15`, `os-17`, `os-18`.
 
 **Candidate milestones:**
 
@@ -591,8 +617,17 @@ natural first project for friends and family.
 - An installer TUI as a state machine, with destructive-action safeguards (VM images only)
 - System tools: privilege separation (unprivileged UI, privileged helper), D-Bus with zbus and
   polkit, network, users, updates and storage screens
+- Later, a consent-first remote-help tool for Sam's family: a Linux terminal session the helped person
+  starts, sees, controls and ends, on mutual TLS from the private CA, proved in the lab first
+  <!-- CHANGED 27/09/2026: bullet added — networking and licensing round: ui-11 added as Later (Sam's
+       networking-round answer on remote help), under
+       ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md (Proposed) -->
+- Later, the scripted recorder's Wayland stages, each in a QEMU guest: headless Hyprland captured and
+  typed into through Wayland protocols, then GNOME and KDE through the portal's ScreenCast and PipeWire
+  <!-- CHANGED 28/09/2026: bullet added — scripted-recorder round: ui-12 and ui-13 added as Later, per
+       ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md -->
 
-**Topic folders:** `ui-04`, `ui-05`; Later `ui-06`, `ui-07`.
+**Topic folders:** `ui-04`, `ui-05`; Later `ui-06`, `ui-07`, `ui-11`, `ui-12`, `ui-13`.
 
 **Candidate milestones:**
 
@@ -601,10 +636,18 @@ natural first project for friends and family.
 | File-manager TUI | async listing, safe previews, trash and undo — the first U2 build |
 | Package-manager TUI | consuming the P6 library; transactions with confirmation |
 | Installer and system tools | guided flows, privilege separation, the system screens |
+| Remote-help tool (Later) | consent-first by construction: the session state machine, mTLS, a PTY session, the abuse-case suite |
+| Recorder Wayland backends (Later) | `ui-12` headless Hyprland, then `ui-13` the portal and PipeWire, in guests; no consent dialog on camera; Budget: guest RAM, render time, CPU per frame |
 
 **Exit gate:** the file-manager TUI lists a directory asynchronously, previews an untrusted file
 safely and supports trash and undo, with tests passing under `cargo test`; each later U2 tool builds
-against its OS-track prerequisite.
+against its OS-track prerequisite, except `ui-11`, which waits on `os-18` and does not hold U2's exit
+gate; the recorder's Wayland topics (`ui-12`, `ui-13`) likewise do not hold U2's exit gate.
+<!-- CHANGED 27/09/2026: previously read "the file-manager TUI lists a directory asynchronously, previews
+     an untrusted file safely and supports trash and undo, with tests passing under `cargo test`; each
+     later U2 tool builds against its OS-track prerequisite." — networking and licensing round: ui-11
+     added as Later (Sam's networking-round answer on remote help), outside the exit gate;
+     scripted-recorder round: ui-12 and ui-13 added as Later, outside the exit gate -->
 
 **Primary resources:**
 
@@ -909,9 +952,15 @@ mitigations, the Linux security model and applied cryptography — turned on Sam
 - Fuzzing (coverage-guided, sanitisers, corpora, crash triage); the Linux security model (users,
   capabilities, namespaces, cgroups, seccomp, LSMs including Landlock — the sandbox launcher the OS
   and LLM tracks reuse); applied cryptography (hashes, MACs, signatures, key management, "don't roll
-  your own")
+  your own"); Later, a private CA built by hand and then run by an ACME issuer
+  <!-- CHANGED 27/09/2026: previously read "Fuzzing (coverage-guided, sanitisers, corpora, crash triage);
+       the Linux security model (users, capabilities, namespaces, cgroups, seccomp, LSMs including
+       Landlock — the sandbox launcher the OS and LLM tracks reuse); applied cryptography (hashes,
+       MACs, signatures, key management, "don't roll your own")" — networking and licensing round:
+       sec-05's private-CA lessons appended as Later (Sam's networking-round answer on the private
+       CA) -->
 
-**Topic folders:** `sec-01`, `sec-04`, `sec-05`; Later `sec-02`, `sec-03`.
+**Topic folders:** `sec-01`, `sec-02`, `sec-04`, `sec-05` (lessons 01–07); Later `sec-03`, `sec-05` lessons 08–13.
 
 **Candidate milestones:**
 
@@ -921,6 +970,7 @@ mitigations, the Linux security model and applied cryptography — turned on Sam
 | Memory corruption and mitigations | a deliberately vulnerable C exercise shown corrupting memory under ASan with mitigations off, each mitigation toggled and read out of `readelf`, then fixed |
 | The Linux security model | the sandbox launcher (namespaces, seccomp, Landlock) the other tracks reuse |
 | Applied cryptography | signatures (Ed25519) and key management, using a vetted library |
+| Private CA (Later) | a lab root and a constrained intermediate by hand, short-lived leaves and revocation; then the ADR-chosen ACME issuer |
 
 **Exit gate:** a deliberately vulnerable C exercise (built as a clearly named, never-shipped target)
 is shown corrupting memory under AddressSanitizer with mitigations off; it is built with and without
@@ -985,7 +1035,7 @@ malware detection into Syntek OS, and run a disclosure process — all defensive
 
 - Hardening and secure boot (CIS-style baselines, lynis audits of each profile image, UEFI Secure
   Boot, measured boot/TPM basics — VM images only); testing Syntek OS (pentest the profiles in the
-  lab, fuzz the package manager and installer, supply-chain attacks on the repository as test cases)
+  lab, fuzz the package manager and installer, supply-chain attacks on the Syntek OS package archive as test cases)
 - Red-teaming the LLM (prompt injection through skills, docs and repositories; jailbreak and
   data-extraction testing against Sam's own model; an adversarial test suite run in CI-like fashion)
 - Detection, response and disclosure (logging and auditd, intrusion detection, incident response per
@@ -1035,7 +1085,9 @@ no third-party targets.
 - `project-management/src/01-ROADMAP/CONTEXT.md` — the map index for each track charted here
 - `project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md` — the one allocated milestone
 - `project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md` — the profile hypotheses P5 and P6 test
-- `project-management/src/08-DECISIONS/` — the twelve MS001 ADRs that widened this roadmap
+- `project-management/src/08-DECISIONS/` — the MS001 ADRs that widened this roadmap: the planning
+  conversation's twelve, and the networking-and-licensing and scripted-recorder rounds
+  (`08-DECISIONS/CONTEXT.md` lists them)
 - `project-management/docs/PLANNING-GUIDE.md` — cadence, milestone and sprint rules
 - `code/docs/BUILD.md` — the make targets and flags the exit gates call
 - `how-to/docs/TOOLCHAIN.md` — host tool versions

@@ -3,7 +3,7 @@
 **Charted**: 27/09/2026 | **Charted by**: Sam Bailey | **Workflow**: `01-roadmap-map`
 **Phase**: P6 — `project-management/src/01-ROADMAP/ROADMAP.md`
 **Status**: Charting
-**Frontier open**: 4 | **Blocking open**: 1
+**Frontier open**: 6 | **Blocking open**: 1
 
 > A `Charting` draft: destination and open decisions from Sam's planning conversation of 27/09/2026
 > and its ADRs; nodes resolve in later sessions, one at a time. **The map is an index, not a vault.**
@@ -27,17 +27,34 @@ profile spec in `project-management/src/07-OS-PROFILES/`; the server and homelab
 | Already known | _Not yet asked — the first charting session with Sam fills this._ (Sam's Nix experience is a standing input for declarative config and reproducible builds.) |
 | Expected to be hard | _Not yet asked — the first charting session with Sam fills this._ |
 | Skills to load | from `.claude/skills/`: teach, research, handoff, wait-what |
-| Standing preferences | independent, from scratch; seven profiles on one base; server and homelab first; QEMU and VM disk images only until hardware is chosen per profile |
-| Umbrella ADRs | `ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` · `ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md` · `ADR-MS001-SYNTEK-OS-DESKTOPS-REUSED-27-09-2026.md` (all in `project-management/src/08-DECISIONS/`) |
+| Standing preferences | independent, from scratch; seven profiles on one base; server and homelab first; QEMU and VM disk images only until hardware is chosen per profile; a lab-proven config reaches Sam's own devices only by the graduation path (no offensive tooling on the real LAN: `MAP-SECURITY.md` → Out of scope) |
+| Umbrella ADRs | `ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` · `ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md` · `ADR-MS001-SYNTEK-OS-DESKTOPS-REUSED-27-09-2026.md` · `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` (all in `project-management/src/08-DECISIONS/`) |
 | Primary resources | the P6 list in `ROADMAP.md`; the LFS/BLFS 13.1 systemd books; reproducible-builds.org; pacman/apk/xbps manuals |
-| Register entries triaged | 2 closes, 4 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 1 closes, 13 blocks, 14 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 2 closes, 6 unrelated |
 
-**Register triage is a claim, not a close.** This track retires "Distro build approach undecided"
-(closed by `ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md`) and "Syntek OS profile
-definitions are hypotheses" (once the matrix is checked against real builds); it is blocked by "A VM
-with spare disk for the LFS build", "No hardware chosen for the Syntek OS profiles", "diffoscope not
-installed" (`os-05` lesson 05) and "ZFS licence and kernel range for the NAS profile" (`os-13`).
-Nothing here edits either register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. This track retires "Syntek OS profile definitions are hypotheses" (once the matrix
+is checked against real builds). "Distro build approach undecided", which it also retired, is closed by
+`ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` and is no longer counted. Thirteen
+`GAPS.md` entries block it:
+
+- **The build:** "A VM with spare disk for the LFS build", "No hardware chosen for the Syntek OS
+  profiles", "diffoscope not installed" (`os-05` lesson 05), "ZFS licence and kernel range for the
+  NAS profile" (`os-13`), "Fuzzing Rust needs a nightly toolchain" (`os-07`), "perf and GPU
+  performance counters are locked for unprivileged users" (`os-17`, which teaches the fallback) and
+  "ShellCheck not installed locally" (`os-02` and `os-09` scripts are linted only in CI).
+- **Sam's own network (`os-18`):** "Monitoring and remote-help tools not installed" (lessons 07 and
+  10), "No ACME issuer chosen for the private CA" (lesson 06's renewal half) and "Remote-help law and
+  dual-use publishing not yet researched" (lesson 10's teaching waits on its consent note).
+- **A public release:** "No SBOM generator or REUSE linter installed" (a Syntek OS release publishes
+  its register beside its images, under the Proposed component-register ADR), "Trademark policy for
+  the Syntek OS name" (the first public image) and "Export rules for shipping cryptography" (any
+  first public binary release).
+
+Of `DEFERRED.md`, this track takes up the two rows targeted `DEFERRED (P6)`: UEFI Secure Boot for the
+images and the init system Syntek OS ships (N-004). The other six are unrelated. Nothing here edits
+either register.
 
 ---
 
@@ -48,6 +65,7 @@ Nothing here edits either register.
 | N-001 | Syntek OS is independent, built from scratch (not derived, not a fork) | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-INDEPENDENT-FROM-SCRATCH-27-09-2026.md` |
 | N-002 | Seven profiles on one base, compared on eleven axes | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md` |
 | N-003 | Reuse existing desktops; write none | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-DESKTOPS-REUSED-27-09-2026.md` |
+| N-008 | Where network config may run: isolated lab first, then a graduation path to named devices (Sam's explicit answer, 27/09/2026) | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` |
 
 ---
 
@@ -69,6 +87,8 @@ Filled at CUT, after the blocking nodes resolve; candidates in `ROADMAP.md` → 
 | N-005 | The package format and signing scheme (minisign/signify vs OpenPGP; TUF's threat model) | research | `research/PACKAGE-SIGNING-SCHEME.md` (planned) | no |
 | N-006 | The eleven-axis profile definitions, cited not assumed | research | `research/SYNTEK-OS-PROFILE-DEFINITIONS.md` (planned) | no |
 | N-007 | A VM with spare disk for the LFS build | spike | `GAPS.md` → "A VM with spare disk for the LFS build" | yes |
+| N-009 | The router's DNS and DHCP design (dnsmasq combined, or Kea with Unbound), which the homelab consumes | explain-first | `learning/os-14-router-edition/` lesson 03's ADR draft | no |
+| N-010 | Whether the router profile ships WireGuard enabled by default | explain-first | `os-14` lessons 05 and 07; `PROFILE-ROUTER.md` → Open questions | no |
 
 **Blocking a milestone?** N-007 blocks the first LFS milestone: without a build VM there is nowhere
 to build. The others may stay open while earlier milestones run.
@@ -82,8 +102,14 @@ to build. The others may stay open while earlier milestones run.
 - Whether the NAS and router profiles ship the web dashboard (decided in `ui-10-web-admin-dashboard`).
 - Which repositories the built artefacts live in: the build system, package manager and installer
   move to the Syntek OS build-system, package-manager and installer repositories when each build
-  starts, under names and licences Sam chooses then
-  (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`).
+  starts, under names Sam chooses then and the inbound rules
+  (`project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md`;
+  `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
+- Which of Sam's own devices run Syntek OS images, and from when; until then `os-18` deploys to what
+  each device runs (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`).
+- Demo videos of the installer and each profile image, guest text consoles included, recorded through
+  the capture library's QEMU/KVM backend (the scripted recorder's stage 4,
+  `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`); no P6 topic of its own.
 
 ---
 
@@ -103,6 +129,8 @@ to build. The others may stay open while earlier milestones run.
 | Date | Node settled | Outcome | Frontier redrawn |
 | --- | --- | --- | --- |
 | 27/09/2026 | N-001, N-002, N-003 | three ADRs in `project-management/src/08-DECISIONS/` | [x] |
+| 27/09/2026 | N-008 | settled by Sam's answer in the networking round, not while charting → ADR | [x] |
+| 27/09/2026 | — | N-009, N-010 charted; os-18 added (Later) | [x] |
 
 ---
 

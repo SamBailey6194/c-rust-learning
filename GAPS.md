@@ -1,6 +1,6 @@
 # GAPS.md — Active Gaps, Blockers & Open Questions
 
-**Last Updated**: 27/09/2026 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB)
 
 Tracks what currently stands between c-rust-learning and its next phases: missing tools,
@@ -29,6 +29,123 @@ Append a new entry at the top, newest first:
 ```
 
 ---
+
+## 28/09/2026 — Scripted recorder build dependencies not installed
+
+**Type:** Toolchain gap
+**Summary:** The scripted recorder
+(`project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`,
+Proposed) needs pieces the host lacks. The XTest development headers are missing: `dpkg-query` finds
+no `libxtst-dev`, though the runtime library `libxtst6` 2:1.2.3 is installed (28/09/2026). vhs and
+ttyd are not installed, and the route for terminal-only videos before the recorder exists is not
+chosen. No guest image is fetched for Hyprland, GNOME or KDE; these run only as QEMU guests, never as
+Sam's desktop session, and their images stay outside git. CI's runner does not yet install xvfb,
+ffmpeg or `libxtst-dev`.
+**Blocked by / Action:** Blocks the Build of `learning/c-05-scripted-screen-recorder/` lesson 04
+(XTest keys) and every Build of `learning/ui-12-headless-wayland-capture-and-input/` and
+`learning/ui-13-portal-screencast-and-pipewire/`. Sam installs `libxtst-dev` when lesson 04 opens and
+records it in `how-to/docs/TOOLCHAIN.md`; the vhs route is decided before the first terminal-only
+video; each guest image is fetched at its stage's first milestone; CI gains the packages with stage
+1's first milestone. Close this entry when all four are done.
+
+## 27/09/2026 — Remote-help law and dual-use publishing not yet researched
+
+**Type:** Open question
+**Summary:** The remote-help tool
+(`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`,
+Proposed) records the text of the Computer Misuse Act 1990 sections 17 and 3A, the CPS guidance on
+dual-use articles, UK GDPR Article 2(2)(a) and GitHub's Acceptable Use Policies, but not how any of
+them applies to a family helping session or to publishing the tool (27/09/2026). Whose consent
+authorises which access, whether a session log is household processing, and whether making or
+publishing the tool carries section 3A exposure are all unresearched. This entry records an open
+question; it is not legal advice.
+**Blocked by / Action:** Blocks writing `learning/ui-11-consent-first-remote-help/` lessons 01, 06
+and 09 in full, teaching `learning/os-18-own-network-operations/` lesson 10, accepting the remote-help
+ADR, and publishing the remote-help repository. Run
+`/research` for `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md`,
+`research/REMOTE-HELP-TOOL-AND-SECTION-3A.md`, `research/REMOTE-HELP-SESSION-RECORDS-AND-UK-GDPR.md`
+and `research/DUAL-USE-TOOLS-ON-GITHUB.md` (all planned); revise the ADR's constraints against them,
+and close this entry when Sam accepts it.
+
+## 27/09/2026 — Monitoring and remote-help tools not installed
+
+**Type:** Toolchain gap
+**Summary:** Neither Prometheus, node_exporter nor tmux is on the host: `dpkg-query` finds no
+`prometheus`, `prometheus-node-exporter` or `tmux` package. Ubuntu 24.04's candidates are 2.45.3, 1.7.0
+and 3.4; upstream publishes Prometheus v3.15.0 and node_exporter v1.12.1 (27/09/2026;
+`how-to/docs/TOOLCHAIN.md` → P6 prerequisites). Which install route to take, Ubuntu's packages or an
+upstream release, is not chosen.
+**Blocked by / Action:** Blocks the Builds of `learning/os-18-own-network-operations/` lesson 07
+(Prometheus over the tunnel) and lesson 10 (the shared tmux session). Choose the install route when
+lesson 07 opens; Sam installs the tools and records their versions in `how-to/docs/TOOLCHAIN.md`; close
+this entry then.
+
+## 27/09/2026 — No SBOM generator or REUSE linter installed
+
+**Type:** Toolchain gap
+**Summary:** None of `reuse`, `syft`, `cargo-cyclonedx`, `cargo-sbom`, `trivy` or `pyspdxtools` is on
+the host (`command -v`, 27/09/2026). cargo-deny 0.19.0's `list` prints the licences in a crate graph
+as text, JSON or TSV, but writes no SBOM format (`cargo deny list --help`). The component-register
+record
+(`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`,
+Proposed) leaves the generator and validator to research.
+**Blocked by / Action:** Blocks the generator half of
+`learning/tooling-05-licensing-and-collaboration/` lesson 08 (writing the SPDX document by hand and
+reading `cargo deny list` run without it), and leaves lesson 03's optional `reuse lint` check unrun. Run
+`/research` for `research/SBOM-FORMATS-AND-GENERATORS.md`, then Sam installs the chosen generator,
+validator and `reuse` and records their versions in `how-to/docs/TOOLCHAIN.md`; close this entry then.
+
+## 27/09/2026 — Licensor and copyright holder of the product repositories
+
+**Type:** Open question
+**Summary:** Who holds the copyright in the product repositories, and so who grants their licences,
+is not decided: Sam personally or an organisation. The inbound rules
+(`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`) adopt a
+contributor licence agreement only once the licensor is named, and the approved outbound list's two
+gated entries, proprietary and dual GPL-3.0-or-later plus commercial, need a named licensor
+(`ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`). This entry records an open
+engineering question; it is not legal advice.
+**Blocked by / Action:** Blocks only the CLA route and the gated entries; a product under an open entry
+with DCO sign-offs is not blocked. Sam decides before any product's licence ADR picks a gated entry,
+and `research/PRODUCT-CONTRIBUTIONS-DCO-AND-CLA.md` (planned) sets out what a CLA needs from the
+licensor. Close this entry when the answer is recorded in an ADR.
+
+## 27/09/2026 — Trademark policy for the Syntek OS name
+
+**Type:** Open question
+**Summary:** Syntek OS will be published under its own name, but nothing says how others may use that
+name: a respin, a derivative image, a mirror or a community spin. Other distributions publish
+trademark policies for this; none has been read for Syntek OS yet (27/09/2026). This entry records an
+open question; it is not legal advice.
+**Blocked by / Action:** Blocks the first public Syntek OS image. Run `/research` for
+`research/SYNTEK-OS-TRADEMARK-POLICY.md` (planned) before that image is published, record the policy
+in an ADR, and close this entry then.
+
+## 27/09/2026 — Export rules for shipping cryptography
+
+**Type:** Open question
+**Summary:** Several products will ship cryptographic code in their binaries and images — TLS, VPN and
+package signing among them. Whether the UK dual-use export controls, through their cryptography
+category and its notes on software and on publicly available code, ask anything of a public release
+has not been researched (27/09/2026). This entry records an open question; it is not legal advice.
+**Blocked by / Action:** Blocks any product's first public binary release, including the remote-help
+tool's (`learning/ui-11-consent-first-remote-help/` lesson 09). Run `/research` for
+`research/CRYPTOGRAPHY-EXPORT-RULES.md` (planned) before that release, record what it finds in the
+product's release process or an ADR, and close this entry then.
+
+## 27/09/2026 — No ACME issuer chosen for the private CA
+
+**Type:** Open question
+**Summary:** The private CA
+(`project-management/src/08-DECISIONS/ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md`,
+Proposed) makes its offline root and constrained intermediate by hand with `openssl`, and a standing
+ACME issuer signs short-lived leaves. Which issuer is not chosen: its licence, maintenance, support
+for an external offline root, name constraints and sub-day lifetimes, challenge types, key storage,
+footprint and packaging are all unresearched (27/09/2026).
+**Blocked by / Action:** Blocks `learning/sec-05-applied-cryptography/` lesson 13 and the renewal
+half of `learning/os-18-own-network-operations/` lesson 06. Run `/research` for
+`research/PRIVATE-CA-ACME-ISSUER.md`, record the choice in an ADR, then Sam installs the issuer and
+records its version in `how-to/docs/TOOLCHAIN.md`; close this entry then.
 
 ## 27/09/2026 — GTK 4 development files not installed
 
@@ -159,8 +276,8 @@ day rather than recorded here.
 **Summary:** No hardware is selected yet for the NAS, router, homelab, server ("business server" is
 the `server` profile) or laptop and PC profiles. Every lesson runs in VMs or QEMU first.
 **Blocked by / Action:** Choose each profile's hardware by ADR when its topic opens. Real-hardware
-tests run only on dedicated, wiped test hardware named in the milestone — never the host, never the
-home network (`.claude/CLAUDE.md` Section 5).
+tests, and anything that later enters service on Sam's own network, follow `.claude/CLAUDE.md`
+Section 5.
 
 ## 27/09/2026 — A VM with spare disk for the LFS build
 

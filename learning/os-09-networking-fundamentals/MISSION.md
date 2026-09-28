@@ -29,3 +29,5 @@ cannot reach his home network, which the router edition and the security track's
 - Scanning and attacking lab targets — sec-06-pentest-lab-setup and sec-07-recon-and-network-security.
 - Sharing files over the network (NFS, SMB) — os-13-nas-edition.
 - Network screens in the system tools — ui-07-system-tools-tui.
+- Running Sam's own network from these lab-proven pieces, under the graduation path —
+  `os-18-own-network-operations`.

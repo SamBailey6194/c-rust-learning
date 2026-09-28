@@ -4,7 +4,7 @@ type: guide
 
 # Toolchain — c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 > **Owner.** This guide owns the recorded toolchain versions. Every other file cites it instead of
@@ -49,6 +49,11 @@ Present on the host before their tracks open; `check.sh` does not report them ye
 | ruff | 0.14.11 | Python linting and formatting (L1) |
 | ollama | 0.34.0 | Runs an open coding model locally — the LLM track's first baseline |
 | NVIDIA driver | 580.178.04 | The RTX 2080 Ti (11264 MiB, compute capability 7.5); `nvidia-smi` reports CUDA Version 13.0. GPU counters are admin-only (`GAPS.md`) |
+| Xvfb | 2:21.1.12-1ubuntu1.8 (`xvfb`) | The scripted recorder's private X display (`c-05-scripted-screen-recorder`, P2) |
+| ffmpeg | 6.1.1 | Encodes the recorder's frames, fed to it through a pipe (`c-05`) |
+| setxkbmap | `x11-xkb-utils` 7.7+8build2 | Pins the recorder's keyboard layout inside Xvfb |
+| libx11-dev, libxext-dev | 1.8.7, 1.3.4 | Xlib and the MIT-SHM extension headers for `c-05` (the XTest headers are missing — below) |
+| bwrap | 0.9.0 (`bubblewrap`) | Namespaced sandboxes; `sec-04`'s launcher and the recorder's later fixed-name fixture |
 
 ### Not installed, and why
 
@@ -60,6 +65,10 @@ Present on the host before their tracks open; `check.sh` does not report them ye
 | shellcheck | Runs in CI (0.9.0 on `ubuntu-24.04`); optional locally |
 | markdownlint-cli2 | Not installed globally; `npx --yes markdownlint-cli2` fetches it on demand |
 | lefthook, lcov, gcovr | Not in use: no git hooks manager and no coverage gate yet |
+| reuse, an SBOM generator and validator | Arrive with `tooling-05` lessons 03 and 08; the generator and validator are chosen by the SBOM research note (`GAPS.md` → No SBOM generator or REUSE linter installed) |
+| libxtst-dev | The XTest headers for `c-05` lesson 04; `libxtst6` (the runtime library) is installed (`GAPS.md` → Scripted recorder build dependencies not installed) |
+| vhs, ttyd | The route for terminal-only videos before the recorder exists is decided before first use; nothing is installed on the host until then |
+| Hyprland, GNOME and KDE Wayland sessions | Guest only, for `ui-12` and `ui-13`: images are fetched outside git and never run as Sam's desktop session |
 
 ---
 
@@ -194,12 +203,12 @@ sudo apt install clang lld libclang-dev bindgen-0.71
 
 ---
 
-## P6 prerequisites — not yet installed
+## P6 prerequisites
 
 P6 (Syntek OS, `project-management/src/01-ROADMAP/ROADMAP.md`) builds Linux From Scratch **inside a
 VM**, never on the host's disks, so the LFS 13.1-systemd book's host requirements (its Section 2.2)
 apply to the VM's own system, not to this machine — `bison` and `texinfo`, absent here, are
-installed in the VM. On the host, P6 needs the VM tooling and two tools of its own.
+installed in the VM. On the host, P6 needs the VM tooling and the tools of its own listed below.
 
 | Package or tool | Needed for | State on 27/09/2026 |
 | --- | --- | --- |
@@ -208,6 +217,10 @@ installed in the VM. On the host, P6 needs the VM tooling and two tools of its o
 | `util-linux`, `e2fsprogs` | `sfdisk`, `losetup`, `mkfs.ext4` on disk images | installed (2.39.3, 1.47.0) |
 | `diffoscope` | comparing two builds for reproducibility | **not installed** (candidate 259) |
 | `minisign` | signing a package repository | **not installed** (candidate 0.11) |
+| `wireguard-tools` | `wg` and `wg-quick` for the router and `os-18`'s tunnels, in the namespace lab | installed (1.0.20210914) |
+| `dnsmasq-base` | `os-09` lesson 07's lab-only DHCP and DNS server, and `os-18`'s lab LAN | installed (2.91) |
+| `prometheus`, `prometheus-node-exporter` | `os-18` lesson 07's monitoring of Sam's own machines | **not installed** (candidates 2.45.3 and 1.7.0; upstream v3.15.0 and v1.12.1 — the route is chosen when the lesson opens; `GAPS.md`) |
+| `tmux` | `os-18` lesson 10's shared, consent-first help session | **not installed** (candidate 3.4; `GAPS.md`) |
 
 The build VM itself, with disk room for LFS, is tracked in `GAPS.md`.
 
@@ -239,17 +252,20 @@ runs `sudo`.
 ## Security track prerequisites
 
 S1–S3 (`project-management/src/01-ROADMAP/ROADMAP.md`). Attack tooling runs in VMs on an isolated
-lab network, never on the host (`.claude/CLAUDE.md` Section 5); only tools for Sam's own code
-(fuzzing, reading his own binaries) belong here.
+lab network, never on the host (`.claude/CLAUDE.md` Section 5); only tools for Sam's own code and
+systems (fuzzing, reading his own binaries, his private CA) belong here.
 
 | Package or tool | Needed for | State on 27/09/2026 |
 | --- | --- | --- |
-| `libvirt-daemon-system`, `libvirt-clients` | the isolated lab network and its VMs | installed (10.0.0) |
+| `libvirt-daemon-system`, `libvirt-clients` | the isolated lab network and its VMs; `kernel-11`'s libvirt lesson | installed (10.0.0) |
 | `nmap`, `tcpdump` | scanning and packet capture — run from the attacker VM, not the host | installed (7.94SVN, 4.99.4) |
 | `wireshark` | reading captures | **not installed** (candidate 4.2.2) |
 | clang with libFuzzer, `afl++` | fuzzing Sam's own C | **not installed** (candidates 18, 4.09c) |
 | Ghidra | reverse engineering Sam's own binaries | **not installed**; not packaged in Ubuntu 24.04 |
 | pwntools | exploit practice on lab targets — inside the attacker VM | **not installed** (`python3-pwntools` candidate 4.12.0) |
+| `openssl` | the private CA made by hand (`sec-05-applied-cryptography` lessons 08–12); run as a program, never linked | installed (3.0.13) |
+| `libnss3-tools`, `p11-kit`, `ca-certificates` | per-user and system trust stores (`certutil`, `trust`, `update-ca-certificates`) for `sec-05` lesson 12 | installed (3.98, 0.25.3, 20260601~24.04.1) |
+| an ACME issuer | renewing short-lived leaves from the private CA (`sec-05` lesson 13) | **not chosen** — a research note, then an ADR (`GAPS.md` → "No ACME issuer chosen for the private CA") |
 
 The attacker VM image is tracked in `GAPS.md`.
 

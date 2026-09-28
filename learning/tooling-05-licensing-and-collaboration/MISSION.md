@@ -11,10 +11,11 @@ Sam is happy to reuse existing desktops, and said that "friends and family could
 file manager etc." — so Syntek OS's tools will have contributors other than him, and the licence
 has to be settled before the first of them arrives. He has since decided that licences are chosen
 per repository: this learning repository stays GPL-2.0-only, and each product repository picks its
-own. The same literacy runs through the rest of the plan: a downstream kernel carries GPLv2 source
-obligations once it is distributed, a Syntek OS image bundles many licences at once, and the
-language model he wants to build from scratch will be trained on code whose licences and terms
-travel with it. This topic makes those calls informed and written down, rather than guessed.
+own from an approved list, under inbound rules he fixed on 27/09/2026. The same literacy runs
+through the rest of the plan: a downstream kernel carries GPLv2 source obligations once it is
+distributed, a Syntek OS image bundles many licences at once, and the language model he wants to
+build from scratch will be trained on code whose licences and terms travel with it. This topic
+makes those calls informed and written down, rather than guessed.
 
 ## Can do it when
 
@@ -30,6 +31,8 @@ travel with it. This topic makes those calls informed and written down, rather t
   explain the failure each setting prevents.
 - Sam can review a contributor's pull request locally, with licence and sign-off checks and
   comments that give their reasons.
+- Sam can say what an SBOM records and what it does not, write a minimal SPDX document that matches
+  a crate graph, and keep a ledger row for data, weights and firmware.
 
 ## Parked for later
 

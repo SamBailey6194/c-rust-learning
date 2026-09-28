@@ -1,6 +1,6 @@
 # PROFILE-ROUTER — Router Profile
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 | Field | Value |
@@ -16,7 +16,8 @@ decision. The router profile is one of seven on one base
 (`project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md`); it is
 **Later** on the critical path and carries real security responsibility, so it is tested only in
 isolated virtual networks, never on the home network
-(`ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md`).
+(`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`, which sets the one path by which a lab-proven router config
+reaches Sam's own network; a Syntek OS router image is not in its scope).
 
 ---
 
@@ -51,7 +52,7 @@ the firewall's behaviour is unclear or when a change cannot be rolled back to a 
 | Rescue / recovery tooling | Previous kernel kept; a documented reset to a known-good config | A bad rule set must be reversible | assumption to test | H4 |
 | Network exposure & firewall default | The routing/NAT/firewall subject itself; deny by default on the untrusted side | This is the profile's whole purpose | assumption to test | H2 |
 | Storage stack | Small, simple root; no data pooling | A router stores config, not data | assumption to test | — |
-| Hardware target | VMs and isolated virtual networks only until hardware is chosen by ADR | No hardware is chosen yet; router labs never touch the home network (`ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md`) | assumption to test | — |
+| Hardware target | VMs and isolated virtual networks only until hardware is chosen by ADR | No hardware is chosen yet; router labs never touch the home network (`ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`) | assumption to test | — |
 
 ---
 
@@ -100,7 +101,7 @@ repository (created in `kernel-05-downstream-tree` lesson 02); its plan and reco
 
 | Question | Blocks | Where it goes |
 | --- | --- | --- |
-| Which DHCP and DNS server, and whether WireGuard ships by default | Network exposure; the handbook | `os-14-router-edition`; ADR if hard to reverse |
+| Which DHCP and DNS server (the one design the homelab also consumes — `PROFILE-HOMELAB.md` → H5), and whether WireGuard ships by default | Network exposure; the handbook; the homelab's name service | `os-14-router-edition` lesson 03's ADR draft; `MAP-SYNTEK-OS.md` → N-009, N-010 |
 | How IPv6 (RA, DHCPv6-PD) is configured and tested in the lab | Network exposure | `os-14-router-edition`; research note |
 | What hardware the router profile targets | Hardware target | `GAPS.md` Open question; ADR when the topic opens |
 
@@ -112,5 +113,5 @@ repository (created in `kernel-05-downstream-tree` lesson 02); its plan and reco
 - `project-management/src/07-OS-PROFILES/PROFILE-HOMELAB.md` — the neighbouring server-family profile
 - `project-management/src/01-ROADMAP/ROADMAP.md` — P5 and P6
 - `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-PROFILES-ON-ONE-BASE-27-09-2026.md` ·
-  `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md`
+  `ADR-MS001-SECURITY-TRACK-AND-LAB-RULES-27-09-2026.md` · `ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`
 - `GAPS.md` → "Syntek OS profile definitions are hypotheses"

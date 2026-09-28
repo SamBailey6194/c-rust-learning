@@ -1,6 +1,6 @@
 # References — project-management/ layer
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 Internal and external references for planning the curriculum, proving mastery, and moving work through
@@ -42,7 +42,7 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 | `project-management/src/05-PROJECTS/` | specify | Capstone project specs; `PROJ-MS000-TEMPLATE.md` |
 | `project-management/src/06-KERNEL/` | specify | Kernel plans before a build and implementation records after; `KERNEL-PLAN-MS000-TEMPLATE.md`, `KERNEL-IMPL-MS000-TEMPLATE.md` |
 | `project-management/src/07-OS-PROFILES/` | specify | `PROFILE-MATRIX.md`, the seven `PROFILE-<NAME>.md` files (beginner, intermediate, expert, server, nas, homelab, router); `PROFILE-000-TEMPLATE.md` |
-| `project-management/src/08-DECISIONS/` | decide & plan | Immutable ADRs; `ADR-MS000-TEMPLATE.md` and the five seed ADRs from MS001 |
+| `project-management/src/08-DECISIONS/` | decide & plan | Immutable ADRs; `ADR-MS000-TEMPLATE.md`, the five seed ADRs from MS001, and the planning, networking-and-licensing and scripted-recorder decisions (`08-DECISIONS/CONTEXT.md` lists them) |
 | `project-management/src/09-MILESTONE-PLANS/` | decide & plan | The plan each milestone is studied from, prefixed by build order; `00-PLAN-MS000-TEMPLATE.md` |
 | `project-management/src/10-PROGRESS/` | record | Verification records, the mastery evidence; `MS000-VERIFICATION-TEMPLATE.md` |
 | `project-management/src/11-REVIEWS/` | record | Review records; `REVIEW-MS000-TEMPLATE.md` |
@@ -109,6 +109,17 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 ## External — Decisions
 
 - **Documenting Architecture Decisions (Michael Nygard)** — https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions — the original ADR form (Context, Decision, Status, Consequences) that `project-management/src/08-DECISIONS/` extends with Options considered
+- **RFC 5280, X.509 certificate and CRL profile** — https://www.rfc-editor.org/rfc/rfc5280 — basic and name constraints, CRLs and path validation, behind the private-CA ADR
+- **RFC 8555, ACME** — https://www.rfc-editor.org/rfc/rfc8555 — automated certificate issuance, the protocol the private CA's leaf issuer speaks
+- **SPDX specifications** — https://spdx.dev/use/specifications/ — the SBOM format (2.3 and 3.0.x; SPDX 2.2.1 is published as ISO/IEC 5962:2021) behind the component-register ADR
+- **CycloneDX** — https://cyclonedx.org/specification/overview/ — the other SBOM format (ECMA-424), the component-register ADR's runner-up
+- **NTIA, The Minimum Elements for an SBOM (12/07/2021)** — https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom — the baseline field list the register's research note re-reads
+- **Choose a License** — https://choosealicense.com/licenses/ — plain-language summaries of the entries on the approved outbound list
+- **Computer Misuse Act 1990, section 3A** — https://www.legislation.gov.uk/ukpga/1990/18/section/3A — making, supplying or obtaining articles for use in an offence; the statute text behind the remote-help ADR
+- **CPS legal guidance, Computer Misuse Act** — https://www.cps.gov.uk/legal-guidance/computer-misuse-act — the factors prosecutors weigh for a dual-use article, cited by the remote-help ADR
+- **UK GDPR, Article 2** — https://www.legislation.gov.uk/eur/2016/679/article/2 — the purely personal or household activity exclusion, paragraph 2(a), which the remote-help session-records note tests
+- **GitHub Acceptable Use Policies: Active Malware or Exploits** — https://docs.github.com/en/site-policy/acceptable-use-policies/github-active-malware-or-exploits — what GitHub allows of dual-use content, before the remote-help repository is published
+- **MITRE ATT&CK T1219, Remote Access Tools** — https://attack.mitre.org/techniques/T1219/ — the abuse of remote-access software the remote-help ADR's constraints refuse
 
 ---
 
@@ -138,3 +149,7 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 - **Linux kernel: Rust quick start** — https://docs.kernel.org/rust/quick-start.html — `make LLVM=1 rustavailable`, the check before any Rust-for-Linux milestone
 - **Linux kernel: minimal requirements** — https://docs.kernel.org/process/changes.html — the build dependencies a kernel milestone lists as blockers
 - **QEMU invocation** — https://www.qemu.org/docs/master/system/invocation.html — `-kernel`, `-initrd`, `-append`, `-nographic`, `-snapshot`, `-s -S`
+- **Computer Misuse Act 1990, section 17** — https://www.legislation.gov.uk/ukpga/1990/18/section/17 — subsections (5) and (8), when access or an act is unauthorised; the reading behind the graduation-path ADR
+- **RFC 5737, IPv4 documentation ranges** — https://www.rfc-editor.org/rfc/rfc5737 — the IPv4 documentation ranges network examples here use (`project-management/docs/SAFETY-GUIDE.md` → Graduating a lab-proven config)
+- **RFC 3849, IPv6 documentation prefix** — https://www.rfc-editor.org/rfc/rfc3849 — the IPv6 documentation prefix network examples here use (same owner)
+- **RFC 2606, reserved DNS names** — https://www.rfc-editor.org/rfc/rfc2606 — `example`, `test` and `invalid` names for examples

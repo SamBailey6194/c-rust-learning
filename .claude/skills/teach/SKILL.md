@@ -88,7 +88,7 @@ The topic's planned lessons. Each lesson is an **H2** (`## NN — …`), because
 ```markdown
 # Syllabus — {track}-{NN}-{topic}
 
-**Track**: {kernel | os | ui | llm | sec | tooling} · **Phase**: {P4 … L6 | S1 … S3} · **Path**: {Core | Later} · **Detail**: {full | outline} · **Prerequisites**: {topic folders + lesson numbers, and/or phases}
+**Track**: {c | rust | kernel | os | ui | llm | sec | tooling} · **Phase**: {P1 … P6 | U1 … U3 | L1 … L6 | S1 … S3} · **Path**: {Core | Later} · **Detail**: {full | outline} · **Prerequisites**: {topic folders + lesson numbers, and/or phases}
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 {One paragraph: what this topic builds towards in the mission and where it sits in the track.}
@@ -120,6 +120,8 @@ The topic's planned lessons. Each lesson is an **H2** (`## NN — …`), because
 - **Detail: full** (an open or next phase) gives Build sketches and pinned sources; **Detail:
   outline** (a far phase) gives objectives, key ideas and sources to verify, filled in when its
   phase opens.
+- **Path** is per topic; when appended lessons sit on the other path the field names both ranges,
+  e.g. `Core (lessons 01–07); Later (lessons 08–13)`, as `ROADMAP.md` → Critical path does.
 - A **Build** line is a candidate for `project-management/workflows/04-exercise-design/`; the
   `EX-MS###` spec, not the syllabus, is the exercise contract (step 4). It names where the work
   lands: a planned `code/src/` path, or "the <thing> repository (created when this build starts)".

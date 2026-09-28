@@ -3,7 +3,7 @@
 **Charted**: 27/09/2026 | **Charted by**: Sam Bailey | **Workflow**: `01-roadmap-map`
 **Phase**: P4–P5 — `project-management/src/01-ROADMAP/ROADMAP.md`
 **Status**: Charting
-**Frontier open**: 3 | **Blocking open**: 1
+**Frontier open**: 4 | **Blocking open**: 1
 
 > A `Charting` draft: the destination and the open decisions are drawn from Sam's planning
 > conversation of 27/09/2026 and its ADRs; nodes are resolved in later sessions, one at a time, each
@@ -32,14 +32,18 @@ building and booting in QEMU, reproducibly from a pinned tag.
 | Standing preferences | downstream of upstream, not a fork or from scratch; QEMU only; longterm for the server family, stable for desktops (per profile) |
 | Umbrella ADRs | `project-management/src/08-DECISIONS/ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` · `ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` |
 | Primary resources | the P4 and P5 lists in `ROADMAP.md`; docs.kernel.org; kernel.org releases |
-| Register entries triaged | 0 closes, 4 blocks, 0 unrelated — from `GAPS.md` |
+| Register entries triaged | 0 closes, 4 blocks, 24 unrelated — from the 28 open `GAPS.md` entries; `DEFERRED.md`'s eight rows: 2 closes, 6 unrelated |
 
-**Register triage is a claim, not a close.** The four `GAPS.md` blockers this track meets are
-"Kernel build dependencies not installed" (flex, bison, libelf-dev, dwarves, and the GCC-plugin choice
-for `CONFIG_KSTACK_ERASE` at `kernel-04` lesson 03), "pahole minimum for P4
-is unclear", "Rust-for-Linux needs clang/LLVM and bindgen" and "git send-email and b4 not installed"
-(`kernel-07-upstreaming` lesson 04 only). The first three become frontier nodes' blockers below; the
-last is a lesson-level Blocked mark. Nothing in this map edits either register.
+**Register triage is a claim, not a close.** Recounted on 28/09/2026, after the networking and
+licensing round and the scripted-recorder round, over every open `GAPS.md` entry and every
+`DEFERRED.md` row. The four `GAPS.md` blockers this track meets are "Kernel build dependencies not
+installed" (flex, bison, libelf-dev, dwarves, and the GCC-plugin choice for `CONFIG_KSTACK_ERASE` at
+`kernel-04` lesson 03), "pahole minimum for P4 is unclear", "Rust-for-Linux needs clang/LLVM and
+bindgen" and "git send-email and b4 not installed" (`kernel-07-upstreaming` lesson 04 only). The first
+three become frontier nodes' blockers below; the last is a lesson-level Blocked mark. The other 24 name
+no lesson or milestone in this track. Of `DEFERRED.md`, this track takes up the two scripted-recorder
+rows targeted `DEFERRED (P4)`, TTY-console and remote-desktop capture, and only once the recorder's
+stages 1–4 are `Done`; the other six are unrelated. Nothing in this map edits either register.
 
 ---
 
@@ -50,6 +54,8 @@ Each row links to the artefact it became. **An answer that lives only here has n
 | Node | Decision | Type | Settled | Became |
 | --- | --- | --- | --- | --- |
 | N-001 | Kernel is a downstream of upstream Linux, not a fork or from scratch | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` |
+| N-006 | The scripted recorder's kernel-interface stages run only in a QEMU guest (`kernel-09` uinput at P4, `kernel-10` DRM/KMS at P5), and DRM/KMS capture is learning-only, never a capture-library backend | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed) |
+| N-007 | The capture library's QEMU/KVM backend is taught in `kernel-11` at P4 (Later), after the recorder's Wayland stages | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed) |
 
 ---
 
@@ -76,12 +82,14 @@ Open decisions in dependency order. **Blocked by** names other nodes or a regist
 | N-002 | Which stable or longterm line each profile follows | research | `GAPS.md` → nothing (host-independent); feeds `research/LTS-VS-STABLE-PER-PROFILE.md` (planned) | no |
 | N-003 | The pahole minimum for the P4 build, and BTF on or off | research | `GAPS.md` → "pahole minimum for P4 is unclear" | yes |
 | N-004 | Whether Rust-for-Linux is in scope for this machine | spike | `GAPS.md` → "Rust-for-Linux needs clang/LLVM and bindgen" | no |
+| N-005 | A capture target for the DRM/KMS lessons before P6: the guest's DRM driver, and whether `DRM_IOCTL_MODE_GETFB2` returns a mappable framebuffer for fbcon on virtio-gpu, or a stock-distribution guest is needed | spike | N-006; feeds `kernel-10-drm-kms-capture` lessons 03–05 | no |
 
 **Types:** `research` graduates to a note in `research/`; `explain-first` to an ADR; `spike` to a
 throwaway experiment in `learning/`; `build` is a slice's own milestone work.
 
 **Blocking a milestone?** `yes` means no milestone in this track is cut until the node is settled.
-N-003 blocks the first P4 build, because the build's dependencies must resolve first.
+N-003 blocks the first P4 build, because the build's dependencies must resolve first. N-005 does not
+block: `kernel-10` is Later and learning-only, so it gates that topic's lessons, not a milestone.
 
 ---
 
@@ -116,6 +124,7 @@ In scope, but not yet sharp enough to state as a decision.
 | Date | Node settled | Outcome | Frontier redrawn |
 | --- | --- | --- | --- |
 | 27/09/2026 | N-001 | downstream of upstream → `ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` | [x] |
+| 28/09/2026 | N-006, N-007 | the recorder's guest stages → `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed); N-005 charted; kernel-09 to kernel-11 added (Later) | [x] |
 
 ---
 

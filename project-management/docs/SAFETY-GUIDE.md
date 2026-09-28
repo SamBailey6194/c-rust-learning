@@ -4,16 +4,16 @@ type: guide
 
 # Safety Guide — c-rust-learning
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 Hazards run through this curriculum at every level. C's undefined behaviour and memory bugs corrupt a
 program quietly. Rust's `unsafe` hands the same bugs back to you behind a keyword. Kernel code can take
-the whole machine down with it. OS images and network labs, an LLM that loads files and runs generated
-code, and the security track's offensive work each carry hazards of their own. This guide says what a
-milestone has to **plan** for each of them, at the PM stage, so the right gates and the threat model are
-set before any code exists. The rules themselves are owned by `.claude/CLAUDE.md` Section 5, and each
-section here routes there.
+the whole machine down with it. OS images and network labs, remote help on someone else's device, an
+LLM that loads files and runs generated code, and the security track's offensive work each carry
+hazards of their own. This guide says what a milestone has to **plan** for each of them, at the PM
+stage, so the right gates and the threat model are set before any code exists. The rules themselves
+are owned by `.claude/CLAUDE.md` Section 5, and each section here routes there.
 
 ---
 
@@ -133,9 +133,67 @@ run only on dedicated, wiped test hardware named in the milestone — never the 
 network. No hardware is chosen for any Syntek OS profile yet
 (`project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md` → Hardware target). What a profile milestone
 plans for: a `qemu-system-x86_64` command against a disk image, `-snapshot` so the image is never
-modified, and, for a router or a pentest lab, an isolated network (QEMU `restrict=on` or a libvirt
-isolated network) proved to have no route to the home LAN before anything offensive runs. The rules are
-owned by `.claude/CLAUDE.md` Section 5.
+modified, and, for a router or a pentest lab, an isolated network (QEMU `restrict=on`, a libvirt
+isolated network, or `os-09`'s unprivileged network-namespace lab) proved to have no route to the home
+LAN before anything offensive runs. The rules are owned by `.claude/CLAUDE.md` Section 5; the network
+half is argued in
+`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`.
+
+### Graduating a lab-proven config to Sam's own devices
+
+A **test** finds out whether a config works, and it stays in the isolated lab (or, for real hardware,
+on the dedicated wiped hardware a milestone names). A **graduation** puts a config the lab has already
+proved into service on one of Sam's own devices; nothing is learned by experiment on a real device.
+This section owns the checklist a graduating milestone runs, in order; the ADR above argues it.
+
+- **Lab evidence first.** The config's lab tests pass, and the milestone's verification record says
+  so. The deployed config differs from the lab-proven one only by a listed set of substitutions
+  (keys, addresses, names).
+- **Named devices.** Each target is a device Sam owns, named in the milestone by a role label only.
+  Remote-help sessions, never configuration, may also reach family devices named in the milestone by
+  role label only (never a person's name or a device's hostname), each with a written consent record
+  from whoever controls the device (the ADR's rule 3). The study host takes userspace configuration
+  only; kernels, modules and OS images never graduate.
+- **Rollback rehearsed.** The way back to the last known-good config is rehearsed in the lab first. A
+  change that can cut remote access runs behind a confirm-or-revert timer, with console access to hand.
+- **Sam runs root.** Sam runs every command on a real device. Claude never runs `sudo`, never opens a
+  session to a real device and never holds a credential for one.
+- **No secrets or topology here.** Real addresses, peers, device names and topology live only in the
+  private infrastructure repository, which this repository never links, cites a path in or quotes.
+  Private keys are generated on their device and committed to no repository, the private one included.
+  Examples here use the documentation ranges (RFC 5737, RFC 3849) and reserved names (RFC 2606).
+- **No offensive tooling on the LAN.** No scans, floods, fuzzing or capture of other people's traffic.
+  A graduated config is verified by inspection on the device itself: `nft list ruleset`, `ss -tulpn`,
+  `wg show`.
+- **The household is told first.** Anyone whose connectivity the change touches knows when it
+  happens and how to reach Sam if something breaks.
+- **Logs and personal data stated per milestone.** The milestone says what the config logs, for how
+  long and where, keeping it to the minimum the service needs. Filled consent records and remote-help
+  session logs stay on the helped device, and on Sam's machine only if the helped person agrees; they
+  enter no git repository, and only a blank consent template may live in the private one.
+
+---
+
+## Remote help — consent first, by construction
+
+Software that lets Sam see and type into a family member's terminal is the same kind of software an
+intruder uses to keep control of a machine, so a remote-help milestone plans for being mistaken for
+one, or becoming one. Its threat model's mitigations are the ten constraints of
+`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`
+(Proposed): the helped person starts every session, grants view and control separately, sees an
+indicator the helper cannot hide, keeps the log and can end it with one key, every session has a hard
+time limit and cannot resume, and nothing persists, hides or gains a privilege. What such a milestone
+plans for:
+
+- **Lab first.** Every build, and the abuse-case suite, is proved between two VM guests on `os-09`'s
+  isolated lab network before any real session.
+- **A real session only under the graduation path.** It reaches only a family device named in the
+  milestone by role label only, under the family-device clause of the graduation-path ADR (Section "Graduating a
+  lab-proven config to Sam's own devices" above), with a written consent record from whoever controls
+  the device, made before the session starts.
+- **Records and commands follow the graduation checklist above.** Filled records and logs are handled
+  as "Logs and personal data stated per milestone" says, and every command as "Sam runs root" says;
+  Claude never connects to a real device.
 
 ---
 
@@ -191,5 +249,9 @@ the last line, not the first: read `git diff --staged` before every commit
 - `code/docs/RUST-CODING-PRINCIPLES.md` — the `unsafe` rules and their reasons
 - `code/docs/FFI.md` — the C and Rust boundary
 - `.claude/CLAUDE.md` — the kernel QEMU-only rule and the public-repository rules
+- `project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md` —
+  why network labs stay isolated and how a lab-proven config graduates
+- `project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md` —
+  the constraints a remote-help tool is built inside (Proposed)
 - `project-management/docs/VERIFICATION-GUIDE.md` — how the flagged gates are proved afterwards
 - `project-management/workflows/06-kernel-spec/` — where a kernel milestone's safety plan is written

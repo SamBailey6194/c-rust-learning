@@ -1,6 +1,6 @@
 # Teach — What to Teach, by Family
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 A sub-document of `.claude/skills/teach/SKILL.md`: for each of the eight families a lesson can
@@ -16,13 +16,19 @@ Locale: en_GB · Europe/London · dates DD/MM/YYYY.
 `code/src/CLAUDE.md` → Output & naming numbers. Anything substantial (the downstream kernel tree,
 the Syntek OS build system, package manager, installer and tools, the LLM data, training and
 inference code) gets its own repository when its build starts; a Build sketch then names "the
-<thing> repository (created when this build starts)". Names and licences of those repositories are
-Sam's to choose; until he does, lessons use these placeholders and no others: the downstream kernel
-repository; the Syntek OS build-system, package-manager, installer, system-tools, file-manager,
-GUI-tools and web-dashboard repositories; the model-training repository; and the inference
-repository. (Two more, the sandbox-launcher repository of `sec-04` and the model-release repository
-of `llm-21`, await Sam's confirmation.) **Until a topic's phase opens**, in any family, its lessons
-are reading, recall and a note only, and its Builds wait for a milestone in that phase
+<thing> repository (created when this build starts)". Names of those repositories are Sam's to
+choose, and each published one takes its licence when its build starts, under
+`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`; until
+he does, lessons use these placeholders and no others: the downstream kernel repository; the
+Syntek OS build-system, package-manager, installer, system-tools, file-manager, GUI-tools and
+web-dashboard repositories; the sandbox-launcher repository; the remote-help repository; the
+scripted-recorder and capture-library repositories; and the model-training, inference and
+model-release repositories. One more is private and holds no build: the private infrastructure
+repository, created at the first graduation, where Sam's real network configuration lives
+(`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`);
+it is never published and carries no licence, and lessons name it but never link it, cite a path in
+it or quote from it. **Until a topic's phase opens**, in any family, its lessons are reading, recall
+and a note only, and its Builds wait for a milestone in that phase
 (`.claude/skills/teach/SKILL.md` step 1 lists Sam's routes).
 
 ---
@@ -44,6 +50,16 @@ House guides: `code/docs/C-CODING-PRINCIPLES.md`, `code/docs/BUILD.md`, `code/do
 - Man pages: `man 3 <function>` (C library), `man 2 <syscall>`, `man 7 <overview>` such as
   `man 7 signal`. POSIX `3p` pages are not installed on the host (checked 27/09/2026).
 - [cppreference's C pages](https://en.cppreference.com/w/c) as a readable index into the standard.
+- The scripted recorder (`c-05`): `man 1 Xvfb`, `man 1 Xserver`, `man 3 XShm`, `man 1 ffmpeg-formats`,
+  `man 1 ffmpeg-filters`, `man 1 setxkbmap`, `man 7 xkeyboard-config` (installed); the
+  [XTEST library](https://www.x.org/releases/current/doc/libXtst/xtestlib.html),
+  [WebVTT](https://www.w3.org/TR/webvtt1/) and the [vhs README](https://github.com/charmbracelet/vhs).
+  Its rules come from
+  `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`:
+  Sam's own content only; a clean fixture (throwaway home, an environment built from scratch, a
+  private display and cookie) and a pinned keyboard layout; captions and the timeline from the tape,
+  never from observed input. Stage 1 lands in `code/src/c/msNNN-scripted-recorder/`; from stage 2 the
+  code is in the scripted-recorder and capture-library repositories.
 
 ## rust — ownership to `unsafe`, FFI and async (P3)
 
@@ -68,8 +84,12 @@ follows. Primary sources:
   Sam runs any interactive rebase himself.
 - Licensing and collaboration: the [SPDX licence list](https://spdx.org/licenses/),
   [REUSE](https://reuse.software/), the [Developer Certificate of Origin](https://developercertificate.org/),
-  and the FSF's licence list (`REFERENCES.md` → External — Process). Licences are per repository:
-  this one is GPL-2.0-only, and a product repository chooses its own.
+  the [SPDX specifications](https://spdx.dev/use/specifications/),
+  [CycloneDX](https://cyclonedx.org/specification/overview/) and the FSF's licence list
+  (`REFERENCES.md` → External — Process). Licences are per repository: this one is GPL-2.0-only,
+  and a product repository chooses its own from the approved list
+  (`ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`) and keeps its own component
+  register (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`).
 
 ## kernel — build, boot, modules, Kconfig and the downstream tree (P4–P5)
 
@@ -88,6 +108,15 @@ stepping stone, re-authored rather than quoted.
   downstream kernel tree itself in the downstream kernel repository, created in
   `kernel-05-downstream-tree` lesson 02.
 - **Rust-for-Linux** is blocked until clang/LLVM, libclang and bindgen are installed (`GAPS.md`).
+- **The scripted recorder's guest stages** (`kernel-09` to `kernel-11`,
+  `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`): the
+  [input](https://docs.kernel.org/input/input.html), [event codes](https://docs.kernel.org/input/event-codes.html),
+  [uinput](https://docs.kernel.org/input/uinput.html) and [DRM uAPI](https://docs.kernel.org/gpu/drm-uapi.html)
+  pages; `man 7 qemu-qmp-ref` (installed); [RFC 6143](https://www.rfc-editor.org/rfc/rfc6143) (RFB);
+  the [libvirt domain API](https://libvirt.org/html/libvirt-libvirt-domain.html). uinput and DRM run
+  in the QEMU guest only, never against the host's `/dev/uinput` or `/dev/dri`; DRM capture is
+  learning-only, never a capture-library backend; QMP and VNC sockets are Unix sockets in a private
+  directory, never TCP.
 
 ## os — Syntek OS, built from scratch (P6)
 
@@ -109,7 +138,10 @@ the [TUF specification](https://theupdateframework.github.io/specification/lates
 
 - **VMs and QEMU disk images only; isolated virtual networks for labs.** Real hardware only when a
   milestone names dedicated, wiped test hardware (`.claude/CLAUDE.md` Section 5). No hardware is
-  chosen yet for any profile; each is chosen by ADR when its topic opens (`GAPS.md`).
+  chosen yet for any profile; each is chosen by ADR when its topic opens (`GAPS.md`). A lab-proven
+  config reaches a real device only by the graduation path
+  (`project-management/src/08-DECISIONS/ADR-MS001-NETWORK-LAB-FIRST-GRADUATION-PATH-27-09-2026.md`;
+  checklist in `project-management/docs/SAFETY-GUIDE.md`): Sam applies it, never Claude.
 - **The learning build follows the LFS 13.1 systemd book.** A minimal init in C is a lesson; the
   init Syntek OS ships is chosen later by ADR, fed by the `INIT-SYSTEM-CHOICE` research note
   (`DEFERRED.md`).
@@ -128,17 +160,34 @@ the architecture studied; the [gtk4-rs book](https://gtk-rs.org/gtk4-rs/stable/l
 [API docs](https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4/); [zbus](https://docs.rs/zbus/latest/zbus/)
 and [polkit](https://www.freedesktop.org/software/polkit/docs/latest/); the
 [Wayland documentation](https://wayland.freedesktop.org/docs/html/) and [The Wayland Book](https://wayland-book.com/);
-[Slint](https://slint.dev/) for its model only.
+[Slint](https://slint.dev/) for its model only; for the scripted recorder's Wayland stages, the
+[Hyprland wiki](https://wiki.hypr.land/), the [Hyprland](https://github.com/hyprwm/Hyprland) and
+[Aquamarine](https://github.com/hyprwm/aquamarine) repositories, the [wayland.app](https://wayland.app/)
+protocol pages, xdg-desktop-portal's
+[ScreenCast](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html)
+and [RemoteDesktop](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.RemoteDesktop.html)
+documentation and the [PipeWire docs](https://docs.pipewire.org/page_portal.html);
+`man 7 pty` and `man 3 openpty` (installed) and the
+[rustls docs](https://docs.rs/rustls/latest/rustls/) for remote help, with the law taken through
+`research/` notes, never from memory.
 
 - **Toolkits.** Lessons here use gtk4-rs
   (`project-management/src/08-DECISIONS/ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md`). Syntek OS
   products are written in Slint, in their own repositories; no Slint crate enters this one.
 - **Licences.** A crate outside `code/src/rust/deny.toml`'s allow list enters only as a documented
   per-crate exception citing the ADR that admits it, in the milestone that first needs it.
+- **Remote help** is consent-first by construction
+  (`project-management/src/08-DECISIONS/ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md`;
+  `project-management/docs/SAFETY-GUIDE.md` → Remote help): lab first; a real session only under
+  the graduation path.
+- **The recorder's Wayland stages** (`ui-12`, `ui-13`) run in a VM guest, never in Sam's desktop
+  session; consent dialogs and permission prompts belong to a set-up run, never a video
+  (`project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`).
 - **Where it lands.** Lesson crates under `code/src/rust/crates/msNNN_<snake>/`; a substantial tool
   (and any tool taking outside contributions) moves to its own repository when its build starts —
   the Syntek OS file-manager, package-manager, installer, system-tools, GUI-tools or web-dashboard
-  repository.
+  repository, the remote-help repository, or, for the recorder's backends, the capture-library or
+  scripted-recorder repository.
 
 ## llm — the language model (L1–L6)
 
@@ -179,10 +228,11 @@ repository's citation key; the [2026 edition](https://genai.owasp.org/resource/o
   this repository's `.claude/skills/` is the working prototype of the skill format.
 - **Where it lands.** Python under `code/src/python/` (planned — added at L1), CUDA under
   `code/src/cuda/` (planned — added at L2), Rust as lesson crates; the data pipeline and training
-  code in the model-training repository, and the inference server and skill loader in the inference
-  repository, each created when its build starts. `llm-01`'s three skills and gap log are the
-  inference repository's first contents (its lesson 05 starts it). Prices are never tabled: a lesson
-  teaches the estimate and says to check prices on the day.
+  code in the model-training repository, the inference server and skill loader in the inference
+  repository, and the released weights, model card and evaluations in the model-release repository
+  (`llm-21` lesson 07), each created when its build starts. `llm-01`'s three skills and gap log are
+  the inference repository's first contents (its lesson 05 starts it). Prices are never tabled: a
+  lesson teaches the estimate and says to check prices on the day.
 
 ## sec — security, defensive and authorised offensive (S1–S3)
 
@@ -213,6 +263,12 @@ of each training platform used ([OverTheWire](https://overthewire.org/wargames/)
 - **Licences.** The OWASP GenAI project's site states CC BY-SA 4.0 for its content, a share-alike
   licence, so it is re-authored and never quoted; other OWASP pages are treated the same until
   their own licence is checked (`.claude/skills/research/SKILL.md` → the licence ladder).
+- **Where it lands.** Notes, rules and lab records stay in the topic folder; small exercises and VM
+  harnesses go under `code/src/` (a deliberately vulnerable build is a never-shipped target); a
+  build that hardens or tests a product lands in that product's repository. `sec-04`'s sandbox
+  launcher starts as a lesson crate here and moves to the sandbox-launcher repository (created at
+  the first lesson that runs it from a product repository, `os-05` lesson 03 or `llm-13` lesson 03),
+  which the product repositories that run untrusted or generated code depend on.
 
 ---
 

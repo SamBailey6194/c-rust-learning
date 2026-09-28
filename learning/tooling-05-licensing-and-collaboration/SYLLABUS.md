@@ -1,6 +1,6 @@
 # Syllabus — tooling-05-licensing-and-collaboration
 
-**Track**: tooling · **Phase**: P1 · **Path**: Core · **Detail**: full · **Prerequisites**: none (complete before U2 opens and before L4; lesson 06 uses `tooling-04` lesson 05, lesson 07 uses `tooling-04` lessons 04 and 07)
+**Track**: tooling · **Phase**: P1 · **Path**: Core · **Detail**: full · **Prerequisites**: none (lessons 01–07 before U2 opens and before L4; lesson 08 before a product repository's first release; lesson 06 uses `tooling-04` lesson 05, lesson 07 uses `tooling-04` lessons 04 and 07)
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 Syntek OS will ship other people's code, friends and family will contribute to its tools, and the
@@ -8,9 +8,11 @@ language model will be trained on data and weights that carry terms of their own
 teaches the licence and collaboration literacy each of those needs, anchored in this repository's
 own decisions: it is GPL-2.0-only (`LICENSE`), its crate licences are gated by
 `code/src/rust/deny.toml`, an Apache-2.0-only crate a lesson needs enters only as a documented
-per-crate exception, and each product repository chooses its own licence (`.claude/CLAUDE.md`
-Section 5). Lesson 01 comes before `kernel-05`; lesson 02 before `ui-08` and `llm-14`; the whole
-topic before U2 opens (the first outside contributors) and before `llm-10` (training data). The
+per-crate exception, and each product repository chooses its own licence
+(`project-management/src/08-DECISIONS/ADR-MS001-LLM-RUST-CRATE-LICENCES-27-09-2026.md`, extended by
+`ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`). Lesson 01 comes before `kernel-05`;
+lesson 02 before `ui-08` and `llm-14`; lessons 01–07 before U2 opens (the first outside
+contributors) and before `llm-10` (training data); lesson 08 before any product's first release. The
 lessons teach reading a licence and recording an engineering decision; they are not legal advice.
 The FSF's pages on gnu.org timed out from this host on 27/09/2026, so they are cited through the
 Internet Archive's copies of 22/09/2026 and 26/09/2026.
@@ -24,6 +26,7 @@ Internet Archive's copies of 22/09/2026 and 26/09/2026.
 | 05 | Choosing a licence for a product repository | 1 sitting | no | — |
 | 06 | Contributor infrastructure: CONTRIBUTING, DCO sign-off, labels and required checks | 2–3 sittings | yes — contributor kit | Security |
 | 07 | Reviewing a contributor's pull request | 1 sitting | no | Security |
+| 08 | Software bills of materials and the component ledger | 2–3 sittings | yes — SBOM drill | Security |
 
 ---
 
@@ -191,10 +194,15 @@ Internet Archive's copies of 22/09/2026 and 26/09/2026.
 - **Key ideas:**
   - Licences are per repository: this learning repository stays GPL-2.0-only, and each product
     repository — named and licensed by Sam when its build starts — chooses its own, recorded as an
-    ADR, one decision per record.
+    ADR, one decision per record, from the approved list and under the inbound rules
+    (`ADR-MS001-PRODUCT-LICENCES-APPROVED-OUTBOUND-LIST-27-09-2026.md`,
+    `ADR-MS001-PRODUCT-LICENCES-INBOUND-RULES-27-09-2026.md`).
   - Some choices are forced: a downstream kernel tree carries the kernel's GPL-2.0-only.
   - The dependency graph narrows the rest: a repository that links Apache-2.0-only crates and ships
     binaries cannot be GPL-2.0-only, but can be GPL-3.0-or-later or permissive (lesson 02).
+  - A closed-source product is possible only through the list's gated proprietary entry and its
+    conditions: a named licensor, no copyleft component in any shipped binary, no outside
+    contribution without a CLA, and no model trained on The Stack v2.
   - The goal decides between what survives: copyleft keeps contributors' improvements open, a
     permissive licence maximises reuse, closed reuse included.
   - Two viewpoints to weigh: the FSF recommends copyleft for most software and the Apache License
@@ -202,11 +210,13 @@ Internet Archive's copies of 22/09/2026 and 26/09/2026.
     your community's licence", "simple and permissive" or "sharing improvements".
   - Syntek OS's own products are written with Slint in their own repositories, where Slint's licence
     options are checked — not here; weights and datasets are licensed separately (lesson 04).
-- **Recall targets:** for a downstream kernel tree, a Rust TUI file manager and an LLM inference
-  server, name the constraint that dominates each licence choice and where it comes from.
+- **Recall targets:** for a downstream kernel tree, a Rust TUI file manager, an LLM inference
+  server and a closed-source desktop tool, name the constraint that dominates each licence choice
+  and where it comes from.
 - **Build:** none — the output is a draft ADR, written through `project-management/workflows/08-decisions/`
   from `project-management/src/08-DECISIONS/ADR-MS000-TEMPLATE.md` when the first product repository
-  (the file manager's, when `ui-04`'s build starts) is created.
+  (the file manager's, when `ui-04`'s build starts) is created. It starts from the approved list,
+  names one entry and records which of that entry's conditions the repository meets, and how.
 - **Sources:** FSF, "How to Choose a License for Your Own Work" (Internet Archive copy of
   22/09/2026), <https://web.archive.org/web/20260922042447/http://www.gnu.org/licenses/license-recommendations.html>;
   Choose a License, <https://choosealicense.com/>; FSF licence list (Internet Archive copy of
@@ -227,6 +237,9 @@ Internet Archive's copies of 22/09/2026 and 26/09/2026.
     is the worked example of a learning repository's version.
   - A repository that takes outside work states the licence contributions are accepted under, and can
     require a DCO sign-off on every commit, enforced by a CI check that fails without one.
+  - A DCO sign-off certifies the contributor's right to submit the work; it grants no licence and no
+    right to relicense. A product whose list entry needs relicensing rights uses a CLA instead, argued
+    in its licence ADR and only once the licensor is named (inbound rules, rule 2).
   - GitHub's default labels include `good first issue`, which also fills the repository's contribute
     page, and `help wanted`.
   - Branch protection can require status checks before merging; a required check must never also be
@@ -237,7 +250,8 @@ Internet Archive's copies of 22/09/2026 and 26/09/2026.
     first-time contributor's run can wait for a maintainer's approval, and checking out a fork's code
     under `pull_request_target` can hand it write access or secrets, so it is avoided.
 - **Recall targets:** explain how a path-filtered required check leaves a pull request pending for
-  ever; say what a DCO sign-off gives a maintainer that a sentence in CONTRIBUTING does not.
+  ever; say what a DCO sign-off gives a maintainer that a sentence in CONTRIBUTING does not, and what
+  it does not grant.
 - **Build:** contributor kit — lands in the Syntek OS file-manager repository (created when `ui-04`'s build
   starts, the first project friends and family can join; its name and licence are Sam's to choose):
   a CONTRIBUTING file stating the licence of contributions, a sign-off check in CI, the label set,
@@ -290,3 +304,38 @@ Internet Archive's copies of 22/09/2026 and 26/09/2026.
   `gh pr review`, <https://cli.github.com/manual/gh_pr_review>.
 - **Done when:** Sam's practice review covers every check above, each comment gives its reason, and
   a second version of the pull request is compared with `git range-diff` before approval.
+
+## 08 — Software bills of materials and the component ledger
+
+- **Objective:** Sam can say what an SBOM records and what it does not, write a minimal SPDX document
+  that matches a crate graph, compare SPDX with CycloneDX, and extend lesson 04's ledger to data,
+  weights and firmware.
+- **Builds on:** lessons 02–05.
+- **Key ideas:**
+  - A release's inventory lists each component with its version, supplier, package URL (purl), hash,
+    licence expression and its relationships to the others.
+  - An SBOM records obligations; it does not meet them — a GPL source offer still has to be made.
+  - SPDX 2.3 against the 3.0 profiles (among them AI and Dataset), and CycloneDX as the other format.
+  - A declared licence is what the supplier states; a concluded licence is what the SBOM's author
+    found; `NOASSERTION` records that nothing was concluded.
+  - An SBOM is generated, never typed: `cargo metadata` and `cargo deny list` read the real graph.
+  - REUSE describes a source tree; an SBOM describes a released artefact. This repository publishes
+    none (`project-management/src/08-DECISIONS/ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`).
+- **Recall targets:** name the fields an SBOM entry carries and which of them a generator cannot fill;
+  explain why a ledger row is still needed for data, weights and firmware; say why this repository
+  keeps no register.
+- **Build:** SBOM drill — on lesson 02's throwaway branch, run `cargo deny list --format json` in
+  `code/src/rust/`, write a minimal SPDX JSON document for the practice crate by hand, validate it with
+  the validator the SBOM research note chooses (planned — `research/SBOM-FORMATS-AND-GENERATORS.md`),
+  then diff it against a generated one. The generator half is **Blocked** (`GAPS.md` → "No SBOM
+  generator or REUSE linter installed"). Checked by: the validator passes, every crate `cargo tree`
+  lists appears once, and a planted missing licence fails.
+- **Security lens:** a release's SBOM is what `os-16` lesson 01's advisory matcher reads, so a
+  component missing from it is a vulnerability nobody is told about.
+- **Sources:** the SPDX specifications (2.3 and 3.0.x, pinned by the research note),
+  <https://spdx.dev/use/specifications/>; CycloneDX specification overview,
+  <https://cyclonedx.org/specification/overview/>; NTIA, "The Minimum Elements for a Software Bill of
+  Materials (SBOM)" (12/07/2021), <https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom>;
+  REUSE specification 3.3, <https://reuse.software/spec-3.3/>; `cargo deny list --help` (0.19.0).
+- **Done when:** the hand-written document validates and matches the graph, and Sam explains which
+  parts of the register are generated and which are kept by hand.

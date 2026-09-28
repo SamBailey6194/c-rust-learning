@@ -1,6 +1,6 @@
 # Syllabus — ui-10-web-admin-dashboard
 
-**Track**: ui · **Phase**: U3 · **Path**: Later · **Detail**: outline · **Prerequisites**: sec-01-principles-threat-modelling-and-law; sec-04-linux-security-model; os-13-nas-edition or os-14-router-edition (the profile the dashboard serves); ui-07-system-tools-tui lesson 01 (privilege separation) recommended; sec-08-web-application-security recommended for lesson 06
+**Track**: ui · **Phase**: U3 · **Path**: Later · **Detail**: outline · **Prerequisites**: sec-01-principles-threat-modelling-and-law; sec-04-linux-security-model; os-13-nas-edition or os-14-router-edition (the profile the dashboard serves); ui-07-system-tools-tui lesson 01 (privilege separation) recommended; sec-08-web-application-security recommended for lesson 06; `sec-05-applied-cryptography` lessons 08–13 for lesson 05
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 The NAS and router profiles run without a desktop, so their day-to-day administration is a small web dashboard served
@@ -116,10 +116,13 @@ topic for their dashboards.
 
 - **Objective:** Sam can make the dashboard reachable only where it should be — the management network — over an
   encrypted connection, with login throttled.
-- **Builds on:** lessons 02–04; os-09 (addresses, nftables); os-13 or os-14; sec-05 (TLS) where taken.
+- **Builds on:** lessons 02–04; os-09 (addresses, nftables); os-13 or os-14; sec-05 lessons 05 and 08–13 (TLS; the
+  private CA and its ACME issuer).
 - **Key ideas:**
   - Listen only on the management interface, and allow it in the firewall only from that network.
-  - Serve it over TLS; the certificate choice for a device on a home network is decided when the topic opens.
+  - Serve it over TLS with a short-lived leaf from Sam's private CA, renewed by its ACME issuer
+    (`sec-05-applied-cryptography` lessons 08–13; `ADR-MS001-PRIVATE-CA-OFFLINE-ROOT-AND-ACME-27-09-2026.md`); the
+    dashboard's name falls inside the intermediate's name constraints.
   - Never expose it to the internet by default; remote administration goes through the router's VPN (os-14).
 - **Recall targets:** the two places that decide who can reach the dashboard; why internet exposure is off by default.
 - **Build:** yes, outline (sketched in full when U3 opens) — listener, firewall rules and TLS set-up for the dashboard,
@@ -127,7 +130,8 @@ topic for their dashboards.
 - **Security lens:** a dashboard that cannot be reached cannot be attacked from there — the cheapest control first.
 - **Safety:** the isolated lab network from os-09 only; never the home network.
 - **Sources:** (to verify when the topic opens) `man 8 nft`; the nftables wiki
-  (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>).
+  (<https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>); `sec-05-applied-cryptography` lessons 08–13 (repo
+  topic).
 - **Done when:** in the lab, the dashboard answers from the management network and nowhere else.
 
 ## 06 — Testing the dashboard in the lab

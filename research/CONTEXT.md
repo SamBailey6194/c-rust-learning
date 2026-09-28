@@ -1,6 +1,6 @@
 # research/ — Primary-Source Research Notes
 
-**Last Updated**: 27/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
+**Last Updated**: 28/09/2026 | **Version**: 0.1.0 | **Maintained By**: Sam Bailey
 **Language**: British English (en_GB) | **Timezone**: Europe/London
 
 The evidence layer beneath decisions. Each note answers one question (a C standard choice, a
@@ -51,7 +51,24 @@ would design the sandbox that model- and skill-generated code runs in.
 
 For the security track, `PENTEST-LAB-NETWORK-ISOLATION.md` would show how the lab network is kept
 from reaching the home LAN, and `VULNERABLE-TARGET-LICENCES.md` which intentionally vulnerable
-targets the lab may use and publish work on. All sixteen are planned, not yet written.
+targets the lab may use and publish work on.
+
+The networking and licensing round of 27/09/2026 planned thirteen more, grouped by what they feed.
+Sam's own network rests on `HOME-NETWORK-OPERATION-LAW.md` (`os-18` lessons 03 and 07). The
+remote-help tool's ADR waits on `REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md` (also `ui-11`
+lesson 01 and `os-18` lesson 10), `REMOTE-HELP-TOOL-AND-SECTION-3A.md`,
+`REMOTE-HELP-SESSION-RECORDS-AND-UK-GDPR.md` (`ui-11` lesson 06) and `DUAL-USE-TOOLS-ON-GITHUB.md`
+(with the section 3A note, `ui-11` lesson 09); `RUST-MTLS-STACK-LICENCES.md` picks its crypto
+provider (`ui-11` lesson 03). The private CA's ADR waits on `PRIVATE-CA-CLIENT-SUPPORT.md` (also
+`sec-05` lessons 09 and 12), and `PRIVATE-CA-ACME-ISSUER.md` chooses its issuer (`sec-05` lesson 13).
+The three product-licence records wait on `PRODUCT-CONTRIBUTIONS-DCO-AND-CLA.md`,
+`PRODUCT-OUTBOUND-LICENCE-COMPATIBILITY.md` and `SBOM-FORMATS-AND-GENERATORS.md` (also `tooling-05`
+lesson 08). Two open questions in `GAPS.md` that block first public releases wait on
+`SYNTEK-OS-TRADEMARK-POLICY.md` and `CRYPTOGRAPHY-EXPORT-RULES.md`.
+
+The scripted-recorder round of the same day planned one: `HYPRLAND-HEADLESS-CAPTURE-AND-INPUT.md`,
+written when `ui-12` opens, on how headless Hyprland runs in a guest. The portal questions of `ui-13`
+wait on a note named when that topic opens. All thirty named here are planned, not yet written.
 
 ## Boundary with Context7
 

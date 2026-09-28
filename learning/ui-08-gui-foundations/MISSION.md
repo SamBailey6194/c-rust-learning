@@ -24,6 +24,7 @@ where the GUI concepts are learned.
 
 ## Parked for later
 
-- The graphics stack itself (DRM/KMS, Mesa, compositors) — os-15-desktop-editions.
+- The graphics stack itself (DRM/KMS, Mesa, compositors) — os-15-desktop-editions; DRM/KMS capture from
+  user space (learning-only) — kernel-10-drm-kms-capture.
 - Slint's model and the product GUI tools — ui-09-gui-tools.
-- Writing a Wayland client without a toolkit — not scheduled.
+- Writing a Wayland client without a toolkit — ui-12-headless-wayland-capture-and-input.

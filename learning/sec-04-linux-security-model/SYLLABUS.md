@@ -150,8 +150,9 @@ malware is ever handled (`sec-17` framing).
 - **Build:** a `sandbox-launcher` prototype under `code/src/rust/crates/msNNN_<snake>/` that runs a
   harmless test program under all the layers, with a test proving a network connection and an
   out-of-scope file open are both denied. The production sandbox moves to the sandbox-launcher
-  repository (created when that build starts; repository boundary), which the inference repository and
-  the Syntek OS build-system and system-tools repositories then depend on. Passes `cargo test` and `cargo clippy`.
+  repository (created at the first lesson that runs it from a product repository, `os-05` lesson 03
+  or `llm-13` lesson 03), which the model-training and inference repositories and the Syntek OS
+  build-system and system-tools repositories then depend on. Passes `cargo test` and `cargo clippy`.
 - **Efficiency lens:** measure the launcher's start-up cost and the sandboxed program's resource
   ceiling (llm-06 lesson 01 method).
 - **Security lens:** this launcher is the reusable safety boundary for every "runs generated or
