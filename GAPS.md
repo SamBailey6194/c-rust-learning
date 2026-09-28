@@ -60,7 +60,8 @@ authorises which access, whether a session log is household processing, and whet
 publishing the tool carries section 3A exposure are all unresearched. This entry records an open
 question; it is not legal advice.
 **Blocked by / Action:** Blocks writing `learning/ui-11-consent-first-remote-help/` lessons 01, 06
-and 09 in full, accepting the remote-help ADR, and publishing the remote-help repository. Run
+and 09 in full, teaching `learning/os-18-own-network-operations/` lesson 10, accepting the remote-help
+ADR, and publishing the remote-help repository. Run
 `/research` for `research/REMOTE-HELP-CONSENT-AND-THE-COMPUTER-MISUSE-ACT.md`,
 `research/REMOTE-HELP-TOOL-AND-SECTION-3A.md`, `research/REMOTE-HELP-SESSION-RECORDS-AND-UK-GDPR.md`
 and `research/DUAL-USE-TOOLS-ON-GITHUB.md` (all planned); revise the ADR's constraints against them,

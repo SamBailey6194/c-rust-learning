@@ -479,8 +479,8 @@ recorded once, in `project-management/REFERENCES.md`.
   — the channel `SECURITY.md` points to.
 - **SPDX License List** — <https://spdx.org/licenses/> — the licence identifiers used in
   `Cargo.toml` and `deny.toml`.
-- **SPDX specifications** — <https://spdx.dev/use/specifications/> — the SBOM format (2.3 and 3.0.x,
-  ISO/IEC 5962:2021) a product's component register is written in
+- **SPDX specifications** — <https://spdx.dev/use/specifications/> — the SBOM format (2.3 and 3.0.x;
+  SPDX 2.2.1 is published as ISO/IEC 5962:2021) a product's component register is written in
   (`ADR-MS001-PRODUCT-COMPONENT-REGISTER-SPDX-SBOM-27-09-2026.md`).
 - **CycloneDX** — <https://cyclonedx.org/specification/overview/> — the other SBOM format
   (ECMA-424), compared with SPDX in `tooling-05` lesson 08.
