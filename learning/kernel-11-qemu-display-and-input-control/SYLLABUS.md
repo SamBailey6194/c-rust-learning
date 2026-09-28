@@ -20,7 +20,9 @@ QMP socket is full control of the VM, and a VNC socket an unauthenticated view o
 Version facts to re-verify on the day (read 27/09/2026): the host runs QEMU 8.2.2, whose `man 7 qemu-qmp-ref` is the
 pinned QMP reference, and libvirt 10.0.0; qemu.org's manual pages are the master build. A probe that day (TCG, SeaBIOS
 text mode at 720x400, one datapoint) measured `screendump` at about 1.8 ms per PPM grab and 9.0 ms per PNG grab, and saw
-a relative filename fail with `EACCES` under `-daemonize`, cause unknown — so filenames are absolute.
+a relative filename fail with `EACCES` under `-daemonize`, because `-daemonize` changes QEMU's working directory to
+`/` (`os_setup_post()` in os-posix.c at v8.2.2, <https://gitlab.com/qemu-project/qemu/-/blob/v8.2.2/os-posix.c>) —
+so filenames are absolute.
 
 | # | Lesson | Size | Build | Lenses |
 | --- | --- | --- | --- | --- |
@@ -83,7 +85,8 @@ a relative filename fail with `EACCES` under `-daemonize`, cause unknown — so 
 - **Efficiency lens:** milliseconds per grab, PPM against PNG, at the text mode and at 1080p, under TCG and KVM, with
   host CPU while polling.
 - **Sources:** (to verify when the topic opens) `man 7 qemu-qmp-ref` (`screendump`, `ImageFormat`); Netpbm, "PPM"
-  (<https://netpbm.sourceforge.net/doc/ppm.html>).
+  (<https://netpbm.sourceforge.net/doc/ppm.html>); QEMU's os-posix.c at v8.2.2 (`os_setup_post()`, the `chdir("/")`
+  under `-daemonize`), <https://gitlab.com/qemu-project/qemu/-/blob/v8.2.2/os-posix.c>.
 - **Done when:** the cost table is recorded and Sam explains the PNG penalty from what each format does.
 
 ## 03 — RFB over a Unix socket: pulled updates and damage
