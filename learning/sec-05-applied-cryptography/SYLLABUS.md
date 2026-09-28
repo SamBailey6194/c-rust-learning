@@ -1,6 +1,6 @@
 # Syllabus — sec-05-applied-cryptography
 
-**Track**: sec · **Phase**: S1 · **Path**: Core (lessons 01–07); Later (lessons 08–13) · **Detail**: full · **Prerequisites**: P2; P3 for the library-usage builds; sec-01; for lessons 12–13, `os-09-networking-fundamentals` lesson 05; for lesson 13, `sec-04-linux-security-model` lesson 07
+**Track**: sec · **Phase**: S1 · **Path**: Core (lessons 01–07); Later (lessons 08–13) · **Detail**: full · **Prerequisites**: P2; P3 for the library-usage builds; sec-01; for lessons 12–13, `os-09-networking-fundamentals` lesson 05; for lesson 13, `sec-04-linux-security-model` lesson 07 and `os-14-router-edition` lesson 03
 **Status**: Planned · **Checked**: 27/09/2026 (sources re-verified by `/teach` step 3 before each lesson)
 
 This topic teaches cryptography as a user, not an inventor: what each primitive guarantees, which one
@@ -282,8 +282,9 @@ throwaway lab CA whose keys never enter any repository; Sam's real CA is built o
   and system-wide only inside a VM guest, then remove it again.
 - **Builds on:** lessons 08–11; `os-09-networking-fundamentals` lesson 05 (the lab and its QEMU guests).
 - **Key ideas:**
-  - Name constraints are what make a home root safe to trust; where a client ignores them, trust stays
-    per application.
+  - Name constraints on the intermediate bound what a stolen intermediate can sign, where clients
+    enforce them; the root itself is unconstrained, so installing it is safe only while its key stays
+    offline (lesson 08). Where a client ignores name constraints, trust stays per application.
   - Per application, without root: `curl --cacert`, `SSL_CERT_FILE` for OpenSSL-based programs, and a
     per-user NSS database through `certutil`.
   - System-wide: a file in `/usr/local/share/ca-certificates/` plus `update-ca-certificates` needs
@@ -296,7 +297,8 @@ throwaway lab CA whose keys never enter any repository; Sam's real CA is built o
   in a VM guest, and Sam runs it — Claude never runs `sudo`.
 - **Sources:** `man 8 update-ca-certificates` (ca-certificates 20260601~24.04.1); `man 1 trust`
   (p11-kit 0.25.3); `man 1 certutil` (libnss3-tools 3.98); `man 7ssl openssl-env` (`SSL_CERT_FILE`);
-  `man 1 curl` (8.5.0).
+  `man 1 curl` (8.5.0); the private-CA client-support research note (planned —
+  `research/PRIVATE-CA-CLIENT-SUPPORT.md`).
 - **Done when:** each client trusts the lab root, then refuses it after removal.
 
 ## 13 — A standing ACME issuer for short-lived leaves
