@@ -63,7 +63,7 @@ the other seven are unrelated. Nothing here edits either register.
 | N-001 | Custom tools in Rust, ratatui TUI first, GUI later | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SYNTEK-OS-TOOLS-RUST-TUI-FIRST-27-09-2026.md` |
 | N-002 | gtk4-rs for GUI lessons here; Slint for products in their own repositories | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-GUI-TOOLKIT-GTK4-27-09-2026.md` |
 | N-004 | Each substantial tool build (file manager, package-manager front-end, installer, system tools) gets its own repository when its build starts; this repository keeps lessons and small exercises (Sam, after the critique) | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` → the repository boundary |
-| N-009 | The scripted recorder's Wayland stages target headless Hyprland (`ui-12`), then GNOME and KDE through the portal and PipeWire (`ui-13`), each in a guest, Later and outside U2's exit gate | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` |
+| N-009 | The scripted recorder's Wayland stages target headless Hyprland (`ui-12`), then GNOME and KDE through the portal and PipeWire (`ui-13`), each in a guest, Later and outside U2's exit gate | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed) |
 
 ---
 
@@ -128,7 +128,7 @@ does not block: `ui-12` is Later and outside U2's exit gate, so it gates `ui-12`
 | 27/09/2026 | N-001, N-002 | two ADRs in `project-management/src/08-DECISIONS/` | [x] |
 | 27/09/2026 | N-004 | the repository boundary → `ADR-MS001-ROADMAP-KERNEL-OS-UI-LLM-TRACKS-27-09-2026.md` | [x] |
 | 27/09/2026 | — | N-005, N-006, N-007 charted; ui-11 added (Later) | [x] |
-| 28/09/2026 | N-009 | the recorder's Wayland stages → `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`; N-008 charted; ui-12 and ui-13 added (Later) | [x] |
+| 28/09/2026 | N-009 | the recorder's Wayland stages → `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed); N-008 charted; ui-12 and ui-13 added (Later) | [x] |
 
 ---
 

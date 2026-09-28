@@ -38,8 +38,8 @@ Facts that force or narrow the list, checked on 27/09/2026:
   anything that must combine with it, has one possible entry.
 - **Apache-2.0 is compatible with GPLv3 but not with GPLv2.** GPLv3 is not compatible with GPLv2 by
   itself, but code under "GPLv2 or later" may be used under GPLv3 to make a combination (Sources,
-  item 2). The GNU licences combine freely except where code is only under an older version and the
-  project is under a newer one (Sources, item 3 → `#AllCompatibility`).
+  item 2). The GNU licences combine freely except where code that is only under an older version
+  meets code under a newer version, in either direction (Sources, item 3 → `#AllCompatibility`).
 - **AGPLv3 is GPLv3 plus a network clause.** Its Section 13 lets users who interact with the program
   over a network receive its source. It is not compatible with GPLv2, and it is not strictly
   compatible with GPLv3 either, but Section 13 of each licence lets separate modules under the two be

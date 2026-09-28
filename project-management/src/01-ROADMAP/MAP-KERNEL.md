@@ -54,8 +54,8 @@ Each row links to the artefact it became. **An answer that lives only here has n
 | Node | Decision | Type | Settled | Became |
 | --- | --- | --- | --- | --- |
 | N-001 | Kernel is a downstream of upstream Linux, not a fork or from scratch | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` |
-| N-006 | The scripted recorder's kernel-interface stages run only in a QEMU guest (`kernel-09` uinput at P4, `kernel-10` DRM/KMS at P5), and DRM/KMS capture is learning-only, never a capture-library backend | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` |
-| N-007 | The capture library's QEMU/KVM backend is taught in `kernel-11` at P4 (Later), after the recorder's Wayland stages | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` |
+| N-006 | The scripted recorder's kernel-interface stages run only in a QEMU guest (`kernel-09` uinput at P4, `kernel-10` DRM/KMS at P5), and DRM/KMS capture is learning-only, never a capture-library backend | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed) |
+| N-007 | The capture library's QEMU/KVM backend is taught in `kernel-11` at P4 (Later), after the recorder's Wayland stages | explain-first | 27/09/2026 | `project-management/src/08-DECISIONS/ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed) |
 
 ---
 
@@ -124,7 +124,7 @@ In scope, but not yet sharp enough to state as a decision.
 | Date | Node settled | Outcome | Frontier redrawn |
 | --- | --- | --- | --- |
 | 27/09/2026 | N-001 | downstream of upstream → `ADR-MS001-KERNEL-DOWNSTREAM-OF-UPSTREAM-27-09-2026.md` | [x] |
-| 28/09/2026 | N-006, N-007 | the recorder's guest stages → `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md`; N-005 charted; kernel-09 to kernel-11 added (Later) | [x] |
+| 28/09/2026 | N-006, N-007 | the recorder's guest stages → `ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md` (Proposed); N-005 charted; kernel-09 to kernel-11 added (Later) | [x] |
 
 ---
 

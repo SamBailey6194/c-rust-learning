@@ -66,7 +66,7 @@ Facts checked on 27/09/2026:
 - **The roadmap already teaches the pieces.** P2 teaches `fork`, `execve`, `waitpid`, pipes, `dup2`
   and `sigaction`; `kernel-01` lessons 06 and 07 teach QEMU on a serial console, its monitor, and a
   debug stub bound to a Unix socket or the loopback address at P4; U2 opens after U1 and `tooling-05`
-  (`project-management/src/01-ROADMAP/ROADMAP.md` → Phase overview and P2;
+  lessons 01–07 (`project-management/src/01-ROADMAP/ROADMAP.md` → Phase overview and P2;
   `learning/kernel-01-build-and-boot-in-qemu/SYLLABUS.md`).
 - **A timeline has a standard shape.** WebVTT defines chapter cues (Sources, item 10), and vhs's tape
   commands are documented well enough to re-implement (Sources, item 11).

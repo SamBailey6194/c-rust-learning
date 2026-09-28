@@ -42,7 +42,7 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 | `project-management/src/05-PROJECTS/` | specify | Capstone project specs; `PROJ-MS000-TEMPLATE.md` |
 | `project-management/src/06-KERNEL/` | specify | Kernel plans before a build and implementation records after; `KERNEL-PLAN-MS000-TEMPLATE.md`, `KERNEL-IMPL-MS000-TEMPLATE.md` |
 | `project-management/src/07-OS-PROFILES/` | specify | `PROFILE-MATRIX.md`, the seven `PROFILE-<NAME>.md` files (beginner, intermediate, expert, server, nas, homelab, router); `PROFILE-000-TEMPLATE.md` |
-| `project-management/src/08-DECISIONS/` | decide & plan | Immutable ADRs; `ADR-MS000-TEMPLATE.md` and the five seed ADRs from MS001 |
+| `project-management/src/08-DECISIONS/` | decide & plan | Immutable ADRs; `ADR-MS000-TEMPLATE.md`, the five seed ADRs from MS001, and the planning, networking-and-licensing and scripted-recorder decisions (`08-DECISIONS/CONTEXT.md` lists them) |
 | `project-management/src/09-MILESTONE-PLANS/` | decide & plan | The plan each milestone is studied from, prefixed by build order; `00-PLAN-MS000-TEMPLATE.md` |
 | `project-management/src/10-PROGRESS/` | record | Verification records, the mastery evidence; `MS000-VERIFICATION-TEMPLATE.md` |
 | `project-management/src/11-REVIEWS/` | record | Review records; `REVIEW-MS000-TEMPLATE.md` |
@@ -111,7 +111,7 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 - **Documenting Architecture Decisions (Michael Nygard)** — https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions — the original ADR form (Context, Decision, Status, Consequences) that `project-management/src/08-DECISIONS/` extends with Options considered
 - **RFC 5280, X.509 certificate and CRL profile** — https://www.rfc-editor.org/rfc/rfc5280 — basic and name constraints, CRLs and path validation, behind the private-CA ADR
 - **RFC 8555, ACME** — https://www.rfc-editor.org/rfc/rfc8555 — automated certificate issuance, the protocol the private CA's leaf issuer speaks
-- **SPDX specifications** — https://spdx.dev/use/specifications/ — the SBOM format (2.3 and 3.0.x, ISO/IEC 5962:2021) behind the component-register ADR
+- **SPDX specifications** — https://spdx.dev/use/specifications/ — the SBOM format (2.3 and 3.0.x; SPDX 2.2.1 is published as ISO/IEC 5962:2021) behind the component-register ADR
 - **CycloneDX** — https://cyclonedx.org/specification/overview/ — the other SBOM format (ECMA-424), the component-register ADR's runner-up
 - **NTIA, The Minimum Elements for an SBOM (12/07/2021)** — https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom — the baseline field list the register's research note re-reads
 - **Choose a License** — https://choosealicense.com/licenses/ — plain-language summaries of the entries on the approved outbound list
@@ -150,6 +150,6 @@ Each numbered folder in `project-management/src/`, its tier, and what it holds. 
 - **Linux kernel: minimal requirements** — https://docs.kernel.org/process/changes.html — the build dependencies a kernel milestone lists as blockers
 - **QEMU invocation** — https://www.qemu.org/docs/master/system/invocation.html — `-kernel`, `-initrd`, `-append`, `-nographic`, `-snapshot`, `-s -S`
 - **Computer Misuse Act 1990, section 17** — https://www.legislation.gov.uk/ukpga/1990/18/section/17 — subsections (5) and (8), when access or an act is unauthorised; the reading behind the graduation-path ADR
-- **RFC 5737, IPv4 documentation ranges** — https://www.rfc-editor.org/rfc/rfc5737 — the only IPv4 addresses a network example here may use
-- **RFC 3849, IPv6 documentation prefix** — https://www.rfc-editor.org/rfc/rfc3849 — the only IPv6 prefix a network example here may use
+- **RFC 5737, IPv4 documentation ranges** — https://www.rfc-editor.org/rfc/rfc5737 — the IPv4 documentation ranges network examples here use (`project-management/docs/SAFETY-GUIDE.md` → Graduating a lab-proven config)
+- **RFC 3849, IPv6 documentation prefix** — https://www.rfc-editor.org/rfc/rfc3849 — the IPv6 documentation prefix network examples here use (same owner)
 - **RFC 2606, reserved DNS names** — https://www.rfc-editor.org/rfc/rfc2606 — `example`, `test` and `invalid` names for examples

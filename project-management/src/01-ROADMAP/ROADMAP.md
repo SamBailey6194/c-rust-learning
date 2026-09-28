@@ -140,8 +140,8 @@ other path names both ranges in its header and on both lists, as `sec-05` does.
 
 | Path | Phases and topics | Leads to |
 | --- | --- | --- |
-| **Core** | P1 to P3 (bar the scripted recorder's `c-05` and its Rust port); P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` lessons 01–07 <!-- CHANGED 28/09/2026: previously read "P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-04` and `sec-05`" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's lessons 08–13 appended as Later (Q9); scripted-recorder round: `c-05` and the recorder's Rust port carved out of P1 to P3 as Later, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md --> | the first server/homelab edition and the first own model with a skills layer |
-| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`), the local-model integration (`os-17`) and Sam's own network (`os-18`); the installer, system-tools and remote-help TUIs (`ui-06`, `ui-07`, `ui-11`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`); the scripted demo recorder's stages — `c-05` and its Rust port (P2–P3), `ui-12` and `ui-13` (U2), `kernel-09`, `kernel-11` (P4) and `kernel-10` (P5) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Q9); os-18 added (Q8); ui-11 added (Q10); scripted-recorder round: the recorder's stages added as Later leaves, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md --> | breadth once the first edition and model ship |
+| **Core** | P1 to P3 (bar the scripted recorder's `c-05` and its Rust port); P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-02`, `sec-04` and `sec-05` lessons 01–07 <!-- CHANGED 28/09/2026: previously read "P1 to P3; P4 to P5 (`kernel-01` to `kernel-06`: build, modules, downstream, per-profile configs, CI); P6 from `os-01` through `os-12-homelab-edition`, plus `os-16-release-and-security-process`; U1 and, in U2, the file manager and the package-manager TUI (`ui-04`, `ui-05`); L1 to L5 (`llm-01` to `llm-18`); in S1, `sec-01`, `sec-04` and `sec-05`" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's lessons 08–13 appended as Later (Sam's networking-round answer on the private CA); scripted-recorder round: `c-05` and the recorder's Rust port carved out of P1 to P3 as Later, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md --> | the first server/homelab edition and the first own model with a skills layer |
+| **Later** | `kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`), the local-model integration (`os-17`) and Sam's own network (`os-18`); the installer, system-tools and remote-help TUIs (`ui-06`, `ui-07`, `ui-11`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-03`, `sec-05` lessons 08–13 (the private CA), and all of S2 and S3 (`sec-06` to `sec-19`); the scripted demo recorder's stages — `c-05` and its Rust port (P2–P3), `ui-12` and `ui-13` (U2), `kernel-09`, `kernel-11` (P4) and `kernel-10` (P5) <!-- CHANGED 27/09/2026: previously read "`kernel-07-upstreaming`, `kernel-08-rust-for-linux`; the NAS, router and desktop editions (`os-13`, `os-14`, `os-15`) and the local-model integration (`os-17`); the installer and system-tools TUIs (`ui-06`, `ui-07`) and all of U3 (`ui-08` to `ui-10`); L6 (`llm-19` to `llm-21`); `sec-02` and `sec-03` (S1's exit gate waits on `sec-02`), and all of S2 and S3 (`sec-06` to `sec-19`)" — networking and licensing round: sec-02 to Core (Sam, carry-over question 4); sec-05's private-CA lessons appended as Later (Sam's networking-round answer on the private CA); os-18 added (Sam's networking-round answer on his own network); ui-11 added (Sam's networking-round answer on remote help); scripted-recorder round: the recorder's stages added as Later leaves, per ADR-MS001-SCRIPTED-RECORDER-STAGED-LEARNING-PROJECT-27-09-2026.md --> | breadth once the first edition and model ship |
 
 ---
 
@@ -529,7 +529,8 @@ package set; ship the server and homelab edition first — recommended, still to
   <!-- CHANGED 27/09/2026: previously read "Networking fundamentals and an isolated QEMU lab; profiles
        and the installer as a transaction; the server, homelab, NAS, router and desktop editions; the
        release and security process; a local-model integration capstone" — networking and licensing
-       round: os-18 added as Later (Q8, Q11, Q12) -->
+       round: os-18 added as Later (Sam's networking-round answers on his own network, its
+       monitoring, and its resilience and recovery) -->
 
 **Topic folders:** `os-01`, `os-02`, `os-03`, `os-04`, `os-05`, `os-06`, `os-07`, `os-08`, `os-09`, `os-10`, `os-11`, `os-12`, `os-16`; Later `os-13`, `os-14`, `os-15`, `os-17`, `os-18`.
 
@@ -618,8 +619,9 @@ natural first project for friends and family.
   polkit, network, users, updates and storage screens
 - Later, a consent-first remote-help tool for Sam's family: a Linux terminal session the helped person
   starts, sees, controls and ends, on mutual TLS from the private CA, proved in the lab first
-  <!-- CHANGED 27/09/2026: bullet added — networking and licensing round: ui-11 added as Later (Q10),
-       under ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md (Proposed) -->
+  <!-- CHANGED 27/09/2026: bullet added — networking and licensing round: ui-11 added as Later (Sam's
+       networking-round answer on remote help), under
+       ADR-MS001-REMOTE-HELP-TOOL-CONSENT-FIRST-27-09-2026.md (Proposed) -->
 - Later, the scripted recorder's Wayland stages, each in a QEMU guest: headless Hyprland captured and
   typed into through Wayland protocols, then GNOME and KDE through the portal's ScreenCast and PipeWire
   <!-- CHANGED 28/09/2026: bullet added — scripted-recorder round: ui-12 and ui-13 added as Later, per
@@ -644,8 +646,8 @@ gate; the recorder's Wayland topics (`ui-12`, `ui-13`) likewise do not hold U2's
 <!-- CHANGED 27/09/2026: previously read "the file-manager TUI lists a directory asynchronously, previews
      an untrusted file safely and supports trash and undo, with tests passing under `cargo test`; each
      later U2 tool builds against its OS-track prerequisite." — networking and licensing round: ui-11
-     added as Later (Q10), outside the exit gate; scripted-recorder round: ui-12 and ui-13 added as
-     Later, outside the exit gate -->
+     added as Later (Sam's networking-round answer on remote help), outside the exit gate;
+     scripted-recorder round: ui-12 and ui-13 added as Later, outside the exit gate -->
 
 **Primary resources:**
 
@@ -955,7 +957,8 @@ mitigations, the Linux security model and applied cryptography — turned on Sam
        the Linux security model (users, capabilities, namespaces, cgroups, seccomp, LSMs including
        Landlock — the sandbox launcher the OS and LLM tracks reuse); applied cryptography (hashes,
        MACs, signatures, key management, "don't roll your own")" — networking and licensing round:
-       sec-05's private-CA lessons appended as Later (Q9) -->
+       sec-05's private-CA lessons appended as Later (Sam's networking-round answer on the private
+       CA) -->
 
 **Topic folders:** `sec-01`, `sec-02`, `sec-04`, `sec-05` (lessons 01–07); Later `sec-03`, `sec-05` lessons 08–13.
 
@@ -1082,7 +1085,9 @@ no third-party targets.
 - `project-management/src/01-ROADMAP/CONTEXT.md` — the map index for each track charted here
 - `project-management/src/02-MILESTONES/MS001-TOOLCHAIN-READY.md` — the one allocated milestone
 - `project-management/src/07-OS-PROFILES/PROFILE-MATRIX.md` — the profile hypotheses P5 and P6 test
-- `project-management/src/08-DECISIONS/` — the twelve MS001 ADRs that widened this roadmap
+- `project-management/src/08-DECISIONS/` — the MS001 ADRs that widened this roadmap: the planning
+  conversation's twelve, and the networking-and-licensing and scripted-recorder rounds
+  (`08-DECISIONS/CONTEXT.md` lists them)
 - `project-management/docs/PLANNING-GUIDE.md` — cadence, milestone and sprint rules
 - `code/docs/BUILD.md` — the make targets and flags the exit gates call
 - `how-to/docs/TOOLCHAIN.md` — host tool versions

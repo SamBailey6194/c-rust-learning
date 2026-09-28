@@ -51,8 +51,9 @@ Facts checked on 27/09/2026:
   is installed (`command -v`). cargo-deny 0.19.0's `list` subcommand prints the licences in the graph
   and the crates that use them, as human-readable text, JSON or TSV; it writes no SBOM format
   (`cargo deny list --help`).
-- **SPDX.** The specification's current line is 3.0 and the previous one 2.3, and SPDX is the
-  international standard ISO/IEC 5962:2021 (Sources, item 1). SPDX 3.0.1 defines profiles that include
+- **SPDX.** The specification's current line is 3.0 and the previous one 2.3 (Sources, item 1);
+  SPDX 2.2.1 is the version published as the international standard ISO/IEC 5962:2021 (Sources,
+  item 7). SPDX 3.0.1 defines profiles that include
   Software, Security, Licensing, Build, Lite, AI and Dataset (Sources, item 2), so model weights and
   training data have profiles of their own.
 - **CycloneDX.** The latest specification is 1.7, published by Ecma International as ECMA-424
@@ -162,7 +163,7 @@ starts distributing binaries, images or packages. Each would be argued in a new 
 ## Sources
 
 1. **SPDX specifications** — <https://spdx.dev/use/specifications/> — 3.0 current and 2.3 previous;
-   SPDX as ISO/IEC 5962:2021, checked 27/09/2026
+   SPDX as an ISO/IEC 5962:2021 standard, without naming the version, checked 27/09/2026
 2. **SPDX specification 3.0.1** — <https://spdx.github.io/spdx-spec/v3.0.1/> — the profiles it
    defines, AI and Dataset among them, checked 27/09/2026
 3. **CycloneDX specification overview** — <https://cyclonedx.org/specification/overview/> — version
@@ -176,3 +177,7 @@ starts distributing binaries, images or packages. Each would be argued in a new 
 6. **Sam's answers in the networking and licensing round, 27/09/2026** — a register per product
    repository: a generated SPDX SBOM per release plus a hand-kept ledger; this repository never becomes
    a distributor
+7. **SPDX specification release v2.2.1** — <https://github.com/spdx/spdx-spec/releases/tag/v2.2.1> —
+   the SPDX project's release notes: v2.2.1 holds all updates for the final ISO/IEC 5962:2021 text
+   (ISO catalogue entry <https://www.iso.org/standard/81870.html>, which served a bot check), checked
+   28/09/2026
